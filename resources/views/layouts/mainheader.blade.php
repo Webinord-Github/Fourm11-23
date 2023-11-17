@@ -37,7 +37,8 @@
             @font-face {
                 font-family: 'fun-sized';
                 src: url('{{asset("storage/medias/FunSized.ttf")}}');
-                unicode-range: U+0020-007E, U+00A0-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2C60-2C7F; /* Latin-1 Supplement, Latin Extended-A, Latin Extended-B, Latin Extended Additional, Latin Extended-C */
+                unicode-range: U+0020-007E, U+00A0-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2C60-2C7F;
+                /* Latin-1 Supplement, Latin Extended-A, Latin Extended-B, Latin Extended Additional, Latin Extended-C */
 
             }
 
@@ -72,8 +73,17 @@
             <div class="auth__container">
                 <div class="auth__content">
                     <div class="auth__routes">
+                        @if(auth()->check())
+                        <a id="login" href="mon-compte">{{ auth()->user()->name }}</a>
+                        <form method="POST" action="{{route('logout')}}">
+                            @csrf
+                            <button type="submit" id="register">Déconnexion</button>
+                        </form>
+         
+                        @else
                         <a id="login" href="mon-compte">Connexion</a>
                         <a id="register" href="sinscrire">Devenir membre</a>
+                        @endif
                     </div>
                     <div class="icon__container">
                         <i id="icon" class="fa fa-user-circle-o"></i>

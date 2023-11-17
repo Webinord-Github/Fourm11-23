@@ -151,6 +151,7 @@
             let form = event.target.closest("form");
             let conversationId = form.querySelector("#conversation__id").getAttribute('data-id');
             let body = form.querySelector("#autoExpand").value
+            form.querySelector("#autoExpand").value = ""
 
             let Params = 'conversation_id=' + encodeURIComponent(conversationId) + '&body=' + encodeURIComponent(body)
             xhttp.onreadystatechange = function() {
@@ -219,7 +220,7 @@
                             behavior: 'smooth',
                             block: 'end'
                         });
-
+                        
                         xhttp = null;
                     } else {
                         console.error("reply not sent.");
