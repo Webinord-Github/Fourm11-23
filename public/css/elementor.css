@@ -1,0 +1,230 @@
+.elementor-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 10px 25px 10px;
+  width: 100%;
+}
+.elementor-container .title {
+  box-sizing: border-box;
+  font-size: 36px;
+  font-weight: bold;
+  padding: 10px 25px;
+  text-align: center;
+  width: 100%;
+}
+.elementor-container #preview {
+  border: 1px solid #000;
+  min-height: 750px;
+  padding: 1em;
+  width: 97%;
+}
+.elementor-container #preview .bloc {
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+.elementor-container #preview .bloc .item {
+  display: none;
+}
+.elementor-container #preview .bloc .content {
+  display: bloc;
+  width: 100%;
+}
+.elementor-container #preview .bloc .content .img-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.elementor-container #preview .bloc .content .img-wrapper img {
+  max-width: 75%;
+}
+.elementor-container #preview .selected {
+  border: 1px solid #888;
+}
+.elementor-container #preview .bloc:hover {
+  border: 1px solid #555;
+}
+
+.adminNav__container {
+  width: 250px;
+}
+.adminNav__container ::-webkit-scrollbar-track-piece:start {
+  margin-top: 100px;
+}
+.adminNav__container ::-webkit-scrollbar-track-piece:end {
+  margin-bottom: 20px;
+}
+.adminNav__container ::-webkit-scrollbar {
+  width: 14px;
+}
+.adminNav__container ::-webkit-scrollbar-track {
+  opacity: 0;
+}
+.adminNav__container ::-webkit-scrollbar-thumb {
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: #555;
+}
+.adminNav__container ::-webkit-scrollbar-thumb:hover {
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: #888;
+}
+.adminNav__container .adminNav {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+}
+.adminNav__container .adminNav .tab {
+  display: none;
+}
+.adminNav__container .adminNav .actif {
+  display: flex;
+}
+.adminNav__container .adminNav .tabs {
+  color: #fff;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+.adminNav__container .adminNav .tabs .hidden {
+  display: none;
+}
+.adminNav__container .adminNav .tabs .actif {
+  text-decoration: underline;
+}
+.adminNav__container .adminNav .tabs p {
+  font-size: 20px;
+  cursor: pointer;
+}
+.adminNav__container .adminNav .tabs p:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+.adminNav__container .adminNav #blocs {
+  align-items: baseline;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.adminNav__container .adminNav #blocs .bloc {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.adminNav__container .adminNav #blocs .bloc .item {
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  border: 1px solid grey;
+  border-radius: 10px;
+  background-color: #fff;
+  height: 75px;
+  width: 75px;
+}
+.adminNav__container .adminNav #blocs .bloc .content {
+  display: none;
+}
+.adminNav__container .adminNav #blocs .bloc:hover {
+  opacity: 0.8;
+}
+.adminNav__container .adminNav #infos {
+  color: #fff;
+  width: 100%;
+}
+.adminNav__container .adminNav #infos form {
+  box-sizing: border-box;
+  display: flex;
+  padding: 0 1em;
+  width: 100%;
+}
+.adminNav__container .adminNav #infos form .form-wrapper {
+  width: 100%;
+}
+.adminNav__container .adminNav #infos form .form-wrapper .input {
+  margin: 1em 0;
+}
+.adminNav__container .adminNav #infos form .form-wrapper .input input[type=text] {
+  cursor: text;
+}
+.adminNav__container .adminNav #infos form .form-wrapper .input input[type=checkbox] {
+  margin-right: 5px;
+}
+.adminNav__container .adminNav #infos form .form-wrapper .input input {
+  cursor: pointer;
+}
+.adminNav__container .adminNav #infos form .form-wrapper .input select {
+  cursor: pointer;
+  border-radius: 4px;
+  color: #000;
+}
+.adminNav__container .adminNav #infos form .form-wrapper .submit {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+.adminNav__container .adminNav #infos form .form-wrapper .submit button {
+  background-color: #555;
+}
+.adminNav__container .adminNav #infos form .form-wrapper .submit button:hover {
+  background-color: #888;
+}
+.adminNav__container .adminNav #options {
+  flex-direction: column;
+  width: 100%;
+}
+.adminNav__container .adminNav #options .default {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em 2em;
+}
+.adminNav__container .adminNav #options .default p {
+  text-align: center;
+}
+.adminNav__container .adminNav #options .selected {
+  display: flex !important;
+}
+.adminNav__container .adminNav #options .option {
+  display: none;
+}
+.adminNav__container .adminNav #options .margin {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+.adminNav__container .adminNav #options .margin .margin-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.adminNav__container .adminNav #options .margin .margin-wrapper .tag {
+  display: flex;
+}
+.adminNav__container .adminNav #options .margin .margin-wrapper .inputs {
+  display: flex;
+  /* Chrome, Safari, Edge, Opera */
+}
+.adminNav__container .adminNav #options .margin .margin-wrapper .inputs input::-webkit-outer-spin-button,
+.adminNav__container .adminNav #options .margin .margin-wrapper .inputs input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.adminNav__container .adminNav #options .margin .margin-wrapper .inputs input {
+  width: 60px;
+}
+.adminNav__container .adminNav #options .hidden {
+  display: none;
+}/*# sourceMappingURL=elementor.css.map */

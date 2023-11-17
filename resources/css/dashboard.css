@@ -1,0 +1,105 @@
+.dashboard__container {
+  width: 100%;
+  margin: 10px;
+}
+.dashboard__container .dashboard__title {
+  font-size: 25px;
+  font-weight: bold;
+  color: gray;
+}
+.dashboard__container .stats__container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.dashboard__container .stats__container .stats__div {
+  width: 100%;
+  height: 250px;
+  margin: 10px;
+  box-shadow: 1px 1px 10px gray;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #fff;
+}
+.dashboard__container .stats__container .stats__div .stats__count {
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+.dashboard__container .stats__container .stats__div #active__users,
+.dashboard__container .stats__container .stats__div #no__unverified__users {
+  color: green;
+}
+.dashboard__container .stats__container .stats__div #unverified__users {
+  color: red;
+}
+.dashboard__container .stats__container .stats__div #unverified__users .fa-exclamation-circle {
+  font-size: 40px;
+}
+.dashboard__container .stats__container .stats__div .admin__cta {
+  background-color: #29282d;
+  border-radius: 10px;
+  padding: 8px 12px;
+  color: #fff;
+  font-weight: bold;
+  width: 120px;
+  max-width: 100%;
+  margin-top: 30px;
+}
+.dashboard__container .dashboard__users__container {
+  margin-top: 30px;
+  width: 100%;
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container {
+  background-color: white;
+  border-radius: 10px;
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container .dasboard__users__table__filter {
+  padding: 10px 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container .dasboard__users__table__filter .dashboard__users__filter__cta {
+  background-color: #eff1f4;
+  padding: 12px;
+  margin-right: 30px;
+  color: #000;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container .dasboard__users__table__filter .dashboard__users__filter__cta .fa-angle-down {
+  margin-left: 10px;
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container table {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 1px 1px 10px lightgray;
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container table thead tr {
+  background-color: #eff1f4;
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container table thead tr th {
+  padding: 10px;
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container table tbody tr {
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container table tbody tr td {
+  padding: 20px 0px;
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container table tbody tr td .user__bull {
+  font-size: 35px;
+  line-height: 0em;
+  display: flex;
+  justify-content: center;
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container table tbody tr td #online__bull {
+  color: rgb(36, 229, 6);
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container table tbody tr td #offline__bull {
+  color: gray;
+}
+.dashboard__container .dashboard__users__container .dashboard__users__table__container table tbody tr #user__online {
+  width: 120px;
+}/*# sourceMappingURL=dashboard.css.map */

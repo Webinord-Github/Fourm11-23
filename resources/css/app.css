@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.min-h-screen{
+    min-height: 100%!important;
+}
+.bg-gray-100 {
+    background-color: #eef2f5!important;
+}

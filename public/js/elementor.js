@@ -1,0 +1,1 @@
+import Sortable from '/node_modules/sortablejs';

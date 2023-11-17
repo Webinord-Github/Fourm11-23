@@ -1,0 +1,92 @@
+#main__header {
+  height: 80px;
+  background-color: #000;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#main__header .header__container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+#main__header .header__container .logo {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+#main__header .header__container .logo img {
+  height: 75px;
+}
+#main__header .header__container .notif {
+  position: relative;
+}
+#main__header .header__container .notif i {
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+#main__header .header__container .notif .notif__int {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  color: #Fff;
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  top: 0;
+  cursor: pointer;
+}
+#main__header .header__container .notif .notifications__center {
+  display: none;
+  position: absolute;
+  z-index: 200;
+  top: 60px;
+  height: 90vh;
+  width: 250px;
+  background-color: black;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+#main__header .header__container .notif .notifications__center .notification {
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 75px;
+}
+#main__header .header__container .notif .notifications__center .notification .notif__subject {
+  list-style-type: none;
+  width: 80%;
+  text-align: center;
+}
+#main__header .header__container .notif .notifications__center .notification .unread__visual {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+#main__header .header__container .notif .notifications__center .notification .unread__visual .unread__dot {
+  display: flex;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 100%;
+  background-color: yellow;
+}
+#main__header .header__container .notif .notifications__center .notification:hover {
+  background-color: rgba(128, 128, 128, 0.238);
+}
+#main__header .header__container .open__notif {
+  display: block !important;
+}
+
+.container {
+  width: 100%;
+}
+
+.main__container {
+  width: 100%;
+  margin: 0px auto;
+}/*# sourceMappingURL=main.css.map */
