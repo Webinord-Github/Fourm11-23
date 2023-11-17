@@ -32,6 +32,10 @@ class TestEmail extends Mailable
         return $this->view('emails.custom-mail')
                     ->with(['emailBody' => $this->emailBody])
                     ->text('emails.custom-plain')
+<<<<<<< HEAD
                     ->subject('Nouvel inscription');
+=======
+                    ->subject('Sujet du courriel');
+>>>>>>> mick-local
     }
 }

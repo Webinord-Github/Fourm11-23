@@ -4,7 +4,7 @@
 
 <div class="container flex flex-col items-end justify-start mt-10 py-8">
     <div class="formContainer flex flex-col items-center">
-        <h1 class="px-12 py-4 w-10/12 text-2xl pb-12 font-bold">Create a new post</h1>
+        <h1 class="px-12 py-4 w-10/12 text-2xl pb-12 font-bold">Create un nouvel article</h1>
         <form class="w-full flex justify-center" action="/admin/posts/store" method="post" enctype="multipart/form-data">
             @csrf
             <div class="px-12 pb-8 flex flex-col items-center w-10/12">
@@ -24,7 +24,7 @@
                 @endif
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
-                        <x-label for="title" :value="__('Title')"></x-label>
+                        <x-label for="title" :value="__('Titre')"></x-label>
                         <x-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus />
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
-                        <x-label for="body" :value="__('Content')"></x-label>
+                        <x-label for="body" :value="__('Contenu')"></x-label>
                         <textarea style="resize: none; border-radius: 5px;height:100px" name="body">{{ old('body') }}</textarea>
                     </div>
                 </div>
@@ -48,11 +48,11 @@
                 </div>
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
-                        <x-label :value="__('Categories')"></x-label>
-                        @foreach ($categories as $category)
+                        <x-label :value="__('Thématiques')"></x-label>
+                        @foreach ($thematiques as $thematique)
                             <div class="flex items-center">
-                                <input type="checkbox" id="{{ $category->name }}" name="categories[]" value="{{ $category->id }}">
-                                <label class="mx-1 text-sm" for="{{ $category->name }}">{{ ucfirst($category->name) }}</label>
+                                <input type="checkbox" id="{{ $thematique->name }}" name="thematiques[]" value="{{ $thematique->id }}">
+                                <label class="mx-1 text-sm" for="{{ $thematique->name }}">{{ ucfirst($thematique->name) }}</label>
                             </div>
                         @endforeach
                     </div>
@@ -61,22 +61,22 @@
                     <div class="flex justify-center flex-col">
                         <x-label for="status" :value="__('Status')"></x-label>
                         <select style="border-radius:5px;" name="status" id="status">
-                            <option value="draft" @if ('draft' == old('status')) selected @endif>Draft</option>
-                            <option value="published" @if ('published' == old('status')) selected @endif>Published</option>
-                            <option value="archived" @if ('archived' == old('status')) selected @endif>Archived</option>
+                            <option value="brouillon" @selected('draft' == old('status'))>Brouillon</option>
+                            <option value="publié" @selected('publié' == old('status'))>Publié</option>
+                            <option value="archivé" @selected('archivé' == old('status'))>Archivé</option>
                         </select>
                     </div>
                 </div>
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
-                        <x-label for="published_at" :value="__('Published at')"></x-label>
+                        <x-label for="published_at" :value="__('Date de publication')"></x-label>
                         <x-input id="published_at" class="block mt-1 w-full form-control" type="datetime-local" name="published_at" :value="old('published_at')" required autofocus />
                     </div>
                 </div>
                 <div class="flex items-center justify-end mt-4">
-                    <a href="/admin/posts">Back</a>
+                    <a href="/admin/posts">Retour</a>
                     <x-button class="ml-4">
-                        {{ __('Create') }}
+                        {{ __('Créer') }}
                     </x-button>
                 </div>
             </div>

@@ -4,10 +4,10 @@
 
 <div class="container flex flex-col items-end justify-start mt-10 py-8">
     <div class="formContainer flex flex-col items-center">
-        <h1 class="px-12 py-4 w-10/12 text-2xl pb-12 font-bold">Edit a post</h1>
-        <form class="w-full flex justify-center" action="/admin/posts/update/" method="post" enctype="multipart/form-data">
+        <h1 class="px-12 py-4 w-10/12 text-2xl pb-12 font-bold">Éditer un article</h1>
+        <form class="w-full flex justify-center" action="{{ route('posts.update', ['post' => $post->id]) }}" method="post" enctype="multipart/form-data">
+            {{ method_field('PUT') }}
             @csrf
-            <input type="hidden" name="id" value="{{ $post->id }}">
             <div class="px-12 pb-8 flex flex-col items-center w-10/12">
                 @if (!$errors->isEmpty())
                 <div role="alert" class="w-full pb-8">
@@ -25,7 +25,7 @@
                 @endif
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
-                        <x-label for="title" :value="__('Title')"></x-label>
+                        <x-label for="title" :value="__('Titre')"></x-label>
                         <x-input id="title" class="block mt-1 w-full" type="text" name="title" value="{{ $post->title }}" required autofocus />
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
-                        <x-label for="body" :value="__('Content')"></x-label>
+                        <x-label for="body" :value="__('Contenu')"></x-label>
                         <textarea style="resize: none; border-radius: 5px;height:100px" name="body">{{ $post->body }}"</textarea>
                     </div>
                 </div>
@@ -49,21 +49,21 @@
                 </div>
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
-                        <x-label :value="__('Categories')"></x-label>
-                        @foreach ($categories as $category)
+                        <x-label :value="__('Thématiques')"></x-label>
+                        @foreach ($thematiques as $thematique)
                             <div class="flex items-center">
                                 <?php $i = 0 ?>
-                                @foreach ($categories_selected as $category_selected)
-                                    @if ($category_selected->id == $category->id)
+                                @foreach ($thematiques_selected as $thematique_selected)
+                                    @if ($thematique_selected->id == $thematique->id)
                                         <?php $i++ ?>
                                     @endif
                                 @endforeach
                                 @if ($i > 0)
-                                    <input type="checkbox" id="{{ $category->name }}" name="categories[]" value="{{ $category->id }}" checked>
+                                    <input type="checkbox" id="{{ $thematique->name }}" name="thematiques[]" value="{{ $thematique->id }}" checked>
                                 @else
-                                    <input type="checkbox" id="{{ $category->name }}" name="categories[]" value="{{ $category->id }}">
+                                    <input type="checkbox" id="{{ $thematique->name }}" name="thematiques[]" value="{{ $thematique->id }}">
                                 @endif
-                                <label class="mx-1 text-sm" for="{{ $category->name }}">{{ ucfirst($category->name) }}</label>
+                                <label class="mx-1 text-sm" for="{{ $thematique->name }}">{{ ucfirst($thematique->name) }}</label>
                             </div>
                         @endforeach
                     </div>
@@ -72,22 +72,22 @@
                     <div class="flex justify-center flex-col">
                         <x-label for="status" :value="__('Status')"></x-label>
                         <select style="border-radius:5px;" name="status" id="status">
-                            <option value="draft" @if ('draft' == $post->status) selected @endif>Draft</option>
-                            <option value="published" @if ('published' == $post->status) selected @endif>Published</option>
-                            <option value="archived" @if ('archived' == $post->status) selected @endif>Archived</option>
+                            <option value="brouillon" @selected('brouillon' == $post->status)>Brouillon</option>
+                            <option value="publié" @selected('publié' == $post->status)>Publié</option>
+                            <option value="archivé" @selected('archivé' == $post->status)>Archivé</option>
                         </select>
                     </div>
                 </div>
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
-                        <x-label for="published_at" :value="__('Published at')"></x-label>
+                        <x-label for="published_at" :value="__('Date de publication')"></x-label>
                         <x-input id="published_at" class="block mt-1 w-full form-control" type="datetime-local" name="published_at" value="{{ $post->published_at }}" required autofocus />
                     </div>
                 </div>
                 <div class="flex items-center justify-end mt-4">
-                    <a href="/admin/posts">Back</a>
+                    <a href="{{ route('posts.index') }}">Retour</a>
                     <x-button class="ml-4">
-                        {{ __('Edit') }}
+                        {{ __('Éditer') }}
                     </x-button>
                 </div>
             </div>

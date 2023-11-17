@@ -3,47 +3,26 @@
   width: 100%;
 }
 .forum__container .forum__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .forum__container .forum__content .conv__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 1200px;
   max-width: 100%;
   height: auto;
   margin: 50px 0px;
-  -webkit-box-shadow: 1px 1px 10px black;
-          box-shadow: 1px 1px 10px black;
+  box-shadow: 1px 1px 10px black;
   min-height: 450px;
 }
 .forum__container .forum__content .conv__container .conv__title__container {
   background-color: #2870c3;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 12px 20px;
 }
 .forum__container .forum__content .conv__container .conv__title__container #conv__title {
@@ -62,15 +41,9 @@
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   font-size: 25px;
   cursor: pointer;
 }
@@ -78,12 +51,8 @@
   padding: 20px;
 }
 .forum__container .forum__content .conv__container .conv__content .conv__author__info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .forum__container .forum__content .conv__container .conv__content .conv__author__info #author {
   font-weight: bold;
@@ -105,16 +74,10 @@
 }
 .forum__container .forum__content .conv__container .conv__content .actions__container {
   margin: 50px 0px 30px 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .like,
@@ -123,12 +86,8 @@
 }
 .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .like p,
 .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .comments p {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   font-weight: bold;
   margin: 0px;
 }
@@ -138,27 +97,17 @@
   height: 40px;
   background-color: #2870c3;
   border-radius: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   margin-left: 5px;
   font-size: 16px;
   font-weight: bold;
 }
 .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .delete {
   margin-right: 20px;
@@ -166,8 +115,6 @@
 .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .delete #delete {
   margin: 0px;
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .delete #delete i {
@@ -180,12 +127,8 @@
   cursor: pointer;
 }
 .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .report #report {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin: 0px;
 }
 .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .report i {
@@ -193,15 +136,9 @@
   height: 20px;
   background-color: red;
   border-radius: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   font-size: 14px;
   font-weight: bold;
@@ -219,17 +156,12 @@
   width: 100%;
   height: 0px;
   overflow: hidden;
-  -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
 }
 .forum__container .forum__content .conv__container .conv__content .reply__form form {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .forum__container .forum__content .conv__container .conv__content .reply__form form .textarea__container {
   width: 90%;
@@ -244,15 +176,9 @@
   outline: none;
 }
 .forum__container .forum__content .conv__container .conv__content .reply__form form .submit__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 10%;
 }
 .forum__container .forum__content .conv__container .conv__content .reply__form form .submit__container .reply__submit {
@@ -263,23 +189,14 @@
   height: 100%;
 }
 .forum__container .forum__content .conv__container .conv__content .single__reply__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .forum__container .forum__content .conv__container .conv__content .single__reply__container .user__icon {
   margin: 5px 10px 0px 0px;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 .forum__container .forum__content .conv__container .conv__content .single__reply__container .user__icon img {
   width: 40px;
@@ -293,24 +210,15 @@
   position: absolute;
 }
 .forum__container .forum__content .conv__container .conv__content .single__reply__container .single__reply__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100%;
   padding-top: 10px;
   border-top: 1px solid lightgray;
 }
 .forum__container .forum__content .conv__container .conv__content .single__reply__container .single__reply__content .user__reply__info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .forum__container .forum__content .conv__container .conv__content .single__reply__container .single__reply__content .user__reply__info #user__reply__name {
   font-weight: bold;

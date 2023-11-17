@@ -10,6 +10,10 @@ class Thematique extends Model
     use HasFactory;
 
     public function conversations() {
-        return $this->belongsToMany('App\Models\Conversation');
+        return $this->belongsToMany(Conversation::class);
+    }
+
+    public function posts() {
+        return $this->belongsToMany(Post::class);
     }
 }

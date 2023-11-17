@@ -16,7 +16,7 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function events()
+    public function index()
     {
         return view('admin.events.index', ['events' => Event::all()]);
     }

@@ -20,7 +20,11 @@ class DatabaseSeeder extends Seeder
             PagesTableSeeder::class,
             CategoriesTableSeeder::class,
             ThematiquesTableSeeder::class,
+<<<<<<< HEAD
             automatic_emails_seeder::class,
+=======
+            CardsSectionsTableSeeder::class,
+>>>>>>> mick-local
         ]);
     }
 }

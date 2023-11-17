@@ -135,7 +135,6 @@
                             if (this.readyState === 4) {
                                 if (this.status === 200) {
                                     console.log('Notifications updated')
-
                                 } else {
                                     console.error("Error updating notifications.");
                                 }

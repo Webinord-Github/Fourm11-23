@@ -8,19 +8,14 @@
   color: gray;
 }
 .dashboard__container .stats__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  justify-content: space-evenly;
 }
 .dashboard__container .stats__container .stats__div {
   width: 100%;
   height: 250px;
   margin: 10px;
-  -webkit-box-shadow: 1px 1px 10px gray;
-          box-shadow: 1px 1px 10px gray;
+  box-shadow: 1px 1px 10px gray;
   border-radius: 15px;
   padding: 10px;
   background-color: #fff;
@@ -60,12 +55,8 @@
 }
 .dashboard__container .dashboard__users__container .dashboard__users__table__container .dasboard__users__table__filter {
   padding: 10px 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
 }
 .dashboard__container .dashboard__users__container .dashboard__users__table__container .dasboard__users__table__filter .dashboard__users__filter__cta {
   background-color: #eff1f4;
@@ -82,8 +73,7 @@
 .dashboard__container .dashboard__users__container .dashboard__users__table__container table {
   width: 100%;
   background-color: #fff;
-  -webkit-box-shadow: 1px 1px 10px lightgray;
-          box-shadow: 1px 1px 10px lightgray;
+  box-shadow: 1px 1px 10px lightgray;
 }
 .dashboard__container .dashboard__users__container .dashboard__users__table__container table thead tr {
   background-color: #eff1f4;
@@ -101,12 +91,8 @@
 .dashboard__container .dashboard__users__container .dashboard__users__table__container table tbody tr td .user__bull {
   font-size: 35px;
   line-height: 0em;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 .dashboard__container .dashboard__users__container .dashboard__users__table__container table tbody tr td #online__bull {
   color: rgb(36, 229, 6);
