@@ -1,0 +1,61 @@
+.sortable__menu__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin-top: 100px;
+}
+.sortable__menu__container h1 {
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+.sortable__menu__container #sortable-menu {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.sortable__menu__container .sortable-list {
+  width: 80%;
+  padding: 10px;
+}
+.sortable__menu__container .sortable-list .sortable-item {
+  margin-top: 5px;
+  padding: 5px;
+  background: lightgray;
+  border: 1px solid black;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.sortable__menu__container .sortable-list .sortable-item .fa-arrows {
+  margin-right: 8px;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.sortable__menu__container .sortable-list .sortable-item ul.sortable-list {
+  margin-left: 30px;
+}
+.sortable__menu__container .save__container {
+  margin-top: 30px;
+}
+.sortable__menu__container .save__container button {
+  background-color: black;
+  color: white;
+  width: 130px;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+.sortable__menu__container .save__container .saved__success {
+  display: none;
+}/*# sourceMappingURL=sortablemenu.css.map */

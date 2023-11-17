@@ -1,0 +1,353 @@
+.admin__nav__container {
+  height: 65px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: calc(100% - 250px);
+  margin-left: auto;
+  padding: 5px 30px;
+}
+.admin__nav__container .search__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+.admin__nav__container .search__form .search__container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.admin__nav__container .search__form .search__container .search__input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-right: 8px;
+  width: 100%;
+  max-width: 600px;
+}
+.admin__nav__container .search__form .search__container .search__button {
+  position: relative;
+  left: -40px;
+  background-color: #29282d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 60px;
+}
+.admin__nav__container .dropdown__container {
+  margin-left: auto;
+}
+.admin__nav__container .dropdown__container button {
+  background-color: transparent;
+  color: #000;
+}
+
+main {
+  min-height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #eef2f5;
+}
+main .container {
+  max-width: 100% !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+main .container .pagesContainer {
+  width: calc(100% - 250px);
+  padding: 20px;
+  margin-top: 80px;
+}
+main .container .pagesContainer #add-cta {
+  margin-bottom: 2%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+main .container .pagesContainer #add-form {
+  display: none;
+}
+main .container .pagesContainer table {
+  margin-top: 20px;
+}
+main .container .pagesContainer .form__submit {
+  background-color: #347fe0;
+  height: auto;
+  border-radius: 10px;
+  padding: 8px 12px;
+  color: #fff;
+  font-weight: bold;
+}
+main .container .pagesContainer .form__submit:hover {
+  -webkit-filter: contrast(65%);
+          filter: contrast(65%);
+}
+main .container .formContainer {
+  width: calc(100% - 250px);
+}
+main .container table tbody tr .mediaData {
+  height: 4rem;
+  padding: 0.5rem 1rem;
+  max-width: -webkit-min-content;
+  max-width: -moz-min-content;
+  max-width: min-content;
+}
+main .container table tbody tr .mediaData .mediaFile {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 200px;
+  height: 100px;
+}
+main .adminNav__container {
+  min-width: 250px;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: -65px 10px 0px 10px;
+}
+main .adminNav__container .adminNav {
+  -webkit-box-shadow: 1px 1px 10px black;
+          box-shadow: 1px 1px 10px black;
+  height: 98vh;
+  max-height: 98vh;
+  background-color: #29282d;
+  border-radius: 15px;
+  position: fixed;
+}
+main .adminNav__container .adminNav .admin__logo {
+  width: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 250px;
+}
+main .adminNav__container .adminNav .admin__logo img {
+  width: 200px;
+}
+main .adminNav__container .adminNav .sectionDiv {
+  width: 100%;
+  min-height: 85%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+main .adminNav__container .adminNav .sectionDiv #general {
+  text-decoration: underline;
+  width: 100%;
+  padding: 10px;
+}
+main .adminNav__container .adminNav .sectionDiv .navLink a {
+  padding: 15px;
+  color: #fff;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  font-size: 16px;
+}
+main .adminNav__container .adminNav .sectionDiv .navLink:hover {
+  background-color: #8D8E91;
+}
+main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown:hover .admin__menu__dropdown__container {
+  display: block !important;
+}
+main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container {
+  position: absolute;
+  display: none;
+}
+main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container .admin__menu__dropdown__content {
+  position: relative;
+  background: #29282d;
+  right: -250px;
+  top: -55px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 200px;
+  border-radius: 15px;
+}
+main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container .admin__menu__dropdown__content .submenu__links {
+  width: 100%;
+}
+main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container .admin__menu__dropdown__content .submenu__links a {
+  color: #fff;
+  padding: 10px;
+}
+main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container .admin__menu__dropdown__content .submenu__links:hover {
+  background-color: #8D8E91;
+  border-radius: 15px;
+}
+main .adminNav__container .adminNav .sectionDiv .open__dropdown {
+  display: block;
+}
+
+.main__admin__container {
+  width: 100%;
+  padding: 10px 25px;
+}
+
+.tox-statusbar__branding {
+  display: none !important;
+}
+
+.user__ban {
+  background-color: red;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.user__unban {
+  background-color: green;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.user__ban:hover {
+  -webkit-filter: contrast(65%);
+          filter: contrast(65%);
+}
+
+.toggle-checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.toggle-label {
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+  background: grey;
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+}
+
+.toggle-label:after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 23px;
+  height: 23px;
+  background: white;
+  border-radius: 50%;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  background: #66bb6a;
+}
+
+.toggle-checkbox:checked + .toggle-label:after {
+  left: calc(100% - 24px);
+}
+
+.flex {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.ban__container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.ban__container .ban__popup {
+  width: 500px;
+  max-width: 100%;
+  height: 300px;
+  border-radius: 15px;
+  background-color: #fff;
+  -webkit-box-shadow: 1px 1px 10px gray;
+          box-shadow: 1px 1px 10px gray;
+  padding: 20px;
+  font-weight: bold;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.ban__container .ban__popup h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.ban__container .ban__popup .user__info {
+  margin: 10px 0px;
+}
+.ban__container .ban__popup .ban__ctas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10px;
+}
+.ban__container .ban__popup .ban__ctas button {
+  width: 100px;
+  height: 50px;
+  border-radius: 15px;
+  font-weight: bold;
+  color: #fff;
+  margin: 15px;
+}
+.ban__container .ban__popup .ban__ctas #yes {
+  background-color: green;
+}
+.ban__container .ban__popup .ban__ctas #no {
+  background-color: red;
+}/*# sourceMappingURL=admin.css.map */

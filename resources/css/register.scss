@@ -1,0 +1,10 @@
+.register__container {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 85px);
+    .register__form {
+        width: 50%;
+    }
+}

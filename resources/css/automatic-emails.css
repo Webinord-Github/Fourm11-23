@@ -1,0 +1,72 @@
+.automatic__emails__container {
+  width: 100%;
+}
+.automatic__emails__container .automatic__emails__content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+}
+.automatic__emails__container .automatic__emails__content .form__container {
+  width: 100%;
+  max-width: 100%;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
+.automatic__emails__container .automatic__emails__content .form__container .acc__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 10px;
+  cursor: pointer;
+}
+.automatic__emails__container .automatic__emails__content .form__container .acc__container h2 {
+  margin: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.automatic__emails__container .automatic__emails__content .form__container .acc__container h2 .fa-envelope {
+  margin-right: 15px;
+  cursor: pointer;
+}
+.automatic__emails__container .automatic__emails__content .form__container .acc__container i {
+  font-size: 25px;
+  cursor: pointer;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+.automatic__emails__container .automatic__emails__content .form__container .rotate {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.automatic__emails__container .automatic__emails__content .form__container .form__target {
+  height: 0px;
+  overflow: auto;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+.automatic__emails__container .automatic__emails__content .form__container .noHeight {
+  height: 0px !important;
+}/*# sourceMappingURL=automatic-emails.css.map */
