@@ -4,3 +4,9 @@ vendor/
 .env.example
 .env.rej
 public/storage/.gitignore
+
+node_modules
+vendor/
+.env
+public/tinymce/
+.vite/

@@ -15,7 +15,8 @@
         @vite([
             'resources/css/app.css',
             'resources/js/app.js',
-            'resources/css/forum.css'
+            'resources/css/forum.css',
+            'public/css/elementor.css'
         ])
     </head>
     <body class="font-sans antialiased">

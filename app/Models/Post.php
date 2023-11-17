@@ -13,7 +13,7 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function categories() {
-        return $this->belongsToMany('App\Models\Category');
+    public function thematiques() {
+        return $this->belongsToMany(Thematique::class);
     }
 }

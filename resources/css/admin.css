@@ -1,32 +1,20 @@
 .admin__nav__container {
   height: 65px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   width: calc(100% - 250px);
   margin-left: auto;
   padding: 5px 30px;
 }
 .admin__nav__container .search__form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 100%;
 }
 .admin__nav__container .search__form .search__container {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 .admin__nav__container .search__form .search__container .search__input {
   padding: 8px;
@@ -56,19 +44,13 @@
 
 main {
   min-height: inherit;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background-color: #eef2f5;
 }
 main .container {
   max-width: 100% !important;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 main .container .pagesContainer {
   width: calc(100% - 250px);
@@ -77,7 +59,6 @@ main .container .pagesContainer {
 }
 main .container .pagesContainer #add-cta {
   margin-bottom: 2%;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -96,8 +77,7 @@ main .container .pagesContainer .form__submit {
   font-weight: bold;
 }
 main .container .pagesContainer .form__submit:hover {
-  -webkit-filter: contrast(65%);
-          filter: contrast(65%);
+  filter: contrast(65%);
 }
 main .container .formContainer {
   width: calc(100% - 250px);
@@ -105,7 +85,6 @@ main .container .formContainer {
 main .container table tbody tr .mediaData {
   height: 4rem;
   padding: 0.5rem 1rem;
-  max-width: -webkit-min-content;
   max-width: -moz-min-content;
   max-width: min-content;
 }
@@ -119,17 +98,12 @@ main .container table tbody tr .mediaData .mediaFile {
 main .adminNav__container {
   min-width: 250px;
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin: -65px 10px 0px 10px;
 }
 main .adminNav__container .adminNav {
-  -webkit-box-shadow: 1px 1px 10px black;
-          box-shadow: 1px 1px 10px black;
+  box-shadow: 1px 1px 10px black;
   height: 98vh;
   max-height: 98vh;
   background-color: #29282d;
@@ -138,12 +112,8 @@ main .adminNav__container .adminNav {
 }
 main .adminNav__container .adminNav .admin__logo {
   width: inherit;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 250px;
 }
 main .adminNav__container .adminNav .admin__logo img {
@@ -164,65 +134,53 @@ main .adminNav__container .adminNav .sectionDiv .navLink a {
   padding: 15px;
   color: #fff;
   font-weight: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   height: 100%;
   font-size: 16px;
 }
-main .adminNav__container .adminNav .sectionDiv .navLink:hover {
+main .adminNav__container .adminNav .sectionDiv .navLink .navLink:hover {
   background-color: #8D8E91;
 }
-main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown:hover .admin__menu__dropdown__container {
+main .adminNav__container .adminNav .sectionDiv .navLink .admin__menu__dropdown:hover .admin__menu__dropdown__container {
   display: block !important;
 }
-main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container {
+main .adminNav__container .adminNav .sectionDiv .navLink .admin__menu__dropdown__container {
   position: absolute;
   display: none;
 }
-main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container .admin__menu__dropdown__content {
+main .adminNav__container .adminNav .sectionDiv .navLink .admin__menu__dropdown__container .admin__menu__dropdown__content {
   position: relative;
   background: #29282d;
   right: -250px;
   top: -55px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 200px;
   border-radius: 15px;
 }
-main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container .admin__menu__dropdown__content .submenu__links {
+main .adminNav__container .adminNav .sectionDiv .navLink .admin__menu__dropdown__container .admin__menu__dropdown__content .submenu__links {
   width: 100%;
 }
-main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container .admin__menu__dropdown__content .submenu__links a {
+main .adminNav__container .adminNav .sectionDiv .navLink .admin__menu__dropdown__container .admin__menu__dropdown__content .submenu__links a {
   color: #fff;
   padding: 10px;
 }
-main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container .admin__menu__dropdown__content .submenu__links:hover {
+main .adminNav__container .adminNav .sectionDiv .navLink .admin__menu__dropdown__container .admin__menu__dropdown__content .submenu__links:hover {
   background-color: #8D8E91;
   border-radius: 15px;
 }
-main .adminNav__container .adminNav .sectionDiv .open__dropdown {
+main .adminNav__container .adminNav .sectionDiv .navLink .open__dropdown {
   display: block;
 }
-
-.main__admin__container {
+main .main__admin__container {
   width: 100%;
   padding: 10px 25px;
 }
-
-.tox-statusbar__branding {
+main .tox-statusbar__branding {
   display: none !important;
 }
-
-.user__ban {
+main .user__ban {
   background-color: red;
   padding: 8px 12px;
   text-decoration: none;
@@ -230,8 +188,7 @@ main .adminNav__container .adminNav .sectionDiv .open__dropdown {
   font-weight: bold;
   border-radius: 10px;
 }
-
-.user__unban {
+main .user__unban {
   background-color: green;
   padding: 8px 12px;
   text-decoration: none;
@@ -239,18 +196,14 @@ main .adminNav__container .adminNav .sectionDiv .open__dropdown {
   font-weight: bold;
   border-radius: 10px;
 }
-
-.user__ban:hover {
-  -webkit-filter: contrast(65%);
-          filter: contrast(65%);
+main .user__ban:hover {
+  filter: contrast(65%);
 }
-
-.toggle-checkbox {
+main .toggle-checkbox {
   opacity: 0;
   position: absolute;
 }
-
-.toggle-label {
+main .toggle-label {
   display: inline-block;
   width: 50px;
   height: 25px;
@@ -259,8 +212,7 @@ main .adminNav__container .adminNav .sectionDiv .open__dropdown {
   position: relative;
   cursor: pointer;
 }
-
-.toggle-label:after {
+main .toggle-label:after {
   content: "";
   position: absolute;
   top: 1px;
@@ -269,75 +221,54 @@ main .adminNav__container .adminNav .sectionDiv .open__dropdown {
   height: 23px;
   background: white;
   border-radius: 50%;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
 }
-
-.toggle-checkbox:checked + .toggle-label {
+main .toggle-checkbox:checked + .toggle-label {
   background: #66bb6a;
 }
-
-.toggle-checkbox:checked + .toggle-label:after {
+main .toggle-checkbox:checked + .toggle-label:after {
   left: calc(100% - 24px);
 }
-
-.flex {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
+main .flex {
   display: flex !important;
 }
-
-.ban__container {
+main .ban__container {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   display: none;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.ban__container .ban__popup {
+main .ban__container .ban__popup {
   width: 500px;
   max-width: 100%;
   height: 300px;
   border-radius: 15px;
   background-color: #fff;
-  -webkit-box-shadow: 1px 1px 10px gray;
-          box-shadow: 1px 1px 10px gray;
+  box-shadow: 1px 1px 10px gray;
   padding: 20px;
   font-weight: bold;
   text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
-.ban__container .ban__popup h2 {
+main .ban__container .ban__popup h2 {
   font-size: 20px;
   margin-bottom: 10px;
 }
-.ban__container .ban__popup .user__info {
+main .ban__container .ban__popup .user__info {
   margin: 10px 0px;
 }
-.ban__container .ban__popup .ban__ctas {
-  display: -webkit-box;
-  display: -ms-flexbox;
+main .ban__container .ban__popup .ban__ctas {
   display: flex;
   margin-top: 10px;
 }
-.ban__container .ban__popup .ban__ctas button {
+main .ban__container .ban__popup .ban__ctas button {
   width: 100px;
   height: 50px;
   border-radius: 15px;
@@ -345,9 +276,9 @@ main .adminNav__container .adminNav .sectionDiv .open__dropdown {
   color: #fff;
   margin: 15px;
 }
-.ban__container .ban__popup .ban__ctas #yes {
+main .ban__container .ban__popup .ban__ctas #yes {
   background-color: green;
 }
-.ban__container .ban__popup .ban__ctas #no {
+main .ban__container .ban__popup .ban__ctas #no {
   background-color: red;
 }/*# sourceMappingURL=admin.css.map */

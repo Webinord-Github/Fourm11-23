@@ -70,7 +70,7 @@ class MediasController extends Controller
         if($existing_file_url) {
             $file_iteration_url = $newfile_info . "_" . $count_file + 1 . "." . $newfile_info_ext;
             // $request->file->move(public_path('files'), $file_iteration_url);
-            Storage::putFileAs('public/medias',$request->file('file'), $file_iteration_url);
+            Storage::putFileAs('public/medias',$request->file, $file_iteration_url);
             Media::create([
                 'url' => $file_iteration_url,
                 'base_path' => $newFile,
@@ -90,7 +90,7 @@ class MediasController extends Controller
                 'provider' => $newfile_info_ext,
             ]);
             // $request->file->move(public_path('files'), $newFile);
-            Storage::putFileAs('public/medias',$request->file('file'), $newFile);
+            Storage::putFileAs('public/medias',$request->file, $newFile);
         }
             return redirect()->route('medias.index');                
     }

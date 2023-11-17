@@ -25,7 +25,6 @@
                     <a href="{{ route('users.index') }}"><i class="fa fa-user mr-4 mt-0.5" aria-hidden="true"></i>Utilisateurs</a>
                 </li>
                 @endcan
-
                 <li class="navLink">
                     <a href="{{ route('usersguard.index') }}"><i class="fa-solid fa-user-shield mr-4 mt-0.5" aria-hidden="true"></i>Vérification des utilisateurs</a>
                 </li>
@@ -36,10 +35,29 @@
                     <a href="{{ route('emails.index') }}"><i class="fa fa-envelope mr-4 mt-0.5" aria-hidden="true"></i>Courriels automatiques</a>
                 </li>
                 <li class="navLink">
-                    <a href="/admin/posts"><i class="fa fa-newspaper mr-4 mt-0.5" aria-hidden="true"></i>Posts</a>
+                    <a href="{{ route('posts.index') }}"><i class="fa-solid fa-newspaper mr-4 mt-0.5" aria-hidden="true"></i>Articles</a>
                 </li>
                 <li class="navLink">
-                    <a href="/admin/events"><i class="fa-solid fa-bell mr-4 mt-0.5" aria-hidden="true"></i>Events</a>
+                    <a href="{{ route('events.index') }}"><i class="fa-solid fa-bell mr-4 mt-0.5" aria-hidden="true"></i>Events</a>
+                </li>
+                <li class="navLink admin__menu__dropdown">
+                    <a href="Javascript:void(0)"><i class='fa fa-lightbulb mr-4 mt-0.5' aria-hidden="true"></i>Fiches</a>
+                    <div class="admin__menu__dropdown__container">
+                        <div class="admin__menu__dropdown__content">
+                            <div class="submenu__links">
+                                <a href="/admin/facts">Saviez-vous</a>
+                            </div>
+                            <div class="submenu__links">
+                                <a href="/admin/cards">Intimidation</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="navLink">
+                    <a href="/admin/tools"><i class="fa-solid fa-wrench mr-4 mt-0.5" aria-hidden="true"></i>Tools</a>
+                </li>
+                <li class="navLink">
+                    <a href="/admin/thematiques"><i class="fa-solid fa-filter mr-4 mt-0.5" aria-hidden="true"></i>Thématiques</a>
                 </li>
                 <li class="navLink">
                     <a href="{{ route('medias.index') }}"><i class="fa fa-download mr-4 mt-0.5" aria-hidden="true"></i>Médias</a>

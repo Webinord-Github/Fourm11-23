@@ -47,7 +47,6 @@
                     <button class="form__submit" type="submit">SAUVEGARDER</button>
                 </div>
             </form>
-
         </table>
         {{$users->links()}}
     </div>

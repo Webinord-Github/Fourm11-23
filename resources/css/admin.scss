@@ -5,7 +5,6 @@
     width: calc(100% - 250px);
     margin-left: auto;
     padding: 5px 30px;
-
     .search__form {
         display: flex;
         justify-content: center;
@@ -165,8 +164,6 @@ main {
                         height: 100%;
                         font-size: 16px;
                     }
-                }
-
                 .navLink:hover {
                     background-color: #8D8E91;
                 }
@@ -334,4 +331,5 @@ main {
             }
         }
     }
+}
 }
