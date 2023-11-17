@@ -2,10 +2,14 @@
 
 @section('content')
 <div class="main__container">
+<p>{!! $page->content !!}</p>
     <div class="forum__container">
+
+      
         @if(count($conversations) == 0)
         <p>Aucune conversations à afficher présentement!</p>
         @endif
+        @if(count($conversations) > 0)
         @foreach($conversations as $conversation)
         <div class="forum__content">
             <div class="conv__container">
@@ -118,8 +122,10 @@
             </div>
         </div>
         @endforeach
-        <p>{!! $page->content !!}</p>
+   
+
     </div>
+    
 </div>
 <script>
     // Function to auto expand textarea height
@@ -263,5 +269,6 @@
 
     // Initial call to set the initial height
 </script>
+@endif
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
