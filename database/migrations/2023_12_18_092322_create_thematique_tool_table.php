@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('media', function(Blueprint $table) {
-            $table->string('provider');
+        Schema::create('thematique_tool', function (Blueprint $table) {
+            $table->id();
+            $table->integer('thematique_id');
+            $table->integer('tool_id');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('thematique_tool');
     }
 };

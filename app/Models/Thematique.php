@@ -16,4 +16,8 @@ class Thematique extends Model
     public function posts() {
         return $this->belongsToMany(Post::class);
     }
+
+    public function tools() {
+        return $this->belongsToMany(Tool::class);
+    }
 }

@@ -25,6 +25,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\AutomaticEmailsController;
+use App\Http\Controllers\Admin\ElementorController;
 
 
 
@@ -114,8 +115,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('{url}', 'App\Http\Controllers\Admin\PagesController@view')->name('frontend.page');
-
 Route::resource('admin/posts', BlogController::class)->middleware('auth');
 Route::resource('admin/events', EventsController::class)->middleware('auth');
 
@@ -153,6 +152,9 @@ Route::post('/admin/thematiques/store', [ThematiquesController::class, 'store'])
 Route::post('/admin/thematiques/update/', [ThematiquesController::class, 'storeUpdate'])->middleware('auth');
 Route::get('/admin/thematiques/destroy/{id}', [ThematiquesController::class, 'destroy'])->middleware('auth');
 
+Route::get('/elementor/medias', [ElementorController::class, 'medias']);
+Route::post('/elementor/upload', [ElementorController::class, 'upload'])->name('elementor.upload');
 
+Route::get('{url}', 'App\Http\Controllers\Admin\PagesController@view')->name('frontend.page');
 
 require __DIR__.'/auth.php';

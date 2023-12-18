@@ -31,126 +31,112 @@ class EventsController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'desc' => ['required', 'string'],
+            'address' => ['required', 'string'],
+            'link' => ['required', 'string', 'url'],
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp'],
             'nb_places' => ['required', 'integer'],
             'start_at' => ['required'],
-            'end_at' => ['required'],
         ]);
 
         $event = new Event();
 
         $event->title = $request->title;
         $event->desc = $request->desc;
+        $event->address = $request->address;
+        $event->link = $request->link;
         $event->nb_places = $request->nb_places;
         $event->start_at = $request->start_at;
-        $event->end_at = $request->end_at;
 
-        $newFile = $request->image->getClientOriginalName();
-        $newfile_info = pathinfo($newFile, PATHINFO_FILENAME);
-        $newfile_info_ext = pathinfo($newFile, PATHINFO_EXTENSION);
-        $existing_file_url = Media::where('base_path', '=', $newFile)->first();
-        $count_file = Media::where('base_path', '=', $newFile)->count();
-        $fileSize = $request->file('image')->getSize() / 1024;
+        $file_original_name = $request->image->getClientOriginalName();
+        $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
+        $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
+        $file_size = $request->image->getSize() / 1024;
+        $existing_file_url = Media::where('name', '=', $file_original_name)->first();
+        $count_file = Media::where('original_name', '=', $file_original_name)->count();
 
         if($existing_file_url) {
-            $file_iteration_url = $newfile_info . "_" . $count_file + 1 . "." . $newfile_info_ext;
-            Storage::putFileAs('public/medias',$request->image, $file_iteration_url);
-            // Storage::move('public/medias' . $request->image, 'public/medias' . $file_iteration_url);
-            Media::create([
-                'url' => $file_iteration_url,
-                'base_path' => $newFile,
-                'description' => $request->description,
-                'user_id' => Auth::user()->id,
-                'file_size' => $fileSize,
-                'provider' => $newfile_info_ext,
-            ]);
-            $event->image = $file_iteration_url;
+            $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
         } else {
-            Media::create([
-                'url' => $newFile,
-                'base_path' => $newFile,
-                'description' => $request->description,
-                'user_id' => Auth::user()->id,
-                'file_size' => $fileSize,
-                'provider' => $newfile_info_ext,
-            ]);
-            Storage::putFileAs('public/medias',$request->image, $newFile);
-            $event->image = $newFile;
+            $file_name = $file_original_name;
         }
 
+        $media = new Media();
+        $media->user_id = Auth::user()->id;
+        $media->path = '/storage/medias/';
+        $media->name = $file_name;
+        $media->original_name = $file_original_name;
+        $media->size = $file_size;
+        $media->provider = $file_provider;
+        $media->save();
+        Storage::putFileAs('public/medias',$request->image, $file_name);
+        
+        $event->image_id = $media->id;
         $event->save();
 
         return redirect('/admin/events')->with('status', "$event->title was created.");
     }
 
-    public function update($id)
+    public function edit(Event $event)
     {
-        $event = Event::findOrFail($id);
-        return view('admin.events.index', ['events' => $event]);
+        $event = Event::findOrFail($event->id);
+        return view('admin.events.edit', ['event' => $event]);
     }
 
-    public function storeUpdate(Request $request)
+    public function update(Request $request, Event $event)
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'desc' => ['required', 'string'],
-            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp'],
+            'address' => ['required', 'string'],
+            'link' => ['required', 'string', 'url'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,webp'],
             'nb_places' => ['required', 'integer'],
             'start_at' => ['required'],
-            'end_at' => ['required'],
         ]);
-
-        $event = Event::find($request->id);
 
         $event->title = $request->title;
         $event->desc = $request->desc;
+        $event->address = $request->address;
+        $event->link = $request->link;
         $event->nb_places = $request->nb_places;
         $event->start_at = $request->start_at;
-        $event->end_at = $request->end_at;
-
-        $newFile = $request->image->getClientOriginalName();
-        $newfile_info = pathinfo($newFile, PATHINFO_FILENAME);
-        $newfile_info_ext = pathinfo($newFile, PATHINFO_EXTENSION);
-        $existing_file_url = Media::where('base_path', '=', $newFile)->first();
-        $count_file = Media::where('base_path', '=', $newFile)->count();
-        $fileSize = $request->file('image')->getSize() / 1024;
-
-        if($existing_file_url) {
-            $file_iteration_url = $newfile_info . "_" . $count_file + 1 . "." . $newfile_info_ext;
-            Storage::putFileAs('public/medias',$request->image, $file_iteration_url);
-            // Storage::move('public/medias' . $request->image, 'public/medias' . $file_iteration_url);
-            Media::create([
-                'url' => $file_iteration_url,
-                'base_path' => $newFile,
-                'description' => $request->description,
-                'user_id' => Auth::user()->id,
-                'file_size' => $fileSize,
-                'provider' => $newfile_info_ext,
-            ]);
-            $event->image = $file_iteration_url;
-        } else {
-            Media::create([
-                'url' => $newFile,
-                'base_path' => $newFile,
-                'description' => $request->description,
-                'user_id' => Auth::user()->id,
-                'file_size' => $fileSize,
-                'provider' => $newfile_info_ext,
-            ]);
-            Storage::putFileAs('public/medias',$request->image, $newFile);
-            $event->image = $newFile;
+        
+        if($request->image) {
+            $file_original_name = $request->image->getClientOriginalName();
+            $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
+            $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
+            $file_size = $request->image->getSize() / 1024;
+            $existing_file_url = Media::where('name', '=', $file_original_name)->first();
+            $count_file = Media::where('original_name', '=', $file_original_name)->count();
+    
+            if($existing_file_url) {
+                $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
+            } else {
+                $file_name = $file_original_name;
+            }
+    
+            $media = new Media();
+            $media->user_id = Auth::user()->id;
+            $media->path = '/storage/medias/';
+            $media->name = $file_name;
+            $media->original_name = $file_original_name;
+            $media->size = $file_size;
+            $media->provider = $file_provider;
+            $media->save();
+            Storage::putFileAs('public/medias',$request->image, $file_name);
+            
+            $event->image_id = $media->id;
         }
 
         $event->save();
 
-        return redirect('/admin/events')->with('status', "$event->title was edited.");
+        return redirect()->route('events.index')->with('status', "$event->title a été édité.");
     }
 
-    public function destroy($id)
+    public function destroy(Event $event)
     {
-        $event = Event::find($id);
-        Event::destroy($id);
+        $event->delete();
 
-        return redirect('/admin/events')->with('status', "$event->title was deleted.");
+        return redirect()->route('events.index')->with('status', "$event->title a été supprimé.");
     }
 }

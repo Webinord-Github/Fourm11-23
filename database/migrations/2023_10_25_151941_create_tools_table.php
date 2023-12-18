@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('desc');
-            $table->string('doc');
+            $table->integer('doc_id');
             $table->integer('user_id');
             $table->string('status');
             $table->timestamp('published_at')->nullable();

@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('desc');
-            $table->string('image');
+            $table->string('address');
+            $table->string('link');
+            $table->integer('image_id');
             $table->integer('nb_places');
             $table->timestamp('start_at')->nullable();
-            $table->timestamp('end_at')->nullable();
             $table->timestamps();
         });
     }

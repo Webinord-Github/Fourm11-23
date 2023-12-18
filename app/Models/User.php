@@ -74,6 +74,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Media');
     }
 
+    public function files()
+    {
+        return $this->hasMany('App\Models\File');
+    }
+
     public function roles()
     {
         return $this->belongsToMany('App\Models\Role');

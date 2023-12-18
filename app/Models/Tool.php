@@ -12,4 +12,12 @@ class Tool extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function media(){
+        return $this->belongsTo(Media::class);
+    }
+
+    public function thematiques() {
+        return $this->belongsToMany(Thematique::class);
+    }
 }

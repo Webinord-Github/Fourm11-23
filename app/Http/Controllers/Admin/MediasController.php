@@ -54,45 +54,34 @@ class MediasController extends Controller
      */
     public function store(NewMediaRequest $request)
     {
-        // full path
-        $newFile = $request->file->getClientOriginalName();
-        // full path without ext
-        $newfile_info = pathinfo($newFile, PATHINFO_FILENAME);
-        // extension path of the file
-        $newfile_info_ext = pathinfo($newFile, PATHINFO_EXTENSION);
-        // si l'url complet du fichier existe dans la db - base_path
-        $existing_file_url = Media::where('base_path', '=', $newFile)->first();
-        // le nombre de duplicate base_path dans la db
-        $count_file = Media::where('base_path', '=', $newFile)->count();
-        // poid du fichier
-        $fileSize = $request->file('file')->getSize() / 1024;
-        // si l'url complet existe dans la db - base_path
+        $request->validate([
+            'file' => ['required', 'file', 'mimes:jpeg,png,jpg,webp']
+        ]);
+
+        $file_original_name = $request->file('image')->getClientOriginalName();
+        $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
+        $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
+        $file_size = $request->file('image')->getSize() / 1024;
+        $existing_file_url = Media::where('name', '=', $file_original_name)->first();
+        $count_file = Media::where('original_name', '=', $file_original_name)->count();
+
         if($existing_file_url) {
-            $file_iteration_url = $newfile_info . "_" . $count_file + 1 . "." . $newfile_info_ext;
-            // $request->file->move(public_path('files'), $file_iteration_url);
-            Storage::putFileAs('public/medias',$request->file, $file_iteration_url);
-            Media::create([
-                'url' => $file_iteration_url,
-                'base_path' => $newFile,
-                'description' => $request->description,
-                'user_id' => Auth::user()->id,
-                'file_size' => $fileSize,
-                'provider' => $newfile_info_ext,
-            ]);
-            // si l'url complet n'existe pas dans la db - base_path
+            $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
         } else {
-            Media::create([
-                'url' => $newFile,
-                'base_path' => $newFile,
-                'description' => $request->description,
-                'user_id' => Auth::user()->id,
-                'file_size' => $fileSize,
-                'provider' => $newfile_info_ext,
-            ]);
-            // $request->file->move(public_path('files'), $newFile);
-            Storage::putFileAs('public/medias',$request->file, $newFile);
+            $file_name = $file_original_name;
         }
-            return redirect()->route('medias.index');                
+
+        $media = new Media();
+        $media->user_id = Auth::user()->id;
+        $media->path = '/storage/medias/';
+        $media->name = $file_name;
+        $media->original_name = $file_original_name;
+        $media->size = $file_size;
+        $media->provider = $file_provider;
+        $media->save();
+        Storage::putFileAs('public/medias',$request->file('image'), $file_name);
+
+        return redirect()->route('medias.index');                
     }
 
     /**

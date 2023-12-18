@@ -16,4 +16,8 @@ class Post extends Model
     public function thematiques() {
         return $this->belongsToMany(Thematique::class);
     }
+
+    public function media(){
+        return $this->belongsTo(Media::class);
+    }
 }

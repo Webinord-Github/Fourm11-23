@@ -14,11 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-<<<<<<< HEAD
             $table->integer('verified')->default(0);
-=======
-            $table->integer('verified');
->>>>>>> mick-local
         });
     }
 

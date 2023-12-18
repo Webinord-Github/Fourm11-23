@@ -15,12 +15,14 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
-            $table->string('base_path');
-            $table->string('description')->nullable();
-            $table->string('alt')->nullable();
-            $table->timestamps();
             $table->integer('user_id');
+            $table->string('path');
+            $table->string('name');
+            $table->string('original_name');
+            $table->string('alt')->nullable();
+            $table->decimal('size', $precision = 8, $scale = 2);
+            $table->string('provider');
+            $table->timestamps();
         });
     }
 

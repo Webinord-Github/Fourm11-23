@@ -38,7 +38,7 @@
                     <a href="{{ route('posts.index') }}"><i class="fa-solid fa-newspaper mr-4 mt-0.5" aria-hidden="true"></i>Articles</a>
                 </li>
                 <li class="navLink">
-                    <a href="{{ route('events.index') }}"><i class="fa-solid fa-bell mr-4 mt-0.5" aria-hidden="true"></i>Events</a>
+                    <a href="{{ route('events.index') }}"><i class="fa-solid fa-bell mr-4 mt-0.5" aria-hidden="true"></i>Évènements</a>
                 </li>
                 <li class="navLink admin__menu__dropdown">
                     <a href="Javascript:void(0)"><i class='fa fa-lightbulb mr-4 mt-0.5' aria-hidden="true"></i>Fiches</a>
@@ -54,7 +54,7 @@
                     </div>
                 </li>
                 <li class="navLink">
-                    <a href="/admin/tools"><i class="fa-solid fa-wrench mr-4 mt-0.5" aria-hidden="true"></i>Tools</a>
+                    <a href="/admin/tools"><i class="fa-solid fa-wrench mr-4 mt-0.5" aria-hidden="true"></i>Outils</a>
                 </li>
                 <li class="navLink">
                     <a href="/admin/thematiques"><i class="fa-solid fa-filter mr-4 mt-0.5" aria-hidden="true"></i>Thématiques</a>

@@ -28,7 +28,7 @@ class FactsController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'desc' => ['required', 'string'],
             'img' => ['required', 'image', 'mimes:jpeg,png,jpg,webp'],
-            'url' => ['required', 'string']
+            'url' => ['required', 'string', 'url']
         ]);
 
         $fact = new Fact();
@@ -37,38 +37,30 @@ class FactsController extends Controller
         $fact->desc = $request->desc;
         $fact->url = $request->url;
 
-        $newFile = $request->img->getClientOriginalName();
-        $newfile_info = pathinfo($newFile, PATHINFO_FILENAME);
-        $newfile_info_ext = pathinfo($newFile, PATHINFO_EXTENSION);
-        $existing_file_url = Media::where('base_path', '=', $newFile)->first();
-        $count_file = Media::where('base_path', '=', $newFile)->count();
-        $fileSize = $request->file('img')->getSize() / 1024;
+        $file_original_name = $request->img->getClientOriginalName();
+        $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
+        $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
+        $file_size = $request->img->getSize() / 1024;
+        $existing_file_url = Media::where('name', '=', $file_original_name)->first();
+        $count_file = Media::where('original_name', '=', $file_original_name)->count();
 
         if($existing_file_url) {
-            $file_iteration_url = $newfile_info . "_" . $count_file + 1 . "." . $newfile_info_ext;
-            Storage::putFileAs('public/medias',$request->img, $file_iteration_url);
-            Media::create([
-                'url' => $file_iteration_url,
-                'base_path' => $newFile,
-                'description' => $request->description,
-                'user_id' => Auth::user()->id,
-                'file_size' => $fileSize,
-                'provider' => $newfile_info_ext,
-            ]);
-            $fact->img = $file_iteration_url;
+            $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
         } else {
-            Media::create([
-                'url' => $newFile,
-                'base_path' => $newFile,
-                'description' => $request->description,
-                'user_id' => Auth::user()->id,
-                'file_size' => $fileSize,
-                'provider' => $newfile_info_ext,
-            ]);
-            Storage::putFileAs('public/medias',$request->img, $newFile);
-            $fact->img = $newFile;
+            $file_name = $file_original_name;
         }
 
+        $media = new Media();
+        $media->user_id = Auth::user()->id;
+        $media->path = '/storage/medias/';
+        $media->name = $file_name;
+        $media->original_name = $file_original_name;
+        $media->size = $file_size;
+        $media->provider = $file_provider;
+        $media->save();
+        Storage::putFileAs('public/medias',$request->img, $file_name);
+        
+        $fact->image_id = $media->id;
         $fact->save();
 
         return redirect('/admin/facts')->with('status', "$fact->title a été créé.");
@@ -95,38 +87,31 @@ class FactsController extends Controller
         $fact->desc = $request->desc;
         $fact->url = $request->url;
 
-        if($request->img != null) {
-            $newFile = $request->img->getClientOriginalName();
-            $newfile_info = pathinfo($newFile, PATHINFO_FILENAME);
-            $newfile_info_ext = pathinfo($newFile, PATHINFO_EXTENSION);
-            $existing_file_url = Media::where('base_path', '=', $newFile)->first();
-            $count_file = Media::where('base_path', '=', $newFile)->count();
-            $fileSize = $request->file('img')->getSize() / 1024;
+        if($request->img) {
+            $file_original_name = $request->img->getClientOriginalName();
+            $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
+            $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
+            $file_size = $request->img->getSize() / 1024;
+            $existing_file_url = Media::where('name', '=', $file_original_name)->first();
+            $count_file = Media::where('original_name', '=', $file_original_name)->count();
     
             if($existing_file_url) {
-                $file_iteration_url = $newfile_info . "_" . $count_file + 1 . "." . $newfile_info_ext;
-                Storage::putFileAs('public/medias',$request->img, $file_iteration_url);
-                Media::create([
-                    'url' => $file_iteration_url,
-                    'base_path' => $newFile,
-                    'description' => $request->description,
-                    'user_id' => Auth::user()->id,
-                    'file_size' => $fileSize,
-                    'provider' => $newfile_info_ext,
-                ]);
-                $fact->img = $file_iteration_url;
+                $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
             } else {
-                Media::create([
-                    'url' => $newFile,
-                    'base_path' => $newFile,
-                    'description' => $request->description,
-                    'user_id' => Auth::user()->id,
-                    'file_size' => $fileSize,
-                    'provider' => $newfile_info_ext,
-                ]);
-                Storage::putFileAs('public/medias',$request->img, $newFile);
-                $fact->img = $newFile;
+                $file_name = $file_original_name;
             }
+    
+            $media = new Media();
+            $media->user_id = Auth::user()->id;
+            $media->path = '/storage/medias/';
+            $media->name = $file_name;
+            $media->original_name = $file_original_name;
+            $media->size = $file_size;
+            $media->provider = $file_provider;
+            $media->save();
+            Storage::putFileAs('public/medias',$request->img, $file_name);
+            
+            $fact->image_id = $media->id;
         }
 
 

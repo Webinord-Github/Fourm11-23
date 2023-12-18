@@ -17,6 +17,40 @@
 </head>
 
 <body class="font-sans antialiased">
+    <div class="popup">
+        <div class="medias-library">
+            <div class="close-btn">
+                <i class="fa-solid fa-xmark" style="color: #fff;"></i>
+            </div>
+            <h2>Bibliothèque d'images</h2>
+            <div id="drop-area" class="content">
+                <div id="drop-over">
+                    <p>Téléverser une image</p>
+                </div>
+                <div id="library" class="medias"></div>
+                <div class="options library-options">
+                    <h3>Options d'image</h3>
+                    <div class="default">
+                        <p>Sélectionner une image pour la modifier</p>
+                        <i class="fa-solid fa-arrow-turn-down fa-rotate-90 fa-xl" style="color: #ffffff;"></i>
+                    </div>
+                    <div class="image-options hidden">
+                        <p class="image-name"></p>
+                        <p class="size"></p>
+                        <p class="extension"></p>
+                        <p class="dimensions"></p>
+                        <div class="buttons">
+                            <p id="chosen-one" class="button">Sélectionner</p>
+                        </div>
+                        <form name="dragdrop">
+                            @csrf
+                            <input type="file" id="uploaded_file" name="uploaded_file">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="min-h-screen bg-gray-100">
         @include('layouts.adminnav')
 

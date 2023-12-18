@@ -14,11 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-<<<<<<< HEAD
             $table->string('image')->nullable();
-=======
-            $table->string('image');
->>>>>>> mick-local
         });
     }
 

@@ -18,13 +18,9 @@ class DatabaseSeeder extends Seeder
             RolesTableSeeder::class,
             UsersTableSeeder::class,
             PagesTableSeeder::class,
-            CategoriesTableSeeder::class,
             ThematiquesTableSeeder::class,
-<<<<<<< HEAD
             automatic_emails_seeder::class,
-=======
-            CardsSectionsTableSeeder::class,
->>>>>>> mick-local
+            MediasTableSeeder::class,
         ]);
     }
 }

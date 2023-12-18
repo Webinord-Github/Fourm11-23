@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tool;
+use App\Models\Media;
+use App\Models\Thematique;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Auth;
@@ -12,12 +14,12 @@ class ToolsController extends Controller
 {
     public function tools()
     {
-        return view('admin.tools.index', ['tools' => Tool::all()]);
+        return view('admin.tools.index', ['tools' => Tool::all(), 'thematiques' => Thematique::all()]);
     }
 
     public function create()
     {
-        return view('admin.tools.create');
+        return view('admin.tools.create', ['thematiques' => Thematique::all()]);
     }
 
     public function store(Request $request)
@@ -27,10 +29,17 @@ class ToolsController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'desc' => ['required', 'string'],
             'doc' => ['required', 'file', 'mimes:pdf,docx'],
+            'thematiques' => ['required', 'array'],
             'status' => ['required', 'string']
         ]);
 
         $tool = new Tool();
+
+        $thematiques_selected = [];
+
+        foreach ($request->thematiques as $thematique) {
+            array_push($thematiques_selected, $thematique);
+        }
 
         $tool->user_id = Auth::user()->id;
         $tool->title = $request->title;
@@ -38,21 +47,41 @@ class ToolsController extends Controller
         $tool->status = $request->status;
         $tool->published_at = $request->published_at;
 
-        $doc_ext =  $request->doc->extension();
-        $doc_name = strtolower(preg_replace("/\s+/", "", $request->title));
-        $doc_fullname = $doc_name . '.' . $doc_ext;
-        Storage::putFileAs('public/doc/tools', $request->doc, $doc_fullname);
-        $tool->doc = $doc_fullname;
+        $file_original_name = $request->doc->getClientOriginalName();
+        $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
+        $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
+        $file_size = $request->doc->getSize() / 1024;
+        $existing_file_url = Media::where('name', '=', $file_original_name)->first();
+        $count_file = Media::where('original_name', '=', $file_original_name)->count();
 
+        if($existing_file_url) {
+            $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
+        } else {
+            $file_name = $file_original_name;
+        }
+
+        $media = new Media();
+        $media->user_id = Auth::user()->id;
+        $media->path = '/storage/medias/';
+        $media->name = $file_name;
+        $media->original_name = $file_original_name;
+        $media->size = $file_size;
+        $media->provider = $file_provider;
+        $media->save();
+        Storage::putFileAs('public/medias',$request->doc, $file_name);
+
+        $tool->doc_id = $media->id;
         $tool->save();
+        $tool->thematiques()->sync($thematiques_selected);
 
-        return redirect('/admin/tools')->with('status', "$tool->title was created.");
+        return redirect('/admin/tools')->with('status', "$tool->title a été créé.");
     }
 
     public function update($id)
     {
         $tool = Tool::findOrFail($id);
-        return view('admin.tools.edit', ['tool' => $tool]);
+        $thematiques_selected = Tool::find($tool->id)->thematiques;
+        return view('admin.tools.edit', ['tool' => $tool, 'thematiques' => Thematique::all(), 'thematiques_selected' => $thematiques_selected]);
     }
 
     public function storeUpdate(Request $request)
@@ -61,39 +90,62 @@ class ToolsController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'desc' => ['required', 'string'],
             'doc' => ['file', 'mimes:pdf,docx'],
+            'thematiques' => ['required', 'array'],
             'status' => ['required', 'string']
         ]);
 
         $tool = Tool::findOrFail($request->id);
+
+        $thematiques_selected = [];
+
+        foreach ($request->thematiques as $thematique) {
+            array_push($thematiques_selected, $thematique);
+        }
 
         $tool->title = $request->title;
         $tool->desc = $request->desc;
         $tool->status = $request->status;
         $tool->published_at = $request->published_at;
 
-        $doc_name = strtolower(preg_replace("/\s+/", "", $request->title));
-        if ($request->doc != null) {
-            Storage::delete('public/doc/tools/' . $tool->doc);
-            $doc_ext =  $request->doc->extension();
-            $doc_fullname = $doc_name . '.' . $doc_ext;
-            Storage::putFileAs('public/doc/tools', $request->doc, $doc_fullname);
-        } else {
-            $doc_ext = pathinfo(storage_path('public/doc/tools/' . $tool->doc), PATHINFO_EXTENSION);
-            $doc_fullname = $doc_name . '.' . $doc_ext;
-            Storage::move('public/doc/tools/' . $tool->doc, 'public/doc/tools/' . $doc_fullname);
+        if($request->doc) {
+            $file_original_name = $request->doc->getClientOriginalName();
+            $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
+            $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
+            $file_size = $request->doc->getSize() / 1024;
+            $existing_file_url = Media::where('name', '=', $file_original_name)->first();
+            $count_file = Media::where('original_name', '=', $file_original_name)->count();
+    
+            if($existing_file_url) {
+                $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
+            } else {
+                $file_name = $file_original_name;
+            }
+    
+            $media = new Media();
+            $media->user_id = Auth::user()->id;
+            $media->path = '/storage/medias/';
+            $media->name = $file_name;
+            $media->original_name = $file_original_name;
+            $media->size = $file_size;
+            $media->provider = $file_provider;
+            $media->save();
+            Storage::putFileAs('public/medias',$request->doc, $file_name);
+    
+            $tool->doc_id = $media->id;
         }
-        $tool->doc = $doc_fullname;
 
         $tool->save();
+        $tool->thematiques()->sync($thematiques_selected);
 
-        return redirect('/admin/tools')->with('status', "$tool->title was edited.");
+        return redirect('/admin/tools')->with('status', "$tool->title a été édité.");
     }
 
     public function destroy($id)
     {
         $tool = Tool::find($id);
         Tool::destroy($id);
+        $tool->thematiques()->detach();
 
-        return redirect('/admin/tools')->with('status', "$tool->title was deleted.");
+        return redirect('/admin/tools')->with('status', "$tool->title a été supprimé.");
     }
 }

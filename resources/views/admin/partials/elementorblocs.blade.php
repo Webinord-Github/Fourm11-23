@@ -100,8 +100,16 @@
                 </div>
                 <div class="content">
                     <div class="img-wrapper">
-                        <img src="{{ asset('storage/medias/6fabcd5159ebca87cafc17975f9e9667.jpeg') }}">
+                        <img src="{{ asset('storage/medias/elementor-placeholder-image.webp') }}">
                     </div>
+                </div>
+            </div>
+            <div class="bloc" data-bloc="slider">
+                <div class="item">
+                    <i class="fa-solid fa-panorama"></i>
+                    <p>Caroussel</p>
+                </div>
+                <div class="content">
                 </div>
             </div>
         </div>
@@ -111,7 +119,7 @@
                 <p><i class="fa-solid fa-turn-up fa-rotate-90"></i></p>
             </div>
             <div class="option margin hidden">
-                <div class="margin-wrapper">
+                <div class="inputs-wrapper">
                     <p>Margin</p>
                     <div class="tag">
                         <p>Top</p>
@@ -120,10 +128,27 @@
                         <p>Right</p>
                     </div>
                     <div class="inputs">
-                        <input type="number">
-                        <input type="number">
-                        <input type="number">
-                        <input type="number">
+                        <input class="margin-inputs" id="m-top" type="number">
+                        <input class="margin-inputs" id="m-left" type="number">
+                        <input class="margin-inputs" id="m-bottom" type="number">
+                        <input class="margin-inputs" id="m-right" type="number">
+                    </div>
+                </div>
+            </div>
+            <div class="option padding hidden">
+                <div class="inputs-wrapper">
+                    <p>Padding</p>
+                    <div class="tag">
+                        <p>Top</p>
+                        <p>Left</p>
+                        <p>Bottom</p>
+                        <p>Right</p>
+                    </div>
+                    <div class="inputs">
+                        <input class="padding-inputs" id="p-top" type="number">
+                        <input class="padding-inputs" id="p-left" type="number">
+                        <input class="padding-inputs" id="p-bottom" type="number">
+                        <input class="padding-inputs" id="p-right" type="number">
                     </div>
                 </div>
             </div>
@@ -135,13 +160,21 @@
                     </div>
                 </div>
             </div>
-            <div class="option" data-option="image">
-                <div class="w-full mb-2">
+            <div class="option image" data-option="image">
+                {{-- <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
                         <x-label :value="__('Image: jpeg, png, jpg, webp')" />
-                        <input type="file" id="image">
+                        <input type="file" id="">
                     </div>
+                </div> --}}
+                <div class="img-wrapper">
+                    <img id="preview-bloc-img" src="">
                 </div>
+                <div id="medias" class="button">Choisir une image</div>
+            </div>
+            <div class="option delete-button hidden">
+                <p class="close-options">Fermer</p>
+                <p class="delete-bloc">Supprimer</p>
             </div>
         </div>
     </div>
