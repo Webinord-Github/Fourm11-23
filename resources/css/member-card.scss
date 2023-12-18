@@ -1,0 +1,21 @@
+.member__card__container {
+    width: 300px;
+    height: 200px;
+    box-shadow: 1px 1px 4px  gray;
+    border-radius: 15px;
+    margin: 20px;
+    .member__card {
+        padding: 20px;
+        .member__infos {
+            display: flex;
+            align-items: center;
+            img {
+                width: 60px;
+                height: 60px;
+                object-fit: cover;
+                border-radius: 100%;
+                margin-right: 10px;
+            }
+        }
+    }
+}

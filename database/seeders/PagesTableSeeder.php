@@ -22,7 +22,6 @@ class PagesTableSeeder extends Seeder
 
         // create many pages
       
-<<<<<<< HEAD
            $accueil = new Page([
                 'title' => 'Accueil',
                 'url' => '/',
@@ -110,32 +109,6 @@ class PagesTableSeeder extends Seeder
                 $lintimidation,
                 $lesmembres,
                 $sources,
-=======
-           $about = new Page([
-                'title' => 'About',
-                'url' => 'about',
-                'content' => 'This is about us.',
-                'categorie' => '2'
-           ]);
-            $contact = new Page([
-                'title' => 'Contact',
-                'url' => 'contact',
-                'content' => 'You can contact us.',
-                'categorie' => '2'
-            ]);
-            $faq = new Page([
-                'title' => 'FAQ',
-                'url' => 'another-page',
-                'content' => 'This is another page.',
-                'categorie' => '2'
-            ]);
-        
-
-            $admin->pages()->saveMany([
-                $about,
-                $contact,
-                $faq,
->>>>>>> mick-local
             ]);
     }
 }

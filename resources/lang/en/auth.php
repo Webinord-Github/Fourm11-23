@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'failed' => 'Courriel/Mot de passe invalide.',
+    'failed' => 'Courriel/Mot de passe invalide.',    
 ];
+

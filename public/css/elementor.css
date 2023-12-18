@@ -1,13 +1,23 @@
 .elementor-container {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   padding: 0 10px 25px 10px;
   width: 100%;
 }
 .elementor-container .title {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 36px;
   font-weight: bold;
   padding: 10px 25px;
@@ -21,9 +31,15 @@
   width: 97%;
 }
 .elementor-container #preview .bloc {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   cursor: pointer;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
 }
@@ -35,9 +51,15 @@
   width: 100%;
 }
 .elementor-container #preview .bloc .content .img-wrapper {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
 }
 .elementor-container #preview .bloc .content .img-wrapper img {
@@ -86,12 +108,18 @@
   display: none;
 }
 .adminNav__container .adminNav .actif {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .adminNav__container .adminNav .tabs {
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   margin-bottom: 10px;
 }
 .adminNav__container .adminNav .tabs .hidden {
@@ -109,21 +137,36 @@
   text-decoration: underline;
 }
 .adminNav__container .adminNav #blocs {
-  align-items: baseline;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 .adminNav__container .adminNav #blocs .bloc {
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
 }
 .adminNav__container .adminNav #blocs .bloc .item {
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border: 1px solid grey;
   border-radius: 10px;
   background-color: #fff;
@@ -141,7 +184,10 @@
   width: 100%;
 }
 .adminNav__container .adminNav #infos form {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding: 0 1em;
   width: 100%;
@@ -167,9 +213,14 @@
   color: #000;
 }
 .adminNav__container .adminNav #infos form .form-wrapper .submit {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 .adminNav__container .adminNav #infos form .form-wrapper .submit button {
   background-color: #555;
@@ -178,42 +229,75 @@
   background-color: #888;
 }
 .adminNav__container .adminNav #options {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
 }
 .adminNav__container .adminNav #options .default {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 1em 2em;
 }
 .adminNav__container .adminNav #options .default p {
   text-align: center;
 }
 .adminNav__container .adminNav #options .selected {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
   display: flex !important;
 }
 .adminNav__container .adminNav #options .option {
   display: none;
 }
 .adminNav__container .adminNav #options .margin {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .adminNav__container .adminNav #options .margin .margin-wrapper {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .adminNav__container .adminNav #options .margin .margin-wrapper .tag {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .adminNav__container .adminNav #options .margin .margin-wrapper .inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   /* Chrome, Safari, Edge, Opera */
 }

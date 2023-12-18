@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-<<<<<<< HEAD
-            $table->integer('verified')->default(0);
-=======
-            $table->integer('verified');
->>>>>>> mick-local
+        Schema::create('reply_likes', function (Blueprint $table) {
+            $table->id();
+            $table->integer('user_id');
+            $table->integer('reply_id');
+            $table->timestamps();
         });
     }
 
@@ -29,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('reply_likes');
     }
 };

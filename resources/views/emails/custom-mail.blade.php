@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Email</title>
-</head>
-<body>
-    <p>{!! $emailBody !!}</p>
-</body>
-</html>
+<table width="100%">
+    <tbody>
+        <tr>
+            <td>
+                <p>{!! $emailBody !!}</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -3,8 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
-
+use Illuminate\Validation\Rule;
 
 class PagesRequest extends FormRequest
 {
@@ -26,13 +25,17 @@ class PagesRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|string|max:255',
+            'url' => 'required|string|:max:255|unique:pages,url',
         ];
     }
-    
-    public function messages(){
+
+    public function messages()
+    {
         return [
-            'title.required' => 'Title',
+            'title.required' => 'Title is required',
+            'url.required' => "URL is required",
+            'url.unique' => "l'URL existe déjà",
         ];
     }
 }

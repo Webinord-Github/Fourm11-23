@@ -1,6 +1,6 @@
 .dashboard__container {
     width: 100%;
-    margin: 10px;
+    margin: 10px 30px;
 
     .dashboard__title {
         font-size: 25px;
@@ -61,21 +61,20 @@
             background-color: white;
             border-radius: 10px;
 
-            .dasboard__users__table__filter {
+            .dasboard__users__table__search {
+                width: 100%;
                 padding: 10px 5px;
                 display: flex;
-                justify-content: flex-end;
-                .dashboard__users__filter__cta {
-                    background-color: #eff1f4;
-                    padding: 12px;
-                    margin-right: 30px;
-                    color: #000;
-                    font-weight: bold;
-                    border-radius: 5px;
-                    .fa-angle-down {
-                        margin-left: 10px;
-                    }
-                    cursor: pointer;
+                justify-content: center;
+                align-items: center;
+                #user__search {
+                    width: 50%;
+                    border: none;
+                    border-bottom: 2px solid gray;
+                }
+                #user__search:focus {
+                    box-shadow: none;
+                    outline: none;
                 }
             }
 
@@ -116,7 +115,22 @@
                         }
                         #user__online {
                             width: 120px;
-                
+                        }
+                        #user__name {
+                            a {
+                                text-decoration: none;
+                            }
+                            a:hover {
+                                text-decoration: underline;
+                                text-underline-offset: 3px;
+                            }
+                        }
+                        #user__image {
+                            width: 80px;
+                            img {
+                                width: 100%;
+                                border-radius: 100%;
+                            }
                         }
                     }
                 }

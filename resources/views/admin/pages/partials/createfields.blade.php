@@ -41,10 +41,4 @@
     </div>
 </div>
 
-<style>
-.dragContent {
-    height: 500px;
-    border: 3px solid #000;
-}
-</style>
 

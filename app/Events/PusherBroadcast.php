@@ -40,7 +40,3 @@ class PusherBroadcast implements ShouldBroadcast
         return 'chat';
     }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> mick-local

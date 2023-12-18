@@ -3,8 +3,325 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 85px);
+    height: calc(100vh - 170px);
+
+    p,
+    i,
+    a {
+        color: #fff;
+        font-weight: bold;
+    }
+
     .register__form {
-        width: 50%;
+        width: 700px;
+        min-width: 300px;
+        padding: 40px 20px;
+        background-color: #000;
+        border-radius: 15px;
+        height: 700px;
+        overflow: auto;
+        .details__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            i {
+                font-size: 60px;
+            }
+
+            p {
+                margin: 10px 0px 0px 0px;
+                font-size: 25px;
+                font-weight: bold;
+            }
+        }
+
+        .divider__container {
+            display: flex;
+            justify-content: center;
+
+            .divider {
+                width: 25%;
+                height: 1px;
+                border-bottom: 1px solid #fff;
+                margin: 10px 0px 20px 0px;
+            }
+        }
+
+        .existing__user {
+            display: flex;
+            justify-content: center;
+
+            p {
+                a {
+                    text-decoration: underline;
+                    text-underline-offset: 3px;
+                }
+            }
+        }
+
+        .general__informations,
+        .work__informations {
+            margin: 20px 0px;
+            display: flex;
+            flex-direction: column;
+            .title {
+                margin-left: 20px;
+                font-size: 20px;
+            }
+
+            .column__container {
+                display: flex;
+                .w__full {
+                    width: 100%!important;
+                }
+                .column {
+                    display: flex;
+                    flex-direction: column;
+                    width: 50%;
+                    margin: 0px 10px;
+                    .title {
+                        p {
+                            color: #fff;
+                        }
+                    }
+                    label {
+                        color: #fff;
+                        margin-left: 10px;
+                        font-size: 14px;
+                    }
+
+                    .form__input {
+                        background-color: #5e5e5e;
+                        color: #fff;
+                        font-weight: bold;
+                        font-size: 16px;
+                        border: none;
+                        border-radius: 30px;
+                        width: 100%;
+                        padding: 15px;
+                        margin: 8px 0px;
+                    }
+
+                    .form__input::placeholder {
+                        font-weight: bold;
+                        font-size: 20px;
+                        color: gray;
+                        padding-left: 10px;
+                    }
+       
+                    .form__input:focus {
+                        box-shadow: none;
+                        border: 1px solid gray;
+                    }
+
+                    .img__container {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        margin-top: 30px;
+                        img {
+                            width: 100px;
+                            height: 100px;
+                            object-fit: cover;
+                            border-radius: 100%;
+                        }
+
+                        #avatar__selection {
+                            margin-top: 20px;
+                            border: 2px solid #fff;
+                            border-radius: 30px;
+                            padding: 3px 20px;
+                            color: #fff;
+                        }
+
+                        #avatar__selection:hover {
+                            filter: contrast(65%);
+                        }
+
+                        .drop__zone {
+                            position: relative;
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                            margin-top: 10px;
+
+                            label {
+                                color: #fff;
+
+                                span {
+                                    text-decoration: underline;
+                                    cursor: pointer;
+                                }
+                            }
+
+                        
+
+                        }
+                    }
+
+                    select.form__input {
+                        color: gray;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: 18px;
+                        cursor: pointer;
+                    }
+                 
+                }
+                .flex__column {
+                    flex-direction: row;
+                    width: 100%;
+                    margin: 0px 10px;
+                    label {
+                        color: #fff;
+                        margin: 0px 5px;
+                    }
+                    .autres {
+                        background-color: transparent;
+                        border: none;
+                        border-bottom: 1px solid #fff;
+                        outline: none;
+                        box-shadow: none;
+                        width: 65%;
+                        color: #fff;
+                    }
+                    .about {
+                        background-color: transparent;
+                        border: none;
+                        border-bottom: 1px solid #fff;
+                        outline: none;
+                        box-shadow: none;
+                        width: 100%;
+                        color: #fff;
+                    }
+                }
+                .w__fit {
+                    width: fit-content!important;
+                    display: flex;
+                    align-items: center;
+                }
+                .password__input {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    .fa-eye {
+                        position: absolute;
+                        right:20px;
+                        cursor: pointer;
+                    }
+                }
+                .description {
+                    position: relative;
+                    #char__count {
+                        color: #fff;
+                        position: absolute;
+                        bottom: 20px;
+                        right: 10px;
+                    }
+                }
+            }
+        }
+        .login__cta__container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            .login__cta {
+                background-color: #fff;
+                color: #000;
+                border-radius: 30px;
+                font-weight: bold;
+                padding: 10px 30px;
+            }
+        }
+        label.required::after {
+            content: "*";
+            color: red;
+        }
+        .avatar__popup__container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0,0,0,0.8);
+            .avatar__popup {
+                background-color: #212121;
+                width: 75%;
+                padding: 20px;
+                position: relative;
+                height: 400px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                .img__container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin-top: 30px;
+                    justify-content: center;
+                    .img__content {
+                        width: 100px;
+                        margin: 10px;
+                        img {
+                            border: 1px solid #fff;
+                            border-radius: 10px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .avatar__confirm__container {
+                    margin-top: 10px;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                    .avatar__confirm {
+                        background-color: #fff;
+                        color: #000;
+                        border-radius: 30px;
+                        font-weight: bold;
+                        padding: 10px 30px;
+                        cursor: pointer;
+                        position: relative;
+                    }
+                    .avatar__confirm:hover {
+                        background-color: lightgray;
+                    }
+                    .av-error {
+                        color: red;
+                        display: none;
+                        margin-top: 5px;
+                    }
+                }
+                .close__container {
+                    width: 100%;
+                    position: absolute;
+                    display: flex;
+                    justify-content: flex-end;
+                    top: 0;
+                    padding: 0px 20px;
+
+                    #avatar__popup__close {
+                        color: #fff;
+                        font-size: 20px;
+                        position: relative;
+                        border-left: 2px solid #fff;
+                        padding: 5px;
+                        border-bottom: 2px solid #fff;
+                        cursor: pointer;
+                    }
+                    #avatar__popup__close:hover {
+                        background-color: red;
+                    }
+                }
+            }
+        }
+        .flex {
+            display: flex!important;
+        }
     }
 }

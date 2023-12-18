@@ -15,6 +15,7 @@ class CardsSectionsTableSeeder extends Seeder
      */
     public function run()
     {
+        CardSection::truncate();
         CardSection::create(['name'=>'Composantes']);
         CardSection::create(['name'=>'Rôles']);
         CardSection::create(['name'=>'Interventions']);

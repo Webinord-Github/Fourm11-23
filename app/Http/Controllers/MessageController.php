@@ -9,48 +9,31 @@ use Auth;
 use App\Models\User;
 use App\Models\Chat;
 
-
 class MessageController extends Controller
 {
     public function index()
     {
+        $userId = Auth::user()->id;
+
+        // Fetch messages where the sender or receiver ID matches the authenticated user's ID
+        $messages = Message::where(function ($query) use ($userId) {
+            $query->where('sender_id', $userId)
+                ->orWhere('receiver_id', $userId);
+        })->get();
+
         $users = User::all();
-        $messages = Message::all();
+
         return view('chat')->with([
             'users' => $users,
             'messages' => $messages,
         ]);
     }
 
-    public function show($userId)
-    {
-        // Retrieve the user and messages related to the current user and the user with the specified $userId
-        $currentUser = Auth::user();
-        $otherUser = User::find($userId);
-        $users = User::all();
-        $authUserId = Auth::user()->id; // Get the ID of the authenticated user
-        $messages = Message::where(function ($query) use ($userId, $authUserId) {
-            $query->where('sender_id', $authUserId)
-                ->where('receiver_id', $userId);
-        })->orWhere(function ($query) use ($userId, $authUserId) {
-            $query->where('sender_id', $userId)
-                ->where('receiver_id', $authUserId);
-        })->get();
-        // Retrieve messages between the current user and the specified user
-
-        // Pass the necessary data to the view
-        return view('frontend.SingleChatComponent', compact('currentUser', 'otherUser', 'users', 'messages'));
-    }
-
-
-
-
     public function broadcast(Request $request)
     {
-
         $message = new Message();
         $message->sender_id = Auth::user()->id;
-        $message->receiver_id = $request->receiverid;
+        $message->receiver_id = $request->receiverid === '1' ? '1' : Auth::user()->id;
         $message->content = $request->message;
         $message->save();
 
@@ -58,10 +41,18 @@ class MessageController extends Controller
         return view('broadcast', ['message' => $request->get('message')]);
     }
 
-
     public function receive(Request $request)
     {
+        // Check if the sender is user ID 1 or the message is intended for the current user
+        $senderId = $request->senderid;
+        $receiverId = Auth::user()->id;
 
-        return view('receive', ['message' => $request->get('message')]);
+        if ($senderId === '1' || $receiverId === $senderId) {
+            return view('receive', ['message' => $request->get('message')]);
+        } else {
+            // Handle unauthorized access or ignore the message
+            // For example, return an empty response or an error message
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
     }
 }

@@ -11,7 +11,7 @@ class UsersGuardController extends Controller
 {
     public function index()
     {
-        $users = User::where('ban', 0)->paginate();
+        $users = User::where('ban', false)->paginate();
 
         return view('admin.usersguard.index', ['users' => $users]);
     }
@@ -22,9 +22,9 @@ class UsersGuardController extends Controller
         foreach($request->input('user_ids') as $userId) {
             $user = User::find($userId);
             if ($request->has('checkbox_'.$userId)) {
-                $user->verified = 1;
+                $user->verified = true;
             } else {
-                $user->verified = 0;
+                $user->verified = false;
             }
             $user->save();
         }
@@ -42,8 +42,8 @@ class UsersGuardController extends Controller
         // Check if the user exists
         if ($user) {
             $user->update([
-                'ban' => 1,
-                'verified' => 0,
+                'ban' => true,
+                'verified' => false,
             ]);
      
             return response()->json(['message' => 'User banned successfully']);

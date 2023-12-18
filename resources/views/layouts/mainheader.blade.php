@@ -9,6 +9,7 @@
     <title>La fourmilière</title>
 
     <!-- Fonts -->
+    <script src="{{ asset('tinymce/tinymce.min.js') }}"></script>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -22,11 +23,14 @@
     'resources/js/app.js',
     'resources/css/forum.css',
     'resources/css/main.css',
-    'resources/css/messages.css',
+    'resources/css/chatbot.css',
     'resources/css/register.css',
     'resources/css/login.css',
     'resources/css/forgotpassword.css',
     'resources/css/header.css',
+    'resources/css/member-card.css',
+    'resources/css/invalid-reset-password.css',
+    'resources/css/calendar.css'
     ])
 </head>
 </head>
@@ -44,10 +48,6 @@
 
             #main__header {
                 background-image: url('{{asset("storage/medias/header-v3.jpg")}}');
-            }
-
-            .slide__menu {
-                background-image: url('{{asset("storage/medias/slide-menu-background.jpg")}}');
             }
         </style>
         <div class="header__container">
@@ -70,28 +70,8 @@
                     <i class="fa fa-search"></i>
                 </form>
             </div>
-            <div class="auth__container">
-                <div class="auth__content">
-                    <div class="auth__routes">
-                        @if(auth()->check())
-                        <a id="login" href="mon-compte">{{ auth()->user()->name }}</a>
-                        <form method="POST" action="{{route('logout')}}">
-                            @csrf
-                            <button type="submit" id="register">Déconnexion</button>
-                        </form>
-         
-                        @else
-                        <a id="login" href="mon-compte">Connexion</a>
-                        <a id="register" href="sinscrire">Devenir membre</a>
-                        @endif
-                    </div>
-                    <div class="icon__container">
-                        <i id="icon" class="fa fa-user-circle-o"></i>
-                    </div>
-                </div>
-            </div>
             @auth
-            <!-- <div class="notif" data-idtrack="{{auth()->user()->id}}">
+            <div class="notif" data-idtrack="{{auth()->user()->id}}">
                 <i class="fa fa-bell"></i>
                 <p class="notif__int">
                     {{ $NotifsCount }}
@@ -104,7 +84,7 @@
                     <a class="user__notif" href="{{$notification->notif_link}}" data-notifId="{{$notification->id}}">
                         <div class="notification">
                             <li class="notif__subject">
-                                {{ $notification->sujet }} 
+                                {{ $notification->sujet }}
                             </li>
                             <div class="unread__visual">
                                 @if(!$readNotification)
@@ -115,19 +95,9 @@
                     </a>
                     @endforeach
                 </div>
-            </div> -->
-            <!-- <form method="POST" action="{{ route('logout') }}">
-                @csrf
+            </div>
 
-                <a href="logout" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                    {{ __('Log Out') }}
-                </a>
-            </form> -->
-            <!-- <a href="/messages"><i style="color:white;font-size:30px" class="fa fa-comment"></i></a> -->
-
-            <!-- <script>
-            
+            <script>
                 let notifsBell = document.querySelector(".notif")
                 let notificationsCenter = document.querySelector(".notifications__center")
                 let notifsInt = document.querySelector(".notif__int")
@@ -137,37 +107,32 @@
                     notificationsCenter.classList.toggle('open__notif')
                     ev.currentTarget.classList.toggle('ajax__ready')
                     notifsInt.innerHTML = "0"
-                    if (!ev.currentTarget.classList.contains('ajax__ready')) {
-                        let xhttp = new XMLHttpRequest()
-                        let userId = ev.currentTarget.getAttribute('data-idtrack')
-                        let sParams = 'userId=' + encodeURIComponent(userId)
-                        xhttp.onreadystatechange = function() {
-                            if (this.readyState === 4) {
-                                if (this.status === 200) {
-                                    console.log('Notifications updated')
-                                } else {
-                                    console.error("Error updating notifications.");
-                                }
+                    let xhttp = new XMLHttpRequest()
+                    let sParams;
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState === 4) {
+                            if (this.status === 200) {
+                                xhttp = null;
+                            } else {
+                                console.error("Error updating notifications.");
                             }
-                        };
-                        xhttp.open("POST", `/update-notifs-check/${userId}`, true);
-                        xhttp.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
-                        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                        xhttp.send(sParams);
-                    }
+                        }
+                    };
+                    xhttp.open("POST", `/update-notifs-check/`, true);
+                    xhttp.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhttp.send(sParams);
                 })
 
                 for (let userNotif of userNotifs) {
                     userNotif.addEventListener("click", event => {
                         let xhttp = new XMLHttpRequest()
-                        let user_id = "{{auth()->user()->id}}"
                         let notif_id = event.currentTarget.getAttribute("data-notifId")
-                        let Params = 'user_id=' + encodeURIComponent(user_id) + '&notif_id=' + encodeURIComponent(notif_id)
+                        let Params = 'notif_id=' + encodeURIComponent(notif_id)
                         xhttp.onreadystatechange = function() {
                             if (this.readyState === 4) {
                                 if (this.status === 200) {
-                                    console.log('Notifications updated')
-                                    notifsInt.innerHTML = "0"
+                                    xhttp = null;
                                 } else {
                                     console.error("Error updating notifications.");
                                 }
@@ -179,15 +144,41 @@
                         xhttp.send(Params);
                     })
                 }
-            </script> 
-             @if(auth()->user()->isAdmin())
-            <a href="/admin">Admin</a>
-            @endif -->
+            </script>
             @endauth
+            <div class="auth__container">
+                <div class="auth__content">
+                    <div class="auth__routes">
+                        @if(auth()->check())
+                        <a id="login" href="{{ route('profile.show', ['id' => auth()->user()->id]) }}">
+                            {{ auth()->user()->firstname }}
+                        </a>
+
+                        <form method="POST" action="{{route('logout')}}">
+                            @csrf
+                            <button type="submit" id="register">Déconnexion</button>
+                        </form>
+
+                        @else
+                        <a id="login" href="mon-compte">Connexion</a>
+                        <a id="register" href="sinscrire">Devenir membre</a>
+                        @endif
+                    </div>
+                    <div class="icon__container">
+                        <i id="icon" class="fa fa-user-circle-o"></i>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="slide__menu">
             <ul class="sortable__list parent__list">
+                @auth
+                @if(auth()->user()->isAdmin())
+                <a class="no__child__item" href="/admin">Administration</a>
+                @endif
+                @endauth
                 @foreach($navPages as $page)
                 @if ($page->parent_id === null)
                 {{-- Check if the current page has children --}}
@@ -224,6 +215,7 @@
                 @endif
                 @endif
                 @endforeach
+
             </ul>
 
 

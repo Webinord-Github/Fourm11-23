@@ -21,7 +21,7 @@ class ConversationsController extends Controller
     public function index()
     {
         $conversations = Conversation::paginate(25);
-        
+   
         return view('admin.conversations.index')->with([
             'conversations' => $conversations,
 
@@ -43,6 +43,7 @@ class ConversationsController extends Controller
     public function view() {
         $conversations = Conversation::with('replies')->get();
         $page = Page::where('url', '=', 'forum')->firstOrFail();
+        
         return view('frontend.forum')->with([
             'conversations' => $conversations,
             'page' => $page,

@@ -100,7 +100,7 @@
                 </div>
                 <div class="content">
                     <div class="img-wrapper">
-                        <img src="{{ asset('storage/medias/6fabcd5159ebca87cafc17975f9e9667.jpeg') }}">
+                        <img src="{{ asset('storage/medias/elementor-placeholder-image.webp') }}">
                     </div>
                 </div>
             </div>

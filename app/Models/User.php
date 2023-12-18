@@ -21,7 +21,24 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
+        'pronoun',
+        'used_agreements',
+        'gender',
+        'title',
+        'environment',
+        'birthdate',
+        'years_xp',
+        'work_city',
+        'work_phone',
+        'description',
+        'audience',
+        'interests',
+        'hear_about',
+        'newsletter',
+        'notifications',
+        'conditions',
         'email',
         'password',
         'notifs_check',
@@ -67,6 +84,16 @@ class User extends Authenticatable
     public function replies()
     {
         return $this->hasMany('App\Models\Reply');
+    }
+
+    public function replyLikes()
+    {
+        return $this->hasMany('App\Models\ReplyLike');
+    }
+
+    public function conversationLikes()
+    {
+        return $this->hasMany('App\Models\ConversationLike');
     }
 
     public function medias()

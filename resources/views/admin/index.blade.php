@@ -45,14 +45,9 @@
 <div class="dashboard__users__container">
     <p class="dashboard__title">Utilisateurs</p>
     <div class="dashboard__users__table__container">
-        <div class="dasboard__users__table__filter">
-
-            <div class="dashboard__users__filter__cta">
-                <div>
-                    <i class="fa fa-filter"></i>
-                    <i class="fa fa-angle-down"></i>
-                </div>
-            </div>
+        <div class="dasboard__users__table__search">
+            <input id="user__search" type="search" placeholder="Rechercher un utilisateur">
+            <i class="fa fa-search"></i>
         </div>
         <table>
             <thead>
@@ -80,27 +75,47 @@
                         {{$user->roles->first()->name}}
                     </td>
                     @else
-                        <td style="color:red;font-weight:bold" id="user__role"> Aucun Rôle! </td>
+                    <td style="color:red;font-weight:bold" id="user__role"> Aucun Rôle! </td>
                     @endif
-                        <td id="user__image">
-
+                    <td id="user__image">
+                    <img src="{{asset('storage/medias/' . $user->image)}}" alt="">
                     </td>
                     <td id="user__name">
-                        {{$user->name}}
+                    <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="underline">{{ $user->firstname }}</a>
                     </td>
                     <td id="user__email">
                         {{$user->email}}
                     </td>
                     <td id="user__activity">
-                    {{ \Carbon\Carbon::parse($user->last_activity)->locale('fr')->diffForHumans() }}
+                        {{ \Carbon\Carbon::parse($user->last_activity)->locale('fr')->diffForHumans() }}
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
 </div>
+<script>
+let userSearch = document.querySelector("#user__search");
+let userFirstnames = document.querySelectorAll("#user__name");
+
+userSearch.addEventListener("input", () => {
+    let searchTerm = userSearch.value.trim().toLowerCase();
+
+    userFirstnames.forEach(name => {
+        let userName = name.textContent.toLowerCase();
+        let parentElement = name.parentElement;
+
+        if (userName.includes(searchTerm)) {
+            parentElement.style.display = "table-row";
+            let regExp = new RegExp(searchTerm, 'gi');
+            name.childNodes[0].nextElementSibling.innerHTML = name.textContent.replace(regExp, "<mark style='background:lightgray;'>$&</mark>");
+        } else {
+            parentElement.style.display = "none";
+        }
+    });
+});
+</script>
 @endsection
 @section('admin-scripts')
 @include('admin.partials.scripts')
