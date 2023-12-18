@@ -92,12 +92,19 @@
                         .like,
                         .comments {
                             margin-right: 20px;
+                            position: relative;
+                            display: flex;
 
-                            p {
+                            .likes__iteration {
                                 display: flex;
                                 align-items: center;
-                                font-weight: bold;
-                                margin: 0px;
+                                position: relative;
+                            }
+
+                            .likes__iteration:hover {
+                                .likeHover {
+                                    display: block;
+                                }
                             }
 
                             i {
@@ -113,20 +120,46 @@
                                 font-size: 16px;
                                 font-weight: bold;
                             }
+
+                            .likeHover {
+                                display: none;
+                                background-color: #2870c3;
+                                width: 120px;
+                                z-index: 100;
+                                color: #fff;
+                                position: absolute;
+                                top: 30px;
+                                right: -110px;
+                                text-align: center;
+                                font-size: 14px;
+                            }
+
+                            #conversation__comments, #reply__comments {
+                                display: flex;
+                                align-items: center;
+                            }
+
+                            #conversation__like,
+                            #reply__like {
+                                cursor: pointer;
+                            }
                         }
                     }
 
-                
+
 
                     .instant__actions {
                         display: flex;
                         align-items: center;
+
                         .delete {
                             margin-right: 20px;
+
                             #delete {
                                 margin: 0px;
                                 cursor: pointer;
                                 display: flex;
+
                                 i {
                                     font-size: 20px;
                                     color: red;
@@ -134,15 +167,17 @@
                                 }
                             }
                         }
+
                         .report {
                             margin-right: 20px;
                             cursor: pointer;
+
                             #report {
                                 display: flex;
                                 align-items: center;
                                 margin: 0px;
                             }
-    
+
                             i {
                                 width: 20px;
                                 height: 20px;
@@ -157,6 +192,7 @@
                                 margin-left: 5px;
                             }
                         }
+
                         .reply {
                             .reply__toggle {
                                 background-color: #2870c3;
@@ -184,15 +220,8 @@
                         .textarea__container {
                             width: 90%;
 
-                            #autoExpand {
-                                outline: none;
-                                width: 100%;
-                                overflow: hidden;
-                                resize: none;
-                            }
-
-                            #autoExpand:focus {
-                                outline: none;
+                            .tox-tinymce {
+                                height: 200px!important;
                             }
                         }
 
@@ -202,7 +231,8 @@
                             align-items: center;
                             width: 10%;
 
-                            .reply__submit {
+                            .reply__submit,
+                            .user__reply__submit {
                                 font-size: 25px;
                                 cursor: pointer;
                             }
@@ -214,47 +244,65 @@
                     height: 100%;
                 }
 
-                .single__reply__container {
-                    display: flex;
-
-    
-                    .user__icon {
-                        margin: 5px 10px 0px 0px;
-                        position: relative;
+                .single__reply__container, .child__reply__container {
+                    
+                    .reply__container {
                         display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        img {
-                            width: 40px;
-                            border-radius: 100%;
-                            z-index: 100;
-                        }
-                        .divider {
-                            height: 80%;
-                            border-left: 1px solid black;
-                            width: 1px;
-                            position: absolute;
-                          
-                        }
-                    }
-                    .single__reply__content {
-                        display: flex;
-                        flex-direction: column;
-                        width: 100%;
-                        padding-top: 10px;
-                        border-top: 1px solid lightgray;
-                        .user__reply__info {
+                        .user__icon {
+                            margin: 5px 10px 0px 0px;
+                            position: relative;
                             display: flex;
-                            justify-content: space-between;;
-                            #user__reply__name {
-                                font-weight: bold;
+                            flex-direction: column;
+                            align-items: center;
+
+                            img {
+                                width: 40px;
+                                border-radius: 100%;
+                                z-index: 100;
                             }
 
-                            #timestamp {
-                                color: red;
+                            .divider {
+                                height: 80%;
+                                border-left: 1px solid black;
+                                width: 1px;
+                                position: absolute;
+
+                            }
+                        }
+
+                        .single__reply__content {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
+                            padding-top: 10px;
+                            border-top: 1px solid lightgray;
+
+                            .user__reply__info {
+                                display: flex;
+                                justify-content: space-between;
+                                ;
+
+                                #user__reply__name {
+                                    font-weight: bold;
+                                }
+
+                                #timestamp {
+                                    color: red;
+                                }
                             }
                         }
                     }
+
+                }
+
+                #child__reply {
+                    margin-left: 50px;
+                }
+
+                .remove {
+                    transform: translateY(-100px);
+                    opacity: 0;
+                    transition: 0.2s linear;
                 }
             }
         }

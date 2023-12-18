@@ -3,8 +3,101 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 85px);
+    height: calc(100vh - 170px);
+
     .login__form {
-        width: 50%;
+        width: 700px;
+        min-width: 300px;
+        padding: 30px;
+        background-color: #212121;
+        border-radius: 15px;
+
+        .details__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            i {
+                color: #fff;
+                font-size: 60px;
+            }
+
+            p {
+                color: #fff;
+                margin: 10px 0px 0px 0px;
+                font-size: 25px;
+                font-weight: bold;
+            }
+        }
+
+        .input__container {
+            margin: 20px 0px;
+            label {
+                color: #fff;
+                margin: 0px 0px 10px 10px;
+            }
+            .form__input {
+                background-color: #5e5e5e;
+                color: #fff;
+                border: none;
+                border-radius: 30px;
+                width: 100%;
+                padding: 15px;
+            }
+            .form__input::placeholder {
+                font-weight: bold;
+                font-size: 20px;
+                color: gray;
+                padding-left: 10px;
+            }
+            .form__input:focus {
+                box-shadow: none;
+            }
+        }
+        .login__actions__container, .reset__actions__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .login__cta__container, .reset__cta__container {
+                margin-top: 10px;
+                .login__cta, .reset__cta {
+                    background-color: #fff;
+                    color: #000;
+                    border-radius: 30px;
+                    font-weight: bold;
+                    padding: 10px 30px;
+                }
+            }
+            .forgot__password__custom__container {
+                border-bottom: 1px solid #fff;
+                padding: 10px 0px;
+                margin: 10px 0px;
+                .forgot__password__text {
+                    color: red;
+                }
+            }
+            .remember__me__container {
+                 span {
+                    color: #fff;
+                 }
+            }
+            .register__custom__container {
+                margin-top: 10px;
+  
+                p {
+                    text-align: center;
+                    color: #fff;
+                    font-weight: bold;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    a {
+                        text-decoration: underline;
+                        text-underline-offset: 3px;
+                    }
+                }
+            }
+        }
+
     }
 }

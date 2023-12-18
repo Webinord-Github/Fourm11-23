@@ -39,12 +39,14 @@ use App\Http\Controllers\Admin\ElementorController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/lien-invalide', 'App\Http\Controllers\InvalidPasswordResetLinkController@index');
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
-Route::get('/', function () {
-    return view('homepage');
-});
+Route::get('/', 'App\Http\Controllers\Admin\PagesController@homepage');
+Route::get('/calendar/{month?}', 'App\Http\Controllers\Admin\CalendarController@index')->name('calendar');
 
-Auth::routes();
+Route::get('/admin/calendar', 'App\Http\Controllers\Admin\CalendarController@index');
 Route::resource('/admin/emails', 'App\Http\Controllers\Admin\AutomaticEmailsController');
 Route::get('/admin/utilisateurs-bannis', 'App\Http\Controllers\Admin\BanUserController@index')->name('banusers.index');
 Route::post('/banuser', 'App\Http\Controllers\Admin\UsersGuardController@banUser')->name('banUser');
@@ -52,16 +54,19 @@ Route::post('/unbanuser', 'App\Http\Controllers\Admin\BanUserController@unbanUse
 Route::post('/update-menu-order', 'App\Http\Controllers\Admin\PagesController@updateMenuOrder')->name('update-menu-order');
 // custom Auth Routes
 Route::get('sinscrire', [RegisteredUserController::class, 'create'])
-->name('register');
+->name('custom.register.form');
 Route::post('sinscrire', [RegisteredUserController::class, 'store']);
 Route::get('mon-compte', [AuthenticatedSessionController::class, 'create'])
 ->name('mon-compte');
 Route::post('mon-compte', [AuthenticatedSessionController::class, 'store']);
 // routes/web.php
-
+Route::get('/profil/{id}', 'App\Http\Controllers\Admin\UsersController@show')->name('profile.show');
 Route::get('/messages', 'App\Http\Controllers\MessageController@index')->name('messages')->middleware('auth');
 Route::post('/chat-store', [ChatsController::class, 'store'])->name('chatstore')->middleware('auth');
 Route::get('/messages/{userId}', [MessageController::class, 'show'])->name('messages.show');
+
+Route::post('/reply-like', 'App\Http\Controllers\Admin\LikesController@replyLike')->name('reply-like');
+Route::post('/conversation-like', 'App\Http\Controllers\Admin\LikesController@conversationLike')->name('conversation-like');
 
 
 Route::resource('/admin/menu', 'App\Http\Controllers\Admin\MenuController');
@@ -77,21 +82,21 @@ Route::get('/admin', [DashboardController::class, 'index'])->middleware('admin')
 
 Route::get('/sendmail', 'App\Http\Controllers\Admin\EmailController@index')->name('emails.test');
 Route::post('/sendmails', 'App\Http\Controllers\Admin\EmailController@sendEmail')->name('send.email');
-Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
 Route::get('/mon-compte', [AlternativeAuthController::class, 'showLoginForm'])->name('alternative.login');
 Route::post('/mon-compte', [AlternativeAuthController::class, 'login']);
 
 Route::resource('/admin/users', 'App\Http\Controllers\Admin\UsersController');
 
-Route::post('/update-notifs-check/{userId}/', 'App\Http\Controllers\UsersNotifsUpdateController@updateNotifsCheck')->name('update-notifs-check');
+Route::post('/update-notifs-check', 'App\Http\Controllers\UsersNotifsUpdateController@updateNotifsCheck')->name('update-notifs-check');
 
 Route::post('/singleNotifsReadUpdate', 'App\Http\Controllers\UsersNotifsUpdateController@singleNotifsReadUpdate')->name('singleNotifsReadUpdate');
 
 Route::resource('/admin/conversations', 'App\Http\Controllers\Admin\ConversationsController');
 
 Route::resource('/replies', 'App\Http\Controllers\Admin\RepliesController');
+
+Route::post('/user-reply', 'App\Http\Controllers\Admin\RepliesController@userReply')->name('user-reply');
 
 Route::put('/admin/users/{user}/status', 'App\Http\Controllers\Admin\UsersController@updateUserPassword')->name('users.update-password');
 
@@ -102,7 +107,6 @@ Route::post('/replies/delete', 'App\Http\Controllers\Admin\RepliesController@des
 Route::resource('/admin/pagesguard', 'App\Http\Controllers\Admin\PagesGuardController');
 Route::resource('/admin/usersguard', 'App\Http\Controllers\Admin\UsersGuardController');
 
-Route::get('/forum', 'App\Http\Controllers\Admin\ConversationsController@view')->name('frontend.forum');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -119,6 +123,7 @@ Route::resource('admin/posts', BlogController::class)->middleware('auth');
 Route::resource('admin/events', EventsController::class)->middleware('auth');
 
 Route::resource('admin/test', TestController::class)->middleware('auth');
+
 
 // Route::get('/admin/test/create', [TestController::class, 'create'])->middleware('auth');
 // Route::post('/admin/test/store', [TestController::class, 'store'])->middleware('auth');
@@ -155,6 +160,6 @@ Route::get('/admin/thematiques/destroy/{id}', [ThematiquesController::class, 'de
 Route::get('/elementor/medias', [ElementorController::class, 'medias']);
 Route::post('/elementor/upload', [ElementorController::class, 'upload'])->name('elementor.upload');
 
-Route::get('{url}', 'App\Http\Controllers\Admin\PagesController@view')->name('frontend.page');
+Route::get('{url}/{month?}', 'App\Http\Controllers\Admin\PagesController@view')->name('frontend.page');
 
 require __DIR__.'/auth.php';

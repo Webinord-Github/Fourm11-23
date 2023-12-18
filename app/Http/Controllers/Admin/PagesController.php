@@ -5,13 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\Notification;
+use App\Models\User;
+use App\Models\Conversation;
 use App\Http\Requests\PagesRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
+use App\Models\Event;
 use App\Models\Menu;
 use Auth;
+use Carbon\Carbon;
 
 class PagesController extends Controller
 {
@@ -41,12 +45,56 @@ class PagesController extends Controller
         ]);
     }
 
-    public function view($url)
-    {
+    public function view($url, $month = null)
+    {    
+    
         $page = Page::where('url', $url)->firstOrFail();
+        $users = User::all();
+        $conversations = Conversation::all();
+        $events = Event::all();
+        $currentDate = $month ? Carbon::parse($month) : Carbon::now();
+
+
+        $monthYear = $currentDate->format('F Y');
+        $prevMonth = $currentDate->copy()->subMonth()->format('Y-m');
+        $nextMonth = $currentDate->copy()->addMonth()->format('Y-m');
+
+        $startOfMonth = $currentDate->copy()->startOfMonth();
+        $endOfMonth = $currentDate->copy()->endOfMonth();
+
+        // Ensure the start of the calendar grid is a Sunday
+        $startCalendar = $startOfMonth->copy()->startOfWeek(Carbon::SUNDAY);
+        $endCalendar = $endOfMonth->copy()->endOfWeek(Carbon::SATURDAY);
+
+        $calendar = [];
+        $week = [];
+        $currentDay = $startCalendar->copy();
+
+        while ($currentDay <= $endCalendar) {
+            $week[] = [
+                'date' => $currentDay->format('Y-m-d'),
+                // Add other event-related data here if needed
+            ];
+
+            if ($currentDay->dayOfWeek === Carbon::SATURDAY) {
+                $calendar[] = $week;
+                $week = [];
+            }
+
+            $currentDay->addDay();
+        }
+
         return view('frontend.page')->with([
             'page' => $page,
+            'conversations' => $conversations,
+            'users' => $users,
+            'calendar' => $calendar,
+            'monthYear' => $monthYear,
+            'prevMonth' => $prevMonth,
+            'nextMonth' => $nextMonth,
+            'events' => $events,
         ]);
+
     }
 
     /**
@@ -57,10 +105,7 @@ class PagesController extends Controller
      */
     public function store(PagesRequest $request)
     {
-        $request->validate([
-            'url' => 'required|unique:pages,url',
-        ]);
-
+ 
         // Clean the 'url' input using Str::slug
         $cleanUrl = Str::slug($request->input('url'));
 
@@ -110,22 +155,15 @@ class PagesController extends Controller
      */
     public function update(PagesRequest $request, Page $page)
     {
-        $request->validate([
-            'url' => [
-                'required',
-                Rule::unique('pages')->ignore($page),
-            ],
-        ]);
+     
         $cleanUrl = Str::slug($request->input('url'));
 
         $page->url = $cleanUrl;
-
-        $page->fill($request->only([
-            'title', $cleanUrl, 'content', 'categorie'
-        ]));
-
+        $page->title = $request->input('title');
+        $page->content = $request->input('content');
+    
         $page->save();
-
+    
         return redirect()->route('pages.index')->with('status', 'The page was updated');
     }
 
@@ -160,5 +198,14 @@ class PagesController extends Controller
         return response()->json(['success' => true]);
     }
     
+    public function homepage()
+    {
+        $page = Page::where('title', 'Accueil')->firstOrFail();
+        $users = User::all();
+        return view('frontend.page')->with([
+            'page' => $page,
+            'users' => $users,
+        ]);
+    }
 
 }

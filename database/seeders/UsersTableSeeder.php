@@ -21,19 +21,19 @@ class UsersTableSeeder extends Seeder
         User::truncate();
 
         $admin = User::create([
-            'name' => 'Admin',
+            'firstname' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('password'),
             'notifs_check' => '2023-10-19 18:51:37',
-            'verified' => 1,
+            'image' => 'fourmis-bleu.jpg'
         ]);
 
         $member = User::create([
-            'name' => 'user',
+            'firstname' => 'user',
             'email' => 'user@user.com',
             'password' => bcrypt('password'),
             'notifs_check' => '2023-10-19 18:51:37',
-            'verified' => 1,
+            'image' => 'fourmis-bleu.jpg'
         ]);
 
         $admin->roles()->attach($adminRole);

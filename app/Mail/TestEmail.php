@@ -11,15 +11,18 @@ class TestEmail extends Mailable
     use Queueable, SerializesModels;
 
     public $emailBody;
+    public $customSubject; 
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($emailBody)
+    public function __construct($emailBody, $customSubject)
     {
         $this->emailBody = $emailBody;
+        $this->customSubject = $customSubject;
+
     }
 
     /**
@@ -32,10 +35,7 @@ class TestEmail extends Mailable
         return $this->view('emails.custom-mail')
                     ->with(['emailBody' => $this->emailBody])
                     ->text('emails.custom-plain')
-<<<<<<< HEAD
-                    ->subject('Nouvel inscription');
-=======
-                    ->subject('Sujet du courriel');
->>>>>>> mick-local
+                    ->subject($this->customSubject);
+
     }
 }

@@ -16,9 +16,9 @@ class UsersNotifsUpdateController extends Controller
         $this->middleware('auth');
     }
 
-    public function updateNotifsCheck(Request $request, $userId)
+    public function updateNotifsCheck(Request $request)
     {
-        $foundUser = User::find($userId);
+        $foundUser = User::find(Auth::id());
         $foundUser->update(['notifs_check' => now()]);
 
         return response()->json(['message' =>  $foundUser->notifs_check]);
@@ -26,7 +26,7 @@ class UsersNotifsUpdateController extends Controller
 
     public function singleNotifsReadUpdate(Request $request, NotificationRead $notificationRead)
     {
-        $user_id = $request->user_id;
+        $user_id = Auth::id();
         $notif_id = $request->notif_id;
     
         $existingRecord = $notificationRead::where('user_id', $user_id)->where('notif_id', $notif_id)->first();

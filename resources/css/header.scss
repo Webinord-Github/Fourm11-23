@@ -207,7 +207,7 @@
                 display: none;
                 position: absolute;
                 z-index: 200;
-                top: 60px;
+                top: 45px;
                 height: 90vh;
                 width: 250px;
                 background-color: black;
@@ -262,12 +262,13 @@
         background-repeat: no-repeat;
         transform: translateX(-400px);
         transition: 0.2s linear;
+        background: rgba(0,0,0,0.85);
 
         .sortable__list {
             color: #fff;
             display: flex;
             flex-direction: column;
-
+            padding: 10px 20px;
             .parent__item,
             .no__child__item {
                 padding: 10px 0px;

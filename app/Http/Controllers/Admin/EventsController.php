@@ -17,8 +17,11 @@ class EventsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.events.index', ['events' => Event::all()]);
+    {   
+        $events = Event::all();
+        return view('admin.events.index')->with([
+            'events' => $events,
+        ]);
     }
 
     public function create()
@@ -73,7 +76,7 @@ class EventsController extends Controller
         $event->image_id = $media->id;
         $event->save();
 
-        return redirect('/admin/events')->with('status', "$event->title was created.");
+        return redirect()->route('events.index')->with('status', "$event->title was created.");
     }
 
     public function edit(Event $event)

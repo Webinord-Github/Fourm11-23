@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             PagesTableSeeder::class,
             ThematiquesTableSeeder::class,
             automatic_emails_seeder::class,
+            AvatarsTableSeeder::class,
             MediasTableSeeder::class,
         ]);
     }

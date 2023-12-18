@@ -33,7 +33,7 @@
                         <td class="px-6 py-4">{{ $user->email }}</td>
                         <td class="px-6 py-4">{{ $user->roles->first()->name }}</td>
                         <td class="px-6 py-4">
-                            <input type="checkbox" name="checkbox_{{$user->id}}" id="toggle-{{$user->id}}" class="toggle-checkbox" {{ $user->verified == 1 ? 'checked' : '' }}>
+                            <input type="checkbox" name="checkbox_{{$user->id}}" id="toggle-{{$user->id}}" class="toggle-checkbox" {{ $user->verified == true ? 'checked' : '' }}>
                             <label for="toggle-{{$user->id}}" class="toggle-label"></label>
                             <input type="hidden" name="user_ids[]" value="{{$user->id}}">
                         </td>

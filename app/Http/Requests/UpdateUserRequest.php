@@ -25,7 +25,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users,email',
         ];
     }
 
@@ -33,6 +33,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'name.required' => 'Name',
             'email.required' => 'Email',
+            'email.unique' => 'Le courriel existe déjà',
         ];
     }
 }

@@ -23,4 +23,9 @@ class Conversation extends Model
         return $this->hasMany('App\Models\Reply');
     }
 
+    public function likes()
+    {
+        return $this->hasMany('App\Models\ConversationLike');
+    }
+
 }

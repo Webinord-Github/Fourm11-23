@@ -10,7 +10,7 @@ class BanUserController extends Controller
 {
     public function index()
     {
-        $user = User::where('ban', 1)->paginate();
+        $user = User::where('ban', true)->paginate();
         return view('admin.banusers.index')->with([
             'users' => $user
         ]);
@@ -24,8 +24,8 @@ class BanUserController extends Controller
         // Check if the user exists
         if ($user) {
             $user->update([
-                'ban' => 0,
-                'verified' => 0,
+                'ban' => false,
+                'verified' => false,
             ]);
      
             return response()->json(['message' => 'User banned successfully']);

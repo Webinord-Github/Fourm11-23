@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('ban')->default(0);
+        Schema::create('calendar_events', function (Blueprint $table) {
+            $table->id();
+            $table->date('date');
+            $table->string('event_name')->nullable();
+            $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('calendar_events');
     }
 };

@@ -67,9 +67,9 @@ class UsersController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'verified' => 0,
+            'verified' => true,
             'password' => Hash::make($request->password),
-            'image' => 0,
+            'image' => null,
         ]);
 
         $allUsers = User::where('id', '!=', $user->id)->get();
@@ -101,9 +101,10 @@ class UsersController extends Controller
      *
      * @param  \App\Models\User  $userÈ
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('frontend.auth-profile', compact('user'));
     }
 
     /**
@@ -139,7 +140,7 @@ class UsersController extends Controller
                 'email' => $request->email,
             ]);
             $user = User::findOrFail($user->id); // Fetch the user model
-            $user->verified = $request->has('checkbox') ? 1 : 0;
+            $user->verified = $request->has('checkbox') ? true : false;
             $user->save();
     
             $user->roles()->sync(1);
@@ -157,7 +158,7 @@ class UsersController extends Controller
             ]);
 
             $user = User::findOrFail($user->id); // Fetch the user model
-            $user->verified = $request->has('checkbox') ? 1 : 0;
+            $user->verified = $request->has('checkbox') ? true : false;
             $user->save();
             
             $user->roles()->sync($request->roles);
