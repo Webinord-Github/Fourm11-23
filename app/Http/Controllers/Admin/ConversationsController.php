@@ -56,7 +56,6 @@ class ConversationsController extends Controller
 
         $cutTitle = strlen($title) > 80 ? substr($title, 0, 80) . '...' : $title;
 
-        
 
         $notification = new Notification();
         $notification->sujet = 'Nouvelle conversation!' . $cutTitle;
