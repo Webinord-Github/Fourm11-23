@@ -54,40 +54,9 @@ class PagesController extends Controller
         $users = User::all();
         $events = Event::orderBy('start_at')->get();
         $conversations = Conversation::with('replies')->get();
-        $currentDate = $month ? Carbon::parse($month) : Carbon::now();
         $tools = Tool::where('status', 'publié')->where('published_at', '<', Carbon::tomorrow())->get();
         $thematiques = Thematique::all();
         $posts = Post::where('status', 'publié')->where('published_at', '<', Carbon::tomorrow())->get();
-
-
-        $monthYear = $currentDate->format('F Y');
-        $prevMonth = $currentDate->copy()->subMonth()->format('Y-m');
-        $nextMonth = $currentDate->copy()->addMonth()->format('Y-m');
-
-        $startOfMonth = $currentDate->copy()->startOfMonth();
-        $endOfMonth = $currentDate->copy()->endOfMonth();
-
-        // Ensure the start of the calendar grid is a Sunday
-        $startCalendar = $startOfMonth->copy()->startOfWeek(Carbon::SUNDAY);
-        $endCalendar = $endOfMonth->copy()->endOfWeek(Carbon::SATURDAY);
-
-        $calendar = [];
-        $week = [];
-        $currentDay = $startCalendar->copy();
-
-        while ($currentDay <= $endCalendar) {
-            $week[] = [
-                'date' => $currentDay->format('Y-m-d'),
-                // Add other event-related data here if needed
-            ];
-
-            if ($currentDay->dayOfWeek === Carbon::SATURDAY) {
-                $calendar[] = $week;
-                $week = [];
-            }
-
-            $currentDay->addDay();
-        }
 
         return view('frontend.page')->with([
             'page' => $page,
