@@ -96,6 +96,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\ConversationLike');
     }
 
+    public function signets()
+    {
+        return $this->hasMany(SignetTool::class);
+    }
+
     public function medias()
     {
         return $this->hasMany('App\Models\Media');

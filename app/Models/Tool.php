@@ -20,4 +20,8 @@ class Tool extends Model
     public function thematiques() {
         return $this->belongsToMany(Thematique::class);
     }
+
+    public function signets(){
+        return $this->hasMany(Signet::class);
+    }
 }

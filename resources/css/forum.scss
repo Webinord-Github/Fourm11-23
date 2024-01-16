@@ -220,8 +220,15 @@
                         .textarea__container {
                             width: 90%;
 
-                            .tox-tinymce {
-                                height: 200px!important;
+                            #autoExpand {
+                                outline: none;
+                                width: 100%;
+                                overflow: hidden;
+                                resize: none;
+                            }
+
+                            #autoExpand:focus {
+                                outline: none;
                             }
                         }
 

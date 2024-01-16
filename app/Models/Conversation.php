@@ -27,5 +27,8 @@ class Conversation extends Model
     {
         return $this->hasMany('App\Models\ConversationLike');
     }
-
+    
+    public function thematiques() {
+        return $this->belongsToMany(Thematique::class);
+    }
 }

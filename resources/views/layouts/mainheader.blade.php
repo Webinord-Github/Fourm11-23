@@ -22,6 +22,8 @@
     'resources/css/app.css',
     'resources/js/app.js',
     'resources/css/forum.css',
+    'resources/css/tools.css',
+    'resources/css/lexique.css',
     'resources/css/main.css',
     'resources/css/chatbot.css',
     'resources/css/register.css',
@@ -34,7 +36,6 @@
     ])
 </head>
 </head>
-
 <body>
     <header id="main__header">
         <style>
@@ -43,7 +44,6 @@
                 src: url('{{asset("storage/medias/FunSized.ttf")}}');
                 unicode-range: U+0020-007E, U+00A0-00FF, U+0100-017F, U+0180-024F, U+1E00-1EFF, U+2C60-2C7F;
                 /* Latin-1 Supplement, Latin Extended-A, Latin Extended-B, Latin Extended Additional, Latin Extended-C */
-
             }
 
             #main__header {
@@ -218,9 +218,6 @@
 
             </ul>
 
-
-        </div>
-        <div class="breadcrumb__container">
 
         </div>
         <script>

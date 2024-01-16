@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NewMediaRequest extends FormRequest
+class ToolsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,17 @@ class NewMediaRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|string|max:255',
+            'desc' => 'required|string',
+            'media' => 'required|file|mimes:pdf,docx',
+            'thematiques' => 'array|max:3',
+            'status' => 'required|string'
         ];
     }
 
     public function messages(){
         return [
-            'file.required' => "Media",
-            'file.file' => 'Not a file',
-            'file.max' => 'Max file upload is 8 Mb'
+            'thematiques.max' => "Seulement 3 thématiques peuvent être sélectionnées.",
         ];
     }
 }

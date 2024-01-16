@@ -14,6 +14,9 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use App\Models\Event;
 use App\Models\Menu;
+use App\Models\Tool;
+use App\Models\Post;
+use App\Models\Thematique;
 use Auth;
 use Carbon\Carbon;
 
@@ -53,6 +56,9 @@ class PagesController extends Controller
         $conversations = Conversation::all();
         $events = Event::all();
         $currentDate = $month ? Carbon::parse($month) : Carbon::now();
+        $tools = Tool::where('status', 'publié')->where('published_at', '<', Carbon::tomorrow())->get();
+        $thematiques = Thematique::all();
+        $posts = Post::where('status', 'publié')->where('published_at', '<', Carbon::tomorrow())->get();
 
 
         $monthYear = $currentDate->format('F Y');
@@ -93,6 +99,9 @@ class PagesController extends Controller
             'prevMonth' => $prevMonth,
             'nextMonth' => $nextMonth,
             'events' => $events,
+            'thematiques' => $thematiques,
+            'tools' => $tools,
+            'posts' => $posts
         ]);
 
     }

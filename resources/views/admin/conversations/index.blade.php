@@ -11,13 +11,14 @@
             </div>
         @endif
             <a href="{{ route('conversations.create') }}" id="newpage-cta" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-               Add New
+               Ajouter un sujet
             </a>
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
-                        <th scope="col" class="px-6 py-3">Title</th>
-                        <th scope="col" class="px-6 py-3">Body</th>
+                        <th scope="col" class="px-6 py-3">Titre</th>
+                        <th scope="col" class="px-6 py-3">Contenu</th>
+                        <th scope="col" class="px-6 py-3">Thématiques</th>
                         <th scope="col" class="px-6 py-3"></th>
                     </tr>
                 </thead>
@@ -28,6 +29,14 @@
                             <a href="{{ route('conversations.edit', ['conversation' => $conversation->id]) }}" class="underline">{{ $conversation->title }}</a>
                         </td>
                         <td class="px-6 py-4">{{ $conversation->body }}</td>
+                        @if(count($conversation->thematiques()->get()->pluck('name')->toArray()) > 3)
+                        <?php
+                            $array_cut = array_slice($conversation->thematiques()->get()->pluck('name')->toArray(), 0, 3)
+                        ?>
+                        <td class="px-6 py-4">{{ implode(', ', $array_cut) }}...</td>
+                        @else
+                        <td class="px-6 py-4">{{ implode(', ', $conversation->thematiques()->get()->pluck('name')->toArray()) }}</td>
+                        @endif
                         <td class="px-6 py-4">
                             <div class="relative inline-block text-left dropdownHover">
                                 <button type="button" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 admin-dropdown dropdownHover" id="menu-button" aria-expanded="true" aria-haspopup="true">

@@ -9,6 +9,16 @@
 
 </div>
 
+@if($page->url == 'boite-a-outils')
+@include('frontend.tools')
+@include('frontend.partials.scripts')
+@endif
+
+@if($page->url == 'lexique')
+@include('frontend.lexique')
+@include('frontend.partials.scripts')
+@endif
+
 @if($page->url == 'forum')
 @include('frontend.forum')
 @include('frontend.partials.scripts')

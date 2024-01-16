@@ -74,15 +74,6 @@ class MediasTableSeeder extends Seeder
         Media::create([
             'user_id'=>1,
             'path'=>'/storage/avatars/',
-            'name'=>'fourmis-turquoise.jpg',
-            'original_name' => 'fourmis-turquoise.jpg',
-            'size'=>8,
-            'provider'=>'jpg',
-        ]);
-
-        Media::create([
-            'user_id'=>1,
-            'path'=>'/storage/avatars/',
             'name'=>'fourmis-bleuefoncee.jpg',
             'original_name' => 'fourmis-bleuefoncee.jpg',
             'size'=>9,

@@ -26,6 +26,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\AutomaticEmailsController;
 use App\Http\Controllers\Admin\ElementorController;
+use App\Http\Controllers\Admin\SignetsController;
 
 
 
@@ -68,6 +69,8 @@ Route::get('/messages/{userId}', [MessageController::class, 'show'])->name('mess
 Route::post('/reply-like', 'App\Http\Controllers\Admin\LikesController@replyLike')->name('reply-like');
 Route::post('/conversation-like', 'App\Http\Controllers\Admin\LikesController@conversationLike')->name('conversation-like');
 
+Route::post('/signet-tool', [SignetsController::class, 'signets'])->name('signet-tool');
+Route::get('/get/tools', [SignetsController::class, 'tools']);
 
 Route::resource('/admin/menu', 'App\Http\Controllers\Admin\MenuController');
 
@@ -123,13 +126,6 @@ Route::resource('admin/posts', BlogController::class)->middleware('auth');
 Route::resource('admin/events', EventsController::class)->middleware('auth');
 
 Route::resource('admin/test', TestController::class)->middleware('auth');
-
-
-// Route::get('/admin/test/create', [TestController::class, 'create'])->middleware('auth');
-// Route::post('/admin/test/store', [TestController::class, 'store'])->middleware('auth');
-// Route::get('/admin/test/update/{id}', [TestController::class, 'update'])->middleware('auth');
-// Route::post('/admin/test/update/', [TestController::class, 'storeUpdate'])->middleware('auth');
-// Route::get('/admin/test/destroy/{id}', [TestController::class, 'destroy'])->middleware('auth');
 
 Route::get('/admin/tools', [ToolsController::class, 'tools'])->name('tools')->middleware('auth');
 Route::get('/admin/tools/create', [ToolsController::class, 'create'])->middleware('auth');

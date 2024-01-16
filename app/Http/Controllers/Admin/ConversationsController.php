@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Conversation;
 use App\Models\Page;
 use App\Models\Reply;
+use App\Models\Thematique;
 use Illuminate\Validation\Rule;
 use Auth;
 
@@ -37,6 +38,7 @@ class ConversationsController extends Controller
     {
         return view('admin.conversations.create')->with([
             'model' => new Conversation(),
+            'thematiques' => Thematique::all()
         ]);
     }
 
@@ -47,6 +49,7 @@ class ConversationsController extends Controller
         return view('frontend.forum')->with([
             'conversations' => $conversations,
             'page' => $page,
+            // 'thematiques' => Thematique::all()
         ]);
     }
 
@@ -58,10 +61,21 @@ class ConversationsController extends Controller
      */
     public function store(ConversationsRequest $request)
     {
-        Auth::user()->conversations()->save(new Conversation($request->only([
-            'title', 'body'])));
+        $request->validate([
+            'thematiques' => ['required', 'array', 'max:3']
+        ]);
 
-            return redirect()->route('conversations.index')->with('status', 'Opération réussie');
+        $thematiques_selected = [];
+
+        foreach ($request->thematiques as $thematique) {
+            array_push($thematiques_selected, $thematique);
+        }
+
+        Auth::user()->conversations()->save(new Conversation($request->only([
+            'title', 'body'
+        ])))->thematiques()->sync($thematiques_selected);
+
+        return redirect()->route('conversations.index')->with('status', 'Opération réussie');
     }
 
     /**

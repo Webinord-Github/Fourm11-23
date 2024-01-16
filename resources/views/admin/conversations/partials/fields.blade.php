@@ -19,18 +19,27 @@
 @endif
     <div class="w-full mb-2">
         <div class="flex justify-center flex-col">
-            <label for="title">Title</label>
+            <label for="title">Titre</label>
             <input type='text'class="w-full border rounded py-2 text-gray-700 focus:outline-none items-center" name="title" id="title" value="{{$model->title}}">
         </div>
     </div>
     <div class="w-full mb-2 justify-center">
         <div class="flex justify-center flex-col">   
-            <label for="body">Body</label>
+            <label for="body">Contenu</label>
             <textarea class="editor w-full border rounded py-2 text-gray-700 focus:outline-none" name="body" id="editor" cols="30" rows="10" value="{{$model->body}}">{{$model->body}}</textarea>
         </div>
     </div>
-    
+    <div class="w-full mb-2">
+        <x-label :value="__('Thématiques')"></x-label>
+        @foreach ($thematiques as $thematique)
+            <div class="flex items-center">
+                <input type="checkbox" id="{{ $thematique->name }}" name="thematiques[]" value="{{ $thematique->id }}">
+                <label class="ml-1" for="{{ $thematique->name }}">{{ ucfirst($thematique->name) }}</label>
+            </div>
+        @endforeach
+    </div>
     <div class="w-full flex justify-start">
-        <input type="submit" class="w-60 mt-6 py-2 rounded bg-blue-500 hover:bg-blue-700 text-gray-100 focus:outline-none font-bold cursor-pointer" value="Publier">
+        <a href="/admin/conversations">Retour</a>
+        <input type="submit" class="w-60 py-2 rounded bg-blue-500 hover:bg-blue-700 text-gray-100 focus:outline-none font-bold cursor-pointer" value="Publier">
     </div>
 </div>

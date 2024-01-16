@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ToolsRequest;
 use App\Models\Tool;
 use App\Models\Media;
 use App\Models\Thematique;
@@ -22,16 +23,16 @@ class ToolsController extends Controller
         return view('admin.tools.create', ['thematiques' => Thematique::all()]);
     }
 
-    public function store(Request $request)
+    public function store(ToolsRequest $request)
     {
 
-        $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'desc' => ['required', 'string'],
-            'doc' => ['required', 'file', 'mimes:pdf,docx'],
-            'thematiques' => ['required', 'array'],
-            'status' => ['required', 'string']
-        ]);
+        // $request->validate([
+        //     'title' => ['required', 'string', 'max:255'],
+        //     'desc' => ['required', 'string'],
+        //     'media' => ['file', 'mimes:pdf,docx'],
+        //     'thematiques' => ['required', 'array', 'max:3'],
+        //     'status' => ['required', 'string']
+        // ]);
 
         $tool = new Tool();
 
@@ -47,10 +48,10 @@ class ToolsController extends Controller
         $tool->status = $request->status;
         $tool->published_at = $request->published_at;
 
-        $file_original_name = $request->doc->getClientOriginalName();
+        $file_original_name = $request->media->getClientOriginalName();
         $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
         $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
-        $file_size = $request->doc->getSize() / 1024;
+        $file_size = $request->media->getSize() / 1024;
         $existing_file_url = Media::where('name', '=', $file_original_name)->first();
         $count_file = Media::where('original_name', '=', $file_original_name)->count();
 
@@ -68,9 +69,9 @@ class ToolsController extends Controller
         $media->size = $file_size;
         $media->provider = $file_provider;
         $media->save();
-        Storage::putFileAs('public/medias',$request->doc, $file_name);
+        Storage::putFileAs('public/medias',$request->media, $file_name);
 
-        $tool->doc_id = $media->id;
+        $tool->media_id = $media->id;
         $tool->save();
         $tool->thematiques()->sync($thematiques_selected);
 
@@ -84,15 +85,15 @@ class ToolsController extends Controller
         return view('admin.tools.edit', ['tool' => $tool, 'thematiques' => Thematique::all(), 'thematiques_selected' => $thematiques_selected]);
     }
 
-    public function storeUpdate(Request $request)
+    public function storeUpdate(ToolsRequest $request)
     {
-        $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'desc' => ['required', 'string'],
-            'doc' => ['file', 'mimes:pdf,docx'],
-            'thematiques' => ['required', 'array'],
-            'status' => ['required', 'string']
-        ]);
+        // $request->validate([
+        //     'title' => ['required', 'string', 'max:255'],
+        //     'desc' => ['required', 'string'],
+        //     'doc' => ['file', 'mimes:pdf,docx'],
+        //     'thematiques' => ['required', 'array', 'max:3'],
+        //     'status' => ['required', 'string']
+        // ]);
 
         $tool = Tool::findOrFail($request->id);
 
@@ -108,10 +109,10 @@ class ToolsController extends Controller
         $tool->published_at = $request->published_at;
 
         if($request->doc) {
-            $file_original_name = $request->doc->getClientOriginalName();
+            $file_original_name = $request->media->getClientOriginalName();
             $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
             $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
-            $file_size = $request->doc->getSize() / 1024;
+            $file_size = $request->media->getSize() / 1024;
             $existing_file_url = Media::where('name', '=', $file_original_name)->first();
             $count_file = Media::where('original_name', '=', $file_original_name)->count();
     
@@ -129,7 +130,7 @@ class ToolsController extends Controller
             $media->size = $file_size;
             $media->provider = $file_provider;
             $media->save();
-            Storage::putFileAs('public/medias',$request->doc, $file_name);
+            Storage::putFileAs('public/medias',$request->media, $file_name);
     
             $tool->doc_id = $media->id;
         }

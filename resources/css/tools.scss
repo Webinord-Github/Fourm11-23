@@ -1,0 +1,272 @@
+$jaune: #edb200;
+
+.tools-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .tools-content {
+        border-radius: 10px;
+        margin: 3% 0;
+        width: 90%;
+
+        .top-div {
+            align-items: center;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+
+            .white-buble {
+                background-color: #fff;
+                border-radius: 50px;
+                display: flex;
+                height: 35px;
+                margin: 0 1%;
+                width: 35px;
+
+                .fa-screwdriver-wrench {
+                    height: 30px;
+                    width: 30px;
+                }
+            }
+            .arrow {
+                font-size: 60px;
+                margin-right: 50px;
+            }
+
+            p {
+                color: $jaune;
+                font-size: 60px;
+                position: relative;
+                width: 100%;
+
+                span {
+                    color: #edb20047;
+                    font-size: 80px;
+                    left: -30px;
+                    position: absolute;
+                    top: -35px;
+                }
+            }
+        }
+
+        .content {
+            align-items: normal;
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+
+            .thematiques-half {
+                align-items: center;
+                background-image: url('http://127.0.0.1:8000/storage/medias/slide-menu-background.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-clip: border-box;
+                border-radius: 7px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-left: 15px;
+                width: 20%;
+
+                .searchbar-container {
+                    display: flex;
+                    justify-content: left;
+                    margin: 4% 0;
+                    position: relative;
+                    width: 100%;
+
+                    input {
+                        background-color: #c5c5c59c;
+                        border: 0;
+                        border-radius: 20px;
+                        width: 90%;
+                    }
+
+                    ::placeholder {
+                        color: #5c5c5c;
+                        opacity: 1; /* Firefox */
+                      }
+
+                    i {
+                        color: #fff;
+                        cursor: pointer;
+                        font-size: 25px;
+                        right: 15%;
+                        position: absolute;
+                        top: 20%;
+
+                    }
+                }
+
+                .thematiques {
+                    display: flex;
+                    justify-content: flex-start;
+                    flex-direction: column;
+                    width: 100%;
+
+                    p {
+                        color: #999;
+                        cursor: pointer;
+                        width: 190px;
+                    }
+
+                    p:hover {
+                        color: #fff;
+                        font-weight: bold;
+                    }
+
+                    .actif {
+                        color: #fff;
+                        font-weight: bold;
+                    }
+                }
+
+                .btn-container {
+                    align-items: center;
+                    display: flex;
+                    justify-content: flex-start;
+                    margin: 4% 0;
+                    width: 100%;
+
+                    button {
+                        background-color: $jaune;
+                        border: 1px solid $jaune;
+                        text-decoration: none;
+                        padding: 5px 30px;
+                        font-weight: bold;
+                        border-radius: 20px;
+                        width: 190px;
+                    }
+
+                    button:hover {
+                        background-color: transparent;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .tools-half {
+                display: flex;
+                flex-wrap: wrap;
+                padding: 2%;
+                width: 80%;
+
+                .tool:nth-child(1) {
+                    border-right: 1px solid #dedede;
+                    border-bottom: 1px solid #dedede;
+                }
+
+                .tool:nth-child(odd) {
+                    border-right: 1px solid #dedede;
+                }
+
+                .tool {
+                    border-bottom: 1px solid #dedede;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    min-height: 350px;
+                    padding: 2%;
+                    width: 50%;
+
+                    .title {
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+
+                        h3 {
+                            font-family: 'edo';
+                            font-size: 36px;
+                            font-weight: bold;
+                        }
+
+                        .black-buble {
+                            align-items: center;
+                            background-color: #000;
+                            border-radius: 25px;
+                            border: 1px solid #000;
+                            cursor: pointer;
+                            display: flex;
+                            height: 35px;
+                            justify-content: center;
+                            width: 35px;
+
+                            i {
+                                color: #fff;
+                            }
+                        }
+
+                        .active {
+                            i {
+                                color: $jaune;
+                            }
+                        }
+
+                        .black-buble:hover {
+                            i {
+                                color: $jaune;
+                            }
+                        }
+                    }
+
+                    .desc {
+                        margin: 4% 0;
+                    }
+
+                    .tags {
+                        align-items: baseline;
+                        display: flex;
+                        justify-content: baseline;
+                        margin-bottom: 4%;
+
+                        .tag:nth-child(odd) {
+                            background-color: #000;
+                            border: 1px solid #000;
+                        }
+
+                        .tag:nth-child(even) {
+                            background-color: $jaune;
+                            border: 1px solid $jaune;
+                        }
+
+                        .tag {
+                            cursor: pointer;
+                            margin-right: 5px;
+                            color: #fff;
+                            text-decoration: none;
+                            padding: 5px 20px;
+                            font-weight: bold;
+                            border-radius: 20px;
+                        }
+
+                        .tag:hover {
+                            background-color: #fff;
+                            color: #000;
+                        }
+                    }
+
+                    .btn-container {
+
+                        a {
+                            background-color: $jaune;
+                            border: 1px solid $jaune;
+                            text-decoration: none;
+                            padding: 5px 30px;
+                            font-weight: bold;
+                            border-radius: 20px;
+                        }
+    
+                        a:hover {
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+} 

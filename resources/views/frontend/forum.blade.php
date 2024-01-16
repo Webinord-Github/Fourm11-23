@@ -1,10 +1,10 @@
 <div class="main__container">
+    @if(count($conversations) == 0)
+    <p>Aucune conversations à afficher présentement!</p>
+    @endif
+    @if(count($conversations) > 0)
+    @foreach($conversations as $conversation)
     <div class="forum__container">
-        @if(count($conversations) == 0)
-        <p>Aucune conversations à afficher présentement!</p>
-        @endif
-        @if(count($conversations) > 0)
-        @foreach($conversations as $conversation)
 
         <div class="forum__content">
             <div class="conv__container" data-post-id="{{$conversation->id}}">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="conv__content">
                     <div class="conv__author__info">
-                        <p id="author">{{$conversation->user->name}}</p>
+                        <p id="author">{{$conversation->user->firstname}}</p>
                         <p id="timestamp">{{$conversation->created_at}}</p>
                     </div>
                     <div class="conv__body">
@@ -25,9 +25,9 @@
                         <p>{{$truncatedText}}</p>
                     </div>
                     <div class="tags__container">
-                        <a class="tags" href="">Adolescent.es</a>
-                        <a class="tags" href="">Sexisme</a>
-                        <a class="tags" href="">École secondaire</a>
+                        @foreach($conversation->thematiques()->get()->pluck('name')->toArray() as $thematique)
+                        <a class="tags" href="">{{ $thematique }}</a>
+                        @endforeach
                     </div>
                     <div class="actions__container">
                         <div class="pivot__actions">
@@ -66,7 +66,7 @@
                         <form>
                             <div class="textarea__container">
                                 <input type="hidden" name="conversation__id" id="conversation__id" data-id="{{$conversation->id}}">
-                                <textarea class="editor w-full border rounded py-2 text-gray-700 focus:outline-none" name="content" id="editor" cols="10" rows="1" placeholder="Écrire un commentaire..."></textarea>
+                                <textarea id="autoExpand" rows="1" placeholder="Écrire un commentaire..."></textarea>
                             </div>
                             <div class="submit__container">
                                 <i class="fa fa-paper-plane reply__submit"></i>
@@ -85,7 +85,7 @@
                             </div>
                             <div class="single__reply__content">
                                 <div class="user__reply__info">
-                                    <p id="user__reply__name">{{$reply->user->name}}</p>
+                                    <p id="user__reply__name">{{$reply->user->firstname}}</p>
                                     <p id="timestamp">{{$reply->created_at}}</p>
                                 </div>
                                 <div class="user__reply__body">
@@ -132,7 +132,7 @@
                                         <div class="textarea__container">
                                             <input type="hidden" name="conversation__id" id="conversation__id" data-id="{{$conversation->id}}">
                                             <input type="hidden" name="parent__id" id="parent__id" data-parent-id="{{$reply->id}}">
-                                            <textarea class="editor w-full border rounded py-2 text-gray-700 focus:outline-none" name="content" id="editor" cols="10" rows="1" placeholder="Écrire un commentaire..."></textarea>
+                                            <textarea id="autoExpand" rows="1" placeholder="Écrire un commentaire..."></textarea>
                                         </div>
                                         <div class="submit__container">
                                             <i class="fa fa-paper-plane user__reply__submit"></i>
@@ -152,7 +152,7 @@
                                 </div>
                                 <div class="single__reply__content">
                                     <div class="user__reply__info">
-                                        <p id="user__reply__name">{{$reply->user->name}}</p>
+                                        <p id="user__reply__name">{{$reply->user->firstname}}</p>
                                         <p id="timestamp">{{$reply->created_at}}</p>
                                     </div>
                                     <div class="user__reply__body">
@@ -197,8 +197,8 @@
                 </div>
             </div>
         </div>
-        @endforeach
     </div>
+    @endforeach
 </div>
 <script>
     // Function to auto expand textarea height
@@ -218,13 +218,12 @@
             let xhttp = new XMLHttpRequest()
             let form = event.target.closest("form");
             let conversationId = form.querySelector("#conversation__id").getAttribute('data-id');
-            let editor = form.querySelector("textarea").id
-            let body = tinymce.get(editor).getContent();
+            let body = form.querySelector("#autoExpand").value
             let Params = 'conversation_id=' + encodeURIComponent(conversationId) + '&body=' + encodeURIComponent(body)
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4) {
                     if (this.status === 200) {
-                        form.querySelector("#editor").value = ""
+                        form.querySelector("#autoExpand").value = ""
                         let commentsElement = event.target.closest(".conv__content").querySelector("#conversation__comments")
                         let currentNumber = parseInt(commentsElement.innerHTML);
                         let newNumber = currentNumber + 1;
@@ -280,7 +279,7 @@
                                     
                                             <input type="hidden" name="parent__id" id="parent__id" data-parent-id="${responseData.id}">
                                             
-                                            <textarea class="editor w-full border rounded py-2 text-gray-700 focus:outline-none" name="content" id="editor" cols="10" rows="5" placeholder="Écrire un commentaire..."></textarea>
+                                            <textarea id="autoExpand" rows="1" placeholder="Écrire un commentaire..."></textarea>
                                         </div>
                                         <div class="submit__container">
                                         <i class="fa fa-paper-plane user__reply__submit"></i>
@@ -319,13 +318,13 @@
             let xhttp = new XMLHttpRequest()
             let conversationId = form.querySelector("#conversation__id").getAttribute('data-id');
             let parentId = form.querySelector("#parent__id").getAttribute('data-parent-id')
-            let editor = form.querySelector("textarea").id
-            let body = tinymce.get(editor).getContent();
+            let body = form.querySelector("#autoExpand").value
+            console.log(form.query)
             let Params = 'conversation_id=' + encodeURIComponent(conversationId) + '&body=' + encodeURIComponent(body) + '&parent_id=' + encodeURIComponent(parentId)
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4) {
                     if (this.status === 200) {
-                        form.querySelector("#editor").value = ""
+                        form.querySelector("#autoExpand").value
                         let commentsElement = e.target.closest(".conv__content").querySelector("#conversation__comments")
                         let replyCommentsElement = e.target.closest(".single__reply__container").querySelector("#reply__comments")
                         let ConversationCurrentNumber = parseInt(commentsElement.innerHTML);
