@@ -1,6 +1,4 @@
 
-
-
 @csrf
 <div class="px-12 pb-8 flex flex-col items-center w-10/12">
 @if (!$errors->isEmpty())

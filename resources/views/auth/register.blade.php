@@ -31,12 +31,12 @@
                 </div>
                 <div class="column">
                     <div class="img__container">
-                        <img id="user__avatar" src="{{ asset('storage/avatar/fourmis-bleu.jpg') }}" alt="">
+                        <img id="user__avatar" src="{{ asset('storage/avatars/fourmis-bleue.jpg') }}" alt="">
                         <button id="avatar__selection">Choisir un avatar</button>
                         <div class="drop__zone">
                             <label for="avatar" id="file__selection">ou <span>téléverser une image</span></label>
                             <input type='file' name="file" id="avatar" hidden>
-                            <input type="hidden" name="avatar_url" id="avatar__url" value="fourmis-bleu.jpg">
+                            <input type="hidden" name="avatar_url" id="avatar__url" value="/storage/avatars/fourmis-bleue.jpg">
                         </div>
 
                     </div>
@@ -231,7 +231,7 @@
                 <div class="img__container">
                     @foreach($avatars as $avatar)
                     <div class="img__content">
-                        <img class="avatar__img" src="{{ asset('storage/medias/' . $avatar->url) }}" data-src="{{$avatar->url}}" alt="">
+                        <img class="avatar__img" src="{{ asset($avatar->path . $avatar->name) }}" data-src="{{$avatar->name}}" alt="">
                     </div>
                     @endforeach
 
@@ -349,7 +349,8 @@
         avatarConfirm.addEventListener("click", s => {
             if (selected) {
                 avatarInput.value = dataSrc;
-                userAvatar.src = `{{asset('storage/medias/${dataSrc}')}}`;
+                
+                userAvatar.src = `{{asset('/storage/avatars/' . '${dataSrc}')}}`;
                 avatarPopup.classList.remove("flex")
             } else {
                 avError.style.display = "block"
@@ -370,7 +371,6 @@
                 e.target.style.transform = "scale(1.3)"
                 e.target.style.transition = "transform 0.2s linear"
                 dataSrc = e.target.getAttribute('data-src');
-
             })
         }
     }

@@ -65,31 +65,14 @@ class UsersController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'firstname' => $request->name,
             'email' => $request->email,
             'verified' => true,
             'password' => Hash::make($request->password),
             'image' => null,
         ]);
 
-        $allUsers = User::where('id', '!=', $user->id)->get();
-        foreach ($allUsers as $existingUser) {
-            $randomChatId = mt_rand(100, 999999999999999999); // Generate a random number between 3 and 18 digits
-    
-            // Check if the random chat id already exists in the database
-            $existingChat = Chat::where('chat_id', $randomChatId)->exists();
-            while ($existingChat) {
-                // If the generated random chat id already exists, generate a new one until it is unique
-                $randomChatId = mt_rand(100, 999999999999999999);
-                $existingChat = Chat::where('chat_id', $randomChatId)->exists();
-            }
-    
-            Chat::create([
-                'user1_id' => $user->id,
-                'user2_id' => $existingUser->id,
-                'chat_id' => $randomChatId,
-            ]);
-        }
+
 
         $user->roles()->sync($request->roles);
 

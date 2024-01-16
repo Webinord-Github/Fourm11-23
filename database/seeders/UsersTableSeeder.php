@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => bcrypt('password'),
             'notifs_check' => '2023-10-19 18:51:37',
-            'image' => 'fourmis-bleu.jpg'
+            'image' => '/storage/avatars/fourmis-bleue.jpg'
         ]);
 
         $member = User::create([
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'user@user.com',
             'password' => bcrypt('password'),
             'notifs_check' => '2023-10-19 18:51:37',
-            'image' => 'fourmis-bleu.jpg'
+            'image' => '/storage/avatars/fourmis-bleue.jpg'
         ]);
 
         $admin->roles()->attach($adminRole);

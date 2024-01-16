@@ -66,6 +66,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function conversationBookmars()
+    {
+        return $this->hasMany('App\Models\ConversationBookmars');
+    }
+
     public function pages()
     {
         return $this->hasMany('App\Models\Page');
@@ -119,6 +124,16 @@ class User extends Authenticatable
     public function messages()
     {
         return $this->belongsToMany('App\Models\Message');
+    }
+
+    public function reportedBy()
+    {
+        return $this->hasMany('App\Models\Signalement', 'reported_user_user_id');
+    }
+
+    public function reports()
+    {
+        return $this->hasMany('App\Models\Signalement', 'reported_author_user_id');
     }
 
     public function isAdmin()

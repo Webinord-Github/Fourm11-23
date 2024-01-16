@@ -54,12 +54,6 @@
                 </div>
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
-                        <x-label for="nb_places" :value="__('Nombre de places')" />
-                        <input type="number" id="nb_places" name="nb_places" min="1">
-                    </div>
-                </div>
-                <div class="w-full mb-2">
-                    <div class="flex justify-center flex-col">
                         <x-label for="start_at" :value="__('Date du début')"></x-label>
                         <x-input id="start_at" class="block mt-1 w-full form-control" type="datetime-local" name="start_at" :value="old('start_at')" required autofocus />
                     </div>

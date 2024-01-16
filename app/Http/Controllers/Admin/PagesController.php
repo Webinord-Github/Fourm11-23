@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\Notification;
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Tool;
 use App\Models\Conversation;
 use App\Http\Requests\PagesRequest;
 use Illuminate\Http\Request;
@@ -14,8 +16,6 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use App\Models\Event;
 use App\Models\Menu;
-use App\Models\Tool;
-use App\Models\Post;
 use App\Models\Thematique;
 use Auth;
 use Carbon\Carbon;
@@ -48,13 +48,12 @@ class PagesController extends Controller
         ]);
     }
 
-    public function view($url, $month = null)
-    {    
-    
+    public function view($url)
+    {
         $page = Page::where('url', $url)->firstOrFail();
         $users = User::all();
-        $conversations = Conversation::all();
-        $events = Event::all();
+        $events = Event::orderBy('start_at')->get();
+        $conversations = Conversation::with('replies')->get();
         $currentDate = $month ? Carbon::parse($month) : Carbon::now();
         $tools = Tool::where('status', 'publié')->where('published_at', '<', Carbon::tomorrow())->get();
         $thematiques = Thematique::all();
@@ -94,16 +93,11 @@ class PagesController extends Controller
             'page' => $page,
             'conversations' => $conversations,
             'users' => $users,
-            'calendar' => $calendar,
-            'monthYear' => $monthYear,
-            'prevMonth' => $prevMonth,
-            'nextMonth' => $nextMonth,
             'events' => $events,
             'thematiques' => $thematiques,
             'tools' => $tools,
             'posts' => $posts
         ]);
-
     }
 
     /**
@@ -114,7 +108,7 @@ class PagesController extends Controller
      */
     public function store(PagesRequest $request)
     {
- 
+
         // Clean the 'url' input using Str::slug
         $cleanUrl = Str::slug($request->input('url'));
 
@@ -164,15 +158,15 @@ class PagesController extends Controller
      */
     public function update(PagesRequest $request, Page $page)
     {
-     
+
         $cleanUrl = Str::slug($request->input('url'));
 
         $page->url = $cleanUrl;
         $page->title = $request->input('title');
         $page->content = $request->input('content');
-    
+
         $page->save();
-    
+
         return redirect()->route('pages.index')->with('status', 'The page was updated');
     }
 
@@ -191,30 +185,35 @@ class PagesController extends Controller
     public function updateMenuOrder(Request $request)
     {
         $orderData = json_decode($request->input('order'), true);
-     
-        
+
+
         foreach ($orderData as $index => $orderItem) {
             $pageId = $orderItem['pageId'];
             $parentId = $orderItem['parentId'];
-            
+
             // Assuming 'Page' is the model for your pages table
             Page::where('id', $pageId)->update([
                 'order' => $index + 1,
                 'parent_id' => $parentId
             ]);
         }
-    
+
         return response()->json(['success' => true]);
     }
-    
+
     public function homepage()
     {
-        $page = Page::where('title', 'Accueil')->firstOrFail();
+        $homepage = Page::where('title', 'Accueil')->firstOrFail();
         $users = User::all();
+        $posts = Post::take(2)->get();
+        $tools = Tool::take(2)->get();
+        $homepageForums = Conversation::take(2)->get();
         return view('frontend.page')->with([
-            'page' => $page,
+            'page' => $homepage,
             'users' => $users,
+            'homepageForums' => $homepageForums,
+            'posts' => $posts,
+            'tools' => $tools,
         ]);
     }
-
 }

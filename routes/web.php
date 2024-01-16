@@ -101,6 +101,8 @@ Route::resource('/replies', 'App\Http\Controllers\Admin\RepliesController');
 
 Route::post('/user-reply', 'App\Http\Controllers\Admin\RepliesController@userReply')->name('user-reply');
 
+Route::post('/reply-report', 'App\Http\Controllers\Admin\RepliesController@replyReport')->name('reply-report');
+
 Route::put('/admin/users/{user}/status', 'App\Http\Controllers\Admin\UsersController@updateUserPassword')->name('users.update-password');
 
 Route::resource('/admin/medias', 'App\Http\Controllers\Admin\MediasController');
@@ -156,6 +158,6 @@ Route::get('/admin/thematiques/destroy/{id}', [ThematiquesController::class, 'de
 Route::get('/elementor/medias', [ElementorController::class, 'medias']);
 Route::post('/elementor/upload', [ElementorController::class, 'upload'])->name('elementor.upload');
 
-Route::get('{url}/{month?}', 'App\Http\Controllers\Admin\PagesController@view')->name('frontend.page');
+Route::get('/{url}', 'App\Http\Controllers\Admin\PagesController@view')->name('frontend.page');
 
 require __DIR__.'/auth.php';

@@ -32,7 +32,10 @@
     'resources/css/header.css',
     'resources/css/member-card.css',
     'resources/css/invalid-reset-password.css',
-    'resources/css/calendar.css'
+    'resources/css/calendar.css',
+    'resources/css/home.css',
+    'resources/css/fourmiliere.css',
+    'resources/css/events.css',
     ])
 </head>
 </head>
@@ -81,6 +84,7 @@
                     @php
                     $readNotification = $notificationRead->where('notif_id', $notification->id)->where('user_id', auth()->user()->id)->isNotEmpty();
                     @endphp
+                    @if($notification->type == 'Conversation')
                     <a class="user__notif" href="{{$notification->notif_link}}" data-notifId="{{$notification->id}}">
                         <div class="notification">
                             <li class="notif__subject">
@@ -93,6 +97,19 @@
                             </div>
                         </div>
                     </a>
+                    @endif
+                    @if($notification->type == "Reply")
+                    @php
+                    $mostRecentReply = App\Models\Reply::where('conversation_id', $notification->conversation_id)
+                    ->orderBy('created_at', 'desc')
+                    ->first();
+                    @endphp
+
+                    @if ($mostRecentReply && $mostRecentReply->user_id == auth()->user()->id)
+                    <p style="color:#fff">{{ $mostRecentReply->id }}</p>
+                    @endif
+
+                    @endif
                     @endforeach
                 </div>
             </div>
@@ -102,9 +119,7 @@
                 let notificationsCenter = document.querySelector(".notifications__center")
                 let notifsInt = document.querySelector(".notif__int")
                 let userNotifs = document.querySelectorAll(".user__notif")
-
                 notifsBell.addEventListener("click", ev => {
-                    notificationsCenter.classList.toggle('open__notif')
                     ev.currentTarget.classList.toggle('ajax__ready')
                     notifsInt.innerHTML = "0"
                     let xhttp = new XMLHttpRequest()
@@ -123,6 +138,16 @@
                     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                     xhttp.send(sParams);
                 })
+
+                window.addEventListener("click", w => {
+                    if (w.target.parentElement.classList.contains("notif") && !notificationsCenter.classList.contains("open__notif")) {
+                        notificationsCenter.classList.add("open__notif")
+                    } else if (notificationsCenter.classList.contains("open__notif")) {
+                        notificationsCenter.classList.remove("open__notif")
+                    }
+
+                })
+
 
                 for (let userNotif of userNotifs) {
                     userNotif.addEventListener("click", event => {
@@ -217,8 +242,6 @@
                 @endforeach
 
             </ul>
-
-
         </div>
         <script>
             document.querySelector(".hbgrContainer").addEventListener("click", e => {
@@ -234,5 +257,22 @@
     </header>
     <main>
         @yield('content')
+   
     </main>
+    <footer>
+        <div class="footer__content">
+            <div class="address">
+                <p><i class="fa fa-map-marker"></i> 5600, rue Hochelaga, suite 160 Montréal (Qc) H1N 3L7</p>
+            </div>
+            <div class="phone">
+                <a href="tel:1-855-236-6700"><i class="fa fa-phone"></i>1-855-236-6700</a>
+            </div>
+            <div class="ano__logo__container">
+                <img class="logo" src="{{asset('storage/medias/logo-ano-white.png')}}" alt="">
+            </div>
+            <div class="quebec__logo__container">
+                <img src="{{asset('storage/medias/QUEBEC_blanc.png')}}" alt="">
+            </div>
+        </div>
+    </footer>
 </body>

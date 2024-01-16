@@ -28,7 +28,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $avatars = Avatar::all();
+        $avatars = Media::where('path', '/storage/avatars/')->get();
         return view('auth.register')->with([
             'avatars' => $avatars,
         ]);
@@ -137,64 +137,54 @@ class RegisteredUserController extends Controller
             'verified' => false,
             'ban' => false,
         ];
-        
 
-        if ($request->hasFile('file')) {
-            $newFile = $validatedData['file']->getClientOriginalName();
-            // full path without ext
-            $newfile_info = pathinfo($newFile, PATHINFO_FILENAME);
-            // extension path of the file
-            $newfile_info_ext = pathinfo($newFile, PATHINFO_EXTENSION);
-            // si l'url complet du fichier existe dans la db - base_path
-            $existing_file_url = Media::where('base_path', '=', $newFile)->first();
-            // le nombre de duplicate base_path dans la db
-            $count_file = Media::where('base_path', '=', $newFile)->count();
-            // poid du fichier
-            $fileSize = $request->file('file')->getSize() / 1024;
-            // si l'url complet existe dans la db - base_path
-            if ($existing_file_url) {
-                $file_iteration_url = $newfile_info . "_" . $count_file + 1 . "." . $newfile_info_ext;
-                // $request->file->move(public_path('files'), $file_iteration_url);
-                Storage::putFileAs('public/medias', $request->file, $file_iteration_url);
-                Media::create([
-                    'url' => $file_iteration_url,
-                    'base_path' => $newFile,
-                    'description' => $request->description,
-                    'user_id' => 0,
-                    'file_size' => $fileSize,
-                    'provider' => $newfile_info_ext,
-                ]);
-                $userData['image'] = $file_iteration_url;
-                // si l'url complet n'existe pas dans la db - base_path
-            } else {
-                
-                Media::create([
-                    'url' => $newFile,
-                    'base_path' => $newFile,
-                    'description' => $request->description,
-                    'user_id' => 0,
-                    'file_size' => $fileSize,
-                    'provider' => $newfile_info_ext,
-                ]);
-                // $request->file->move(public_path('files'), $newFile);
-                Storage::putFileAs('public/medias', $request->file('file'), $newFile);
-                $userData['image'] = $newFile;
-            }
-        } else {
-            $userData['image'] = $validatedData['avatar_url'];
-        }
         $user = User::create($userData);
 
         $memberRole = Role::where('name', 'Membre')->first();
         $user->roles()->attach($memberRole);
+        $newUserid = User::where('id', $user->id)->get();
+        
+        if ($request->hasFile('file')) {
+            $file_original_name = $request->file('file')->getClientOriginalName();
+            $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
+            $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
+            $file_size = $request->file('file')->getSize() / 1024;
+            $existing_file_url = Media::where('name', '=', $file_original_name)->first();
+            $count_file = Media::where('original_name', '=', $file_original_name)->count();
+            if($existing_file_url) {
+                $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
+            } else {
+                $file_name = $file_original_name;
+            }
+            $media = new Media();
+            $media->user_id = $user->id; // Use $user->id directly
+            $media->path = '/storage/medias/';
+            $media->name = $file_name;
+            $media->original_name = $file_original_name;
+            $media->size = $file_size;
+            $media->provider = $file_provider;
+            $media->save();
+        
+            // Store the file in storage/medias folder
+            Storage::putFileAs('public/medias', $request->file('file'), $file_name);
+        
+            // Update user data with the image
+            $user->image = '/storage/medias/' . $file_name;
+            $user->save();
+        } else {
+            // If no file is uploaded, use the default avatar URL
+            $user->image = '/storage/avatars/' . $validatedData['avatar_url'];
+            $user->save();
+        }
+      
 
         Auth::login($user);
-        
+
         if ($request->filled('email')) {
             $to_email = $validatedData['email'];
             $automaticEmail = AutomaticEmail::where('id', 1)->first();
             $userFirstName = $userData['firstname'];
-            $emailBody ="<h1 style='text-align:center;'>Inscription à La Fourmilière</h1><p>Bojour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
+            $emailBody = "<h1 style='text-align:center;'>Inscription à La Fourmilière</h1><p>Bojour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
             $customSubject = 'Courriel de la fourmilière';
             Mail::to($to_email)->send(new TestEmail($emailBody, $customSubject));
         }

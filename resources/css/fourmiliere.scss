@@ -1,0 +1,135 @@
+.fourm__container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+
+    .fourm__content {
+        width: 95%;
+
+        .h1__container {
+            display: flex;
+            align-items: center;
+
+            i {
+                margin-right: 20px;
+                font-size: 40px;
+            }
+        }
+
+        .first__content {
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+
+            .text__content {
+                margin: 20px 0px;
+                text-align: center;
+
+                h2 {
+                    margin-bottom: 10px;
+                    line-height: 1em;
+                    text-align: center;
+                }
+
+                .text {
+                    display: flex;
+                    justify-content: center;
+
+                    p {
+                        width: 80%;
+                    }
+                }
+
+                .subtitle {
+                    font-size: 22px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                    text-align: center;
+                }
+
+
+                .list__container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    li {
+                        width: 80%;
+                        text-align: center;
+                        list-style: circle;
+                        margin: 10px 0px;
+                    }
+                }
+            }
+        }
+
+        .text__img__container {
+            display: flex;
+            margin: 30px 0px;
+            justify-content: center;
+            div {
+                padding: 0px 20px;
+            }
+
+            .text__img__container {
+                width: 50%;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .text__content {
+                width: 50%;
+
+                h2 {
+                    margin-bottom: 10px;
+                }
+
+                .text {
+                    padding: 0px;
+                    display: flex;
+
+                    p {
+                        width: 85%;
+                    }
+                }
+            }
+        }
+
+        .dropdown__container {
+            margin: 30px 0px;
+            .dropdown__content {
+                h3 {}
+
+                .dropdown {
+                    height: 60px;
+                    margin: 10px 0px;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0px 10px;
+                    cursor: pointer;
+                    i {
+                        font-size: 40px;
+                        font-weight: bold;
+                        color: #fff;
+                        transition: 0.2s linear;
+                    }
+                    .drop__trigger, .drop__trigger__parent {
+                        cursor: pointer;
+                    }
+                }
+                .rotate {
+                    transform: rotate(180deg);
+                }
+                .drop__content {
+                    height: 0;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}

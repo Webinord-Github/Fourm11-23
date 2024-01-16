@@ -37,7 +37,6 @@ class EventsController extends Controller
             'address' => ['required', 'string'],
             'link' => ['required', 'string', 'url'],
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp'],
-            'nb_places' => ['required', 'integer'],
             'start_at' => ['required'],
         ]);
 
@@ -47,7 +46,6 @@ class EventsController extends Controller
         $event->desc = $request->desc;
         $event->address = $request->address;
         $event->link = $request->link;
-        $event->nb_places = $request->nb_places;
         $event->start_at = $request->start_at;
 
         $file_original_name = $request->image->getClientOriginalName();
@@ -93,7 +91,6 @@ class EventsController extends Controller
             'address' => ['required', 'string'],
             'link' => ['required', 'string', 'url'],
             'image' => ['image', 'mimes:jpeg,png,jpg,webp'],
-            'nb_places' => ['required', 'integer'],
             'start_at' => ['required'],
         ]);
 
@@ -101,7 +98,6 @@ class EventsController extends Controller
         $event->desc = $request->desc;
         $event->address = $request->address;
         $event->link = $request->link;
-        $event->nb_places = $request->nb_places;
         $event->start_at = $request->start_at;
         
         if($request->image) {

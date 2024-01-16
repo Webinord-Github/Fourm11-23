@@ -1,6 +1,7 @@
 .forum__container {
     padding: 0px 20px;
     width: 100%;
+    position: relative;
 
     .forum__content {
         display: flex;
@@ -172,7 +173,7 @@
                             margin-right: 20px;
                             cursor: pointer;
 
-                            #report {
+                            p.report__trigger {
                                 display: flex;
                                 align-items: center;
                                 margin: 0px;
@@ -313,5 +314,94 @@
                 }
             }
         }
+    }
+    .flex {
+        display: flex!important;
+    }
+    .report__popup__container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        min-height: calc(100vh - 170px);
+        background-color: rgba(0,0,0,0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        .report__popup {
+            position: relative;
+            width: 600px;
+            max-width: 100%;
+            height: auto;
+            background-color: #fff;
+            box-shadow: 1px 1px 8px #000;
+         
+            .report__infos__container {
+                border: 2px solid #000;
+                padding: 5px;
+                margin: 20px;
+            }
+            h3 {
+                text-align: center;
+                margin-bottom: 10px;
+                font-size: 30px;
+                font-weight: bold;
+                color: red;
+                background-color: #000;
+                padding: 10px 0px;
+            }
+            #report__form {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                .checkbox__container {
+                    width: fit-content;
+                    display: flex;
+                    align-items: center;
+                    margin: 20px 0px;
+                    label {
+                        margin-left: 20px;
+                        font-size: 20px;
+                        font-weight: bold;
+                    }
+                    input {
+                        border-radius: 100%;
+                        cursor: pointer;
+                        width: 30px;
+                        height: 30px;
+                    }
+                } 
+                .report__textarea__container {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .submit__form__container {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 30px;
+                    #report__submit {
+                        background-color: red;
+                        color: #fff;
+                        font-weight: bold;
+                        padding: 8px 12px;
+                        cursor: pointer;
+                    }
+                    #report__submit:hover {
+                        filter: contrast(65%);
+                    }
+                }
+            }
+            .close__container {
+                position: absolute;
+                top: 12px;
+                right: 20px;
+            
+                .fa-close {
+                    font-size: 30px;
+                    color: #fff;
+                    cursor: pointer;
+                }
+            }
+        }   
     }
 }

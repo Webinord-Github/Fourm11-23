@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Notification;
+use App\Models\Conversation;
+use App\Models\Reply;
 use App\Models\NotificationRead;
 use Auth;
 
@@ -37,13 +39,15 @@ class ViewComposerServiceProvider extends ServiceProvider
                     }
                 }
                 $notificationRead = NotificationRead::all(); // Retrieve all notification reads
-
-            
+                $replies = Reply::all();
+                
+                
                 $view->with([
                     'notifications' => $notifications,
                     'notifsCheck' => $notifsCheck,
                     'NotifsCount' => $count,
                     'notificationRead' => $notificationRead, // Pass notification read data to the view
+                    'replies' => $replies
                 ]);
             }
         });

@@ -42,7 +42,11 @@
                                 <div class="absolute right-0 z-10 my-0 w-56 origin-top-right rounded-md bg-white shadow-lg focus:outline-none h-0 overflow-hidden dropdown-child dropdownHover" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                                     <div class="flex flex-col dropdownHover" role="none">
                                         <a href="{{ route('events.edit', ['event' => $event->id]) }}" class="hover:bg-gray-200 py-1 px-4 dropdownHover">Modifier</a>
-                                        <a href="{{ route('events.destroy', ['event' => $event->id]) }}" onclick="return confirm('Delete this post?');" class="hover:bg-gray-200 py-1 px-4 dropdownHover">Supprimer</a>
+                                        <form action="{{ route('events.destroy', ['event' => $event->id]) }}" method="POST">
+                                        @csrf
+                                        {{method_field('DELETE')}}
+                                        <input type="submit" value="Delete" class="hover:bg-gray-200 py-1 px-4 dropdownHover cursor-pointer text-left w-full" onclick="return confirm('Supprimer cet événement?')">
+                                    </form>
                                     </div>
                                 </div>
                             </div>

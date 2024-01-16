@@ -32,4 +32,8 @@ class Media extends Model
     public function post(){
         return $this->hasMany(Post::class);
     }
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'image_id');
+    }
 }

@@ -78,7 +78,7 @@
                     <td style="color:red;font-weight:bold" id="user__role"> Aucun Rôle! </td>
                     @endif
                     <td id="user__image">
-                    <img src="{{asset('storage/medias/' . $user->image)}}" alt="">
+                    <img src="{{asset($user->image)}}" alt="">
                     </td>
                     <td id="user__name">
                     <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="underline">{{ $user->firstname }}</a>
