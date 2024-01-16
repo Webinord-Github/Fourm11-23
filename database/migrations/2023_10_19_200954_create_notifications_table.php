@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->string('sujet');
+            $table->string('type');
+            $table->integer('conversation_id')->nullable();
+            $table->integer('reply_id')->nullable();
+            $table->integer('tool_id')->nullable();
+            $table->integer('post_id')->nullable();
             $table->timestamps();
         });
     }

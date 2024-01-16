@@ -1,0 +1,95 @@
+.events__container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    position: relative;
+    .events__content {
+        width: 95%;
+
+        .h1__container {
+            display: flex;
+            align-items: center;
+
+            i {
+                margin-right: 20px;
+                font-size: 40px;
+            }
+        }
+        .add__event__container {
+            height: 60px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .add__event {
+                background-color: #edb200;
+                padding: 2px 20px;
+                border-radius: 15px;
+                font-weight: bold;
+            }
+            .add__event:hover {
+                filter: contrast(65%);
+            }
+        }
+        .single__event {
+            margin: 35px 0px;
+            display: flex;
+            .infos__container {
+                display: flex;
+                flex-direction: column;
+                width: 75%;
+                .date__location {
+                    display: flex;
+                    .date {
+                        margin-right: 20px;
+                        color: #edb200;
+                        font-weight: bold;
+                    }
+                    .location {
+                        i {
+                            margin-right: 5px;
+                        }
+                        a {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+                .title__container {
+                    margin-top: 10px;
+                    h3 {
+                        color: #000;
+                        font-weight: 900;
+                        font-size: 25px;
+                    }
+                }
+                .text {
+                    margin: 5px 0px;
+                }
+                .event__register__container {
+                    margin-top: 5px;
+                    .event__register {
+                        padding: 3px 20px;
+                        font-weight: bold;
+                        background-color: #edb200;
+                        border-radius: 15px;
+                    }
+                    .event__register:hover {
+                        filter: contrast(65%);
+                    }
+                }
+            }
+            .img__container {
+                width: 25%;
+                display: flex;
+                justify-content: center;
+                img {
+                    width: 300px;
+                    height: 200px;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+  
+}

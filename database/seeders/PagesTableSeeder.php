@@ -30,7 +30,7 @@ class PagesTableSeeder extends Seeder
            ]);
             $devenirmembre = new Page([
                 'title' => 'Devenir membre',
-                'url' => 'sinscre',
+                'url' => 'sinscrire',
                 'content' => null,
                 'categorie' => 1
             ]);

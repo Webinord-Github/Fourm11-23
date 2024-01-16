@@ -24,6 +24,7 @@ class Page extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+
     public function parent()
     {
         return $this->belongsTo('App\Models\Page', 'parent_id');

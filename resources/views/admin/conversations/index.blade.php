@@ -39,7 +39,7 @@
                                         <form action="{{ route('conversations.destroy', ['conversation' => $conversation->id]) }}" method="POST">
                                             @csrf
                                             {{method_field('DELETE')}}
-                                            <input type="submit" value="Delete" class="hover:bg-gray-200 py-1 px-4 dropdownHover cursor-pointer text-left w-full" onclick="return confirm('Are you sure to delete?')"> 
+                                            <input type="submit" value="Delete" class="hover:bg-gray-200 py-1 px-4 dropdownHover cursor-pointer text-left w-full" onclick="return confirm('Voulez-vous vraiment supprimer?')"> 
                                         </form>
                                     </div>
                                 </div>

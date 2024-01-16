@@ -58,10 +58,10 @@ class MediasController extends Controller
             'file' => ['required', 'file', 'mimes:jpeg,png,jpg,webp']
         ]);
 
-        $file_original_name = $request->file('image')->getClientOriginalName();
+        $file_original_name = $request->file('file')->getClientOriginalName();
         $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
         $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
-        $file_size = $request->file('image')->getSize() / 1024;
+        $file_size = $request->file('file')->getSize() / 1024;
         $existing_file_url = Media::where('name', '=', $file_original_name)->first();
         $count_file = Media::where('original_name', '=', $file_original_name)->count();
 
@@ -79,7 +79,7 @@ class MediasController extends Controller
         $media->size = $file_size;
         $media->provider = $file_provider;
         $media->save();
-        Storage::putFileAs('public/medias',$request->file('image'), $file_name);
+        Storage::putFileAs('public/medias',$request->file('file'), $file_name);
 
         return redirect()->route('medias.index');                
     }

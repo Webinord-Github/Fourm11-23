@@ -18,12 +18,12 @@
   font-weight: bold;
 }
 .register__container .register__form {
-  width: 700px;
+  width: 80%;
   min-width: 300px;
   padding: 40px 20px;
   background-color: #000;
   border-radius: 15px;
-  height: 700px;
+  height: 80%;
   overflow: auto;
 }
 .register__container .register__form .details__container {

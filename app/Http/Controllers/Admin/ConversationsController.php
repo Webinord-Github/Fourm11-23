@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ConversationsRequest;
 use Illuminate\Http\Request;
 use App\Models\Conversation;
+use App\Models\Notification;
 use App\Models\Page;
 use App\Models\Reply;
 use Illuminate\Validation\Rule;
@@ -24,7 +25,6 @@ class ConversationsController extends Controller
    
         return view('admin.conversations.index')->with([
             'conversations' => $conversations,
-
         ]);
     }
 
@@ -40,15 +40,6 @@ class ConversationsController extends Controller
         ]);
     }
 
-    public function view() {
-        $conversations = Conversation::with('replies')->get();
-        $page = Page::where('url', '=', 'forum')->firstOrFail();
-        
-        return view('frontend.forum')->with([
-            'conversations' => $conversations,
-            'page' => $page,
-        ]);
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -58,10 +49,23 @@ class ConversationsController extends Controller
      */
     public function store(ConversationsRequest $request)
     {
-        Auth::user()->conversations()->save(new Conversation($request->only([
+        $conversation = Auth::user()->conversations()->save(new Conversation($request->only([
             'title', 'body'])));
 
-            return redirect()->route('conversations.index')->with('status', 'Opération réussie');
+        $title = $request->title;
+
+        $cutTitle = strlen($title) > 80 ? substr($title, 0, 80) . '...' : $title;
+
+        
+
+        $notification = new Notification();
+        $notification->sujet = 'Nouvelle conversation!' . $cutTitle;
+        $notification->type = 'Conversation';
+        $notification->notif_link = '/forum';   
+        $notification->conversation_id = $conversation->id;
+        $notification->save(); 
+
+        return redirect()->route('conversations.index')->with('status', 'Opération réussie');
     }
 
     /**
@@ -105,6 +109,10 @@ class ConversationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $conversation = Conversation::findOrFail($id);
+
+        $conversation->delete();
+
+        return redirect()->route('conversations.index')->with('success', 'Conversation deleted successfully');
     }
 }

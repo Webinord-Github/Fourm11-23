@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Reply;
+use App\Models\Notification;
 use App\Models\User;
+use App\Models\Signalement;
+use App\Models\ConversationBookmarks;
 use Auth;
 use Carbon\Carbon;
 
@@ -44,12 +47,35 @@ class RepliesController extends Controller
         ])));
         $formattedCreatedAt = Carbon::parse($reply->created_at)->format('Y-m-d H:i:s');
 
+        $title = $request->title;
+        $cutTitle = strlen($title) > 40 ? substr($title, 0, 40) . '...' : $title;
+
+        $notification = new Notification();
+        $notification->sujet = 'Nouveau commentaire sur la discussion:' . " " . $cutTitle;
+        $notification->notif_link = '/forum';
+        $notification->type = "Reply";
+        $notification->reply_id = $reply->id;
+        $notification->conversation_id = $request->conversation_id;
+        $notification->save();
+
+        $existBookmarks = ConversationBookmarks::where('conversation_id', $request->conversation_id)
+        ->where('user_id', Auth::user()->id)
+        ->exists();
+        if(!$existBookmarks){
+            $conversationBookmarks = new ConversationBookmarks();
+            $conversationBookmarks->conversation_id = $request->conversation_id;
+            $conversationBookmarks->user_id = Auth::user()->id;
+            $conversationBookmarks->save(); 
+        }
+        
+
         return response()->json([
             'message' => 'Reply created successfully',
             'body' => $reply->body,
-            'name' => auth()->user()->name,
+            'name' => auth()->user()->firstname,
             'created_at' => $formattedCreatedAt,
             'id' => $reply->id,
+            'image' => auth()->user()->image,
         ]);
     }
     public function userReply(Request $request)
@@ -61,14 +87,36 @@ class RepliesController extends Controller
     
         ]));
         $formattedCreatedAt = Carbon::parse($reply->created_at)->format('Y-m-d H:i:s');
+        $title = $request->title;
+        $cutTitle = strlen($title) > 40 ? substr($title, 0, 40) . '...' : $title;
+
+        $notification = new Notification();
+        $notification->sujet = 'Nouveau commentaire sur la discussion:' . " " . $cutTitle;
+        $notification->notif_link = '/forum';
+        $notification->type = "Reply";
+        $notification->reply_id = $reply->id;
+        $notification->conversation_id = $request->conversation_id;
+        $notification->save();
+
+        $existBookmarks = ConversationBookmarks::where('conversation_id', $request->conversation_id)
+        ->where('user_id', Auth::user()->id)
+        ->exists();
+        if(!$existBookmarks){
+            $conversationBookmarks = new ConversationBookmarks();
+            $conversationBookmarks->conversation_id = $request->conversation_id;
+            $conversationBookmarks->user_id = Auth::user()->id;
+            $conversationBookmarks->save(); 
+        }
+        
 
         return response()->json([
             'message' => 'Reply created successfully',
             'body' => $reply->body,
-            'name' => auth()->user()->name,
+            'name' => auth()->user()->firstname,
             'created_at' => $formattedCreatedAt,
             'id' => $reply->id,
-            'reply_id' => $reply->parent_id
+            'reply_id' => $reply->parent_id,
+            'image' => auth()->user()->image
         ]);
         
     }
@@ -141,5 +189,18 @@ class RepliesController extends Controller
             return response()->json(['message' => 'Parent comment and associated child replies deleted successfully'], 200);
         }
     }
+    public function replyReport(Request $request)
+    {
+        $checkboxes = $request->input('checkboxes');
+        $textareaValue = $request->input('textareaValue');
+        $authorid = $request->input('authorid');
+        $signalement = new Signalement;
+        
+        // Process the received data or perform necessary actions
+        // For example, you could log the values or perform database operations
     
+        return response()->json([
+            'message' => 'Report sent successfully',
+        ]);
+    }
 }

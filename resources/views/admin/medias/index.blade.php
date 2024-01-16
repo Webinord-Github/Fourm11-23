@@ -34,8 +34,8 @@
                                 @elseif ($file->provider == 'docx')
                                 <img class="mediaFile" src="{{asset('/storage/medias/ocx_icon.png')}}" alt="">
                                 @elseif ($file->provider == 'png' || 'svg' || 'jpg' || 'jpeg')
-        
-                                <img class="mediaFile" src="/storage/medias/{{$file->url}}" alt="">
+                                <img class="mediaFile" src="{{asset($file->path . $file->name)}}" alt="">
+                   
                                 @else
                                 <img class="mediaFile" src="{{asset('/storage/medias/file_icon.png')}}" alt="">
                             @endif

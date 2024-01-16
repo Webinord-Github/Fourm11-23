@@ -1,7 +1,5 @@
 {!! csrf_field() !!}
 
-
-
 <div class="px-12 pb-8 flex flex-col items-center w-10/12">
 @if (!$errors->isEmpty())
 <div role="alert" class="w-full pb-8">
@@ -21,30 +19,30 @@
         <table class="w-full">
             <tbody class="flex">
                 <tr class="flex flex-col w-2/12">
-                    <td class="font-bold">Uploaded:</td>
-                    <td class="font-bold">By:</td>
-                    <td class="font-bold">File Url:</td>
-                    <td class="font-bold">File Name:</td>
-                    <td class="font-bold">File Type:</td>
-                    <td class="font-bold">File Size:</td>
+                    <td class="font-bold">Date de téléversement:</td>
+                    <td class="font-bold">Par:</td>
+                    <td class="font-bold">Url du fichier:</td>
+                    <td class="font-bold">Nom du fichier:</td>
+                    <td class="font-bold">Type du fichier:</td>
+                    <td class="font-bold">Format du fichier:</td>
                 </tr>
                 <tr class="align-start flex flex-col">
                     <td>{{$model->created_at}}</td>
-                    <td>{{$user->name}}</td>
-                    <td><a href="/files/{{$model->url}}" style="color:blue;text-decoration:underline;" target="_blank"><?= url("file/$model->url") ?></td>
-                    <td>{{$model->url}}</td>
+                    <td>{{$model->user->firstname}}</td>
+                    <td><a href="{{asset($model->path . $model->name)}}" style="color:blue;text-decoration:underline;" target="_blank">{{asset($model->path . $model->name)}}</td>
+                    <td>{{$model->name}}</td>
                     <td>{{$model->provider}}</td>
                     <?php 
-                        if($model->file_size > 999) {
-                            $new_file_size = $model->file_size / 1024;
-                            $new_file_size_formatted = number_format((float)$new_file_size, 2, '.', '');
+                        if($model->size > 999) {
+                            $new_file_size = $model->size / 1024;
+                            $new_file_size_formatted = number_format($new_file_size, 2);            
                             ?>
                             <td><?= $new_file_size_formatted ?> Mb</td> 
                             <?php
                         } 
-                        if($model->file_size < 1000){
+                        if($model->size < 1000){
                             ?>
-                            <td>{{$model->file_size}} Kb</td> 
+                            <td>{{$model->size}} Kb</td> 
                         <?php } ?>
                 </tr>
             </tbody>
