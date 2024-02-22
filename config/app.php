@@ -183,6 +183,7 @@ return [
         Laravel\Fortify\FortifyServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
         App\Providers\PagesComposerServiceProvider::class,
+        App\Providers\MailSettingServiceProvider::class,
 
         /*
          * Package Service Providers...

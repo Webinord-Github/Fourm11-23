@@ -24,7 +24,7 @@ class NewMediaRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => 'required|file|max:8092',
+            'title' => 'required',
         ];
     }
 

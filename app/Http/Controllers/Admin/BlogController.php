@@ -27,10 +27,9 @@ class BlogController extends Controller
 
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255'],
             'body' => ['required', 'string'],
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp'],
-            'thematiques' => ['required', 'array'],
+            'thematiques' => ['required', 'array', 'max:3'],
             'status' => ['required', 'string']
         ]);
 
@@ -49,7 +48,7 @@ class BlogController extends Controller
 
         $post->user_id = Auth::user()->id;
         $post->title = $request->title;
-        $post->slug = $request->slug;
+        $post->slug = $request->title;
         $post->body = $request->body;
         $post->excerpt = $excerpt;
         $post->status = $request->status;
@@ -87,7 +86,7 @@ class BlogController extends Controller
 
     public function show(Post $post)
     {
-        //
+        return view('frontend.singleblog', compact('post'));
     }
 
     public function edit(Post $post)
@@ -100,10 +99,10 @@ class BlogController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255'],
+            // 'slug' => ['required', 'string', 'max:255'],
             'body' => ['required', 'string'],
             'image' => ['image', 'mimes:jpeg,png,jpg,webp'],
-            'thematiques' => ['required', 'array'],
+            'thematiques' => ['required', 'array', 'max:3'],
             'status' => ['required', 'string']
         ]);
 
@@ -119,7 +118,7 @@ class BlogController extends Controller
         }
 
         $post->title = $request->title;
-        $post->slug = $request->slug;
+        $post->slug = $request->title;
         $post->body = $request->body;
         $post->excerpt = $excerpt;
         $post->status = $request->status;
@@ -158,11 +157,12 @@ class BlogController extends Controller
         return redirect()->route('posts.index')->with('status', "$post->title a été édité.");
     }
 
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        $post->delete();
+        $post = Post::find($id);
+        $post->destroy($id);
         $post->thematiques()->detach();
 
-        return redirect()->route('posts.index')->with('status', "$post->title a été supprimé.");
+        return redirect('/admin/posts')->with('status', "$post->title a été supprimé.");
     }
 }

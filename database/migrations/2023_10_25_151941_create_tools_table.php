@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('tools', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('desc');
-            $table->integer('doc_id');
+            $table->longText('desc');
+            $table->integer('media_id')->nullable();
             $table->integer('user_id');
             $table->string('status');
             $table->timestamp('published_at')->nullable();

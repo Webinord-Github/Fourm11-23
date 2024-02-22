@@ -41,7 +41,7 @@
                     <a href="{{ route('events.index') }}"><i class="fa-solid fa-bell mr-4 mt-0.5" aria-hidden="true"></i>Évènements</a>
                 </li>
                 <li class="navLink admin__menu__dropdown">
-                    <a href="Javascript:void(0)"><i class='fa fa-lightbulb mr-4 mt-0.5' aria-hidden="true"></i>Fiches</a>
+                    <a class="dropdown__trigger" href="Javascript:void(0)"><i class='fa fa-lightbulb mr-4 mt-0.5 dropdown__trigger' aria-hidden="true"></i>Fiches <i class="fa fa-angle-down dropdown__trigger mt-1"></i></a>
                     <div class="admin__menu__dropdown__container">
                         <div class="admin__menu__dropdown__content">
                             <div class="submenu__links">
@@ -66,24 +66,35 @@
                     <a href="{{ route('medias.index') }}"><i class='fas fa-key mr-4 mt-0.5' aria-hidden="true"></i>Rôles</a>
                 </li>
                 <li class="navLink admin__menu__dropdown">
-                    <a href="Javascript:void(0)"><i class='fa fa-cog mr-4 mt-0.5' aria-hidden="true"></i>Paramêtres</a>
+                <a class="dropdown__trigger" href="Javascript:void(0)"><i class='fa fa-lightbulb mr-4 mt-0.5 dropdown__trigger' aria-hidden="true"></i>Paramètres <i class="fa fa-angle-down dropdown__trigger mt-1"></i></a>
                     <div class="admin__menu__dropdown__container">
                         <div class="admin__menu__dropdown__content">
                             <div class="submenu__links">
-                                <a href="{{ route('menu.index') }}">MENUS</a>
+                                <a href="{{ route('menu.index') }}">Menus</a>
                             </div>
                             <div class="submenu__links">
-                                <a href="">SMTP</a>
+                            <a href="{{ route('parametres.index') }}">Paramètres</a>
                             </div>
-                            <div class="submenu__links">
-                                <a href="">PARAM1</a>
-                            </div>
-
                         </div>
                     </div>
                 </li>
+                <li class="navLink">
+                    <a href="{{ route('chatbot.index') }}"><i class="fa fa-robot mr-4 mt-0.5" aria-hidden="true"></i>Chatbot</a>
+                </li>
+                <li class="navLink">
+                <div class="logout__container">
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            
+            <a href="logout" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+            <i class="fa fa-sign-out mr-4 mt-0.5"></i>
+            {{ __('Déconnexion') }}
+        </a>
+    </form>
+</div>
+                </li>
             </ul>
         </div>
-
     </div>
 </div>

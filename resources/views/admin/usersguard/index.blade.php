@@ -90,15 +90,15 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4) {
                     if (this.status === 200) {
-                        console.log('Notifications updated')
-                        console.log(xhttp)
                         location.reload();
+                        console.log(xhttp)
+                        xhttp = null
                     } else {
-                        console.error("Error updating notifications.");
+                        console.error("Error");
                     }
                 }
             };
-            xhttp.open("POST", `/banuser/`, true);
+            xhttp.open("POST", `{{route('banUser')}}`, true);
             xhttp.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send(sParams)
@@ -107,7 +107,6 @@
 
 @endsection
 @section('scripts')
-
 @include('admin.users.partials.scripts')
-
+@include('admin.partials.scripts')
 @endsection

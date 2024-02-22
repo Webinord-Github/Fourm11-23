@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             automatic_emails_seeder::class,
             AvatarsTableSeeder::class,
             MediasTableSeeder::class,
+            MaintenanceTableSeeder::class,
+            SmtpTableSeeder::class,
         ]);
     }
 }

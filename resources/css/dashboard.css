@@ -1,6 +1,6 @@
 .dashboard__container {
   width: 100%;
-  margin: 10px 30px;
+  margin: 10px 80px;
 }
 .dashboard__container .dashboard__title {
   font-size: 25px;
@@ -131,5 +131,8 @@
 }
 .dashboard__container .dashboard__users__container .dashboard__users__table__container table tbody tr #user__image img {
   width: 100%;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 100%;
 }/*# sourceMappingURL=dashboard.css.map */

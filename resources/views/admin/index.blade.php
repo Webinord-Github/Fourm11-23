@@ -44,6 +44,9 @@
 </div>
 <div class="dashboard__users__container">
     <p class="dashboard__title">Utilisateurs</p>
+    @if(auth()->check())
+        <p>{{$user->firstname}}</p>
+    @endif
     <div class="dashboard__users__table__container">
         <div class="dasboard__users__table__search">
             <input id="user__search" type="search" placeholder="Rechercher un utilisateur">
@@ -64,11 +67,12 @@
                 @foreach($users as $user)
                 <tr>
                     <td id="user__online">
-                        @if($activeusers->contains($user))
+                        @if(auth()->check() && $activeusers->contains($user))
                         <span id="online__bull" class="user__bull">&bull;</span>
                         @else
                         <span id="offline__bull" class="user__bull">&bull;</span>
                         @endif
+        
                     </td>
                     @if($user->roles->first())
                     <td id="user__role">
@@ -78,7 +82,7 @@
                     <td style="color:red;font-weight:bold" id="user__role"> Aucun Rôle! </td>
                     @endif
                     <td id="user__image">
-                    <img src="{{asset($user->image)}}" alt="">
+                        <img src="{{$user->profilePicture->path . $user->profilePicture->name}}" alt="">
                     </td>
                     <td id="user__name">
                     <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="underline">{{ $user->firstname }}</a>

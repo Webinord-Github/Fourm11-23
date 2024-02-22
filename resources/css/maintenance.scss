@@ -1,0 +1,20 @@
+body {
+    height: 100vh;
+    margin: 0px auto;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .maintenance__container {
+        p {
+            text-align: center;
+            font-size: 40px;
+            color: #fff;
+            margin: 0px;
+            font-weight: bold;
+        }
+    }
+}

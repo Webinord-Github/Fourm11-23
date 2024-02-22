@@ -111,3 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 @endsection
+@section('scripts')
+@include('admin.partials.scripts')
+@endsection

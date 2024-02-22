@@ -19,7 +19,6 @@
         'resources/js/app.js', 
         'resources/css/sortablemenu.css', 
         'resources/css/automatic-emails.css',
-        'resources/css/calendar.css'
         ])
 </head>
 

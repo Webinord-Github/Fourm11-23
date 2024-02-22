@@ -161,6 +161,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'thematiques' => [
+            'max:3' => 'Seulement 3 thématiques peuvent être sélectionnées.',
+        ]
     ],
 
     /*

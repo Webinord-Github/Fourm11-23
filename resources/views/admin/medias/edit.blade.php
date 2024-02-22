@@ -17,7 +17,6 @@
 
 @endsection
 @section('scripts')
-
 @include('admin.medias.partials.edit-scripts')
-
+@include('admin.partials.scripts')
 @endsection

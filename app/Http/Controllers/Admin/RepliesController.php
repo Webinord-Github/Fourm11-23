@@ -51,11 +51,12 @@ class RepliesController extends Controller
         $cutTitle = strlen($title) > 40 ? substr($title, 0, 40) . '...' : $title;
 
         $notification = new Notification();
-        $notification->sujet = 'Nouveau commentaire sur la discussion:' . " " . $cutTitle;
+        $notification->sujet = Auth::user()->firstname . " " . "a répondu:" . " " . $request->body;
         $notification->notif_link = '/forum';
         $notification->type = "Reply";
         $notification->reply_id = $reply->id;
         $notification->conversation_id = $request->conversation_id;
+        $notification->reply_author_id = Auth::user()->id;
         $notification->save();
 
         $existBookmarks = ConversationBookmarks::where('conversation_id', $request->conversation_id)
@@ -91,11 +92,12 @@ class RepliesController extends Controller
         $cutTitle = strlen($title) > 40 ? substr($title, 0, 40) . '...' : $title;
 
         $notification = new Notification();
-        $notification->sujet = 'Nouveau commentaire sur la discussion:' . " " . $cutTitle;
+        $notification->sujet = Auth::user()->firstname . " " . "a répondu:" . " " . $request->body;
         $notification->notif_link = '/forum';
         $notification->type = "Reply";
         $notification->reply_id = $reply->id;
         $notification->conversation_id = $request->conversation_id;
+        $notification->reply_author_id = Auth::user()->id;
         $notification->save();
 
         $existBookmarks = ConversationBookmarks::where('conversation_id', $request->conversation_id)

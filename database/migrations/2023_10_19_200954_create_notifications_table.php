@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('sujet');
             $table->string('type');
             $table->integer('conversation_id')->nullable();
+            $table->string('reply_author_id')->nullable();
             $table->integer('reply_id')->nullable();
             $table->integer('tool_id')->nullable();
             $table->integer('post_id')->nullable();

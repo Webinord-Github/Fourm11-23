@@ -13,6 +13,7 @@ class Conversation extends Model
         'title',
         'body',
         'user_id',
+        'published',
     ];
 
     public function user(){
@@ -27,5 +28,13 @@ class Conversation extends Model
     {
         return $this->hasMany('App\Models\ConversationLike');
     }
+    
+    public function thematiques() {
+        return $this->belongsToMany(Thematique::class);
+    }
 
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'conversation_id');
+    }
 }

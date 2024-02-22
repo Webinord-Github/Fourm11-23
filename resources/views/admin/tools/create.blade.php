@@ -11,7 +11,7 @@
                 @if (!$errors->isEmpty())
                 <div role="alert" class="w-full pb-8">
                     <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                        Empty Fields
+                        Erreurs
                     </div>
                     <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
                         @foreach ($errors->all() as $message)
@@ -36,8 +36,8 @@
                 </div>
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
-                        <x-label for="doc" :value="__('Fichier: pdf, docx')" />
-                        <input type="file" id="doc" name="doc">
+                        <x-label for="media" :value="__('Fichier: pdf, docx')" />
+                        <input type="file" id="media" name="media">
                     </div>
                 </div>
                 <div class="w-full mb-2">
@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-end mt-4">
-                    <a href="/admin/posts">Retour</a>
+                    <a href="/admin/tools">Retour</a>
                     <x-button class="ml-4">
                         {{ __('Créer') }}
                     </x-button>
@@ -80,4 +80,5 @@
 
 @section('scripts')
     @include('admin.blog.partials.scripts')
+    @include('admin.partials.scripts')
 @endsection

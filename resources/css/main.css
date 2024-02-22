@@ -7,21 +7,69 @@ html, body {
 main {
   padding-top: 100px;
   min-height: 100%;
+  position: relative;
+}
+main .chatbot__container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+main .chatbot__container .chatbot__window {
+  width: 50%;
+  height: 800px;
+  background-color: white;
+  position: fixed;
+}
+main .warning__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 0px;
+  text-align: center;
+  font-weight: bold;
+  color: red;
+}
+main .warning__container p {
+  font-size: 20px;
 }
 
 h1 {
   font-size: calc(25px + 25 * (100vw - 300px) / 1300);
   color: #edb200;
+  font-family: "Edo", sans-serif;
 }
 
 h2 {
   font-size: calc(22px + 18 * (100vw - 300px) / 1300);
   color: #edb200;
+  font-family: "Edo", sans-serif;
 }
 
 h3 {
   font-size: calc(17px + 3 * (100vw - 300px) / 1300);
   color: #edb200;
+  font-family: "Edo", sans-serif;
 }
 
 p {
@@ -34,10 +82,9 @@ p {
 }
 
 footer {
-  margin-top: 20px;
-  height: 100px;
   background-color: #000;
   width: 100%;
+  padding: 20px 0px;
 }
 footer .footer__content {
   display: -webkit-box;
@@ -50,27 +97,33 @@ footer .footer__content {
   padding: 0px 20px;
   position: relative;
 }
-footer .footer__content div {
-  margin: 0px 20px;
-}
-footer .footer__content .address p {
+footer .footer__content .infos__container {
+  width: 75%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-footer .footer__content .address i, footer .footer__content .address p {
+footer .footer__content .infos__container .address p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+footer .footer__content .infos__container .address i, footer .footer__content .infos__container .address p {
   color: #fff;
 }
-footer .footer__content .address i {
+footer .footer__content .infos__container .address i {
   margin-right: 10px;
 }
-footer .footer__content .phone a {
+footer .footer__content .infos__container .phone {
+  margin-left: 20px;
+}
+footer .footer__content .infos__container .phone a {
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-footer .footer__content .phone i {
+footer .footer__content .infos__container .phone i {
   margin-right: 10px;
   width: 25px;
   height: 25px;
@@ -98,15 +151,55 @@ footer .footer__content .ano__logo__container {
   width: 100%;
 }
 footer .footer__content .quebec__logo__container {
-  position: absolute;
+  margin: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  width: 95%;
+  width: 25%;
 }
 footer .footer__content .quebec__logo__container img {
   width: 200px;
+}
+
+@media screen and (max-width: 1600px) {
+  footer .infos__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  footer .infos__container .phone {
+    margin: 0px 0px 15px 0px !important;
+  }
+}
+@media screen and (max-width: 1367px) {
+  footer {
+    height: auto;
+  }
+  footer .footer__content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  footer .footer__content .ano__logo__container, footer .footer__content .quebec__logo__container {
+    position: initial;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  footer .footer__content .infos__container {
+    width: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 20px 0px;
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Forum;
+use App\Models\Chatbot;
 use Illuminate\Http\Request;
 
-class ForumsController extends Controller
+class ChatbotsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ForumsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.chatbot.index');
     }
 
     /**
@@ -36,16 +36,16 @@ class ForumsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Forum  $forum
+     * @param  \App\Models\Chatbot  $chatbot
      * @return \Illuminate\Http\Response
      */
-    public function show(Forum $forum)
+    public function show(Chatbot $chatbot)
     {
         //
     }
@@ -53,10 +53,10 @@ class ForumsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Forum  $forum
+     * @param  \App\Models\Chatbot  $chatbot
      * @return \Illuminate\Http\Response
      */
-    public function edit(Forum $forum)
+    public function edit(Chatbot $chatbot)
     {
         //
     }
@@ -65,10 +65,10 @@ class ForumsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Forum  $forum
+     * @param  \App\Models\Chatbot  $chatbot
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Forum $forum)
+    public function update(Request $request, Chatbot $chatbot)
     {
         //
     }
@@ -76,10 +76,10 @@ class ForumsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Forum  $forum
+     * @param  \App\Models\Chatbot  $chatbot
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Forum $forum)
+    public function destroy(Chatbot $chatbot)
     {
         //
     }

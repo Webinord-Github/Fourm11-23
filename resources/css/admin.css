@@ -3,55 +3,35 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: calc(100% - 250px);
   margin-left: auto;
   padding: 5px 30px;
 }
-.admin__nav__container .search__form {
+.admin__nav__container .user__container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-.admin__nav__container .search__form .search__container {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.admin__nav__container .user__container img {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100%;
+  margin-left: 10px;
 }
-.admin__nav__container .search__form .search__container .search__input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin-right: 8px;
-  width: 100%;
-  max-width: 600px;
-}
-.admin__nav__container .search__form .search__container .search__button {
-  position: relative;
-  left: -40px;
-  background-color: #29282d;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 60px;
-}
-.admin__nav__container .dropdown__container {
-  margin-left: auto;
-}
-.admin__nav__container .dropdown__container button {
-  background-color: transparent;
-  color: #000;
+.admin__nav__container .logout__container {
+  margin-right: 20px;
 }
 
 main {
@@ -173,18 +153,17 @@ main .adminNav__container .adminNav .sectionDiv .navLink a {
   height: 100%;
   font-size: 16px;
 }
-main .adminNav__container .adminNav .sectionDiv .navLink:hover {
-  background-color: #8D8E91;
+main .adminNav__container .adminNav .sectionDiv .navLink a .fa-angle-down {
+  margin-left: auto;
 }
-main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown:hover .admin__menu__dropdown__container {
-  display: block !important;
+main .adminNav__container .adminNav .sectionDiv .navLink a:hover {
+  background-color: gray;
 }
 main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container {
-  position: absolute;
-  display: none;
+  height: 0;
+  overflow: hidden;
 }
 main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container .admin__menu__dropdown__content {
-  position: relative;
   background: #29282d;
   right: -250px;
   top: -55px;
@@ -195,8 +174,8 @@ main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__containe
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 200px;
   border-radius: 15px;
+  width: 100%;
 }
 main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container .admin__menu__dropdown__content .submenu__links {
   width: 100%;
@@ -205,9 +184,8 @@ main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__containe
   color: #fff;
   padding: 10px;
 }
-main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container .admin__menu__dropdown__content .submenu__links:hover {
-  background-color: #8D8E91;
-  border-radius: 15px;
+main .adminNav__container .adminNav .sectionDiv .admin__menu__dropdown__container .admin__menu__dropdown__content .submenu__links a:hover {
+  background-color: gray;
 }
 main .adminNav__container .adminNav .sectionDiv .open__dropdown {
   display: block;

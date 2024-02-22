@@ -1,0 +1,121 @@
+$jaune: #edb200;
+
+.lexique-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .lexique-content {
+        border-radius: 10px;
+        margin: 3% 0;
+        width: 90%;
+
+        .top-div {
+            align-items: center;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+
+            .arrow {
+                font-size: 60px;
+                margin-right: 50px;
+            }
+
+            p {
+                color: $jaune;
+                font-size: 60px;
+                position: relative;
+                width: 100%;
+
+                span {
+                    color: #edb20047;
+                    font-size: 80px;
+                    left: -30px;
+                    position: absolute;
+                    top: -35px;
+                }
+            }
+        }
+
+        .content {
+            width: 100%;
+
+            .thematiques-ctn {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                .thematiques {
+                    flex-wrap: wrap;
+                    display: flex;
+                    justify-content: space-between;
+                    width: 50%;
+    
+                    .thematique {
+                        background-color: #000;
+                        border: #000 solid 1px;
+                        border-radius: 20px;
+                        color: #fff;
+                        cursor: pointer;
+                        font-weight: bold;
+                        margin: 5px;
+                        padding: 5px 20px;
+                        text-decoration: none;
+                    }
+
+                    .thematique:hover {
+                        background-color: #fff;
+                        color: #000;
+                    }
+
+                    .selected {
+                        background-color: #edb200;
+                        border: #edb200 solid 1px;
+                    }
+                }
+
+                .thematique-infos {
+                    background-image: url('http://127.0.0.1:8000/storage/medias/fourmiliere-header-background.jpg');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-clip: border-box;
+                    border-radius: 10px;
+                    padding: 1%;
+                    width: 45%;
+
+                    .name {
+                        color: #fff;
+                        font-size: 24px;
+                    }
+
+                    .desc {
+                        color: #fff;
+                        font-size: 18px;
+                    }
+                }
+            }
+
+            .bar-filter {
+                align-items: center;
+                background-image: url('http://127.0.0.1:8000/storage/medias/fourmiliere-header-background.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-clip: border-box;
+                border-radius: 10px;
+                display: flex;
+                height: 75px;
+                margin: 3% 0;
+                padding: 1%;
+                width: 100%;
+
+                p {
+                    color: #edb200;
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+} 

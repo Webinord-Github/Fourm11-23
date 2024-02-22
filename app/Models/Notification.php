@@ -16,4 +16,9 @@ class Notification extends Model
         'tool',
         'post',
     ];
+
+    public function conversation()
+    {
+        return $this->belongsTo(Conversation::class, 'conversation_id');
+    }
 }

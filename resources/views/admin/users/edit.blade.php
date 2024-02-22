@@ -15,3 +15,6 @@
     </div>
 </div>
 @endsection
+@section('scripts')
+@include('admin.partials.scripts')
+@endsection

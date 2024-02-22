@@ -37,8 +37,8 @@
                 </div>
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
-                        <x-label for="doc" :value="__('Fichier: pdf, docx')" />
-                        <input type="file" id="doc" name="doc">
+                        <x-label for="media" :value="__('Fichier: pdf, docx')" />
+                        <input type="file" id="media" name="media">
                     </div>
                 </div>
                 <div class="w-full mb-2">
@@ -91,4 +91,5 @@
 @endsection
 @section('scripts')
     @include('admin.blog.partials.scripts')
+    @include('admin.partials.scripts')
 @endsection

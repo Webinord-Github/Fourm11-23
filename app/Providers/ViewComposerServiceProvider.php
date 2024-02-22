@@ -7,6 +7,8 @@ use App\Models\Notification;
 use App\Models\Conversation;
 use App\Models\Reply;
 use App\Models\NotificationRead;
+use App\Models\ConversationBookmarks;
+use App\Providers\Route;
 use Auth;
 
 class ViewComposerServiceProvider extends ServiceProvider
@@ -30,25 +32,22 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         view()->composer('*', function ($view) {
             if(Auth::check()) {
+                $conversations = Conversation::with('replies')->get();
+                $conversationBookmarks = ConversationBookmarks::where('user_id', Auth::user()->id)->get();
                 $notifications = Notification::orderBy('updated_at', 'desc')->get(); // Fetch notifications in descending order
                 $notifsCheck = strtotime(auth()->user()->notifs_check);
-                $count = 0;
-                foreach($notifications as $notification) {
-                    if(strtotime($notification->updated_at) > $notifsCheck) {
-                        $count++;
-                    }
-                }
                 $notificationRead = NotificationRead::all(); // Retrieve all notification reads
                 $replies = Reply::all();
-                
-                
+       
                 $view->with([
                     'notifications' => $notifications,
                     'notifsCheck' => $notifsCheck,
-                    'NotifsCount' => $count,
                     'notificationRead' => $notificationRead, // Pass notification read data to the view
-                    'replies' => $replies
+                    'replies' => $replies,
+                    'conversationsWithReplies' => $conversations,
+                    'conversationBookmarks' => $conversationBookmarks,
                 ]);
+         
             }
         });
     }

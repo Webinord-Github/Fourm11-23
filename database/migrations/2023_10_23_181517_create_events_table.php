@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('link');
             $table->integer('image_id');
             $table->timestamp('start_at')->nullable();
+            $table->boolean('published');
+            $table->boolean('notified');
             $table->timestamps();
         });
     }

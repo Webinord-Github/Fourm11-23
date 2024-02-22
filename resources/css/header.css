@@ -18,6 +18,10 @@
   top: 0;
   left: 0;
   z-index: 1000;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 #main__header .header__container {
   display: -webkit-box;
@@ -114,13 +118,17 @@
 }
 #main__header .header__container .left .logo__container #lafourmiliere {
   cursor: auto;
-  font-family: "fun-sized", sans-serif;
+  font-family: "Edo", sans-serif;
   color: #fff;
   font-size: 25px;
   margin-bottom: 0px;
   letter-spacing: 0.08em;
 }
-#main__header .header__container .ajax__search__bar form {
+#main__header .header__container .desktop__ajax__search__bar {
+  position: relative;
+  padding: 0px 10px;
+}
+#main__header .header__container .desktop__ajax__search__bar form {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -132,19 +140,41 @@
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
-#main__header .header__container .ajax__search__bar form .search__bar {
+#main__header .header__container .desktop__ajax__search__bar form .search__bar {
   background-color: rgba(255, 255, 255, 0.1647058824);
-  width: 400px;
+  width: 800px;
   max-width: 100%;
   border-radius: 30px;
   height: 40px;
+  color: #fff;
+  font-weight: bold;
 }
-#main__header .header__container .ajax__search__bar form .fa-search {
+#main__header .header__container .desktop__ajax__search__bar form .fa-search {
   color: #fff;
   position: absolute;
   right: 15px;
   cursor: pointer;
   font-size: 25px;
+}
+#main__header .header__container .desktop__ajax__search__bar .desktop__search__results__container {
+  position: absolute;
+  max-height: 800px;
+  width: 100%;
+  top: 40px;
+  overflow-y: auto;
+  z-index: 10;
+}
+#main__header .header__container .desktop__ajax__search__bar .desktop__search__results__container .results {
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  padding: 5px;
+  height: 60px;
+  border: 1px solid black;
+}
+#main__header .header__container .desktop__ajax__search__bar .desktop__search__results__container .results:hover {
+  -webkit-filter: contrast(65%);
+          filter: contrast(65%);
 }
 #main__header .header__container .auth__container .auth__content {
   display: -webkit-box;
@@ -153,6 +183,124 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+#main__header .header__container .auth__container .auth__content .notif {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+#main__header .header__container .auth__container .auth__content .notif i {
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+#main__header .header__container .auth__container .auth__content .notif .notif__int {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  color: #Fff;
+  background-color: #fd0967;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  top: -10px;
+  left: -45px;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.025em;
+}
+#main__header .header__container .auth__container .auth__content .notif .notifications__center__container {
+  position: absolute;
+  top: 40px;
+}
+#main__header .header__container .auth__container .auth__content .notif .notifications__center__container .notifications__center {
+  display: none;
+  position: relative;
+  z-index: 200;
+  top: 45px;
+  height: 90vh;
+  width: 250px;
+  background-color: black;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+          box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  overflow-y: auto;
+  overflow-x: hidden !important;
+  border: 2px solid #fd0967;
+  right: 20px;
+  cursor: auto;
+}
+#main__header .header__container .auth__container .auth__content .notif .notifications__center__container .notifications__center .notification {
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+#main__header .header__container .auth__container .auth__content .notif .notifications__center__container .notifications__center .notification .notif__subject {
+  list-style-type: none;
+  width: 80%;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 900;
+}
+#main__header .header__container .auth__container .auth__content .notif .notifications__center__container .notifications__center .notification .unread__visual {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+#main__header .header__container .auth__container .auth__content .notif .notifications__center__container .notifications__center .notification .unread__visual .unread__dot {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 100%;
+  background-color: #fd0967;
+}
+#main__header .header__container .auth__container .auth__content .notif .notifications__center__container .notifications__center .notification:hover {
+  background-color: rgba(128, 128, 128, 0.238);
+}
+#main__header .header__container .auth__container .auth__content .notif .notifications__center__container .notifications__center .notif__divider {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#main__header .header__container .auth__container .auth__content .notif .notifications__center__container .notifications__center .notif__divider .divider {
+  width: 80%;
+  border-top: 1px solid rgba(128, 128, 128, 0.514);
+  margin: 5px 0px;
+}
+#main__header .header__container .auth__container .auth__content .open__notif {
+  display: block !important;
 }
 #main__header .header__container .auth__container .auth__content .auth__routes {
   margin: 5px;
@@ -171,7 +319,7 @@
   text-decoration: none;
   color: #fff;
 }
-#main__header .header__container .auth__container .auth__content .auth__routes #register {
+#main__header .header__container .auth__container .auth__content .auth__routes #register, #main__header .header__container .auth__container .auth__content .auth__routes #logout {
   color: red;
 }
 #main__header .header__container .auth__container .auth__content .icon__container #icon {
@@ -179,83 +327,75 @@
   font-size: 35px;
   margin: 5px;
 }
-#main__header .header__container .notif {
-  position: relative;
+#main__header .header__container .auth__container .auth__content .icon__container #profile__picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-#main__header .header__container .notif i {
-  font-size: 40px;
-  color: #fff;
-  cursor: pointer;
-}
-#main__header .header__container .notif .notif__int {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+#main__header .mobile__search__container {
+  height: 50px;
+  background-color: #000;
+  display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  padding: 5px 0px;
+}
+#main__header .mobile__search__container .mobile__ajax__search__bar {
+  position: relative;
+  padding: 0px 10px;
+}
+#main__header .mobile__search__container .mobile__ajax__search__bar form {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: absolute;
-  color: #Fff;
-  background-color: red;
-  width: 20px;
-  height: 20px;
-  border-radius: 100%;
-  top: 0;
-  cursor: pointer;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
-#main__header .header__container .notif .notifications__center {
-  display: none;
-  position: absolute;
-  z-index: 200;
-  top: 45px;
-  height: 90vh;
-  width: 250px;
-  background-color: black;
-  border-radius: 5px;
-  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-          box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-  overflow-y: auto;
-  overflow-x: hidden !important;
-}
-#main__header .header__container .notif .notifications__center .notification {
+#main__header .mobile__search__container .mobile__ajax__search__bar form .search__bar {
+  background: transparent;
+  width: 800px;
+  border-radius: 30px;
+  height: 40px;
   color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 10px;
+  font-weight: bold;
 }
-#main__header .header__container .notif .notifications__center .notification .notif__subject {
-  list-style-type: none;
-  width: 80%;
-  text-align: center;
+#main__header .mobile__search__container .mobile__ajax__search__bar form .fa-search {
+  color: #fff;
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  font-size: 25px;
 }
-#main__header .header__container .notif .notifications__center .notification .unread__visual {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+#main__header .mobile__search__container .mobile__ajax__search__bar .mobile__search__results__container {
+  position: absolute;
+  max-height: 800px;
+  width: 100%;
+  top: 40px;
+  overflow-y: auto;
+  z-index: 10;
 }
-#main__header .header__container .notif .notifications__center .notification .unread__visual .unread__dot {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 8px !important;
-  height: 8px !important;
-  border-radius: 100%;
-  background-color: yellow;
+#main__header .mobile__search__container .mobile__ajax__search__bar .mobile__search__results__container .results {
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  padding: 5px;
+  height: 60px;
+  border: 1px solid black;
 }
-#main__header .header__container .notif .notifications__center .notification:hover {
-  background-color: rgba(128, 128, 128, 0.238);
-}
-#main__header .header__container .open__notif {
-  display: block !important;
+#main__header .mobile__search__container .mobile__ajax__search__bar .mobile__search__results__container .results:hover {
+  -webkit-filter: contrast(65%);
+          filter: contrast(65%);
 }
 #main__header .slide__menu {
   position: absolute;
@@ -316,4 +456,42 @@
   height: 70px;
   width: 100%;
   background-color: #000;
+}
+
+@media screen and (max-width: 1350px) {
+  header .logo__container {
+    display: none;
+  }
+  header .desktop__ajax__search__bar .search__bar {
+    width: 400px !important;
+  }
+}
+@media screen and (max-width: 1199px) {
+  header .search__desktop {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  header .desktop__ajax__search__bar {
+    display: none;
+  }
+  header .mobile__search__container {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+  header .mobile__search__container .mobile__ajax__search__bar {
+    width: 100%;
+  }
+  header .mobile__search__container .mobile__ajax__search__bar .mobile__search__results__container {
+    width: 95% !important;
+  }
+  header .notifications__center__container {
+    width: 100%;
+    left: 0;
+  }
+  header .notifications__center__container .notifications__center {
+    width: 100% !important;
+    right: 0 !important;
+  }
 }/*# sourceMappingURL=header.css.map */

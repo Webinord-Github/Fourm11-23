@@ -252,7 +252,7 @@
 
     function getMedias() {
         const url = "/elementor/medias"
-        const option = {
+        const options = {
             method: "GET",
             CORS: true
         }

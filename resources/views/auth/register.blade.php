@@ -1,7 +1,7 @@
 @extends('layouts.mainheader')
 @section('content')
 <div class="login__container register__container">
-    <form class="login__form register__form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+    <form class="register__form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         @csrf
         <!-- Email Address -->
         <div class="details__container">

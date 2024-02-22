@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('conversations', function (Blueprint $table) {
+        Schema::create('signets', function (Blueprint $table) {
+            $table->id();
             $table->integer('user_id');
+            $table->integer('tool_id');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-       
+        Schema::dropIfExists('signets');
     }
 };

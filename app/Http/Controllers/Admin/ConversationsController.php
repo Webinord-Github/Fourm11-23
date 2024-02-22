@@ -9,6 +9,10 @@ use App\Models\Conversation;
 use App\Models\Notification;
 use App\Models\Page;
 use App\Models\Reply;
+use App\Models\Thematique;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AutoEmail;
+use App\Models\ConversationBookmarks;
 use Illuminate\Validation\Rule;
 use Auth;
 
@@ -21,8 +25,8 @@ class ConversationsController extends Controller
      */
     public function index()
     {
-        $conversations = Conversation::paginate(25);
-   
+        $conversations = Conversation::paginate(10);
+
         return view('admin.conversations.index')->with([
             'conversations' => $conversations,
         ]);
@@ -37,6 +41,7 @@ class ConversationsController extends Controller
     {
         return view('admin.conversations.create')->with([
             'model' => new Conversation(),
+            'thematiques' => Thematique::all()
         ]);
     }
 
@@ -49,8 +54,24 @@ class ConversationsController extends Controller
      */
     public function store(ConversationsRequest $request)
     {
+        $request->validate([
+            'thematiques' => ['required', 'array', 'max:3']
+        ]);
+
+        $thematiques_selected = [];
+
+        foreach ($request->thematiques as $thematique) {
+            array_push($thematiques_selected, $thematique);
+        }
+
         $conversation = Auth::user()->conversations()->save(new Conversation($request->only([
-            'title', 'body'])));
+            'title', 'body'
+        ])));
+        $conversation->published = true;
+        $conversation->notified = true;
+        $conversation->save();
+
+        $conversation->thematiques()->sync($thematiques_selected);
 
         $title = $request->title;
 
@@ -58,11 +79,12 @@ class ConversationsController extends Controller
 
 
         $notification = new Notification();
-        $notification->sujet = 'Nouvelle conversation!' . $cutTitle;
-        $notification->type = 'Conversation';
-        $notification->notif_link = '/forum';   
+        $notification->sujet = 'Une nouvelle conversation a été ajoutée' . " " .  $cutTitle;
+        $notification->type = 'BasicNotif';
+        $notification->notif_link = `/forum#c$conversation->id`;
         $notification->conversation_id = $conversation->id;
-        $notification->save(); 
+        $notification->save();
+
 
         return redirect()->route('conversations.index')->with('status', 'Opération réussie');
     }
@@ -73,8 +95,8 @@ class ConversationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-
+    public function show($id)
+    {
     }
 
     /**
@@ -113,5 +135,94 @@ class ConversationsController extends Controller
         $conversation->delete();
 
         return redirect()->route('conversations.index')->with('success', 'Conversation deleted successfully');
+    }
+
+    public function conversation_added_by_user(Request $request)
+    {
+        $request->validate([
+            'thematiques' => ['required', 'array', 'max:3']
+        ]);
+
+        $thematiques_selected = [];
+
+        foreach ($request->thematiques as $thematique) {
+            array_push($thematiques_selected, $thematique);
+        }
+
+        $conversation = Auth::user()->conversations()->save(new Conversation($request->only([
+            'title', 'body'
+        ])));
+        $conversation->published = false;
+        $conversation->notified = false;
+        $conversation->save();
+
+        $conversation->thematiques()->sync($thematiques_selected);
+
+
+        $to_email = 'info@webinord.ca';
+        $emailBody = "
+        <h1 style='text-align:center;'>
+        La fourmilière</h1>
+        <p>Nouvelle discussion ajouté par un.e utilisateur.trice</p>
+        <p><strong>Titre:</strong> " . $request->title . "</p>
+        <p><strong>Contenu:</strong> " . $request->body . "</p>
+        <p><strong>Nom de l'utilisateur:</strong> " . Auth::user()->firstname . " " . Auth::user()->lastname . "</p>
+        <p><strong>Courriel de l'utilisateur:</strong> " . Auth::user()->email . "</p>
+        
+        ";
+        $customSubject = 'Nouvelle discussion';
+        Mail::to($to_email)->send(new AutoEmail($emailBody, $customSubject));
+
+        return back()->with('status', 'Conversation Soumise. Un/une administrateur.trice revisera votre demande. Merci!');
+    }
+
+    public function conversationsPublished(Request $request)
+    {
+        foreach ($request->input('conversation_ids') as $conversationId) {
+            $conversation = Conversation::find($conversationId);
+            $isChecked = $request->has('checkbox_' . $conversationId);
+
+            // Update the 'published' attribute based on checkbox status
+
+            $conversation->published = $isChecked;
+
+            if ($conversation->notified == false) {
+                $conversation->notified = true;
+                $notification = new Notification();
+                $notification->sujet = 'Nouvelle discussion ajoutée:<br> ' . '<span style="font-size:12px">' . $conversation->title . '</span>';
+                $notification->notif_link = '/';
+                $notification->type = "BasicNotif";
+                $notification->save();
+
+       
+            }
+            $conversation->save();
+        }
+
+        return back()->with('success', 'Les discussions ont été mises à jour!');
+    }
+
+    public function conversationBookmark(Request $request)
+    {
+        $validatedData = $request->validate([
+            'convid' => ['numeric'],
+        ]);
+        $userid = Auth::user()->id;
+
+        $existingBookmarked = ConversationBookmarks::where('conversation_id', $validatedData['convid'])
+        ->where('user_id', $userid)
+        ->first();
+        
+        if(!$existingBookmarked) {
+            $newBookmark = new ConversationBookmarks();
+            $newBookmark->user_id = $userid;
+            $newBookmark->conversation_id = $validatedData['convid'];
+            $newBookmark->save();
+        } else {
+            $existingBookmarked->delete();
+        }
+        return response()->json([
+            'message' => $userid,
+        ]);
     }
 }
