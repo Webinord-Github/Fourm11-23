@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Tool;
 use App\Models\Conversation;
+use App\Models\Reply;
+use App\Models\ConversationBookmarks;
 use App\Http\Requests\PagesRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -59,17 +61,48 @@ class PagesController extends Controller
         $thematiques = Thematique::all();
         $facts = Fact::all();
         $posts = Post::where('status', 'publié')->where('published_at', '<', Carbon::tomorrow())->get();
-
-        return view('frontend.page')->with([
-            'page' => $page,
-            'conversations' => $conversations,
-            'users' => $users,
-            'events' => $events,
-            'thematiques' => $thematiques,
-            'tools' => $tools,
-            'posts' => $posts,
-            'facts' => $facts,
-        ]);
+        $recentConversations = Conversation::
+        orderBy('created_at', 'desc')
+        ->take(5)
+        ->get();
+ 
+        // si l'utilisateur n'est pas vérifié 
+        if($page->id == 5 && !Auth::user()->verified) {
+            return redirect('/');
+        }
+        // page forum si pas connecté
+        if($page->id == 5 && !Auth::check()) {
+            return redirect('/');
+        }
+        if(Auth::check()) {
+            $conversationBookmarks = ConversationBookmarks::where('user_id', Auth::user()->id)->get();
+            $userReplies = Reply::where('user_id', Auth::user()->id)->get();
+            return view('frontend.page')->with([
+                'page' => $page,
+                'conversations' => $conversations,
+                'users' => $users,
+                'events' => $events,
+                'thematiques' => $thematiques,
+                'tools' => $tools,
+                'posts' => $posts,
+                'facts' => $facts,
+                'recentConversations' => $recentConversations,
+                'conversationBookmarks' => $conversationBookmarks,
+                'userReplies' => $userReplies,
+            ]);
+        } else {
+            return view('frontend.page')->with([
+                'page' => $page,
+                'conversations' => $conversations,
+                'users' => $users,
+                'events' => $events,
+                'thematiques' => $thematiques,
+                'tools' => $tools,
+                'posts' => $posts,
+                'facts' => $facts,
+                'recentConversations' => $recentConversations,
+            ]);
+        }
     }
 
     /**
@@ -177,7 +210,7 @@ class PagesController extends Controller
     {
         $homepage = Page::where('title', 'Accueil')->firstOrFail();
         $users = User::all();
-        $posts = Post::take(2)->get();
+        $posts = Post::take(3)->get();
         $tools = Tool::take(2)->get();
         $homepageForums = Conversation::take(2)->get();
         return view('frontend.page')->with([

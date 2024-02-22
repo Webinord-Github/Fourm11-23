@@ -1,0 +1,68 @@
+.members__container {
+    display: flex;
+    justify-content: center;
+    .members {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        .member__card {
+            width: 30%;
+            height: 350px;
+            border-radius: 15px;
+            background-color: #13cec8;
+            margin: 10px;
+            position: relative;
+            .infos__container {
+                display: flex;
+                margin-top: 20px;
+                .img__content {
+                    width: 25%;
+                    display: flex;
+                    justify-content: center;
+                    img {
+                        width: 120px;
+                        height: 120px;
+                        max-width: 120px;
+                        border-radius: 100%;
+                    }
+                }
+                .info__content {
+                    width: 75%;
+                    margin-top: 0px;
+                    color: #fff;
+                    p {
+                        font-size: 20px;
+                        margin: 10px 0px;
+                        strong {
+                            font-size: 22px;
+                        }
+                    }
+                }
+            }
+            #user__follow {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background-color: #edb200;
+                padding: 2px 12px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                font-weight: bold;
+                i {
+                    margin: 2px 0px 0px 10px;
+                }
+            }
+            #user__follow:hover {
+                filter: contrast(65%);
+            }
+        }
+        .ghost__card {
+            width: 30%;
+            height: 0px;
+            margin: 10px;
+            overflow: 0;
+        }
+    }
+}

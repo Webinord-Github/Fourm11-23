@@ -16,5 +16,5 @@
 @section('scripts')
 
 @include('admin.medias.partials.scripts')
-
+@include('admin.partials.scripts')
 @endsection

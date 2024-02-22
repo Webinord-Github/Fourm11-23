@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\TestEmail;
+use App\Mail\AutoEmail;
 use App\Models\AutomaticEmail;
 use Carbon;
 use Auth;
@@ -169,25 +169,34 @@ class RegisteredUserController extends Controller
             Storage::putFileAs('public/medias', $request->file('file'), $file_name);
         
             // Update user data with the image
-            $user->image = '/storage/medias/' . $file_name;
+            $user->image_id = $media->id;
             $user->save();
         } else {
             // If no file is uploaded, use the default avatar URL
-            $user->image = '/storage/avatars/' . $validatedData['avatar_url'];
+            $user->image_id = 1;
             $user->save();
         }
       
 
         Auth::login($user);
 
-        // if ($request->filled('email')) {
-        //     $to_email = $validatedData['email'];
-        //     $automaticEmail = AutomaticEmail::where('id', 1)->first();
-        //     $userFirstName = $userData['firstname'];
-        //     $emailBody = "<h1 style='text-align:center;'>Inscription à La Fourmilière</h1><p>Bojour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
-        //     $customSubject = 'Courriel de la fourmilière';
-        //     Mail::to($to_email)->send(new TestEmail($emailBody, $customSubject));
-        // }
+        if ($request->filled('email')) {
+            $to_email = $validatedData['email'];
+            $automaticEmail = AutomaticEmail::where('id', 1)->first();
+            $userFirstName = $userData['firstname'];
+            $emailBody = "<h1 style='text-align:center;'>Inscription à La Fourmilière</h1><p>Bojour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
+            $customSubject = 'Courriel de la fourmilière';
+            Mail::to($to_email)->send(new AutoEmail($emailBody, $customSubject));
+            
+            $userEmail = 'info@webinord.ca';
+            $emailBodyAdmin = "<h1 style='text-align:center;'>Demande d'inscription à La Fourmilière</h1><p>Nouvelle demande d'inscription à la fourmilière</p>
+            <p<strong>Nom complet:</strong>" . $validatedData['firstname'] . " " . $validatedData['lastname'] . "</p>
+            <p><strong>Courriel:</strong>" . $validatedData['email'] .  "</p>
+            ";
+            Mail::to($userEmail)->send(new AutoEmail($emailBodyAdmin, $customSubject));
+            
+
+        }
         event(new Registered($user));
         return redirect('/');
     }

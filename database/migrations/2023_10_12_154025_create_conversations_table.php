@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('title');
             $table->text('body');
             $table->timestamps();
+            $table->boolean('published')->default(false);
+            $table->boolean('notified')->default(false);
+            $table->integer('user_id');
         });
     }
 

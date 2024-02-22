@@ -1,54 +1,24 @@
 .admin__nav__container {
     height: 65px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    flex-direction: column;
     width: calc(100% - 250px);
     margin-left: auto;
     padding: 5px 30px;
-
-    .search__form {
+    .user__container {
         display: flex;
-        justify-content: center;
-        width: 100%;
-
-        .search__container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-
-            .search__input {
-                padding: 8px;
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                margin-right: 8px;
-                width: 100%;
-                max-width: 600px;
-            }
-
-            .search__button {
-                position: relative;
-                left: -40px;
-                background-color: #29282d;
-                color: white;
-                border: none;
-                border-radius: 10px;
-                cursor: pointer;
-                width: 60px;
-            }
+        align-items: center;
+        img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 100%;
+            margin-left: 10px;
         }
     }
-
-
-
-
-    .dropdown__container {
-
-        margin-left: auto;
-
-        button {
-            background-color: transparent;
-            color: #000;
-        }
+    .logout__container {
+        margin-right: 20px;
     }
 }
 
@@ -168,45 +138,37 @@ main {
                         align-items: center;
                         height: 100%;
                         font-size: 16px;
+                        .fa-angle-down {
+                            margin-left: auto;
+                        }
                     }
-                }
-
-                .navLink:hover {
-                    background-color: #8D8E91;
-                }
-
-                .admin__menu__dropdown:hover {
-                    .admin__menu__dropdown__container {
-                        display: block !important;
+                    a:hover {
+                        background-color: gray;
                     }
                 }
 
                 .admin__menu__dropdown__container {
-                    position: absolute;
-                    display: none;
-
+                    height: 0;
+                    overflow: hidden;
                     .admin__menu__dropdown__content {
-                        position: relative;
                         background: #29282d;
                         right: -250px;
                         top: -55px;
                         display: flex;
                         flex-direction: column;
-                        width: 200px;
+                
                         border-radius: 15px;
-
+                        width: 100%;
+              
                         .submenu__links {
                             width: 100%;
-
                             a {
                                 color: #fff;
                                 padding: 10px;
                             }
-                        }
-
-                        .submenu__links:hover {
-                            background-color: #8D8E91;
-                            border-radius: 15px;
+                            a:hover {
+                                background-color: gray;
+                            }
                         }
                     }
                 }

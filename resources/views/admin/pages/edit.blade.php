@@ -15,4 +15,5 @@
 @endsection
 @section('scripts')
     @include('admin.pages.partials.scripts')
+    @include('admin.partials.scripts')
 @endsection

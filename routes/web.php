@@ -26,11 +26,17 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\AutomaticEmailsController;
+use App\Http\Controllers\Admin\ChatbotMessages;
+use App\Http\Controllers\Admin\ChatbotsController;
 use App\Http\Controllers\Admin\ElementorController;
 use App\Http\Controllers\Admin\ApiController;
 use App\Http\Controllers\Admin\UsersController;
-
-
+use App\Http\Controllers\Admin\SignetsController;
+use App\Http\Controllers\Admin\ConversationsController;
+use App\Http\Controllers\userFollowingsController;
+use App\Http\Controllers\SearchBarController;
+use App\Http\Controllers\Admin\AdminSettingsController;
+use App\Models\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +48,13 @@ use App\Http\Controllers\Admin\UsersController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('/forum/bookmark', [ConversationsController::class, 'conversationBookmark'])->name('conversation.bookmark');
+Route::post('/admin/parametres/maintenance', [AdminSettingsController::class, 'maintenanceMode'])->name('maintenance.mode');
+Route::resource('/admin/parametres', AdminSettingsController::class);
+Route::post('/search', [SearchBarController::class, 'searchBar'])->name('search');
+Route::post('/evenements/bookmark', [eventsController::class, 'eventBookmarks'])->name('event.bookmark');
+Route::post('/les-membres/following', [userFollowingsController::class, 'userFollowing'])->name('user.follow');
+Route::resource('/admin/chatbot', ChatbotsController::class);
 Route::get('/lien-invalide', 'App\Http\Controllers\InvalidPasswordResetLinkController@index');
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
@@ -53,12 +66,12 @@ Route::get('/blogue/{post}', [BlogController::class, 'show'])->name('post.show')
 Route::get('/admin/calendar', 'App\Http\Controllers\Admin\CalendarController@index');
 Route::resource('/admin/emails', 'App\Http\Controllers\Admin\AutomaticEmailsController');
 Route::get('/admin/utilisateurs-bannis', 'App\Http\Controllers\Admin\BanUserController@index')->name('banusers.index');
-Route::post('/banuser', 'App\Http\Controllers\Admin\UsersGuardController@banUser')->name('banUser');
+Route::post('/admin/usersguard/banuser', 'App\Http\Controllers\Admin\UsersGuardController@banUser')->name('banUser');
 Route::post('/unbanuser', 'App\Http\Controllers\Admin\BanUserController@unbanUser')->name('unbanUser');
 Route::post('/update-menu-order', 'App\Http\Controllers\Admin\PagesController@updateMenuOrder')->name('update-menu-order');
 // custom Auth Routes
 Route::get('sinscrire', [RegisteredUserController::class, 'create'])
-->name('custom.register.form');
+->name('custom.register.form')->middleware('guest');
 Route::post('sinscrire', [RegisteredUserController::class, 'store']);
 Route::get('mon-compte', [AuthenticatedSessionController::class, 'create'])
 ->name('mon-compte');
@@ -104,6 +117,8 @@ Route::post('/update-notifs-check', 'App\Http\Controllers\UsersNotifsUpdateContr
 Route::post('/singleNotifsReadUpdate', 'App\Http\Controllers\UsersNotifsUpdateController@singleNotifsReadUpdate')->name('singleNotifsReadUpdate');
 
 Route::resource('/admin/conversations', 'App\Http\Controllers\Admin\ConversationsController');
+Route::post('/forum/nouvelle-conversation', [ConversationsController::class, 'conversation_added_by_user'])->name('new.conversation.by.user');
+Route::post('admin/forum/published', [ConversationsController::class, 'conversationsPublished'])->name('conversations.published');
 
 Route::resource('/replies', 'App\Http\Controllers\Admin\RepliesController');
 
@@ -118,7 +133,7 @@ Route::resource('/admin/medias', 'App\Http\Controllers\Admin\MediasController');
 Route::resource('/admin/pages', 'App\Http\Controllers\Admin\PagesController');
 Route::post('/replies/delete', 'App\Http\Controllers\Admin\RepliesController@destroy')->name('replies.destroy');
 Route::resource('/admin/pagesguard', 'App\Http\Controllers\Admin\PagesGuardController');
-Route::resource('/admin/usersguard', 'App\Http\Controllers\Admin\UsersGuardController');
+Route::resource('/admin/usersguard', 'App\Http\Controllers\Admin\UsersGuardController')->middleware('auth');
 Route::resource('/admin/toolsguard', ToolsGuardController::class)->middleware('auth');
 
 
@@ -136,10 +151,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/mon-profil/update/{user}', [ProfileController::class, 'updateProfile'])->name('profile.update');
 });
 
-Route::resource('admin/posts', BlogController::class)->middleware('auth');
+Route::resource('/admin/posts', BlogController::class)->middleware('auth');
 Route::resource('admin/events', EventsController::class)->middleware('auth');
 Route::resource('admin/thematiques', ThematiquesController::class)->middleware('auth');
 Route::resource('admin/facts', FactsController::class)->middleware('auth');
+Route::post('/evenements/nouvel-evenement', [EventsController::class, 'userAddEvent'])->name('new.user.event')->middleware('auth');
+Route::post('admin/events/published', [EventsController::class, 'eventsPublished'])->name('events.published');
+Route::get('/blogue/{post}', [BlogController::class, 'show'])->name('post.show');
 
 Route::resource('admin/test', TestController::class)->middleware('auth');
 
@@ -149,7 +167,7 @@ Route::get('/admin/tools/create', [ToolsController::class, 'create'])->middlewar
 Route::post('/admin/tools/store', [ToolsController::class, 'store'])->middleware('auth');
 Route::get('/admin/tools/update/{id}', [ToolsController::class, 'update'])->middleware('auth');
 Route::post('/admin/tools/update/', [ToolsController::class, 'storeUpdate'])->middleware('auth');
-Route::get('/admin/tools/destroy/{id}', [ToolsController::class, 'destroy'])->middleware('auth');
+Route::post('/admin/tools/destroy/', [ToolsController::class, 'destroy'])->name('tools.destroy')->middleware('auth');
 
 Route::get('/admin/cards', [CardsController::class, 'cards'])->name('cards')->middleware('auth');
 Route::get('/admin/cards/create', [CardsController::class, 'create'])->middleware('auth');
@@ -160,6 +178,7 @@ Route::get('/admin/cards/destroy/{id}', [CardsController::class, 'destroy'])->mi
 
 Route::get('/elementor/medias', [ElementorController::class, 'medias']);
 Route::post('/elementor/upload', [ElementorController::class, 'upload'])->name('elementor.upload');
+
 
 Route::get('/{url}', 'App\Http\Controllers\Admin\PagesController@view')->name('frontend.page');
 

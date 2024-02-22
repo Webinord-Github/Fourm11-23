@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Media extends Model
 {
     use HasFactory;
-    // protected $fillable = [
-    //     'url',
-    //     'base_path',
-    //     'description',
-    //     'user_id',
-    //     'file_size',
-    //     'provider',
-    // ];
+    protected $fillable = [
+        'user_id',
+        'path',
+        'name',
+        'original_name',
+        'alt',
+        'size',
+        'provider',
+    ];
 
     public function user(){
         return $this->hasMany(User::class, 'image_id');
@@ -35,5 +36,9 @@ class Media extends Model
     public function events()
     {
         return $this->hasMany(Event::class, 'image_id');
+    }
+    public function profilePics()
+    {
+        return $this->hasMany(User::class);
     }
 }

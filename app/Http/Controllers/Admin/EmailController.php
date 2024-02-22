@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\TestEmail;
+use App\Mail\AutoEmail;
 
 class EmailController extends Controller
 {
@@ -20,7 +20,7 @@ class EmailController extends Controller
             // Logic to send an email goes here
             $to_email = 'info@webinord.ca';
             $emailBody = "test";
-            Mail::to($to_email)->send(new TestEmail($emailBody));
+            Mail::to($to_email)->send(new AutoEmail($emailBody, 'test'));
   
     
             return 'Email sent successfully';

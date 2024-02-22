@@ -14,4 +14,7 @@
         </form>
     </div>
 </div>
-@endsection 
+@endsection
+@section('scripts')
+@include('admin.partials.scripts')
+@endsection

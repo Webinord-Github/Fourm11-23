@@ -43,4 +43,5 @@
 
 @section('scripts')
     @include('admin.blog.partials.scripts')
+    @include('admin.partials.scripts')
 @endsection

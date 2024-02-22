@@ -43,8 +43,10 @@ class User extends Authenticatable
         'password',
         'notifs_check',
         'verified',
-        'image',
+        'image_id',
         'ban',
+        'approved_email',
+        'refused_email',
     ];
 
     /**
@@ -66,9 +68,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function conversationBookmars()
+    public function conversationBookmarks()
     {
-        return $this->hasMany('App\Models\ConversationBookmars');
+        return $this->hasMany('App\Models\ConversationBookmarks');
     }
 
     public function pages()
@@ -167,5 +169,19 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return null != $this->roles()->where('name', $role)->first();
+    }
+
+    public function profilePicture()
+    {
+        return $this->belongsTo(Media::class, 'image_id');
+    }
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'user_followings', 'following_id', 'follower_id');
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'user_followings', 'follower_id', 'following_id');
     }
 }

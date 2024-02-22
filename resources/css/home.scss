@@ -5,15 +5,18 @@
     align-items: center;
 
     .home__banner__container {
-        height: calc(60vh - 100px);
+        height: calc(100vh);
         width: 100%;
+        position: relative;
+        z-index: -10;
+        margin-top: -100px;
     }
 
     .homepage__content {
         width: 85%;
 
         .first__static__content {
-            margin-top: -120px;
+            margin-top: -50px;
             display: flex;
 
             .first__content {
@@ -57,10 +60,10 @@
                     }
 
                     .single__conversation__container {
-                        height: 300px;
                         width: 85%;
                         background-color: #fff;
                         border-radius: 10px;
+                        margin: 10px 0px;
 
                         .conv__title__container {
                             padding: 12px 20px;
@@ -122,7 +125,7 @@
                     }
 
                     .forum__href__container {
-                        margin: 30px 0px 10px 0px;
+                        margin: 30px 0px 0px 0px;
 
                         .href__forum {
                             background-color: #fff;
@@ -146,13 +149,23 @@
                 width: 25%;
 
                 .users__container {
-                    padding: 10px;
+                    padding: 20px;
                     height: 100%;
                     max-height: 100%;
 
                     h3 {
                         text-align: center;
-                        font-size: 16px;
+                        font-size: 20px;
+                    }
+
+                    .no__member__container {
+                        display: flex;
+                        justify-content: center;
+                        padding: 10px 0px;
+
+                        p {
+                            color: #fff;
+                        }
                     }
 
                     .users__list {
@@ -163,6 +176,8 @@
                             .img__container {
                                 img {
                                     width: 80px;
+                                    height: 80px;
+                                    object-fit: cover;
                                     border-radius: 10px;
                                 }
                             }
@@ -193,17 +208,21 @@
                         width: 100%;
                         display: flex;
                         align-items: center;
+                        justify-content: center;
 
                         .member__href {
-                            width: 100%;
                             padding: 5px 20px;
                             border-radius: 15px;
                             background: #fff;
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
-                            width: 100%;
                             margin: 0px;
+
+                            i {
+                                margin-left: 10px;
+                                font-size: 20px;
+                            }
                         }
                     }
                 }
@@ -215,6 +234,7 @@
 
             .about__container {
                 display: flex;
+                height: 400px;
 
                 .text__container {
                     width: 40%;
@@ -231,6 +251,10 @@
 
                 .img__container {
                     width: 40%;
+
+                    img {
+                        width: 100%;
+                    }
                 }
 
                 .text__container {
@@ -272,6 +296,7 @@
 
             .blogs__container {
                 margin-right: 20px;
+                padding: 20px;
 
                 h2 {
                     text-align: center;
@@ -286,6 +311,7 @@
                     padding: 10px;
                     width: 100%;
                     border-radius: 10px;
+                    margin: 20px 0px;
 
                     .img__container {
                         img {
@@ -299,6 +325,8 @@
                         flex-direction: column;
                         height: 100%;
                         justify-content: space-evenly;
+                        width: 100%;
+                        position: relative;
 
                         h3 {
                             color: #000;
@@ -315,6 +343,7 @@
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
+                            width: 100%;
 
                             .tags__container {
                                 .tags {
@@ -333,6 +362,25 @@
                                     padding: 2px 20px;
                                     border-radius: 15px;
                                 }
+                            }
+                        }
+
+                        .post__bookmark__container {
+                            position: absolute;
+                            top: 0px;
+                            right: -10px;
+
+                            #post__bookmark {
+                                background-color: #000;
+                                color: #fff;
+                                width: 35px;
+                                height: 35px;
+                                border-radius: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                font-size: 17px;
+                                cursor: pointer;
                             }
                         }
                     }
@@ -359,8 +407,7 @@
             .blogs__container,
             .tools__container {
                 width: 50%;
-                height: 600px;
-                padding: 15px;
+                padding: 20px;
             }
 
             .tools__container {
@@ -372,12 +419,14 @@
                 .single__tool {
                     background-color: #fff;
                     width: 100%;
-                    height: 250px;
+                    height: 310px;
                     border-radius: 10px;
                     padding: 20px;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-evenly;
+                    position: relative;
+                    margin: 20px 0px;
 
                     h3 {
                         color: #000;
@@ -409,7 +458,47 @@
                         }
                     }
 
+                    .tool__bookmark__container {
+                        position: absolute;
+                        top: 10px;
+                        right: 15px;
+
+                        #tool__bookmark {
+                            background-color: #000;
+                            color: #fff;
+                            width: 35px;
+                            height: 35px;
+                            border-radius: 100%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 17px;
+                            cursor: pointer;
+                        }
+
+                        .bookmarked {
+                            color: #edb200 !important;
+                        }
+
+                        .bookmark__hover {
+                            display: none;
+                            position: absolute;
+                            top: 40px;
+                            right: -100px;
+                            background-color: #000;
+                            color: #fff;
+                            width: 120px;
+                            text-align: center;
+                        }
+                    }
+
+                    .tool__bookmark__container:hover {
+                        .bookmark__hover {
+                            display: block !important;
+                        }
+                    }
                 }
+
                 .tool__href__container {
                     margin-top: 30px;
                     display: flex;
@@ -424,6 +513,109 @@
                         justify-content: space-between;
                         align-items: center;
                         font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .homepage__container {
+        .homepage__content {
+            width: 100%;
+
+            .first__static__content {
+                flex-direction: column;
+                align-items: center;
+
+                .first__content {
+                    width: 100%;
+                }
+
+                .second__content {
+                    width: 100%;
+                    padding: 0px 20px;
+                    margin-top: 30px;
+                }
+            }
+            .second__static__content {
+                padding: 0px 20px;
+            }
+            .third__static__content {
+                flex-direction: column;
+                padding: 0px 20px;
+                .blogs__container {
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+                .tools__container {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:991px) {
+    .homepage__container {
+        .homepage__content {
+            .second__static__content {
+                .about__container {
+                    flex-direction: column;
+                    height: auto;
+                    .text__container {
+                        width: 100%;
+                        margin-bottom: 10px;
+                    }
+                    .img__container {
+                        width: 100%;
+                        height: 400px;
+                    }
+                }
+                .register__info__container {
+                    flex-direction: column-reverse;
+                    .text__container {
+                        width: 100%;
+                    }
+                    .img__container {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+} 
+
+@media screen and (max-width:600px) {
+    .homepage__container {
+        .homepage__content {
+            .first__static__content {
+                .first__content {
+                    .conversations__container {
+                        padding: 10px;
+                        .single__conversation__container {
+                            width: 95%;
+                            .infos__container {
+                                padding: 10px;
+                                .stamp__container {
+                                    .timestamp {
+                                        display: flex;
+                                        justify-content: flex-end;
+                                        p {
+                                            font-size: 14px;
+                                            width: 50%;
+                                        }
+                                    }
+                                }
+                                .action__container {
+                                    flex-direction: column;
+                                    .tags__container {
+                                        margin-bottom: 30px;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

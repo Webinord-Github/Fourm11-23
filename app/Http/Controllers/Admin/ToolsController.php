@@ -48,31 +48,34 @@ class ToolsController extends Controller
         $tool->status = $request->status;
         $tool->verified = 1;
         $tool->published_at = $request->published_at;
+        if($request->media)
+        {
+            $file_original_name = $request->media->getClientOriginalName();
+            $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
+            $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
+            $file_size = $request->media->getSize() / 1024;
+            $existing_file_url = Media::where('name', '=', $file_original_name)->first();
+            $count_file = Media::where('original_name', '=', $file_original_name)->count();
+    
+            if($existing_file_url) {
+                $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
+            } else {
+                $file_name = $file_original_name;
+            }
+    
+            $media = new Media();
+            $media->user_id = Auth::user()->id;
+            $media->path = '/storage/medias/';
+            $media->name = $file_name;
+            $media->original_name = $file_original_name;
+            $media->size = $file_size;
+            $media->provider = $file_provider;
+            $media->save();
+            Storage::putFileAs('public/medias',$request->media, $file_name);
+    
+            $tool->media_id = $media->id;
 
-        $file_original_name = $request->media->getClientOriginalName();
-        $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
-        $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
-        $file_size = $request->media->getSize() / 1024;
-        $existing_file_url = Media::where('name', '=', $file_original_name)->first();
-        $count_file = Media::where('original_name', '=', $file_original_name)->count();
-
-        if($existing_file_url) {
-            $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
-        } else {
-            $file_name = $file_original_name;
         }
-
-        $media = new Media();
-        $media->user_id = Auth::user()->id;
-        $media->path = '/storage/medias/';
-        $media->name = $file_name;
-        $media->original_name = $file_original_name;
-        $media->size = $file_size;
-        $media->provider = $file_provider;
-        $media->save();
-        Storage::putFileAs('public/medias',$request->media, $file_name);
-
-        $tool->media_id = $media->id;
         $tool->save();
         $tool->thematiques()->sync($thematiques_selected);
 

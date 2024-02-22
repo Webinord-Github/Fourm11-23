@@ -1,0 +1,9 @@
+htaccess
+AuthType Basic
+AuthName "Restricted Area"
+AuthUserFile /home/grmbjckg/private/.htpasswd
+Require valid-user
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

@@ -15,6 +15,35 @@
                 font-size: 40px;
             }
         }
+        .advertise__container {
+            display: flex;
+            margin-top: 300px;
+            flex-direction: column;
+            align-items: center;
+            p {
+                font-size: 30px;
+                font-weight: bold;
+            }
+            h3 {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                margin-top: 10px;
+                i {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 100%;
+                    border: 1px solid #edb200;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-left: 20px;
+                }
+            }
+            h3:hover {
+                filter: contrast(65%);
+            }
+        }
         .add__event__container {
             height: 60px;
             background-size: cover;
@@ -27,6 +56,14 @@
                 padding: 2px 20px;
                 border-radius: 15px;
                 font-weight: bold;
+            }
+            .add__event__notallowed {
+                background-color: #edb200;
+                opacity: 0.4;
+                padding: 2px 20px;
+                border-radius: 15px;
+                font-weight: bold;
+                cursor: not-allowed;
             }
             .add__event:hover {
                 filter: contrast(65%);
@@ -88,8 +125,99 @@
                     height: 200px;
                     object-fit: cover;
                 }
+                .event__bookmark__container {
+                    position: relative;
+                    right: 30px;
+                    top: -10px;
+                    width: fit-content;
+                    height: fit-content;
+                    .event__bookmark {
+                        color: #fff;
+                        font-size: 30px;
+                        width: 50px;
+                        height: 50px;
+                        background-color: #000;
+                        border-radius: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                    }
+                    .bookmarked {
+                        color: #edb200;
+                    }
+                }
+        
+                .event__bookmark__hover {
+                    position: absolute;
+                    display: none;
+                    padding: 3px 10px;
+                    right: -80px;
+                    top: 50px;
+                    background-color: #000;
+                    color: #fff;
+                }
             }
         }
     }
-  
+    .flex {
+        display: flex!important;
+    }
+    .new__event__container {
+        z-index: 100;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+        min-height: 100vh;
+        top: -30px;
+        left: 0;
+        background-color: rgba(0,0,0,0.7);
+        .new__event__content {
+            width: 45%;
+            max-height: 600px;
+            overflow: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            .close__container {
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                cursor: pointer;
+                i {
+                    font-size: 22px;
+                    width: 30px;
+                    height: 30px;
+                    border: 3px solid #000;
+                    border-radius: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+            .close__container:hover {
+                background-color: lightgray;
+                border-radius: 100%;
+            }
+            .new__event {
+                .h3__container {
+                    display: flex;
+                    justify-content: center;
+                }
+                #new__event__form {
+                    .input__container {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .submit__container {
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
 }

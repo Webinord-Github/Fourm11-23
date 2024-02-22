@@ -5,3 +5,6 @@
     @include('admin.emails.partials.scripts')
 </div>
 @endsection
+@section('scripts')
+@include('admin.partials.scripts')
+@endsection

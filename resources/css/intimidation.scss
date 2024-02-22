@@ -1,0 +1,167 @@
+.fourm__container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+
+    .fourm__content {
+        width: 95%;
+
+        .second__static__content {
+            margin-top: 30px;
+            line-height: 1em;
+            h2 {
+                margin-bottom: 30px;
+            }
+            .about__container {
+                display: flex;
+                height: 400px;
+
+                .text__container {
+                    width: 40%;
+                    padding: 0px 20px;
+                }
+
+                .img__container {
+                    width: 60%;
+                }
+            }
+
+            .register__info__container {
+                display: flex;
+
+                .img__container {
+                    width: 40%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .text__container {
+                    padding: 20px;
+                    width: 60%;
+                }
+
+                .register__actions__container {
+                    margin-top: 50px;
+                    width: 100%;
+                    max-width: 100%;
+                    display: flex;
+                    align-items: center;
+
+                    .register {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 5px 10px;
+                        width: 250px;
+                        max-width: 100%;
+                        border-radius: 15px;
+                        border: 1px solid #000;
+                        font-weight: bold;
+                        margin-right: 10px;
+                    }
+
+                    .login {
+                        text-decoration: underline;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        .dropdown__container {
+            margin: 30px 0px;
+
+            .dropdown__content {
+                h3 {}
+
+                .dropdown {
+                    height: 60px;
+                    margin: 10px 0px;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0px 10px;
+                    cursor: pointer;
+
+                    i {
+                        font-size: 40px;
+                        font-weight: bold;
+                        color: #fff;
+                        transition: 0.2s linear;
+                    }
+
+                    .drop__trigger,
+                    .drop__trigger__parent {
+                        cursor: pointer;
+                    }
+                }
+
+                .rotate {
+                    transform: rotate(180deg);
+                }
+
+                .drop__content {
+                    height: 0;
+                    overflow: hidden;
+                    .text {
+                        .text__content {
+                            margin: 20px 0px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            .content {
+                                box-shadow: 0px 3px 8px gray;
+                                width: 90%;
+                                padding: 10px;
+                            }
+                            h3 {
+                                text-align: center;
+                                font-size: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1300px) {
+    .fourm__container {
+        .fourm__content {
+            .second__static__content {
+                .about__container {
+                    flex-direction: column;
+                    height: auto;
+                    margin-bottom: 20px;
+                    .text__container {
+                        width: 100%;
+                        margin-bottom: 20px;
+                        padding: 0px;
+                    }
+                    .img__container {
+                        width: 100%;
+                        height: 400px;
+                    }
+                }
+                .register__info__container {
+                    flex-direction: column-reverse;
+                    .img__container {
+                        width: 100%;
+                    }
+                    .text__container {
+                        width: 100%;
+                        padding: 0px;
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

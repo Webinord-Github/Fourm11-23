@@ -15,6 +15,7 @@ class Event extends Model
         'link',
         'image_id',
         'start_at',
+        'published',
     ];
 
     public function image()

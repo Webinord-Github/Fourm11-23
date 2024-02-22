@@ -17,6 +17,7 @@ class ThematiquesController extends Controller
     {
         return view('admin.thematiques.create');
     }
+    
 
     public function store(Request $request)
     {

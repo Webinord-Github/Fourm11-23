@@ -150,11 +150,12 @@ class BlogController extends Controller
         return redirect()->route('posts.index')->with('status', "$post->title a été édité.");
     }
 
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        $post->delete();
+        $post = Post::find($id);
+        $post->destroy($id);
         $post->thematiques()->detach();
 
-        return redirect()->route('posts.index')->with('status', "$post->title a été supprimé.");
+        return redirect('/admin/posts')->with('status', "$post->title a été supprimé.");
     }
 }

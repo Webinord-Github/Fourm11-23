@@ -1,11 +1,111 @@
 {
+  "resources/css/admin.css": {
+    "file": "assets/admin-42134dc7.css",
+    "isEntry": true,
+    "src": "resources/css/admin.css"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-0f2569d2.css",
+    "file": "assets/app-837aa687.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
+  "resources/css/automatic-emails.css": {
+    "file": "assets/automatic-emails-228ae7d5.css",
+    "isEntry": true,
+    "src": "resources/css/automatic-emails.css"
+  },
+  "resources/css/calendar.css": {
+    "file": "assets/calendar-4ed993c7.js",
+    "isEntry": true,
+    "src": "resources/css/calendar.css"
+  },
+  "resources/css/chatbot.css": {
+    "file": "assets/chatbot-4ed993c7.js",
+    "isEntry": true,
+    "src": "resources/css/chatbot.css"
+  },
+  "resources/css/dashboard.css": {
+    "file": "assets/dashboard-ed34b590.css",
+    "isEntry": true,
+    "src": "resources/css/dashboard.css"
+  },
+  "resources/css/events.css": {
+    "file": "assets/events-ccb02c8e.css",
+    "isEntry": true,
+    "src": "resources/css/events.css"
+  },
+  "resources/css/forgotpassword.css": {
+    "file": "assets/forgotpassword-698fb1bf.css",
+    "isEntry": true,
+    "src": "resources/css/forgotpassword.css"
+  },
+  "resources/css/forum.css": {
+    "file": "assets/forum-51991d20.css",
+    "isEntry": true,
+    "src": "resources/css/forum.css"
+  },
+  "resources/css/fourmiliere.css": {
+    "file": "assets/fourmiliere-d9541889.css",
+    "isEntry": true,
+    "src": "resources/css/fourmiliere.css"
+  },
+  "resources/css/header.css": {
+    "file": "assets/header-a3f2e44b.css",
+    "isEntry": true,
+    "src": "resources/css/header.css"
+  },
+  "resources/css/home.css": {
+    "file": "assets/home-9bdd53c1.css",
+    "isEntry": true,
+    "src": "resources/css/home.css"
+  },
+  "resources/css/invalid-reset-password.css": {
+    "file": "assets/invalid-reset-password-d4236375.css",
+    "isEntry": true,
+    "src": "resources/css/invalid-reset-password.css"
+  },
+  "resources/css/lexique.css": {
+    "file": "assets/lexique-c96488d7.css",
+    "isEntry": true,
+    "src": "resources/css/lexique.css"
+  },
+  "resources/css/login.css": {
+    "file": "assets/login-a2d0c749.css",
+    "isEntry": true,
+    "src": "resources/css/login.css"
+  },
+  "resources/css/main.css": {
+    "file": "assets/main-a11efd87.css",
+    "isEntry": true,
+    "src": "resources/css/main.css"
+  },
+  "resources/css/member-card.css": {
+    "file": "assets/member-card-12b4c44b.css",
+    "isEntry": true,
+    "src": "resources/css/member-card.css"
+  },
+  "resources/css/members.css": {
+    "file": "assets/members-0c852b21.css",
+    "isEntry": true,
+    "src": "resources/css/members.css"
+  },
+  "resources/css/register.css": {
+    "file": "assets/register-2be6e1c4.css",
+    "isEntry": true,
+    "src": "resources/css/register.css"
+  },
+  "resources/css/sortablemenu.css": {
+    "file": "assets/sortablemenu-0f5e9021.css",
+    "isEntry": true,
+    "src": "resources/css/sortablemenu.css"
+  },
+  "resources/css/tools.css": {
+    "file": "assets/tools-b7bd8933.css",
+    "isEntry": true,
+    "src": "resources/css/tools.css"
+  },
   "resources/js/app.js": {
-    "file": "assets/app-c47d7316.js",
+    "file": "assets/app-c15e5012.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

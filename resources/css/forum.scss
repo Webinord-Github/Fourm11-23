@@ -1,296 +1,152 @@
-.forum__container {
-    padding: 0px 20px;
-    width: 100%;
-    position: relative;
+.main__forum__container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    height: 100%;
+    min-height: calc(100vh - 100px);
 
-    .forum__content {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
+    .thematiques__container {
+        padding: 0px 10px;
+        border-left: 3px solid #edb200;
+        width: 15%;
+        height: fit-content;
 
-        .conv__container {
-            display: flex;
-            flex-direction: column;
-            width: 1200px;
-            max-width: 100%;
-            height: auto;
-            margin: 50px 0px;
-            box-shadow: 1px 1px 10px black;
-            min-height: 450px;
+        h2 {
+            font-size: 22px;
+        }
 
-            .conv__title__container {
-                background-color: #2870c3;
+        .thematiques__list {
+            .thematique__li__container {
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-                padding: 12px 20px;
 
-                #conv__title {
-                    color: #fff;
-                    font-weight: bold;
-                    margin: 0px;
-                    font-size: 20px;
-
-                    i {
-                        margin-right: 20px;
-                        font-size: 30px;
-                    }
+                .conversation-count {
+                    font-size: 14px;
+                    color: gray;
+                    margin-left: 5px;
                 }
+                li{
+                    list-style-type: none;
+                }
+            }
+            
+            .thematique,
+            .all__thematique {
+                cursor: pointer;
+                list-style-type: none;
+            }
+        }
 
-                .fa-bookmark {
-                    color: #2870c3;
-                    background-color: #fff;
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+        .submit__conversation__container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 30px;
+
+            .new__conversation__trigger {
+                background-color: #edb200;
+                color: #000;
+                padding: 3px 20px;
+                border-radius: 15px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+
+        .submit__conversation__container:hover {
+            filter: contrast(65%);
+        }
+    }
+
+    .chalk__container {
+        display: flex;
+        width: 85%;
+        margin-top: -50px;
+        padding: 20px;
+        min-height: 100vh;
+
+        .conversations__main__container {
+            padding: 0px 10px;
+            width: 75%;
+            max-height: 85vh;
+            overflow-y: auto;
+
+            .no__conversations__container {
+                display: flex;
+                justify-content: center;
+                p {
+                    text-align: center;
+                    color: #fff;
                     font-size: 25px;
-                    cursor: pointer;
                 }
             }
 
-            .conv__content {
-                padding: 20px;
+            .forum__container {
+                width: 100%;
+                position: relative;
+                display: flex;
 
-                .conv__author__info {
+                .forum__content {
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
 
-                    #author {
-                        font-weight: bold;
-                    }
-
-                    #timestamp {
-                        color: red;
-                    }
-                }
-
-                .tags__container {
-                    margin-top: 50px;
-
-                    .tags {
-                        margin-right: 5px;
-                        background-color: #1d3e77;
-                        color: #fff;
-                        text-decoration: none;
-                        padding: 5px 20px;
-                        font-weight: bold;
-                        border-radius: 20px;
-                    }
-                }
-
-                .actions__container {
-                    margin: 50px 0px 30px 0px;
-                    display: flex;
-                    justify-content: space-between;
-
-                    .pivot__actions {
+                    .conv__container {
                         display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        height: auto;
+                        margin-bottom: 50px;
+                        box-shadow: 1px 1px 10px black;
+                        min-height: 450px;
+                        background-color: #fff;
 
-                        .like,
-                        .comments {
-                            margin-right: 20px;
-                            position: relative;
+                        .conv__title__container {
+                            background-color: #2870c3;
                             display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding: 12px 20px;
 
-                            .likes__iteration {
-                                display: flex;
-                                align-items: center;
-                                position: relative;
-                            }
-
-                            .likes__iteration:hover {
-                                .likeHover {
-                                    display: block;
-                                }
-                            }
-
-                            i {
-                                width: 40px;
-                                height: 40px;
-                                background-color: #2870c3;
-                                border-radius: 100%;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
+                            #conv__title {
                                 color: #fff;
-                                margin-left: 5px;
-                                font-size: 16px;
                                 font-weight: bold;
-                            }
-
-                            .likeHover {
-                                display: none;
-                                background-color: #2870c3;
-                                width: 120px;
-                                z-index: 100;
-                                color: #fff;
-                                position: absolute;
-                                top: 30px;
-                                right: -110px;
-                                text-align: center;
-                                font-size: 14px;
-                            }
-
-                            #conversation__comments, #reply__comments {
-                                display: flex;
-                                align-items: center;
-                            }
-
-                            #conversation__like,
-                            #reply__like {
-                                cursor: pointer;
-                            }
-                        }
-                    }
-
-
-
-                    .instant__actions {
-                        display: flex;
-                        align-items: center;
-
-                        .delete {
-                            margin-right: 20px;
-
-                            #delete {
                                 margin: 0px;
-                                cursor: pointer;
-                                display: flex;
+                                font-size: 20px;
 
                                 i {
-                                    font-size: 20px;
-                                    color: red;
-                                    margin-left: 5px;
+                                    margin-right: 20px;
+                                    font-size: 30px;
                                 }
                             }
-                        }
 
-                        .report {
-                            margin-right: 20px;
-                            cursor: pointer;
-
-                            p.report__trigger {
-                                display: flex;
-                                align-items: center;
-                                margin: 0px;
-                            }
-
-                            i {
-                                width: 20px;
-                                height: 20px;
-                                background-color: red;
+                            .fa-bookmark {
+                                color: #fff;
+                                background-color: #000;
+                                width: 40px;
+                                height: 40px;
                                 border-radius: 100%;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
-                                color: #fff;
-                                font-size: 14px;
-                                font-weight: bold;
-                                margin-left: 5px;
-                            }
-                        }
-
-                        .reply {
-                            .reply__toggle {
-                                background-color: #2870c3;
-                                color: #fff;
-                                text-decoration: none;
-                                padding: 5px 30px;
-                                font-weight: bold;
-                                border-radius: 20px;
-                            }
-                        }
-                    }
-                }
-
-                .reply__form {
-                    width: 100%;
-                    height: 0px;
-                    overflow: hidden;
-                    transition: 0.2s linear;
-
-                    form {
-                        width: 100%;
-                        display: flex;
-                        justify-content: space-between;
-
-                        .textarea__container {
-                            width: 90%;
-
-                            #autoExpand {
-                                outline: none;
-                                width: 100%;
-                                overflow: hidden;
-                                resize: none;
-                            }
-
-                            #autoExpand:focus {
-                                outline: none;
-                            }
-                        }
-
-                        .submit__container {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            width: 10%;
-
-                            .reply__submit,
-                            .user__reply__submit {
                                 font-size: 25px;
                                 cursor: pointer;
                             }
-                        }
-                    }
-                }
-
-                .open {
-                    height: 100%;
-                }
-
-                .single__reply__container, .child__reply__container {
-                    
-                    .reply__container {
-                        display: flex;
-                        .user__icon {
-                            margin: 5px 10px 0px 0px;
-                            position: relative;
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-
-                            img {
-                                width: 40px;
-                                border-radius: 100%;
-                                z-index: 100;
-                            }
-
-                            .divider {
-                                height: 80%;
-                                border-left: 1px solid black;
-                                width: 1px;
-                                position: absolute;
-
+                            .bookmarked {
+                                color: #edb200;
                             }
                         }
 
-                        .single__reply__content {
-                            display: flex;
-                            flex-direction: column;
-                            width: 100%;
-                            padding-top: 10px;
-                            border-top: 1px solid lightgray;
+                        .conv__content {
+                            padding: 20px;
 
-                            .user__reply__info {
+                            .conv__author__info {
                                 display: flex;
                                 justify-content: space-between;
-                                ;
 
-                                #user__reply__name {
+                                #author {
                                     font-weight: bold;
                                 }
 
@@ -298,110 +154,518 @@
                                     color: red;
                                 }
                             }
+
+                            .tags__container {
+                                margin-top: 50px;
+
+                                .tags {
+                                    margin-right: 5px;
+                                    background-color: #1d3e77;
+                                    color: #fff;
+                                    text-decoration: none;
+                                    padding: 5px 20px;
+                                    font-weight: bold;
+                                    border-radius: 20px;
+                                }
+                            }
+
+                            .actions__container {
+                                margin: 50px 0px 30px 0px;
+                                display: flex;
+                                justify-content: space-between;
+
+                                .pivot__actions {
+                                    display: flex;
+
+                                    .like,
+                                    .comments {
+                                        margin-right: 20px;
+                                        position: relative;
+                                        display: flex;
+
+                                        .likes__iteration {
+                                            display: flex;
+                                            align-items: center;
+                                            position: relative;
+                                        }
+
+                                        .likes__iteration:hover {
+                                            .likeHover {
+                                                display: block;
+                                            }
+                                        }
+
+                                        i {
+                                            width: 40px;
+                                            height: 40px;
+                                            background-color: #2870c3;
+                                            border-radius: 100%;
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            color: #fff;
+                                            margin-left: 5px;
+                                            font-size: 16px;
+                                            font-weight: bold;
+                                        }
+
+                                        .likeHover {
+                                            display: none;
+                                            background-color: #2870c3;
+                                            width: 120px;
+                                            z-index: 100;
+                                            color: #fff;
+                                            position: absolute;
+                                            top: 30px;
+                                            right: -110px;
+                                            text-align: center;
+                                            font-size: 14px;
+                                        }
+
+                                        #conversation__comments,
+                                        #reply__comments {
+                                            display: flex;
+                                            align-items: center;
+                                        }
+
+                                        #conversation__like,
+                                        #reply__like {
+                                            cursor: pointer;
+                                        }
+                                    }
+                                }
+
+
+
+                                .instant__actions {
+                                    display: flex;
+                                    align-items: center;
+
+                                    .delete {
+                                        margin-right: 20px;
+
+                                        #delete {
+                                            margin: 0px;
+                                            cursor: pointer;
+                                            display: flex;
+
+                                            i {
+                                                font-size: 20px;
+                                                color: red;
+                                                margin-left: 5px;
+                                            }
+                                        }
+                                    }
+
+                                    .report {
+                                        margin-right: 20px;
+                                        cursor: pointer;
+
+                                        p.report__trigger {
+                                            display: flex;
+                                            align-items: center;
+                                            margin: 0px;
+                                        }
+
+                                        i {
+                                            width: 20px;
+                                            height: 20px;
+                                            background-color: red;
+                                            border-radius: 100%;
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            color: #fff;
+                                            font-size: 14px;
+                                            font-weight: bold;
+                                            margin-left: 5px;
+                                        }
+                                    }
+
+                                    .reply {
+                                        .reply__toggle {
+                                            background-color: #2870c3;
+                                            color: #fff;
+                                            text-decoration: none;
+                                            padding: 5px 30px;
+                                            font-weight: bold;
+                                            border-radius: 20px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .reply__form {
+                                width: 100%;
+                                height: 0px;
+                                overflow: hidden;
+                                transition: 0.2s linear;
+
+                                form {
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: space-between;
+
+                                    .textarea__container {
+                                        width: 90%;
+
+                                        #autoExpand {
+                                            outline: none;
+                                            width: 100%;
+                                            overflow: hidden;
+                                            resize: none;
+                                        }
+
+                                        #autoExpand:focus {
+                                            outline: none;
+                                        }
+                                    }
+
+                                    .submit__container {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        width: 10%;
+
+                                        .reply__submit,
+                                        .user__reply__submit {
+                                            font-size: 25px;
+                                        }
+
+                                        .enabled {
+                                            cursor: pointer !important;
+                                            pointer-events: all;
+                                        }
+
+                                        .disabled {
+                                            cursor: not-allowed !important;
+                                            color: gray;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .parent__more__comments__container {
+                                width: fit-content;
+                                display: flex;
+                                flex-direction: row-reverse;
+                                align-items: center;
+
+                                .parent__see__more__trigger {
+                                    cursor: pointer;
+                                }
+
+                                .parent__see__more__trigger:hover {
+                                    text-decoration: underline;
+                                    text-underline-offset: 3px;
+                                }
+
+                                i {
+                                    margin-right: 20px;
+                                    cursor: pointer;
+                                    font-size: 25px;
+                                }
+                            }
+
+                            .open {
+                                height: auto;
+                            }
+
+                            .single__reply__container,
+                            .child__reply__container {
+
+                                .child__more__comments__container {
+                                    width: fit-content;
+                                    display: flex;
+                                    flex-direction: row-reverse;
+                                    align-items: center;
+
+                                    .child__see__more__trigger {
+                                        cursor: pointer;
+                                    }
+
+                                    .child__see__more__trigger:hover {
+                                        text-decoration: underline;
+                                        text-underline-offset: 3px;
+                                    }
+
+                                    i {
+                                        margin-right: 20px;
+                                        cursor: pointer;
+                                        font-size: 25px;
+                                    }
+                                }
+
+                                .reply__container {
+                                    display: flex;
+
+                                    .user__icon {
+                                        margin: 5px 10px 0px 0px;
+                                        position: relative;
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+
+                                        img {
+                                            width: 40px;
+                                            border-radius: 100%;
+                                            z-index: 100;
+                                        }
+
+                                        .divider {
+                                            height: 80%;
+                                            border-left: 1px solid black;
+                                            width: 1px;
+                                            position: absolute;
+
+                                        }
+                                    }
+
+                                    .single__reply__content {
+                                        display: flex;
+                                        flex-direction: column;
+                                        width: 100%;
+                                        padding-top: 10px;
+                                        border-top: 1px solid lightgray;
+
+                                        .user__reply__info {
+                                            display: flex;
+                                            justify-content: space-between;
+                                            ;
+
+                                            #user__reply__name {
+                                                font-weight: bold;
+                                            }
+
+                                            #timestamp {
+                                                color: red;
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+
+                            #child__reply {
+                                margin-left: 50px;
+                            }
+
+                            .remove {
+                                transform: translateY(-100px);
+                                opacity: 0;
+                                transition: 0.2s linear;
+                            }
                         }
                     }
-
                 }
 
-                #child__reply {
-                    margin-left: 50px;
+                .flex {
+                    display: flex !important;
                 }
 
-                .remove {
-                    transform: translateY(-100px);
-                    opacity: 0;
-                    transition: 0.2s linear;
+                .report__popup__container {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    min-height: calc(100vh - 170px);
+                    background-color: rgba(0, 0, 0, 0.7);
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+
+                    .report__popup {
+                        position: relative;
+                        width: 600px;
+                        max-width: 100%;
+                        height: auto;
+                        background-color: #fff;
+                        box-shadow: 1px 1px 8px #000;
+
+                        .report__infos__container {
+                            border: 2px solid #000;
+                            padding: 5px;
+                            margin: 20px;
+                        }
+
+                        h3 {
+                            text-align: center;
+                            margin-bottom: 10px;
+                            font-size: 30px;
+                            font-weight: bold;
+                            color: red;
+                            background-color: #000;
+                            padding: 10px 0px;
+                        }
+
+                        #report__form {
+                            padding: 20px;
+                            display: flex;
+                            flex-direction: column;
+
+                            .checkbox__container {
+                                width: fit-content;
+                                display: flex;
+                                align-items: center;
+                                margin: 20px 0px;
+
+                                label {
+                                    margin-left: 20px;
+                                    font-size: 20px;
+                                    font-weight: bold;
+                                }
+
+                                input {
+                                    border-radius: 100%;
+                                    cursor: pointer;
+                                    width: 30px;
+                                    height: 30px;
+                                }
+                            }
+
+                            .report__textarea__container {
+                                display: flex;
+                                flex-direction: column;
+                            }
+
+                            .submit__form__container {
+                                display: flex;
+                                justify-content: center;
+                                margin-top: 30px;
+
+                                #report__submit {
+                                    background-color: red;
+                                    color: #fff;
+                                    font-weight: bold;
+                                    padding: 8px 12px;
+                                    cursor: pointer;
+                                }
+
+                                #report__submit:hover {
+                                    filter: contrast(65%);
+                                }
+                            }
+                        }
+
+                        .close__container {
+                            position: absolute;
+                            top: 12px;
+                            right: 20px;
+
+                            .fa-close {
+                                font-size: 30px;
+                                color: #fff;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .conversations__widget__container {
+            width: 25%;
+            margin-left: 10px;
+
+            .widget__title {
+                display: flex;
+                justify-content: center;
+                padding: 20px;
+
+                h3 {
+                    color: #fff;
+                }
+            }
+
+            .widget__conversations {
+
+                .single__conversation {
+                    background-color: #fff;
+                    display: flex;
+                    height: 80px;
+                    align-items: center;
+                    margin: 10px 0px;
+
+                    .border {
+                        margin-left: 20px;
+                        height: 85%;
+                        border-left: 2px solid black;
+                        width: 2px;
+                    }
+
+                    .text__content {
+                        padding: 10px 20px;
+                        height: 80px;
+
+                        h4 {
+                            font-weight: bold;
+                            font-size: 17px;
+                        }
+
+                        p {
+                            line-height: 1em;
+                        }
+                    }
+                }
+
+                .no__conversations {
+                    text-align: center;
+                    color: #fff;
+                    margin-top: 10px;
                 }
             }
         }
     }
+
     .flex {
-        display: flex!important;
+        display: flex !important;
     }
-    .report__popup__container {
+
+    .new__conversation__popup {
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
         width: 100%;
-        min-height: calc(100vh - 170px);
-        background-color: rgba(0,0,0,0.7);
+        height: 100vh;
         display: none;
         justify-content: center;
         align-items: center;
-        .report__popup {
-            position: relative;
-            width: 600px;
+        background: rgba(0, 0, 0, 0.7);
+
+        .popup {
+            width: 65%;
             max-width: 100%;
-            height: auto;
             background-color: #fff;
-            box-shadow: 1px 1px 8px #000;
-         
-            .report__infos__container {
-                border: 2px solid #000;
-                padding: 5px;
-                margin: 20px;
-            }
-            h3 {
-                text-align: center;
-                margin-bottom: 10px;
-                font-size: 30px;
-                font-weight: bold;
-                color: red;
-                background-color: #000;
-                padding: 10px 0px;
-            }
-            #report__form {
-                padding: 20px;
-                display: flex;
-                flex-direction: column;
-                .checkbox__container {
-                    width: fit-content;
-                    display: flex;
-                    align-items: center;
-                    margin: 20px 0px;
-                    label {
-                        margin-left: 20px;
-                        font-size: 20px;
-                        font-weight: bold;
-                    }
-                    input {
-                        border-radius: 100%;
-                        cursor: pointer;
-                        width: 30px;
-                        height: 30px;
-                    }
-                } 
-                .report__textarea__container {
-                    display: flex;
-                    flex-direction: column;
-                }
-                .submit__form__container {
-                    display: flex;
-                    justify-content: center;
+            height: 75%;
+            padding: 20px;
+            overflow: auto;
+            border-radius: 15px;
+            position: relative;
+
+            form {
+                .submit__container {
                     margin-top: 30px;
-                    #report__submit {
-                        background-color: red;
-                        color: #fff;
-                        font-weight: bold;
-                        padding: 8px 12px;
-                        cursor: pointer;
-                    }
-                    #report__submit:hover {
-                        filter: contrast(65%);
-                    }
                 }
             }
-            .close__container {
+
+            .popup__close {
                 position: absolute;
-                top: 12px;
-                right: 20px;
-            
-                .fa-close {
-                    font-size: 30px;
-                    color: #fff;
-                    cursor: pointer;
-                }
+                top: 15px;
+                right: 30px;
+                font-size: 20px;
+                width: 35px;
+                height: 35px;
+                border: 3px solid #000;
+                border-radius: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
             }
-        }   
+
+            .popup__close:hover {
+                background-color: lightgray;
+            }
+        }
     }
 }

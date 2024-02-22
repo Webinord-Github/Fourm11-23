@@ -43,9 +43,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->timestamp('notifs_check')->nullable();
-            $table->integer('image_id');
+            $table->integer('image_id')->default(1);
             $table->boolean('verified')->default(true);
             $table->boolean('ban')->default(false);
+            $table->boolean('approved_email')->default(0);
+            $table->boolean('refused_email')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

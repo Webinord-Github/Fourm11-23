@@ -90,8 +90,7 @@
 
 @endsection
 @section('scripts')
-
 @include('admin.medias.partials.index-media-scripts')
 @include('admin.users.partials.scripts')
-
+@include('admin.partials.scripts')
 @endsection
