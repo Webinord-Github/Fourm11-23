@@ -3,7 +3,7 @@
         <div class="facts-content">
             <div class="top-div">
                 <span class="arrow">&#8592;</span>
-                <p>Saviez-vous?<span>Saviez-vous?</span></p>
+                <h1>Saviez-vous?<span>Saviez-vous?</span></h1>
             </div>
             <div class="content ">
                 <div class="facts">

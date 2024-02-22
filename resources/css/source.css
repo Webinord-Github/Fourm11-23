@@ -21,13 +21,13 @@
   font-size: 60px;
   margin-right: 50px;
 }
-.source-container .source-content .top-div p {
+.source-container .source-content .top-div h1 {
   color: #edb200;
   font-size: 60px;
   position: relative;
   width: 100%;
 }
-.source-container .source-content .top-div p span {
+.source-container .source-content .top-div h1 span {
   color: rgba(237, 178, 0, 0.2784313725);
   font-size: 80px;
   left: -30px;

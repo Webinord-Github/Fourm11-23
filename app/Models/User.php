@@ -118,10 +118,6 @@ class User extends Authenticatable
         return $this->hasMany(BookmarkThematiques::class);
     }
 
-    public function profilePicture(){
-        return $this->belongsTo(Media::class, 'image_id');
-    }
-
     public function media(){
         return $this->hasMany(Media::class);
     }

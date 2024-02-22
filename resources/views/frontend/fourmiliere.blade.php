@@ -8,8 +8,8 @@
 <div class="fourm__container">
     <div class="fourm__content">
         <div class="h1__container">
-            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-            <h1>LA FOURMILIÈRE</h1>
+            <a href="/" class="arrow">&#8592;</a>
+            <h1>LA FOURMILIÈRE<span>LA FOURMILIÈRE</span></h1>
         </div>
         <div class="first__content">
             <div class="text__content">

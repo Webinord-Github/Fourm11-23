@@ -23,15 +23,6 @@ class MailSettingServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $mailSettings = MailSetting::getHostAndPort();
 
-        config([
-            'mail.driver' => 'smtp',
-            'mail.host' => $mailSettings['host'],
-            'mail.port' => $mailSettings['port'],
-            'mail.username' => $mailSettings['username'],
-            'mail.password' => $mailSettings['password'],
-            'mail.encryption' => $mailSettings['encryption'],
-        ]);
     }
 }

@@ -85,6 +85,7 @@ Route::get('/messages/{userId}', [MessageController::class, 'show'])->name('mess
 Route::post('/reply-like', 'App\Http\Controllers\Admin\LikesController@replyLike')->name('reply-like');
 Route::post('/conversation-like', 'App\Http\Controllers\Admin\LikesController@conversationLike')->name('conversation-like');
 
+Route::post('/signet-tool', [SignetsController::class, 'signets'])->name('signet-tool');
 Route::post('/api/signet', [ApiController::class, 'signets']);
 Route::get('/api/tools', [ApiController::class, 'tools']);
 Route::get('/api/themes', [ApiController::class, 'thematiques']);

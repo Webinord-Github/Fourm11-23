@@ -8,7 +8,8 @@
 <div class="fourm__container">
     <div class="fourm__content">
         <div class="h1__container">
-            <h1>L'intimidation</h1>
+            <a href="/" class="arrow">&#8592;</a>
+            <h1>L'intimidation<span>L'intimidation</span></h1>
         </div>
         <div class="second__static__content">
             <div class="about__container">

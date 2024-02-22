@@ -7,12 +7,30 @@
         width: 95%;
 
         .h1__container {
-            display: flex;
             align-items: center;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
 
-            i {
-                margin-right: 20px;
-                font-size: 40px;
+            .arrow {
+                font-size: 60px;
+                margin-right: 50px;
+            }
+
+            h1 {
+                font-size: 60px;
+                position: relative;
+                width: 100%;
+
+                span {
+                    color: #edb20047;
+                    font-size: 80px;
+                    left: -30px;
+                    position: absolute;
+                    top: -35px;
+                }
             }
         }
 

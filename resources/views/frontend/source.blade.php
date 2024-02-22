@@ -10,7 +10,7 @@
         <div class="source-content">
             <div class="top-div">
                 <a href="/" class="arrow">&#8592;</a>
-                <p>Source<span>Source</span></p>
+                <h1>Source<span>Source</span></h1>
             </div>
             <div class="content ">
                 <div class="section">

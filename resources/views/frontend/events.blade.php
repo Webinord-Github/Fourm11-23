@@ -13,8 +13,8 @@
         </div>
         @endif
         <div class="h1__container">
-            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-            <h1>Évènements</h1>
+            <a href="/" class="arrow">&#8592;</a>
+            <h1>Évènements<span>Évènements</span></h1>
         </div>
         <div class="add__event__container">
             @if(auth()->check() && auth()->user()->verified)

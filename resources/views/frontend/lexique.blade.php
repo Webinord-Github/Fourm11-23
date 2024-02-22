@@ -15,7 +15,7 @@
         <div class="lexique-content">
             <div class="top-div">
                 <span class="arrow">&#8592;</span>
-                <p>Lexique<span>Lexique</span></p>
+                <h1>Lexique<span>Lexique</span></h1>
             </div>
             <div class="content">
                 <div class="thematiques-ctn">

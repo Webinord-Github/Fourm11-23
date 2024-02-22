@@ -10,7 +10,7 @@
         <div class="blogue-content">
             <div class="top-div">
                 <a href="/" class="arrow">&#8592;</a>
-                <p>Blogue<span>Blogue</span></p>
+                <h1>Blogue<span>Blogue</span></h1>
             </div>
             <div class="content ">
                 <div class="posts">

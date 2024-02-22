@@ -34,7 +34,7 @@
         <div class="tools-content">
             <div class="top-div">
                 <span class="arrow">&#8592;</span>
-                <p>Boîte à outils<span>Boîte à outils</span></p>
+                <h1>Boîte à outils<span>Boîte à outils</span></h1>
             </div>
             <div class="content ">
                 <div class="thematiques-half">
