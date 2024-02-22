@@ -1,0 +1,94 @@
+$jaune: #edb200;
+
+.source-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .source-content {
+        border-radius: 10px;
+        margin: 3% 0;
+        width: 90%;
+
+        .top-div {
+            align-items: center;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+
+            .arrow {
+                font-size: 60px;
+                margin-right: 50px;
+            }
+
+            p {
+                color: $jaune;
+                font-size: 60px;
+                position: relative;
+                width: 100%;
+
+                span {
+                    color: #edb20047;
+                    font-size: 80px;
+                    left: -30px;
+                    position: absolute;
+                    top: -35px;
+                }
+            }
+        }
+
+        .content {
+            width: 100%;
+
+            
+            .section {
+                background-color: #f7f7f7;
+                border: 1px solid #d3d3d3;
+                border-radius: 10px;
+                margin: 2% 0;
+                width: 100%;
+                
+                h2 {
+                    align-items: center;
+                    color: #f7f7f7;
+                    background-image: url('http://127.0.0.1:8000/storage/medias/header-v3.jpg');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-clip: border-box;
+                    border-radius: 10px 10px 0 0;
+                    display: flex;
+                    height: 75px;
+                    justify-content: flex-start;
+                    padding: 0 2%;
+                    width: 100%;
+                }
+
+                .source {
+                    margin: 1.5% 0;
+                    padding: 0 2%;
+
+                    h3 {
+                        color: #000;
+                        font-weight: bold;
+                        text-decoration: underline;
+                    }
+
+                    p {
+                        margin-top: 15px;
+                    }
+
+                    a {
+                        color: #edb200;
+                    }
+
+                    a:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+} 

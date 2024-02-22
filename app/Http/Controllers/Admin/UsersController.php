@@ -84,10 +84,9 @@ class UsersController extends Controller
      *
      * @param  \App\Models\User  $userÈ
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::findOrFail($id);
-        return view('frontend.auth-profile', compact('user'));
+        return view('frontend.profil', compact('user'));
     }
 
     /**

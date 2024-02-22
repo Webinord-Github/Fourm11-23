@@ -4,7 +4,7 @@
 
 <div class="container flex flex-col items-end justify-start mt-10 py-8">
     <div class="formContainer flex flex-col items-center">
-        <h1 class="px-12 py-4 w-10/12 text-2xl pb-12 font-bold">Créer un nouvelle évènement</h1>
+        <h1 class="px-12 py-4 w-10/12 text-2xl pb-12 font-bold">Créer un nouvel évènement</h1>
         <form class="w-full flex justify-center" action="{{ route('events.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="px-12 pb-8 flex flex-col items-center w-10/12">

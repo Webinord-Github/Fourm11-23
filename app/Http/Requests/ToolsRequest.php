@@ -27,14 +27,15 @@ class ToolsRequest extends FormRequest
             'title' => 'required|string|max:255',
             'desc' => 'required|string',
             'media' => 'required|file|mimes:pdf,docx',
-            'thematiques' => 'array|max:3',
-            'status' => 'required|string'
+            'thematiques' => 'array|min:1|max:3',
+            'status' => 'string'
         ];
     }
 
     public function messages(){
         return [
             'thematiques.max' => "Seulement 3 thématiques peuvent être sélectionnées.",
+            'thematiques.min' => "Au moins une thématique doit être sélectionnée.",
         ];
     }
 }

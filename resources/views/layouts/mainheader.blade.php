@@ -12,6 +12,7 @@
     <script src="{{ asset('tinymce/tinymce.min.js') }}"></script>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -19,23 +20,29 @@
 
     <!-- Scripts -->
     @vite([
-    'resources/css/app.css',
-    'resources/js/app.js',
-    'resources/css/forum.css',
-    'resources/css/tools.css',
-    'resources/css/lexique.css',
-    'resources/css/main.css',
-    'resources/css/chatbot.css',
-    'resources/css/register.css',
-    'resources/css/login.css',
-    'resources/css/forgotpassword.css',
-    'resources/css/header.css',
-    'resources/css/member-card.css',
-    'resources/css/invalid-reset-password.css',
-    'resources/css/calendar.css',
-    'resources/css/home.css',
-    'resources/css/fourmiliere.css',
-    'resources/css/events.css',
+        'resources/css/app.css',
+        'resources/js/app.js',
+        'resources/css/forum.css',
+        'resources/css/tools.css',
+        'resources/css/lexique.css',
+        'resources/css/source.css',
+        'resources/css/blogue.css',
+        'resources/css/main.css',
+        'resources/css/chatbot.css',
+        'resources/css/register.css',
+        'resources/css/login.css',
+        'resources/css/forgotpassword.css',
+        'resources/css/header.css',
+        'resources/css/member-card.css',
+        'resources/css/invalid-reset-password.css',
+        'resources/css/calendar.css',
+        'resources/css/home.css',
+        'resources/css/fourmiliere.css',
+        'resources/css/events.css',
+        'resources/css/singleblog.css',
+        'resources/css/facts.css',
+        'resources/css/profil.css',
+        'resources/css/membre.css',
     ])
 </head>
 </head>

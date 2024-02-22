@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->longText('body');
-            $table->longText('excerpt');
             $table->integer('image_id');
             $table->string('status');
             $table->timestamp('published_at')->nullable();

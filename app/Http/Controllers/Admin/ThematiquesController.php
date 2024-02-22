@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ThematiquesController extends Controller
 {
-    public function thematiques()
+    public function index()
     {
         return view('admin.thematiques.index', ['thematiques' => Thematique::all()]);
     }
@@ -20,42 +20,42 @@ class ThematiquesController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'desc' => ['required', 'string'],
         ]);
 
         $thematique = new Thematique();
         $thematique->name = $request->name;
+        $thematique->desc = $request->desc;
         $thematique->save();
 
-        return redirect('/admin/thematiques')->with('status', "$thematique->name a été créé.");
+        return redirect()->route('thematiques.index')->with('status', "$thematique->name a été créé.");
     }
 
-    public function update($id)
+    public function edit(Thematique $thematique)
     {
-        $thematique = Thematique::findOrFail($id);
         return view('admin.thematiques.edit', ['thematique' => $thematique]);
     }
 
-    public function storeUpdate(Request $request)
+    public function update(Request $request, Thematique $thematique)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'desc' => ['required', 'string'],
         ]);
 
-        $thematique = Thematique::findOrFail($request->id);
         $thematique->name = $request->name;
+        $thematique->desc = $request->desc;
         $thematique->save();
 
-        return redirect('/admin/thematiques')->with('status', "$thematique->name a été modifié.");
+        return redirect()->route('thematiques.index')->with('status', "$thematique->name a été modifié.");
     }
 
-    public function destroy($id)
+    public function destroy(Thematique $thematique)
     {
-        $thematique = Thematique::find($id);
-        Thematique::destroy($id);
+        $thematique->delete();
 
-        return redirect('/admin/thematiques')->with('status', "$thematique->name a été supprimé.");
+        return redirect()->route('thematiques.index')->with('status', "$thematique->name a été supprimé.");
     }
 }

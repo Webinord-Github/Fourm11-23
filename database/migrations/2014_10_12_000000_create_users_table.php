@@ -20,11 +20,17 @@ return new class extends Migration
             $table->string('pronoun')->nullable();
             $table->string('used_agreements')->nullable();
             $table->string('gender')->nullable();
+            $table->boolean('gender_show');
             $table->string('title')->nullable();
+            $table->boolean('title_show');
             $table->string('environment')->nullable();
+            $table->boolean('environment_show');
             $table->date('birthdate')->nullable();
+            $table->boolean('birthdate_show');
             $table->integer('years_xp')->nullable();
+            $table->boolean('years_xp_show');
             $table->string('work_city')->nullable();
+            $table->boolean('work_city_show');
             $table->string('work_phone')->nullable();
             $table->text('description')->nullable();
             $table->string('audience')->nullable();
@@ -37,7 +43,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->timestamp('notifs_check')->nullable();
-            $table->string('image')->nullable();
+            $table->integer('image_id');
             $table->boolean('verified')->default(true);
             $table->boolean('ban')->default(false);
             $table->rememberToken();

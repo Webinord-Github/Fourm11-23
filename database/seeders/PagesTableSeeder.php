@@ -30,67 +30,67 @@ class PagesTableSeeder extends Seeder
            ]);
             $devenirmembre = new Page([
                 'title' => 'Devenir membre',
-                'url' => 'sinscrire',
+                'url' => '/sinscrire',
                 'content' => null,
                 'categorie' => 1
             ]);
             $lafourmiliere = new Page([
                 'title' => 'La Fourmilière',
-                'url' => 'la-fourmiliere',
+                'url' => '/la-fourmiliere',
                 'content' => null,
                 'categorie' => 1
             ]);
             $lexique = new Page([
                 'title' => 'Lexique',
-                'url' => 'lexique',
+                'url' => '/lexique',
                 'content' => null,
                 'categorie' => 1
             ]);
             $forum = new Page([
                 'title' => 'Forum',
-                'url' => 'forum',
+                'url' => '/forum',
                 'content' => null,
                 'categorie' => 1
             ]);
             $boiteaoutils = new Page([
                 'title' => 'Boîte à outils',
-                'url' => 'boite-a-outils',
+                'url' => '/boite-a-outils',
                 'content' => null,
                 'categorie' => 1
             ]);
             $evenements = new Page([
                 'title' => 'Événements',
-                'url' => 'evenements',
+                'url' => '/evenements',
                 'content' => null,
                 'categorie' => 1
             ]);
             $blogue = new Page([
                 'title' => 'Blogue',
-                'url' => 'blogue',
+                'url' => '/blogue',
                 'content' => null,
                 'categorie' => 1
             ]);
             $saviezvous = new Page([
                 'title' => 'Saviez-vous?',
-                'url' => 'saviez-vous',
+                'url' => '/saviez-vous',
                 'content' => null,
                 'categorie' => 1
             ]);
             $lintimidation = new Page([
                 'title' => "L'intimidation",
-                'url' => 'lintimidation',
+                'url' => '/lintimidation',
                 'content' => null,
                 'categorie' => 1
             ]);
             $lesmembres = new Page([
                 'title' => 'Les membres',
-                'url' => 'les-membres',
+                'url' => '/les-membres',
                 'content' => null,
                 'categorie' => 1
             ]);
             $sources = new Page([
                 'title' => 'Sources',
-                'url' => 'sources',
+                'url' => '/sources',
                 'content' => null,
                 'categorie' => 1
             ]);

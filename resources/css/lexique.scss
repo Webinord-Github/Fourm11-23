@@ -51,18 +51,22 @@ $jaune: #edb200;
                 .thematiques {
                     flex-wrap: wrap;
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: center;
+                    padding: auto;
                     width: 50%;
     
                     .thematique {
+                        align-items: center;
                         background-color: #000;
                         border: #000 solid 1px;
                         border-radius: 20px;
                         color: #fff;
                         cursor: pointer;
+                        display: flex;
                         font-weight: bold;
+                        height: 40px;
                         margin: 5px;
-                        padding: 5px 20px;
+                        padding: 5px 10px;
                         text-decoration: none;
                     }
 
@@ -77,18 +81,81 @@ $jaune: #edb200;
                     }
                 }
 
+                ::-webkit-scrollbar {
+                    width: 10px;
+                }
+                
+                /* Track */
+                ::-webkit-scrollbar-track {
+                    box-shadow: inset 0 0 5px transparent; 
+                    border-radius: 10px;
+                }
+                
+                /* Handle */
+                ::-webkit-scrollbar-thumb {
+                    background: #b2b2b2; 
+                    border-radius: 10px;
+                }
+                
+                /* Handle on hover */
+                ::-webkit-scrollbar-thumb:hover {
+                    background: #868686; 
+                }
+
                 .thematique-infos {
-                    background-image: url('http://127.0.0.1:8000/storage/medias/fourmiliere-header-background.jpg');
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-clip: border-box;
                     border-radius: 10px;
+                    display: none;
+                    max-height: 250px;
+                    overflow-y: auto;
                     padding: 1%;
                     width: 45%;
 
-                    .name {
-                        color: #fff;
-                        font-size: 24px;
+                    div {
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-between;
+        
+                        .name {
+                            color: #fff;
+                            font-size: 24px;
+                        }
+
+                        .buble {
+                            align-items: center;
+                            background-color: #fff;
+                            border-radius: 25px;
+                            border: 1px solid #fff;
+                            cursor: pointer;
+                            display: flex;
+                            height: 35px;
+                            justify-content: center;
+                            width: 35px;
+
+                            i {
+                                color: #edb200;
+                                font-size: 17px;
+                            }
+                        }
+
+                        .active {
+                            background-color: #000;
+                            border: #000;
+                            i {
+                                color: $jaune;
+                            }
+                        }
+
+                        .buble:hover {
+                            background-color: #000;
+                            border: #000 solid 1px;
+
+                            i {
+                                color: $jaune;
+                            }
+                        }
                     }
 
                     .desc {
@@ -96,17 +163,21 @@ $jaune: #edb200;
                         font-size: 18px;
                     }
                 }
+
+                .actived {
+                    display: block;
+                }
             }
 
             .bar-filter {
                 align-items: center;
-                background-image: url('http://127.0.0.1:8000/storage/medias/fourmiliere-header-background.jpg');
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-clip: border-box;
                 border-radius: 10px;
                 display: flex;
                 height: 75px;
+                justify-content: space-between;
                 margin: 3% 0;
                 padding: 1%;
                 width: 100%;
@@ -115,7 +186,222 @@ $jaune: #edb200;
                     color: #edb200;
                     font-size: 24px;
                 }
+
+                .filters {
+                    display: flex;
+
+                    .filter {
+                        align-items: center;
+                        display: flex;
+                        margin: 0 10px;
+
+                        .checkbox {
+                            background-color: #fff;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            height: 20px;
+                            margin-right: 5px;
+                            width: 20px;
+                        }
+
+                        .checked {
+                            background-color: #edb200;
+                        }
+
+                        p {
+                            color: #fff;
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+
+            .contenu {
+                width: 100%;
+
+                .tools, .convos, .posts {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    width: 100%;
+
+                    .tool, .post, .convo {
+                        background-color: #f7f7f7;
+                        border-radius: 10px;
+                        margin: 1%;
+                        width: 450px;
+
+                        .top {
+                            align-items: center;
+                            background-color: #edb200;
+                            border-radius: 10px 10px  0 0;
+                            display: flex;
+                            color: #fff;
+                            height: 50px;
+                            justify-content: space-between;
+                            padding: 0 10px;
+                            width: 100%;
+
+                            p {
+                                font-size: 20px;
+                            }
+
+                            .buble {
+                                align-items: center;
+                                background-color: #fff;
+                                border-radius: 25px;
+                                border: 1px solid #fff;
+                                cursor: pointer;
+                                display: flex;
+                                height: 35px;
+                                justify-content: center;
+                                width: 35px;
+    
+                                i {
+                                    color: #edb200;
+                                    font-size: 17px;
+                                }
+                            }
+                            
+                            .buble:hover {
+                                background-color: #000;
+                                border: #000 solid 1px;
+                                
+                                i {
+                                    color: $jaune;
+                                }
+                            }
+                            
+                            .active {
+                                background-color: #000;
+                                border: #000;
+                                i {
+                                    color: $jaune;
+                                }
+                            }
+                        }
+
+                        .bottom {
+                            border: 1px solid #d3d3d3;
+                            border-radius: 0 0 10px 10px;
+                            padding: 10px;
+                            width: 100%;
+
+                            .desc {
+                                color: #000;
+                                font-size: 18px;
+                                height: 125px;
+                            }
+
+                            .tags {
+                                align-items: baseline;
+                                display: flex;
+                                flex-wrap: wrap;
+                                height: 100px;
+                                justify-content: flex-start;
+                                margin-bottom: 4%;
+                                width: 100%;
+        
+                                .tag {
+                                    background-color: #000;
+                                    border: 1px solid #000;
+                                    border-radius: 20px;
+                                    color: #fff;
+                                    cursor: pointer;
+                                    font-size: 16px;
+                                    font-weight: bold;
+                                    margin-right: 5px;
+                                    padding: 5px 20px;
+                                    text-decoration: none;
+                                }
+        
+                                .tag:hover {
+                                    background-color: transparent;
+                                    color: #000;
+                                }
+
+                                .tagged {
+                                    background-color: #edb200;
+                                    border-color: #edb200;
+                                }
+
+                            }
+
+                            a {
+                                background-color: #edb200;
+                                border: 1px solid #edb200;
+                                border-radius: 20px;
+                                color: #000;
+                                cursor: pointer;
+                                font-size: 16px;
+                                font-weight: bold;
+                                margin-right: 5px;
+                                padding: 5px 20px;
+                                text-decoration: none;
+                            }
+
+                            a:hover {
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                }
+
+                .hidden {
+                    display: none;
+                }
             }
         }
     }
 } 
+
+@media screen and (max-width: 1075px) {
+    .lexique-container .lexique-content .content {
+
+        .thematiques-ctn {
+            align-items: center;
+            flex-direction: column;
+    
+            .thematiques {
+                margin-bottom: 2%;
+                width: 100%;
+            }
+    
+            .thematique-infos {
+                width: 100%;
+            }
+        }
+
+        .bar-filter {
+            height: auto;
+            flex-direction: column;
+
+            p {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .filters {
+                justify-content: center;
+                flex-wrap: wrap;
+                margin: 2% 0;
+            }
+        }
+
+        .contenu .tools .tool .bottom {
+
+            .desc {
+                margin-bottom: 4%;
+            }
+
+            .tags{
+                height: fit-content;
+
+                .tag {
+                    margin-bottom: 2%;
+                }
+            }
+        }
+    }
+}

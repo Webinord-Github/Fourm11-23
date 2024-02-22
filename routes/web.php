@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Admin\ToolsController;
+use App\Http\Controllers\Admin\ToolsGuardController;
 use App\Http\Controllers\Admin\ThematiquesController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\FactsController;
@@ -26,7 +27,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\AutomaticEmailsController;
 use App\Http\Controllers\Admin\ElementorController;
-use App\Http\Controllers\Admin\SignetsController;
+use App\Http\Controllers\Admin\ApiController;
+use App\Http\Controllers\Admin\UsersController;
 
 
 
@@ -46,6 +48,7 @@ Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink
 
 Route::get('/', 'App\Http\Controllers\Admin\PagesController@homepage');
 Route::get('/calendar/{month?}', 'App\Http\Controllers\Admin\CalendarController@index')->name('calendar');
+Route::get('/blogue/{post}', [BlogController::class, 'show'])->name('post.show');
 
 Route::get('/admin/calendar', 'App\Http\Controllers\Admin\CalendarController@index');
 Route::resource('/admin/emails', 'App\Http\Controllers\Admin\AutomaticEmailsController');
@@ -69,8 +72,12 @@ Route::get('/messages/{userId}', [MessageController::class, 'show'])->name('mess
 Route::post('/reply-like', 'App\Http\Controllers\Admin\LikesController@replyLike')->name('reply-like');
 Route::post('/conversation-like', 'App\Http\Controllers\Admin\LikesController@conversationLike')->name('conversation-like');
 
-Route::post('/signet-tool', [SignetsController::class, 'signets'])->name('signet-tool');
-Route::get('/get/tools', [SignetsController::class, 'tools']);
+Route::post('/api/signet', [ApiController::class, 'signets']);
+Route::get('/api/tools', [ApiController::class, 'tools']);
+Route::get('/api/themes', [ApiController::class, 'thematiques']);
+Route::post('/api/bookmark-post', [ApiController::class, 'postsBookmarks']);
+Route::post('/api/bookmark-theme', [ApiController::class, 'thematiquesBookmarks']);
+Route::post('/api/profile-infos', [ApiController::class, 'profileInfos']);
 
 Route::resource('/admin/menu', 'App\Http\Controllers\Admin\MenuController');
 
@@ -89,7 +96,8 @@ Route::post('/sendmails', 'App\Http\Controllers\Admin\EmailController@sendEmail'
 Route::get('/mon-compte', [AlternativeAuthController::class, 'showLoginForm'])->name('alternative.login');
 Route::post('/mon-compte', [AlternativeAuthController::class, 'login']);
 
-Route::resource('/admin/users', 'App\Http\Controllers\Admin\UsersController');
+Route::resource('/admin/users', UsersController::class);
+Route::get('/mon-profil', [UsersController::class, 'show'])->name('user.show');
 
 Route::post('/update-notifs-check', 'App\Http\Controllers\UsersNotifsUpdateController@updateNotifsCheck')->name('update-notifs-check');
 
@@ -111,6 +119,7 @@ Route::resource('/admin/pages', 'App\Http\Controllers\Admin\PagesController');
 Route::post('/replies/delete', 'App\Http\Controllers\Admin\RepliesController@destroy')->name('replies.destroy');
 Route::resource('/admin/pagesguard', 'App\Http\Controllers\Admin\PagesGuardController');
 Route::resource('/admin/usersguard', 'App\Http\Controllers\Admin\UsersGuardController');
+Route::resource('/admin/toolsguard', ToolsGuardController::class)->middleware('auth');
 
 
 Route::get('/dashboard', function () {
@@ -122,13 +131,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/mon-profil/{id}', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/membre/{id}', [ProfileController::class, 'membre'])->name('profile.membre');
+    Route::put('/mon-profil/update/{user}', [ProfileController::class, 'updateProfile'])->name('profile.update');
 });
 
 Route::resource('admin/posts', BlogController::class)->middleware('auth');
 Route::resource('admin/events', EventsController::class)->middleware('auth');
+Route::resource('admin/thematiques', ThematiquesController::class)->middleware('auth');
+Route::resource('admin/facts', FactsController::class)->middleware('auth');
 
 Route::resource('admin/test', TestController::class)->middleware('auth');
 
+Route::post('/boite-a-outils/send', [ToolsController::class, 'send'])->name('tool.send')->middleware('auth');
 Route::get('/admin/tools', [ToolsController::class, 'tools'])->name('tools')->middleware('auth');
 Route::get('/admin/tools/create', [ToolsController::class, 'create'])->middleware('auth');
 Route::post('/admin/tools/store', [ToolsController::class, 'store'])->middleware('auth');
@@ -136,24 +151,12 @@ Route::get('/admin/tools/update/{id}', [ToolsController::class, 'update'])->midd
 Route::post('/admin/tools/update/', [ToolsController::class, 'storeUpdate'])->middleware('auth');
 Route::get('/admin/tools/destroy/{id}', [ToolsController::class, 'destroy'])->middleware('auth');
 
-Route::get('/admin/facts', [FactsController::class, 'facts'])->name('facts')->middleware('auth');
-Route::get('/admin/facts/create', [FactsController::class, 'create'])->middleware('auth');
-Route::post('/admin/facts/store', [FactsController::class, 'store'])->middleware('auth');
-Route::get('/admin/facts/update/{id}', [FactsController::class, 'update'])->middleware('auth');
-Route::post('/admin/facts/update/', [FactsController::class, 'storeUpdate'])->middleware('auth');
-Route::get('/admin/facts/destroy/{id}', [FactsController::class, 'destroy'])->middleware('auth');
-
 Route::get('/admin/cards', [CardsController::class, 'cards'])->name('cards')->middleware('auth');
 Route::get('/admin/cards/create', [CardsController::class, 'create'])->middleware('auth');
 Route::post('/admin/cards/store', [CardsController::class, 'store'])->middleware('auth');
 Route::get('/admin/cards/update/{id}', [CardsController::class, 'update'])->middleware('auth');
 Route::post('/admin/cards/update/', [CardsController::class, 'storeUpdate'])->middleware('auth');
 Route::get('/admin/cards/destroy/{id}', [CardsController::class, 'destroy'])->middleware('auth');
-
-Route::get('/admin/thematiques', [ThematiquesController::class, 'thematiques'])->name('thematiques')->middleware('auth');
-Route::post('/admin/thematiques/store', [ThematiquesController::class, 'store'])->middleware('auth');
-Route::post('/admin/thematiques/update/', [ThematiquesController::class, 'storeUpdate'])->middleware('auth');
-Route::get('/admin/thematiques/destroy/{id}', [ThematiquesController::class, 'destroy'])->middleware('auth');
 
 Route::get('/elementor/medias', [ElementorController::class, 'medias']);
 Route::post('/elementor/upload', [ElementorController::class, 'upload'])->name('elementor.upload');

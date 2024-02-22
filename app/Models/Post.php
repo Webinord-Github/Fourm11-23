@@ -9,6 +9,11 @@ class Post extends Model
 {
     use HasFactory;
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -18,6 +23,11 @@ class Post extends Model
     }
 
     public function media(){
-        return $this->belongsTo(Media::class);
+        return $this->belongsTo(Media::class, 'image_id');
+    }
+    
+    public function postmarks()
+    {
+        return $this->hasMany(Postmark::class);
     }
 }

@@ -1,0 +1,112 @@
+$jaune: #edb200;
+
+.facts-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .facts-content {
+        border-radius: 10px;
+        margin: 3% 0;
+        width: 90%;
+
+        .top-div {
+            align-items: center;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+
+            .white-buble {
+                background-color: #fff;
+                border-radius: 50px;
+                display: flex;
+                height: 35px;
+                margin: 0 1%;
+                width: 35px;
+            }
+            .arrow {
+                font-size: 60px;
+                margin-right: 50px;
+            }
+
+            p {
+                color: $jaune;
+                font-size: 60px;
+                position: relative;
+                width: 100%;
+
+                span {
+                    color: #edb20047;
+                    font-size: 80px;
+                    left: -30px;
+                    position: absolute;
+                    top: -35px;
+                }
+            }
+        }
+
+        .content {
+            align-items: normal;
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+
+            .facts {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+
+                .fact {
+                    align-items: flex-start;
+                    border-right: #b4b4b4 2px solid;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    margin: 3% 0;
+                    padding: 0 25px;
+                    width: 350px;
+
+                    .circle-wrapper {
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                        margin-bottom: 25px;
+                        width: 100%;
+
+                        .circle {
+                            border: solid #000 10px;
+                            border-radius: 500px;
+                            align-items: center;
+                            display: flex;
+                            height: 175px;
+                            justify-content: center;
+                            width: 175px;
+
+                            p {
+                                font-size: 75px;
+                                font-weight: bold;
+                                margin: 0;
+                            }
+                        }
+                    }
+
+                    .source {
+                        margin-top: 25px;
+
+                        .source-url {
+                            color: $jaune;
+                        }
+                    }
+                }
+
+                .fact:nth-child(5n) {
+                    border: none;
+                }
+            }
+        }
+    }
+} 

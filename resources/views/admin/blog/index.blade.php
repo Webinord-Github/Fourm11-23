@@ -46,7 +46,7 @@
                                 </button>
                                 <div class="absolute right-0 z-10 my-0 w-56 origin-top-right rounded-md bg-white shadow-lg focus:outline-none h-0 overflow-hidden dropdown-child dropdownHover" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                                     <div class="flex flex-col dropdownHover" role="none">
-                                        <a href="{{ route('posts.edit', ['post' => $post->id]) }}" class="hover:bg-gray-200 py-1 px-4 dropdownHover">Éditer</a>
+                                        <a href="{{ route('posts.edit', ['post' => $post->id]) }}" class="hover:bg-gray-200 py-1 px-4 dropdownHover">Edit</a>
                                         <form action="{{ route('posts.destroy', ['post' => $post->id]) }}" method="POST">
                                             @csrf
                                             {{method_field('DELETE')}}

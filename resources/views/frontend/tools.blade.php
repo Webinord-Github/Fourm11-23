@@ -1,3 +1,34 @@
+@if(auth()->check() && !auth()->user()->verified)
+    <div class="warning__container">
+        <p>Votre compte est actuellement en attente d'approbation.</p>
+        <p>Dès que votre compte sera approuvé, un courriel vous sera envoyé et vous aurez ainsi accès aux différentes informations présentes sur le site.</p>
+        <p>Merci de votre patience.</p>
+    </div>
+@endif
+<style>
+    .thematiques-half {
+        background-image: url('{{asset("storage/medias/slide-menu-background.jpg")}}');
+    }
+</style>
+@if (session('status'))
+    <div class="text-center bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-8 my-6" role="alert">
+        <p class="font-bold">{{ session('status') }}</p>
+    </div>
+@endif
+@if (!$errors->isEmpty())
+    <div role="alert" class="w-full pb-8">
+        <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+            Erreurs
+        </div>
+        <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+            @foreach ($errors->all() as $message)
+                <ul class="px-4">
+                    <li class="list-disc">{{$message}}</li>
+                </ul>
+            @endforeach
+        </div>
+    </div>
+@endif
 <div class="main_container">
     <div class="tools-container">
         <div class="tools-content">
@@ -16,21 +47,28 @@
                             <p data-theme="{{ $thematique->name }}" class="thematique">{{ $thematique->name }}</p>
                         @endforeach
                     </div>
-                    <div class="btn-container">
-                        <button>
-                            proposer un outil
-                        </button>
-                    </div>
+                    @if(auth()->check() && auth()->user()->verified)
+                        <div class="btn-container">
+                            <button id="add-tool">
+                                proposer un outil
+                            </button>
+                        </div>
+                    @endif
                 </div>
                 <div class="tools-half">
+                    @if(count($tools) == 0)
+                        <div class="empty">
+                            <h3>Aucun outil disponible en ce moment</h3>
+                        </div>
+                    @endif
                     @foreach($tools as $tool)
                         <div class="tool" data-id="{{ $tool->id }}">
                             <div class="title">
                                 <h3>{{ $tool->title }}</h3>
-                                <?php
-                                    $count = 0;
-                                ?>
-                                @Auth
+                                @if(auth()->check() && auth()->user()->verified)
+                                    <?php
+                                        $count = 0;
+                                    ?>
                                     @foreach($tool->signets()->get()->pluck('user_id') as $signet)
                                         <?php
                                             if($signet == Auth::user()->id) {
@@ -38,10 +76,10 @@
                                             }
                                         ?>
                                     @endforeach
-                                @endAuth
-                                <div data-tool-id="{{ $tool->id }}" @class(['black-buble', 'active' => $count>0])>
-                                    <i class="fa fa-bookmark"></i>
-                                </div>
+                                    <div data-tool-id="{{ $tool->id }}" @class(['black-buble', 'active' => $count>0])>
+                                        <i class="fa fa-bookmark"></i>
+                                    </div>
+                                @endif
                             </div>
                             <div class="desc">
                                 <p>{{ $tool->desc }}</p>
@@ -61,17 +99,60 @@
         </div>
     </div>
 </div>
+<div class="popup-ctn">
+    <div class="popup">
+        <div class="close-btn x">
+            <a>
+                x
+            </a>
+        </div>
+        <form class="w-full flex justify-center" action="/boite-a-outils/send" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="px-12 pb-8 flex flex-col items-center w-10/12">
+                <h3>Proposer un outil</h3>
+                <div class="w-full mb-2">
+                    <div class="flex justify-center flex-col">
+                        <x-label for="title" :value="__('Titre')"></x-label>
+                        <x-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus />
+                    </div>
+                </div>
+                <div class="w-full mb-2">
+                    <div class="flex justify-center flex-col">
+                        <x-label for="desc" :value="__('Description')"></x-label>
+                        <textarea style="resize: none; border-radius: 5px;height:100px" name="desc">{{ old('desc') }}</textarea>
+                    </div>
+                </div>
+                <div class="w-full mb-2">
+                    <div class="flex justify-center flex-col">
+                        <x-label for="media" :value="__('Fichier: pdf, docx')" />
+                        <input type="file" id="media" name="media">
+                    </div>
+                </div>
+                <div class="w-full mb-2">
+                    <x-label :value="__('Thématiques (Max 3)')"></x-label>
+                    @foreach ($thematiques as $thematique)
+                        <div class="flex items-center">
+                            <input type="checkbox" id="{{ $thematique->name }}" name="thematiques[]" value="{{ $thematique->id }}">
+                            <label class="ml-1" for="{{ $thematique->name }}">{{ ucfirst($thematique->name) }}</label>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="flex items-center justify-end mt-4">
+                    <a class="close-btn">Fermer</a>
+                    <x-button id="send" class="ml-4">
+                        {{ __('Envoyer') }}
+                    </x-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <script>
     let tools = []
 
     window.addEventListener('load', x => {
-        const url = "/get/tools"
-        const options = {
-            method: "GET",
-            CORS: true
-        }
-
-        fetch(url, options).then(resp => resp.json()).then(data => {
+        const url = '/api/tools'
+        fetch(url).then(resp => resp.json()).then(data => {
             tools = data
         })
     })
@@ -113,7 +194,7 @@
                 }
             };
             // Deleting the parent comment and its associated replies
-            xhttp.open("POST", `{{ route('signet-tool')}}`)
+            xhttp.open("POST", '/api/signet')
             xhttp.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send(Params);
@@ -159,7 +240,6 @@
         }
 
         if(search_value == '') {
-            console.log('yay')
             for(let div of divs) {
                 div.style.display = 'flex'
             }
@@ -180,5 +260,20 @@
                 }
             }
         }
+    }
+
+    let add_tool = document.querySelector('#add-tool')
+    let popup_ctn = document.querySelector('.popup-ctn')
+
+    add_tool.addEventListener('click', x => {
+        popup_ctn.style.display = 'flex'
+    })
+
+    let close_btns = document.querySelectorAll('.close-btn')
+
+    for(let button of close_btns) {
+        button.addEventListener('click', x => {
+            popup_ctn.style.display = 'none'
+        })
     }
 </script>

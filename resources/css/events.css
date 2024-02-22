@@ -1,10 +1,6 @@
 .events__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin-top: 30px;
   position: relative;
 }
@@ -12,12 +8,8 @@
   width: 95%;
 }
 .events__container .events__content .h1__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .events__container .events__content .h1__container i {
   margin-right: 20px;
@@ -27,15 +19,9 @@
   height: 60px;
   background-size: cover;
   background-repeat: no-repeat;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .events__container .events__content .add__event__container .add__event {
   background-color: #edb200;
@@ -44,28 +30,18 @@
   font-weight: bold;
 }
 .events__container .events__content .add__event__container .add__event:hover {
-  -webkit-filter: contrast(65%);
-          filter: contrast(65%);
+  filter: contrast(65%);
 }
 .events__container .events__content .single__event {
   margin: 35px 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .events__container .events__content .single__event .infos__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 75%;
 }
 .events__container .events__content .single__event .infos__container .date__location {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .events__container .events__content .single__event .infos__container .date__location .date {
@@ -100,17 +76,12 @@
   border-radius: 15px;
 }
 .events__container .events__content .single__event .infos__container .event__register__container .event__register:hover {
-  -webkit-filter: contrast(65%);
-          filter: contrast(65%);
+  filter: contrast(65%);
 }
 .events__container .events__content .single__event .img__container {
   width: 25%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 .events__container .events__content .single__event .img__container img {
   width: 300px;

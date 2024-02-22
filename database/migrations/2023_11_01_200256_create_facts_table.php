@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('facts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->longText('desc');
-            $table->integer('image_id');
-            $table->string('url');
+            $table->string('source_name');
+            $table->string('source_url');
             $table->timestamps();
         });
     }

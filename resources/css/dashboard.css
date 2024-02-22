@@ -8,19 +8,14 @@
   color: gray;
 }
 .dashboard__container .stats__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  justify-content: space-evenly;
 }
 .dashboard__container .stats__container .stats__div {
   width: 100%;
   height: 250px;
   margin: 10px;
-  -webkit-box-shadow: 1px 1px 10px gray;
-          box-shadow: 1px 1px 10px gray;
+  box-shadow: 1px 1px 10px gray;
   border-radius: 15px;
   padding: 10px;
   background-color: #fff;
@@ -61,15 +56,9 @@
 .dashboard__container .dashboard__users__container .dashboard__users__table__container .dasboard__users__table__search {
   width: 100%;
   padding: 10px 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .dashboard__container .dashboard__users__container .dashboard__users__table__container .dasboard__users__table__search #user__search {
   width: 50%;
@@ -77,15 +66,13 @@
   border-bottom: 2px solid gray;
 }
 .dashboard__container .dashboard__users__container .dashboard__users__table__container .dasboard__users__table__search #user__search:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   outline: none;
 }
 .dashboard__container .dashboard__users__container .dashboard__users__table__container table {
   width: 100%;
   background-color: #fff;
-  -webkit-box-shadow: 1px 1px 10px lightgray;
-          box-shadow: 1px 1px 10px lightgray;
+  box-shadow: 1px 1px 10px lightgray;
 }
 .dashboard__container .dashboard__users__container .dashboard__users__table__container table thead tr {
   background-color: #eff1f4;
@@ -103,12 +90,8 @@
 .dashboard__container .dashboard__users__container .dashboard__users__table__container table tbody tr td .user__bull {
   font-size: 35px;
   line-height: 0em;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 .dashboard__container .dashboard__users__container .dashboard__users__table__container table tbody tr td #online__bull {
   color: rgb(36, 229, 6);

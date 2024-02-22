@@ -20,4 +20,10 @@ class Thematique extends Model
     public function tools() {
         return $this->belongsToMany(Tool::class);
     }
+
+    
+    public function bookmarksThematiques()
+    {
+        return $this->hasMany(BookmarkThematiques::class);
+    }
 }

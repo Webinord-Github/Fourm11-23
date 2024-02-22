@@ -17,6 +17,7 @@ use Illuminate\Support\Str;
 use App\Models\Event;
 use App\Models\Menu;
 use App\Models\Thematique;
+use App\Models\Fact;
 use Auth;
 use Carbon\Carbon;
 
@@ -50,12 +51,13 @@ class PagesController extends Controller
 
     public function view($url)
     {
-        $page = Page::where('url', $url)->firstOrFail();
+        $page = Page::where('url', '/' . $url)->firstOrFail();
         $users = User::all();
         $events = Event::orderBy('start_at')->get();
         $conversations = Conversation::with('replies')->get();
         $tools = Tool::where('status', 'publié')->where('published_at', '<', Carbon::tomorrow())->get();
         $thematiques = Thematique::all();
+        $facts = Fact::all();
         $posts = Post::where('status', 'publié')->where('published_at', '<', Carbon::tomorrow())->get();
 
         return view('frontend.page')->with([
@@ -65,7 +67,8 @@ class PagesController extends Controller
             'events' => $events,
             'thematiques' => $thematiques,
             'tools' => $tools,
-            'posts' => $posts
+            'posts' => $posts,
+            'facts' => $facts,
         ]);
     }
 

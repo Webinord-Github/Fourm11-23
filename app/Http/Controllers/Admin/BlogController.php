@@ -8,6 +8,7 @@ use App\Models\Media;
 use App\Models\Thematique;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Auth;
 
 class BlogController extends Controller
@@ -35,10 +36,7 @@ class BlogController extends Controller
 
         $post = new Post();
 
-        $excerpt = $request->body;
-        if(strlen($excerpt)>150) {
-            substr_replace($excerpt, '...', 150);
-        }
+        $slug = Str::slug($request->title);
 
         $thematiques_selected = [];
 
@@ -48,9 +46,8 @@ class BlogController extends Controller
 
         $post->user_id = Auth::user()->id;
         $post->title = $request->title;
-        $post->slug = $request->title;
+        $post->slug = $slug;
         $post->body = $request->body;
-        $post->excerpt = $excerpt;
         $post->status = $request->status;
         $post->published_at = $request->published_at;
 
@@ -86,30 +83,27 @@ class BlogController extends Controller
 
     public function show(Post $post)
     {
-        //
+        return view('frontend.singleblog', compact('post'));
     }
 
     public function edit(Post $post)
     {
-        $thematiques_selected = Post::find($post->id)->thematiques;
-        return view('admin.blog.edit', ['post' => $post, 'thematiques' => Thematique::all(), 'thematiques_selected' => $thematiques_selected]);
+        // $thematiques_selected = Post::find($post->id)->thematiques;
+        // return view('admin.blog.edit', ['post' => $post, 'thematiques' => Thematique::all(), 'thematiques_selected' => $thematiques_selected]);
+        return view('admin.blog.index', ['posts' => Post::all(), 'thematiques' => Thematique::all()]);
     }
 
     public function update(Request $request, Post $post)
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            // 'slug' => ['required', 'string', 'max:255'],
             'body' => ['required', 'string'],
             'image' => ['image', 'mimes:jpeg,png,jpg,webp'],
             'thematiques' => ['required', 'array', 'max:3'],
             'status' => ['required', 'string']
         ]);
 
-        $excerpt = $request->body;
-        if(strlen($excerpt)>150) {
-            substr_replace($excerpt, '...', 150);
-        }
+        $slug = Str::slug($request->title);
 
         $thematiques_selected = [];
 
@@ -118,9 +112,8 @@ class BlogController extends Controller
         }
 
         $post->title = $request->title;
-        $post->slug = $request->title;
+        $post->slug = $slug;
         $post->body = $request->body;
-        $post->excerpt = $excerpt;
         $post->status = $request->status;
         $post->published_at = $request->published_at;
 

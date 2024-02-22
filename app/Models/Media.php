@@ -18,7 +18,7 @@ class Media extends Model
     // ];
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class, 'image_id');
     }
 
     public function fact(){
@@ -30,7 +30,7 @@ class Media extends Model
     }
 
     public function post(){
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class, 'image_id');
     }
     public function events()
     {

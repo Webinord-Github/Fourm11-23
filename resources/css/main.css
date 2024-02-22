@@ -8,6 +8,19 @@ main {
   padding-top: 100px;
   min-height: 100%;
 }
+main .warning__container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;
+  text-align: center;
+  font-weight: bold;
+  color: red;
+}
+main .warning__container p {
+  font-size: 20px;
+}
 
 h1 {
   font-size: calc(25px + 25 * (100vw - 300px) / 1300);
@@ -40,12 +53,8 @@ footer {
   width: 100%;
 }
 footer .footer__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   height: 100%;
   padding: 0px 20px;
   position: relative;
@@ -54,8 +63,6 @@ footer .footer__content div {
   margin: 0px 20px;
 }
 footer .footer__content .address p {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 footer .footer__content .address i, footer .footer__content .address p {
@@ -66,8 +73,6 @@ footer .footer__content .address i {
 }
 footer .footer__content .phone a {
   color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 footer .footer__content .phone i {
@@ -77,34 +82,20 @@ footer .footer__content .phone i {
   color: #000;
   background-color: #fff;
   border-radius: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 footer .footer__content .ano__logo__container {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 100%;
 }
 footer .footer__content .quebec__logo__container {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
   width: 95%;
 }
 footer .footer__content .quebec__logo__container img {

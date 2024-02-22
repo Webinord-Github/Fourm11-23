@@ -100,15 +100,28 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\ConversationLike');
     }
+    
+    public function postmarks()
+    {
+        return $this->hasMany(Postmark::class);
+    }
 
     public function signets()
     {
-        return $this->hasMany(SignetTool::class);
+        return $this->hasMany(Signet::class);
     }
 
-    public function medias()
+    public function bookmarksThematiques()
     {
-        return $this->hasMany('App\Models\Media');
+        return $this->hasMany(BookmarkThematiques::class);
+    }
+
+    public function profilePicture(){
+        return $this->belongsTo(Media::class, 'image_id');
+    }
+
+    public function media(){
+        return $this->hasMany(Media::class);
     }
 
     public function files()

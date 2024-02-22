@@ -57,6 +57,9 @@
                     <a href="/admin/tools"><i class="fa-solid fa-wrench mr-4 mt-0.5" aria-hidden="true"></i>Outils</a>
                 </li>
                 <li class="navLink">
+                    <a href="{{ route('toolsguard.index') }}"><i class="fa-solid fa-user-shield mr-4 mt-0.5" aria-hidden="true"></i>Vérification des outils</a>
+                </li>
+                <li class="navLink">
                     <a href="/admin/thematiques"><i class="fa-solid fa-filter mr-4 mt-0.5" aria-hidden="true"></i>Thématiques</a>
                 </li>
                 <li class="navLink">

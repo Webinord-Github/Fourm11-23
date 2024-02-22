@@ -180,14 +180,14 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        if ($request->filled('email')) {
-            $to_email = $validatedData['email'];
-            $automaticEmail = AutomaticEmail::where('id', 1)->first();
-            $userFirstName = $userData['firstname'];
-            $emailBody = "<h1 style='text-align:center;'>Inscription à La Fourmilière</h1><p>Bojour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
-            $customSubject = 'Courriel de la fourmilière';
-            Mail::to($to_email)->send(new TestEmail($emailBody, $customSubject));
-        }
+        // if ($request->filled('email')) {
+        //     $to_email = $validatedData['email'];
+        //     $automaticEmail = AutomaticEmail::where('id', 1)->first();
+        //     $userFirstName = $userData['firstname'];
+        //     $emailBody = "<h1 style='text-align:center;'>Inscription à La Fourmilière</h1><p>Bojour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
+        //     $customSubject = 'Courriel de la fourmilière';
+        //     Mail::to($to_email)->send(new TestEmail($emailBody, $customSubject));
+        // }
         event(new Registered($user));
         return redirect('/');
     }

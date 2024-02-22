@@ -61,11 +61,8 @@ class ConversationsController extends Controller
             array_push($thematiques_selected, $thematique);
         }
 
-        Auth::user()->conversations()->save(new Conversation($request->only([
-            'title', 'body'
-        ])))->thematiques()->sync($thematiques_selected);
         $conversation = Auth::user()->conversations()->save(new Conversation($request->only([
-            'title', 'body'])));
+            'title', 'body'])))->thematiques()->sync($thematiques_selected);
 
         $title = $request->title;
 
@@ -73,12 +70,12 @@ class ConversationsController extends Controller
 
         
 
-        $notification = new Notification();
-        $notification->sujet = 'Nouvelle conversation!' . $cutTitle;
-        $notification->type = 'Conversation';
-        $notification->notif_link = '/forum';   
-        $notification->conversation_id = $conversation->id;
-        $notification->save(); 
+        // $notification = new Notification();
+        // $notification->sujet = 'Nouvelle conversation!' . $cutTitle;
+        // $notification->type = 'Conversation';
+        // $notification->notif_link = '/forum';
+        // $notification->conversation_id = $conversation->id;
+        // $notification->save(); 
 
         return redirect()->route('conversations.index')->with('status', 'Opération réussie');
     }

@@ -374,9 +374,27 @@
 @include('frontend.partials.scripts')
 @endif
 
+<!-- PAGE Blogue  -->
+@if($page->id == 8)
+@include('frontend.blogue')
+@include('frontend.partials.scripts')
+@endif
+
+<!-- PAGE Blogue  -->
+@if($page->id == 9)
+@include('frontend.facts')
+@include('frontend.partials.scripts')
+@endif
+
 <!-- PAGE Lexique  -->
 @if($page->id == 4)
 @include('frontend.lexique')
+@include('frontend.partials.scripts')
+@endif
+
+<!-- PAGE Source  -->
+@if($page->id == 12)
+@include('frontend.source')
 @include('frontend.partials.scripts')
 @endif
 
