@@ -9,8 +9,10 @@
     <div class="source-container">
         <div class="source-content">
             <div class="top-div">
-                <a href="/" class="arrow">&#8592;</a>
-                <h1>Source<span>Source</span></h1>
+            <div class="h1__container">
+                    <a href="/" class="arrow">&#8592;</a>
+                    <h1>SOURCES<span>SOURCES</span></h1>
+                </div>
             </div>
             <div class="content ">
                 <div class="section">

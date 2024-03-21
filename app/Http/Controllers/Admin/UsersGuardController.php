@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Chat;
+use App\Mail\AutoEmail;
+use App\Models\AutomaticEmail;
+use Illuminate\Support\Facades\Mail;
 
 class UsersGuardController extends Controller
 {
@@ -20,7 +23,7 @@ class UsersGuardController extends Controller
     public function store(Request $request)
     {
         foreach ($request->input('user_ids') as $userId) {
-            $user = User::find($userId);
+            $user = User::where('id', $userId)->first();
             if ($request->has('checkbox_' . $userId)) {
                 $user->verified = true;
             } else {
@@ -29,13 +32,12 @@ class UsersGuardController extends Controller
             if ($request->has('checkbox_' . $userId) && !$user->approved_email == true) {
                 $user->approved_email = true;
                 $to_email = $user->email;
-                $automaticEmail = AutomaticEmail::where('id', 3)->first();
+                $automaticEmail = AutomaticEmail::where('id', 2)->first();
                 $userFirstName = $user->firstname;
-                $emailBody = "<h1 style='text-align:center;'>Admission à La Fourmilière</h1><p>Bojour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
-                $customSubject = 'Courriel de la fourmilière';
+                $emailBody = $automaticEmail->content;
+                $customSubject = 'Courriel de validation de profil';
                 Mail::to($to_email)->send(new AutoEmail($emailBody, $customSubject));
 
-                
             }
             $user->save();
         }
@@ -52,20 +54,21 @@ class UsersGuardController extends Controller
         $user->ban = true;
         $user->verified = false;
         $user->save();
-        return response()->json(['message' => 'done']);
-
-
-   
-        // if ($user->refused_email == false) {
-        //     $user->refused_email = true;
-        //     $to_email = $user->email;
-        //     $automaticEmail = AutomaticEmail::where('id', 4)->first();
-        //     $userFirstName = $user->firstname;
-        //     $emailBody = "<h1 style='text-align:center;'>Refus d'admission à La Fourmilière</h1><p>Bojour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
-        //     $customSubject = 'Courriel de la fourmilière';
-        //     Mail::to($to_email)->send(new AutoEmail($emailBody, $customSubject));
-        //     return response()->json(['message' => 'User banned successfully']);
-        // }
+        
+        
+        if ($user->refused_email == false) {
+            $user->refused_email = true;
+            $user->save();
+            $to_email = $user->email;
+            $automaticEmail = AutomaticEmail::where('id', 3)->first();
+            $userFirstName = $user->firstname;
+            $emailBody = "<h1 style='text-align:center;'>Refus d'admission à La Fourmilière</h1><p>Bojour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
+            $customSubject = 'Courriel de la fourmilière';
+            Mail::to($to_email)->send(new AutoEmail($emailBody, $customSubject));
+            return response()->json(['message' => 'User banned successfully']);
+        } else {
+            return response()->json(['message' => 'done']);
+        }
         
     }
 }

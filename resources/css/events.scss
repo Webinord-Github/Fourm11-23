@@ -90,10 +90,10 @@
         .single__event {
             margin: 35px 0px;
             display: flex;
+            justify-content: space-between;
             .infos__container {
                 display: flex;
                 flex-direction: column;
-                width: 75%;
                 .date__location {
                     display: flex;
                     .date {
@@ -142,6 +142,7 @@
                     width: 300px;
                     height: 200px;
                     object-fit: cover;
+                    max-width: 300px;
                 }
                 .event__bookmark__container {
                     position: relative;
@@ -175,6 +176,14 @@
                     background-color: #000;
                     color: #fff;
                 }
+            }
+        }
+        .event__divider {
+            display: flex;
+            justify-content: center;
+            .divider {
+                width: 65%;
+                border-top: 1px solid gray;
             }
         }
     }
@@ -234,6 +243,69 @@
                         display: flex;
                         justify-content: center;
                     }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1366px) {
+    .events__container {
+        .new__event__container {
+            .new__event__content {
+                width: 95%;
+                .inputs__container {
+                    width: 100%;
+                    padding: 20px 0px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1100px) {
+    .events__container {
+        .events__content {
+            .single__event {
+                .img__container {
+                    img {
+                        width: 200px;
+                        max-width: 200px;
+                        height: 140px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    .events__container {
+        .events__content {
+            .single__event {
+                flex-direction: column;
+                align-items: center;
+                .infos__container {
+                    align-items: center;
+                }
+                .img__container {
+                    margin-top: 20px;
+                    margin-left: 30px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .events__container {
+        .new__event__container {
+            align-items: flex-start;
+            .new__event__content {
+                max-height: 450px;
+                margin-top: 100px;
+                .close__container {
+                    right: 5px
                 }
             }
         }

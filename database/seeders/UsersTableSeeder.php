@@ -18,15 +18,17 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $adminRole = Role::where('name', 'Super Admin')->first();
-        $memberRole = Role::where('name', 'Membre')->first();
+
         User::truncate();
 
         $admin = User::create([
             'firstname' => 'Admin',
-            'email' => 'admin@admin.com',
+            'email' => 'olivier.lauzon1209@outlook.com',
             'password' => bcrypt('password'),
             'notifs_check' => '2023-10-19 18:51:37',
-            'image_id' => 1
+            'image_id' => 1,
+            'approved_email' => true,
+            'refused_email' => true,
         ]);
 
         $admin2 = User::create([
@@ -51,44 +53,15 @@ class UsersTableSeeder extends Seeder
             'email' => 'info@webinord.ca',
             'password' => bcrypt('password'),
             'notifs_check' => '2023-10-19 18:51:37',
-            'image_id' => 1
-        ]);
-        $admin3 = User::create([
-            'firstname' => 'Mickael',
-            'lastname' => 'Bourdon',
-            'pronoun' => 'Il',
-            'used_agreements' => 'Mr',
-            'gender' => 'Homme',
-            'title' => 'Programmeur',
-            'environment' => 'Webinord',
-            'birthdate' => Carbon::createFromFormat('d/m/Y', '09/12/1994')->format('Y-m-d'),
-            'years_xp' => '5',
-            'work_city' => 'Grand Montréal',
-            'work_phone' => '000-000-0000',
-            'description' => 'Consultation numérique et services web',
-            'audience' => 'N/D',
-            'interests' => 'N/D',
-            'hear_about' => 'N/D',
-            'newsletter' => true,
-            'notifications' => true,
-            'conditions' => true,
-            'email' => 'admin3@admin3.com',
-            'password' => bcrypt('password'),
-            'notifs_check' => '2023-10-19 18:51:37',
-            'image_id' => 1
+            'image_id' => 1,
+            'approved_email' => true,
+            'refused_email' => true,
         ]);
 
-        $member = User::create([
-            'firstname' => 'user',
-            'email' => 'user@user.com',
-            'password' => bcrypt('password'),
-            'notifs_check' => '2023-10-19 18:51:37',
-            'image_id' => 1
-        ]);
+
 
         $admin->roles()->attach($adminRole);
         $admin2->roles()->attach($adminRole);
-        $admin3->roles()->attach($adminRole);
-        $member->roles()->attach($memberRole);
+
     }
 }

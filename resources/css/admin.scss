@@ -1,3 +1,18 @@
+.newNotif {
+    background-color: #f56f6f;
+    animation: colorChange 2.5s infinite;
+}
+@keyframes colorChange {
+    0% {
+        background-color: #f56f6f;
+    }
+    50% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: #f56f6f;
+    }
+}
 .admin__nav__container {
     height: 65px;
     display: flex;
@@ -118,7 +133,7 @@ main {
 
             .sectionDiv {
                 width: 100%;
-                min-height: 85%;
+                max-height: 85%;
                 overflow-y: auto;
                 overflow-x: hidden;
 
@@ -309,6 +324,65 @@ main {
             #no {
                 background-color: red;
             }
+        }
+    }
+}
+
+// Reports
+.reports__container {
+    table {
+        form {
+            .accepted__reply {
+                background-color: #66bb6a;
+                padding: 12px;
+                color: #fff;
+                font-weight: bold;
+                cursor: pointer;
+                border-radius: 10px;
+            }
+            .deleted__reply {
+                background-color: #f56f6f;
+                padding: 12px;
+                color: #fff;
+                font-weight: bold;
+                cursor: pointer;
+                border-radius: 10px;
+            }
+            .accepted__reply:hover {
+                filter: contrast(65%);
+            }
+            .deleted__reply:hover {
+                filter: contrast(65%);
+            }
+        }
+    }
+    .flex {
+        display: flex!important;
+    }
+    .loading__container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        .loading {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: 8px solid #000;
+            position: absolute;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     }
 }

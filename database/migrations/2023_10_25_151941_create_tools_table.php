@@ -19,8 +19,7 @@ return new class extends Migration
             $table->longText('desc');
             $table->integer('media_id')->nullable();
             $table->integer('user_id');
-            $table->string('status');
-            $table->timestamp('published_at')->nullable();
+            $table->boolean('verified')->default(false);
             $table->timestamps();
         });
     }

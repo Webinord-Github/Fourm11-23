@@ -75,6 +75,9 @@
 
                         </div>
                     </div>
+                    <div class="event__divider">
+                        <div class="divider"></div>
+                    </div>
                 </div>
                 @endif
                 @endforeach
@@ -91,7 +94,7 @@
                 </div>
                 <form class="w-full flex justify-center" action="{{ route('new.user.event') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="px-12 pb-8 flex flex-col items-center w-10/12">
+                    <div class="px-12 pb-8 flex flex-col items-center w-10/12 inputs__container">
                         @if (!$errors->isEmpty())
                         <div role="alert" class="w-full pb-8">
                             <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">

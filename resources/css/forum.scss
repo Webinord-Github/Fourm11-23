@@ -1,21 +1,50 @@
+.status__container {
+    padding: 20px 0px;
+    p {
+        font-size: 20px;
+        text-align: center;
+    }
+}
+.flex_popup {
+    display: flex!important;
+}
+
+
+
+
 .main__forum__container {
     display: flex;
     justify-content: center;
     margin-top: 50px;
     height: 100%;
+    position: relative;
     min-height: calc(100vh - 100px);
+    .flex {
+        display: flex!important;
+    }
 
     .thematiques__container {
+        display: none;
         padding: 0px 10px;
         border-left: 3px solid #edb200;
-        width: 15%;
-        height: fit-content;
-
+        width: 100%;
+        height: calc(100vh - 100px);
+        position: absolute;
+        z-index: 2000;
+        background-color: #fff;
+        margin-top: -50px;
+        align-items: center ;
+        flex-direction: column;
+        padding-top: 100px;
         h2 {
-            font-size: 22px;
+            text-align: center;
         }
 
         .thematiques__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
             .thematique__li__container {
                 display: flex;
                 align-items: center;
@@ -34,6 +63,14 @@
             .all__thematique {
                 cursor: pointer;
                 list-style-type: none;
+            }
+            .thematique:hover {
+                font-weight: bold;
+                font-size: 22px;
+            }
+            .all__thematique:hover {
+                font-weight: bold;
+                font-size: 22px;
             }
         }
 
@@ -56,21 +93,52 @@
         .submit__conversation__container:hover {
             filter: contrast(65%);
         }
+        .thematique__close {
+            font-size: 30px;
+            color: #000;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
     }
 
     .chalk__container {
         display: flex;
-        width: 85%;
+        width: 100%;
         margin-top: -50px;
         padding: 20px;
         min-height: 100vh;
-
+        position: relative;
+    
+        .filter__icon__container {
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: fit-content;
+            .thematique__filter {
+                border: 2px solid #edb200;
+                color: #edb200;
+                width: 35px;
+                height: 35px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+                cursor: pointer;
+            }
+            p {
+                cursor: pointer;
+                color: #edb200;
+            }
+        }
         .conversations__main__container {
             padding: 0px 10px;
             width: 75%;
             max-height: 85vh;
             overflow-y: auto;
-
+            margin-left: 20px;
             .no__conversations__container {
                 display: flex;
                 justify-content: center;
@@ -83,7 +151,6 @@
 
             .forum__container {
                 width: 100%;
-                position: relative;
                 display: flex;
 
                 .forum__content {
@@ -102,13 +169,14 @@
                         box-shadow: 1px 1px 10px black;
                         min-height: 450px;
                         background-color: #fff;
-
+           
                         .conv__title__container {
                             background-color: #2870c3;
                             display: flex;
                             align-items: center;
                             justify-content: space-between;
                             padding: 12px 20px;
+                        
 
                             #conv__title {
                                 color: #fff;
@@ -198,7 +266,7 @@
                                         i {
                                             width: 40px;
                                             height: 40px;
-                                            background-color: #2870c3;
+                                            background-color: #000;
                                             border-radius: 100%;
                                             display: flex;
                                             justify-content: center;
@@ -211,7 +279,7 @@
 
                                         .likeHover {
                                             display: none;
-                                            background-color: #2870c3;
+                                            background-color: #000;
                                             width: 120px;
                                             z-index: 100;
                                             color: #fff;
@@ -259,32 +327,52 @@
 
                                     .report {
                                         margin-right: 20px;
-                                        cursor: pointer;
-
-                                        p.report__trigger {
+                                        
+                                        .report__trigger {
+                                            cursor: pointer;
                                             display: flex;
                                             align-items: center;
                                             margin: 0px;
+                                            i {
+                                                width: 20px;
+                                                height: 20px;
+                                                background-color: red;
+                                                border-radius: 100%;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                color: #fff;
+                                                font-size: 14px;
+                                                font-weight: bold;
+                                                margin-left: 5px;
+                                            }
                                         }
-
-                                        i {
-                                            width: 20px;
-                                            height: 20px;
-                                            background-color: red;
-                                            border-radius: 100%;
+                                        
+                                        .report__trigger__disable {
+                                            cursor: not-allowed;
+                                            color: gray;
                                             display: flex;
-                                            justify-content: center;
                                             align-items: center;
-                                            color: #fff;
-                                            font-size: 14px;
-                                            font-weight: bold;
-                                            margin-left: 5px;
+                                            margin: 0px;
+                                            i {
+                                                width: 20px;
+                                                height: 20px;
+                                                background-color:gray;
+                                                border-radius: 100%;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                color: #fff;
+                                                font-size: 14px;
+                                                font-weight: bold;
+                                                margin-left: 5px;
+                                            }
                                         }
                                     }
 
                                     .reply {
                                         .reply__toggle {
-                                            background-color: #2870c3;
+                                            background-color: #000;
                                             color: #fff;
                                             text-decoration: none;
                                             padding: 5px 30px;
@@ -427,7 +515,7 @@
                                         width: 100%;
                                         padding-top: 10px;
                                         border-top: 1px solid lightgray;
-
+                                    
                                         .user__reply__info {
                                             display: flex;
                                             justify-content: space-between;
@@ -440,6 +528,9 @@
                                             #timestamp {
                                                 color: red;
                                             }
+                                        }
+                                        .user__reply__body {
+                                            word-break: break-all;
                                         }
                                     }
                                 }
@@ -463,103 +554,7 @@
                     display: flex !important;
                 }
 
-                .report__popup__container {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    min-height: calc(100vh - 170px);
-                    background-color: rgba(0, 0, 0, 0.7);
-                    display: none;
-                    justify-content: center;
-                    align-items: center;
-
-                    .report__popup {
-                        position: relative;
-                        width: 600px;
-                        max-width: 100%;
-                        height: auto;
-                        background-color: #fff;
-                        box-shadow: 1px 1px 8px #000;
-
-                        .report__infos__container {
-                            border: 2px solid #000;
-                            padding: 5px;
-                            margin: 20px;
-                        }
-
-                        h3 {
-                            text-align: center;
-                            margin-bottom: 10px;
-                            font-size: 30px;
-                            font-weight: bold;
-                            color: red;
-                            background-color: #000;
-                            padding: 10px 0px;
-                        }
-
-                        #report__form {
-                            padding: 20px;
-                            display: flex;
-                            flex-direction: column;
-
-                            .checkbox__container {
-                                width: fit-content;
-                                display: flex;
-                                align-items: center;
-                                margin: 20px 0px;
-
-                                label {
-                                    margin-left: 20px;
-                                    font-size: 20px;
-                                    font-weight: bold;
-                                }
-
-                                input {
-                                    border-radius: 100%;
-                                    cursor: pointer;
-                                    width: 30px;
-                                    height: 30px;
-                                }
-                            }
-
-                            .report__textarea__container {
-                                display: flex;
-                                flex-direction: column;
-                            }
-
-                            .submit__form__container {
-                                display: flex;
-                                justify-content: center;
-                                margin-top: 30px;
-
-                                #report__submit {
-                                    background-color: red;
-                                    color: #fff;
-                                    font-weight: bold;
-                                    padding: 8px 12px;
-                                    cursor: pointer;
-                                }
-
-                                #report__submit:hover {
-                                    filter: contrast(65%);
-                                }
-                            }
-                        }
-
-                        .close__container {
-                            position: absolute;
-                            top: 12px;
-                            right: 20px;
-
-                            .fa-close {
-                                font-size: 30px;
-                                color: #fff;
-                                cursor: pointer;
-                            }
-                        }
-                    }
-                }
+         
             }
         }
 
@@ -592,7 +587,7 @@
                         border-left: 2px solid black;
                         width: 2px;
                     }
-
+                   
                     .text__content {
                         padding: 10px 20px;
                         height: 80px;
@@ -615,6 +610,93 @@
                 }
             }
         }
+        .report__popup__container {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+    
+            .report__popup {
+                position: relative;
+                width: 600px;
+                max-width: 100%;
+                height: auto;
+                padding-bottom: 20px;
+                background-color: #fff;
+                box-shadow: 1px 1px 8px #000;
+                z-index: 400;
+    
+                .report__infos__container {
+                    border: 2px solid #000;
+                    padding: 5px;
+                    margin: 20px;
+                }
+    
+                h3 {
+                    text-align: center;
+                    margin-bottom: 10px;
+                    font-size: 30px;
+                    font-weight: bold;
+                    color: red;
+                    background-color: #000;
+                    padding: 10px 0px;
+                }
+    
+                .submit__form__container {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 30px;
+    
+                    #report__submit {
+                        background-color: red;
+                        color: #fff;
+                        font-weight: bold;
+                        padding: 8px 12px;
+                        cursor: pointer;
+                    }
+                    .loading {
+                        display: none;
+                        width: 16px;
+                        height: 16px;
+                        border: 2px solid #000;
+                        position: absolute;
+                        border-radius: 50%;
+                        border-top-color: transparent;
+                        animation: spin 0.8s linear infinite;
+                    }
+                    
+                    @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+    
+                    #report__submit:hover {
+                        filter: contrast(65%);
+                    }
+                    #report__success {
+                        display: none;
+                    }
+                }
+    
+                .close__container {
+                    position: absolute;
+                    top: 12px;
+                    right: 20px;
+    
+                    .fa-close {
+                        font-size: 30px;
+                        color: #fff;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+   
     }
 
     .flex {
@@ -623,7 +705,7 @@
 
     .new__conversation__popup {
         position: absolute;
-        top: 0;
+        top: -50px;
         left: 0;
         width: 100%;
         height: 100vh;
@@ -631,7 +713,7 @@
         justify-content: center;
         align-items: center;
         background: rgba(0, 0, 0, 0.7);
-
+        z-index: 5000;
         .popup {
             width: 65%;
             max-width: 100%;
@@ -642,10 +724,30 @@
             border-radius: 15px;
             position: relative;
 
+            .thematiques__checkbox {
+                cursor: pointer;
+            }
+
             form {
                 .submit__container {
                     margin-top: 30px;
                 }
+                .new__conversation__loading {
+                    display: none;
+                    width: 16px;
+                    height: 16px;
+                    border: 2px solid #000;
+                    position: absolute;
+                    border-radius: 50%;
+                    border-top-color: transparent;
+                    animation: spin 0.8s linear infinite;
+                }
+                
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+
             }
 
             .popup__close {
@@ -665,6 +767,64 @@
 
             .popup__close:hover {
                 background-color: lightgray;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width:1366px) {
+    .main__forum__container {
+        .chalk__container {
+            flex-direction: column;
+            align-items: center;
+            .filter__icon__container {
+                width: 100%;
+                padding: 10px 0px;
+            }
+            .conversations__main__container {
+                width: 100%;
+                max-height: 50vh;
+                margin-left: 0px;
+            }
+            .conversations__widget__container {
+                width: 100%;
+                margin-top: 50px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    .main__forum__container {
+        margin-top: 100px;
+        .chalk__container {
+            .conversations__main__container {
+                .forum__container {
+                    .forum__content {
+                        .conv__container {
+                            .conv__content {
+                                .actions__container {
+                                    flex-direction: column;
+                                    align-items: center;
+                                    .instant__actions {
+                                        margin-top: 20px;
+                                        flex-direction: column;
+                                        .delete {
+                                            margin: 0px;
+                                        }
+                                        .reply {
+                                            margin-top: 10px;
+                                        }
+                                        .report {
+                                            margin: 0px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

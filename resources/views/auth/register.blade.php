@@ -22,7 +22,7 @@
                 <div class="column">
                     <label class="required" for="firstname">Prénom</label>
                     <input class="form__input" id="firstname" type="text" name="firstname" required>
-                    <x-input-error :messages="$errors->get('firstname')" style="font-size:11px;margin-bottom:5px;"/>
+                    <x-input-error :messages="$errors->get('firstname')" style="font-size:11px;margin-bottom:5px;" />
 
                     <label class="required" for="lastname">Nom de famille</label>
                     <input class="form__input" id="lastname" type="text" name="lastname" required>
@@ -31,12 +31,12 @@
                 </div>
                 <div class="column">
                     <div class="img__container">
-                        <img id="user__avatar" src="{{ asset('storage/avatars/fourmis-bleue.jpg') }}" alt="">
+                        <img id="user__avatar" src="{{ asset('storage/avatars/fourmis-bleu.jpg') }}" alt="">
                         <button id="avatar__selection">Choisir un avatar</button>
                         <div class="drop__zone">
                             <label for="avatar" id="file__selection">ou <span>téléverser une image</span></label>
                             <input type='file' name="file" id="avatar" hidden>
-                            <input type="hidden" name="avatar_url" id="avatar__url" value="/storage/avatars/fourmis-bleue.jpg">
+                            <input type="hidden" name="avatar_url" id="avatar__url" value="fourmis-bleu.jpg">
                         </div>
 
                     </div>
@@ -231,9 +231,10 @@
                 <div class="img__container">
                     @foreach($avatars as $avatar)
                     <div class="img__content">
-                        <img class="avatar__img" src="{{ asset($avatar->path . $avatar->name) }}" data-src="{{$avatar->name}}" alt="">
+                        <img class="avatar__img" src="{{ asset($avatar->path . $avatar->name) }}" data-src="{{ $avatar->name }}" alt="">
                     </div>
                     @endforeach
+
 
                 </div>
                 <div class="avatar__confirm__container">
@@ -349,8 +350,9 @@
         avatarConfirm.addEventListener("click", s => {
             if (selected) {
                 avatarInput.value = dataSrc;
-                
+
                 userAvatar.src = `{{asset('/storage/avatars/' . '${dataSrc}')}}`;
+                document.querySelector("#avatar__url").value = dataSrc;
                 avatarPopup.classList.remove("flex")
             } else {
                 avError.style.display = "block"

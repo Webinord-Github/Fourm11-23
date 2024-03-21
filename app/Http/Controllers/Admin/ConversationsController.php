@@ -12,6 +12,7 @@ use App\Models\Reply;
 use App\Models\Thematique;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AutoEmail;
+use App\Models\AutomaticEmail;
 use App\Models\ConversationBookmarks;
 use Illuminate\Validation\Rule;
 use Auth;
@@ -79,9 +80,9 @@ class ConversationsController extends Controller
 
 
         $notification = new Notification();
-        $notification->sujet = 'Une nouvelle conversation a été ajoutée' . " " .  $cutTitle;
+        $notification->sujet = 'Une nouvelle conversation a été ajoutée:<br>' . $cutTitle;
         $notification->type = 'BasicNotif';
-        $notification->notif_link = `/forum#c$conversation->id`;
+        $notification->notif_link = "/forum#c$conversation->id";
         $notification->conversation_id = $conversation->id;
         $notification->save();
 
@@ -140,7 +141,14 @@ class ConversationsController extends Controller
     public function conversation_added_by_user(Request $request)
     {
         $request->validate([
-            'thematiques' => ['required', 'array', 'max:3']
+            'thematiques' => ['required', 'array', 'max:3'],
+            'title' => ['required', 'max:255', 'string'],
+            'body' => ['required', 'max:2000', 'string'],
+        ], [
+            'thematiques.required' =>'Choisir au moins une thématique',
+            'thematiques.array' => 'Choisir maximum trois thématiques',
+            'title.required' => 'Le titre est requis',
+            'body.required' => 'Le contenu est requis',
         ]);
 
         $thematiques_selected = [];
@@ -158,19 +166,16 @@ class ConversationsController extends Controller
 
         $conversation->thematiques()->sync($thematiques_selected);
 
-
         $to_email = 'info@webinord.ca';
         $emailBody = "
         <h1 style='text-align:center;'>
-        La fourmilière</h1>
-        <p>Nouvelle discussion ajouté par un.e utilisateur.trice</p>
+        Nouvelle discussion ajoutée par un.e utilisateur.trice</h1>
         <p><strong>Titre:</strong> " . $request->title . "</p>
         <p><strong>Contenu:</strong> " . $request->body . "</p>
         <p><strong>Nom de l'utilisateur:</strong> " . Auth::user()->firstname . " " . Auth::user()->lastname . "</p>
         <p><strong>Courriel de l'utilisateur:</strong> " . Auth::user()->email . "</p>
-        
         ";
-        $customSubject = 'Nouvelle discussion';
+        $customSubject = 'Courriel de La Fourmilière';
         Mail::to($to_email)->send(new AutoEmail($emailBody, $customSubject));
 
         return back()->with('status', 'Conversation Soumise. Un/une administrateur.trice revisera votre demande. Merci!');

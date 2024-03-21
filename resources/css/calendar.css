@@ -21,17 +21,29 @@
   width: 100%;
   height: 100%;
   display: none;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 85%;
   height: 350px;
   background-color: white;
-  box-shadow: 1px 1px 8px #000;
+  -webkit-box-shadow: 1px 1px 8px #000;
+          box-shadow: 1px 1px 8px #000;
   border-radius: 10px;
 }
 .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__top {
@@ -40,9 +52,15 @@
   width: 100%;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 0px 25px;
 }
 .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__top p {
@@ -58,6 +76,8 @@
 .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content {
   width: 100%;
   padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 100%;
 }
@@ -65,9 +85,15 @@
   width: 60%;
 }
 .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content .event__description .event__location {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content .event__description .event__location p {
   margin: 0px;
@@ -84,6 +110,8 @@
 }
 .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content .event__description .event__cta__container {
   margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content .event__description .event__cta__container a {
@@ -91,16 +119,26 @@
   width: 150px;
   border-radius: 15px;
   font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 3px;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 0.2s linear;
+  transition: -webkit-transform 0.2s linear;
   transition: transform 0.2s linear;
+  transition: transform 0.2s linear, -webkit-transform 0.2s linear;
   text-align: center;
 }
 .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content .event__description .event__cta__container a:hover {
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content .event__description .event__cta__container .event__register {
   margin-right: 20px;
@@ -113,14 +151,22 @@
 }
 .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content .event__image__container {
   width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content .event__image__container .event__image {
   border-radius: 10px;
 }
 .calendar__container .row .col .calendar__table .date__top .date__box .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -129,16 +175,26 @@
     height: auto;
   }
   .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content {
-    flex-direction: column-reverse;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content .event__location {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content .event__image__container {
     margin: 20px 0px;
   }
   .calendar__container .row .col .calendar__table .date__top .date__box .event__popup__container .event__popup .event__popup__content .event__description .event__cta__container {
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }/*# sourceMappingURL=calendar.css.map */

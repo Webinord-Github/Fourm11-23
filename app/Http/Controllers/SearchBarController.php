@@ -54,30 +54,29 @@ class SearchBarController extends Controller
             $query->where('title', 'REGEXP', $regex);
             $query->where('published', true);
         })->get();
-        $users = User::where(function ($query) use ($searchTerm) {
-            $length = strlen($searchTerm);
+        // $users = User::where(function ($query) use ($searchTerm) {
+        //     $length = strlen($searchTerm);
 
-            // Construct a regular expression for two consecutive letters in the search term
-            $regex = '';
-            for ($i = 0; $i < $length; $i++) {
-                $regex .= $searchTerm[$i] . '.?'; // .? matches any character (except newline) zero or one time
-            }
+        //     // Construct a regular expression for two consecutive letters in the search term
+        //     $regex = '';
+        //     for ($i = 0; $i < $length; $i++) {
+        //         $regex .= $searchTerm[$i] . '.?'; // .? matches any character (except newline) zero or one time
+        //     }
 
-            // Use the regular expression in the query
-            $query->where('firstname', 'REGEXP', $regex)
-            ->where('verified', true)
-            ->where('ban', false)
-            ->orWhere('lastname', 'REGEXP', $regex);
+        //     // Use the regular expression in the query
+        //     $query->where('firstname', 'REGEXP', $regex)
+        //     ->where('verified', true)
+        //     ->where('ban', false)
+        //     ->orWhere('lastname', 'REGEXP', $regex);
 
         
-        })->get();
+        // })->get();
 
         // You can customize the response based on your needs
         return response()->json([
             'pages' => $pages,
             'conversations' => $conversations,
             'events' => $events,
-            'users' => $users,
         ]);
     }
 }

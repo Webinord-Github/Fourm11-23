@@ -20,7 +20,7 @@
                         </div>
                     @endif
                     @foreach($posts as $post)
-                    <div class="post">
+                    <div class="post" id="p{{$post->id}}">
                         <div class="image">
                             <img src="{{ $post->media->path . $post->media->name }}" alt="{{ $post->media->name }}">
                         </div>

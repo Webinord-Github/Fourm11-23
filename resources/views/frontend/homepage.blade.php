@@ -52,7 +52,7 @@
                                         <a class="tags" href="">Adolescant.es</a>
                                     </div>
                                     <div class="conv__href__container">
-                                        <a class="conv__href" href="">Voir la conversation</a>
+                                        <a class="conv__href" href="/forum#c{{$conversation->id}}">Voir la conversation</a>
                                     </div>
                                 </div>
                             </div>
@@ -79,6 +79,7 @@
                     @if(auth()->user()->verified)
                     <div class="users__list">
                         @foreach($users as $user)
+                        @if(!$user->isAdmin())
                         <div class="single__user">
                             <div class="img__container">
                                 <img src="{{$user->profilePicture->path . $user->profilePicture->name}}" alt="">
@@ -93,6 +94,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         @endforeach
                     </div>
                     @else
@@ -162,9 +164,9 @@
                 @if(count($posts) < 1) <p style="color:white;text-align:center;">Aucun blog à afficher pour l'instant!</p>
                     @else
                     @foreach($posts as $post)
-                    <div class="single__blog">
+                    <div class="single__blog" id="{{$post->id}}">
                         <div class="img__container">
-                            <img src="https://placehold.co/150x150" alt="">
+                            <img src="{{$post->media->path . $post->media->name}}" alt="">
                         </div>
                         <div class="text__container">
                             @php
@@ -186,10 +188,18 @@
                                     <a class="read" href="{{ route('post.show', ['post' => $post]) }}">lire</a>
                                 </div>
                             </div>
+                            @php
+                                $existingPostmark = App\Models\Postmark::where('user_id', auth()->user()->id)->where('post_id', $post->id)->first();
+                            @endphp
+                            @if($existingPostmark)
                             <div class="post__bookmark__container">
+                                <i id="post__bookmark" class="fa fa-bookmark bookmarked"></i>
+                            </div>
+                            @else 
+                            <div class="post__bookmark__container bookmarked">
                                 <i id="post__bookmark" class="fa fa-bookmark"></i>
                             </div>
-
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -229,7 +239,7 @@
                                     @endforeach
                             </div>
                             <div class="read__container">
-                                <a class="read" href="/boite-a-outils">en savoir plus</a>
+                                <a class="read" href="/boite-a-outils#t{{$tool->id}}">en savoir plus</a>
                             </div>
                         </div>
                         <div class="tool__bookmark__container">

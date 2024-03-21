@@ -49,22 +49,6 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="w-full mb-2">
-                    <div class="flex justify-center flex-col">
-                        <x-label for="status" :value="__('Status')"></x-label>
-                        <select style="border-radius:5px;" name="status" id="status">
-                            <option value="brouillon" @if ('brouillon' == old('status')) selected @endif>Brouillon</option>
-                            <option value="publié" @if ('publié' == old('status')) selected @endif>Publié</option>
-                            <option value="archivé" @if ('archivé' == old('status')) selected @endif>Archivé</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="w-full mb-2">
-                    <div class="flex justify-center flex-col">
-                        <x-label for="published_at" :value="__('Date de publication')"></x-label>
-                        <x-input id="published_at" class="block mt-1 w-full form-control" type="datetime-local" name="published_at" :value="old('published_at')" required autofocus />
-                    </div>
-                </div>
                 <div class="flex items-center justify-end mt-4">
                     <a href="/admin/posts">Retour</a>
                     <x-button class="ml-4">

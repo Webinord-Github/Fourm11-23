@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('reported_author_user_id');
             $table->integer('reported_user_user_id');
             $table->longtext('report');
+            $table->integer('conversation_id');
+            $table->integer('reply_id');
             $table->boolean('fixed');
             $table->timestamps();
         });
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('signalements');
+    Schema::dropIfExists('signalements');
     }
 };

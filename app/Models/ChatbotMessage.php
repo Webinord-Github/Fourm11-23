@@ -13,11 +13,16 @@ class ChatbotMessage extends Model
         'chat_id',
         'body',
         'sender',
-        'replier'
+        'receiver',
+        'received'
     ];
 
     public function chat()
     {
         return $this->belongsTo(Chatbot::class);
+    }
+    public function chatbot()
+    {
+        return $this->belongsTo(Chatbot::class, 'chat_id');
     }
 }

@@ -1,7 +1,8 @@
 .member__card__container {
   width: 300px;
   height: 200px;
-  box-shadow: 1px 1px 4px gray;
+  -webkit-box-shadow: 1px 1px 4px gray;
+          box-shadow: 1px 1px 4px gray;
   border-radius: 15px;
   margin: 20px;
 }
@@ -9,8 +10,12 @@
   padding: 20px;
 }
 .member__card__container .member__card .member__infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .member__card__container .member__card .member__infos img {
   width: 60px;

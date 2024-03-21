@@ -5,6 +5,33 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2vw;
+}
+.members__container .h1__container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+  margin-left: 100px;
+}
+.members__container .h1__container .arrow {
+  font-size: 60px;
+  margin-right: 50px;
 }
 .members__container .members {
   display: -webkit-box;
@@ -18,18 +45,22 @@
           justify-content: center;
 }
 .members__container .members .member__card {
-  width: 30%;
+  width: 600px;
   height: 350px;
   border-radius: 15px;
-  background-color: #13cec8;
+  -webkit-box-shadow: 4px 4px 8px 3px gray;
+          box-shadow: 4px 4px 8px 3px gray;
   margin: 10px;
   position: relative;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
 }
 .members__container .members .member__card .infos__container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .members__container .members .member__card .infos__container .img__content {
   width: 25%;
@@ -41,10 +72,12 @@
           justify-content: center;
 }
 .members__container .members .member__card .infos__container .img__content img {
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   max-width: 120px;
   border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .members__container .members .member__card .infos__container .info__content {
   width: 75%;
@@ -81,8 +114,23 @@
           filter: contrast(65%);
 }
 .members__container .members .ghost__card {
-  width: 30%;
+  width: 600px;
   height: 0px;
   margin: 10px;
   overflow: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .members__container .members .member__card .infos__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .members__container .members .member__card .infos__container .info__content {
+    text-align: center;
+  }
 }/*# sourceMappingURL=members.css.map */

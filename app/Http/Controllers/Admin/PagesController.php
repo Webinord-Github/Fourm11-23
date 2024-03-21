@@ -57,20 +57,24 @@ class PagesController extends Controller
         $users = User::all();
         $events = Event::orderBy('start_at')->get();
         $conversations = Conversation::with('replies')->get();
-        $tools = Tool::where('status', 'publié')->where('published_at', '<', Carbon::tomorrow())->get();
+        $tools = Tool::where('verified', true)->get();
         $thematiques = Thematique::all();
         $facts = Fact::all();
-        $posts = Post::where('status', 'publié')->where('published_at', '<', Carbon::tomorrow())->get();
+        $posts = Post::all();
         $recentConversations = Conversation::
+        where('published', true)->
         orderBy('created_at', 'desc')
         ->take(5)
         ->get();
  
         // si l'utilisateur n'est pas vérifié 
-        if($page->id == 5 && !Auth::user()->verified) {
-            return redirect('/');
+        if(Auth::check()){
+            if($page->id == 5 && !Auth::user()->verified) {
+                return redirect('/');
+            }
         }
         // page forum si pas connecté
+
         if($page->id == 5 && !Auth::check()) {
             return redirect('/');
         }

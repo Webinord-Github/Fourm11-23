@@ -19,69 +19,48 @@ class automatic_emails_seeder extends Seeder
             [
                 'name' => 'new_user_to_user',
                 'description' => 'Nouvel utilisateur -> Destinataire: Utilisateur',
-                'content' => null,
-
-            ],
-            [
-                'name' => 'new_user_to_admin',
-                'description' => 'Nouvel utilisateur -> Destinataire: Admin',
-                'content' => null,
+                'content' => '1',
 
             ],
             [
                 'name' => 'positive_admission_to_user',
                 'description' => 'Admission positive utilisateur -> Destinataire: Utilisateur',
-                'content' => null,
+                'content' => '<h1>Bienvenue à La Fourmilière</h1>
+                <p>La création de votre profil est finalisée. Vous faites maintenant partie de la communauté de La
+                Fourmilière, bienvenue!</p>
+                <p>Vous pouvez naviguer sur la plateforme, lire des contenus, partager votre expertise et tisser des
+                liens avec des personnes qui comme vous, ont l’objectif de prévenir et de lutter contre
+                l’intimidation dans leur milieu.</p>
+                <p>Vous êtes encouragé·es à participer activement aux discussions et à poser des questions. C&#39;est
+                en partageant vos connaissances et votre expertise que la plateforme pourra remplir son mandat
+                de lutte contre l’intimidation tout en contribuant à l’amélioration continue des interventions dans
+                ce domaine.</p>
+                <p>Merci de votre engagement et de votre contribution envers cette cause importante. Ensemble,
+                nous avons le pouvoir de créer des environnements plus sécuritaires et bienveillants, et ce, pour
+                tou·tes.</p>
+                <p>L’équipe de La Fourmilière.</p>',
 
             ],
             [
                 'name' => 'negative_admission_to_user',
                 'description' => 'Admission négative utilisateur -> Destinataire: Utilisateur',
-                'content' => null,
+                'content' => '3',
 
             ],
-            [
-                'name' => 'welcome_to_user',
-                'description' => 'Courriel de bienvenue -> Destinataire: Utilisateur',
-                'content' => null,
-
-            ],
+        
             [
                 'name' => 'report_to_user',
                 'description' => 'Signalement -> Destinataire: Utilisateur qui signale',
-                'content' => null,
-
-            ],
-            [
-                'name' => 'positive_report_to_admin',
-                'description' => 'Signalement -> Destinataire: Admin',
-                'content' => null,
-
-            ],
-            [
-                'name' => 'positive_report_to_user',
-                'description' => 'Décision positive signalement -> Destinataire: Utilisateur impliqué',
-                'content' => null,
+                'content' => '4',
 
             ],
             [
                 'name' => 'negative_report_to_user',
-                'description' => 'Décision négative signalement -> Destinataire: Utilisateur impliqué',
-                'content' => null,
+                'description' => 'Décision négative signalement (message supprimé) -> Destinataire: Utilisateur impliqué',
+                'content' => '5',
 
             ],
-            [
-                'name' => 'new_tool_to_admin',
-                'description' => "Soumission d'un nouvel outil -> Destinataire: Admin",
-                'content' => null,
 
-            ],
-            [
-                'name' => 'new_blog_to_admin',
-                'description' => "Soumission d'un nouvel article de blog -> Destinataire: Admin",
-                'content' => null,
-
-            ],
         ];
         AutomaticEmail::insert($emailsData);
     }

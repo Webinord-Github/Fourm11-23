@@ -45,9 +45,7 @@ class ToolsController extends Controller
         $tool->user_id = Auth::user()->id;
         $tool->title = $request->title;
         $tool->desc = $request->desc;
-        $tool->status = $request->status;
-        $tool->verified = 1;
-        $tool->published_at = $request->published_at;
+        $tool->verified = true;
         if($request->media)
         {
             $file_original_name = $request->media->getClientOriginalName();
@@ -109,8 +107,6 @@ class ToolsController extends Controller
 
         $tool->title = $request->title;
         $tool->desc = $request->desc;
-        $tool->status = $request->status;
-        $tool->published_at = $request->published_at;
 
         if($request->doc) {
             $file_original_name = $request->media->getClientOriginalName();

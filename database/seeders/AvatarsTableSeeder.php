@@ -15,47 +15,48 @@ class AvatarsTableSeeder extends Seeder
      */
     public function run()
     {
+        Avatar::truncate();
         Avatar::create([
-            'url' => 'coccinelle-bleue.jpg'
+            'path' => 'coccinelle-bleue.jpg'
         ]);
         Avatar::create([
-            'url' => 'coccinelle-turq.jpg'
+            'path' => 'coccinelle-turq.jpg'
         ]);
         Avatar::create([
-            'url' => 'coccinnelle-bleuefoncee.jpg'
+            'path' => 'coccinnelle-bleuefoncee.jpg'
         ]);
         Avatar::create([
-            'url' => 'coccinnelle-jaune.jpg'
+            'path' => 'coccinnelle-jaune.jpg'
         ]);
         Avatar::create([
-            'url' => 'coccinnelle-noire.jpg'
+            'path' => 'coccinnelle-noire.jpg'
         ]);
         Avatar::create([
-            'url' => 'fourmis-bleu-fonce.jpg'
+            'path' => 'fourmis-bleu-fonce.jpg'
         ]);
         Avatar::create([
-            'url' => 'fourmis-bleu.jpg'
+            'path' => 'fourmis-bleu.jpg'
         ]);
         Avatar::create([
-            'url' => 'fourmis-jaune_1.jpg'
+            'path' => 'fourmis-jaune_1.jpg'
         ]);
         Avatar::create([
-            'url' => 'fourmis-noire.jpg'
+            'path' => 'fourmis-noire.jpg'
         ]);
         Avatar::create([
-            'url' => 'libellule-bleue_1.jpg'
+            'path' => 'libellule-bleue_1.jpg'
         ]);
         Avatar::create([
-            'url' => 'libellule-bleuefonce_1.jpg'
+            'path' => 'libellule-bleuefonce_1.jpg'
         ]);
         Avatar::create([
-            'url' => 'libellule-jaune.jpg'
+            'path' => 'libellule-jaune.jpg'
         ]);
         Avatar::create([
-            'url' => 'libellule-noire_1.jpg'
+            'path' => 'libellule-noire_1.jpg'
         ]);
         Avatar::create([
-            'url' => 'libellule-turq.jpg'
+            'path' => 'libellule-turq.jpg'
         ]);
 
     }

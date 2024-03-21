@@ -68,6 +68,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function chatbotMessages()
+    {
+        return $this->hasMany(ChatbotMessage::class, 'sender');
+    }
+
     public function conversationBookmarks()
     {
         return $this->hasMany('App\Models\ConversationBookmarks');
