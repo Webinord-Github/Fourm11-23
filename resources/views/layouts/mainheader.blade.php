@@ -16,41 +16,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
 
     <!-- Scripts -->
     @vite([
-        'resources/css/app.css',
-        'resources/js/app.js',
-        'resources/css/forum.css',
-        'resources/css/tools.css',
-        'resources/css/lexique.css',
-        'resources/css/source.css',
-        'resources/css/blogue.css',
-        'resources/css/main.css',
-        'resources/css/chatbot.css',
-        'resources/css/register.css',
-        'resources/css/login.css',
-        'resources/css/forgotpassword.css',
-        'resources/css/header.css',
-        'resources/css/member-card.css',
-        'resources/css/invalid-reset-password.css',
-        'resources/css/calendar.css',
-        'resources/css/home.css',
-        'resources/css/fourmiliere.css',
-        'resources/css/events.css',
-        'resources/css/singleblog.css',
-        'resources/css/facts.css',
-        'resources/css/profil.css',
-        'resources/css/membre.css',
-        'resources/css/members.css',
-        'resources/css/intimidation.css',
+    'resources/css/app.css',
+    'resources/js/app.js',
+    'resources/css/forum.css',
+    'resources/css/tools.css',
+    'resources/css/lexique.css',
+    'resources/css/source.css',
+    'resources/css/blogue.css',
+    'resources/css/main.css',
+    'resources/css/chatbot.css',
+    'resources/css/register.css',
+    'resources/css/login.css',
+    'resources/css/forgotpassword.css',
+    'resources/css/header.css',
+    'resources/css/member-card.css',
+    'resources/css/invalid-reset-password.css',
+    'resources/css/calendar.css',
+    'resources/css/home.css',
+    'resources/css/fourmiliere.css',
+    'resources/css/events.css',
+    'resources/css/singleblog.css',
+    'resources/css/facts.css',
+    'resources/css/profil.css',
+    'resources/css/membre.css',
+    'resources/css/members.css',
+    'resources/css/intimidation.css',
+    'resources/css/chatuser.css',
     ])
 </head>
 </head>
 
 <body>
+
+    @php
+    @endphp
     <header id="main__header">
         @auth
         @php
@@ -64,12 +68,16 @@
         }
 
         if($notification->type == "Reply") {
+
         $targetConversation = $notification->conversation;
         $targetBookmarks = $conversationBookmarks->where('conversation_id', $targetConversation->id);
-        if($targetBookmarks->count() > 0 && $notification->reply_author_id != Auth::user()->id) {
+
+        if($targetBookmarks->count() > 0 && $notification->reply_author_id != auth()->user()->id) {
         foreach($targetBookmarks as $bookmark) {
         if(strtotime($notification->updated_at) > strtotime($bookmark->updated_at)) {
+        if(strtotime($notification->updated_at) > $notifsCheck) {
         $notifsCount++;
+        }
         }
         }
         }
@@ -93,7 +101,6 @@
             }
         </style>
         <div class="header__container">
-
             <div class="left">
                 <div class="hbgrContainer">
                     <div id="nav-icon1">
@@ -139,7 +146,7 @@
                                 @php
                                 $readNotification = $notificationRead->where('notif_id', $notification->id)->where('user_id', auth()->user()->id)->isNotEmpty();
                                 @endphp
-    
+
                                 @if($notification->type == "BasicNotif")
                                 <a class="user__notif" href="{{$notification->notif_link}}" data-notifId="{{$notification->id}}">
                                     <div class="notification">
@@ -162,7 +169,7 @@
                                 $targetConversation = $notification->conversation;
                                 $targetBookmarks = $conversationBookmarks->where('conversation_id', $targetConversation->id);
                                 @endphp
-    
+
                                 @if($targetBookmarks->count() > 0 && $notification->reply_author_id != Auth::user()->id)
                                 @foreach($targetBookmarks as $bookmark)
                                 @if(strtotime($notification->updated_at) > strtotime($bookmark->updated_at))
@@ -185,7 +192,7 @@
                                 @endforeach
                                 @endif
                                 @endif
-    
+
                                 @endforeach
                             </div>
                         </div>
@@ -193,7 +200,7 @@
 
                     <script>
                         let notifsBell = document.querySelector(".notif")
-                        let notificationsCenter = document.querySelector(".notifications__center")
+                        let notificationsCenter = document.querySelector(".notifications__center__container")
                         let notifsInt = document.querySelector(".notif__int")
                         let userNotifs = document.querySelectorAll(".user__notif")
                         notifsBell.addEventListener("click", ev => {
@@ -210,19 +217,20 @@
                                     }
                                 }
                             };
-                            xhttp.open("POST", `/update-notifs-check/`, true);
+                            xhttp.open("POST", `{{route("update-notifs-check")}}`, true);
                             xhttp.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
                             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                             xhttp.send(sParams);
                         })
 
-                        window.addEventListener("click", w => {
-                            if (w.target.parentElement.classList.contains("notif") && !notificationsCenter.classList.contains("open__notif")) {
-                                notificationsCenter.classList.add("open__notif")
-                            } else if (notificationsCenter.classList.contains("open__notif")) {
-                                notificationsCenter.classList.remove("open__notif")
+                        document.addEventListener("click", w => {
+                            if (w.target.classList.contains('fa-bell') || w.target.classList.contains('notif__int')) {
+                                if (w.target.parentElement.classList.contains("notif") && !notificationsCenter.classList.contains("open__notif")) {
+                                    notificationsCenter.classList.add("open__notif")
+                                } else if (notificationsCenter.classList.contains("open__notif")) {
+                                    notificationsCenter.classList.remove("open__notif")
+                                }
                             }
-
                         })
 
 
@@ -451,21 +459,21 @@
                                         }
                                     }
                                 }
-                                if (property == "users") {
-                                    for (let res of responses.users) {
-                                        if (res !== undefined) {
+                                // if (property == "users") {
+                                //     for (let res of responses.users) {
+                                //         if (res !== undefined) {
 
-                                            let ahref = document.createElement('a');
-                                            ahref.classList.add('results');
-                                            ahref.innerHTML = `
-                                                ${res.firstname} ${res.lastname} <br><strong style="font-size:12px;">
-                                                Catégorie -> Membre</strong>
-                                            `;
-                                            ahref.href = `/`;
-                                            resultsContainer.append(ahref);
-                                        }
-                                    }
-                                }
+                                //             let ahref = document.createElement('a');
+                                //             ahref.classList.add('results');
+                                //             ahref.innerHTML = `
+                                //                 ${res.firstname} ${res.lastname} <br><strong style="font-size:12px;">
+                                //                 Catégorie -> Membre</strong>
+                                //             `;
+                                //             ahref.href = `/`;
+                                //             resultsContainer.append(ahref);
+                                //         }
+                                //     }
+                                // }
                             }
                             if (data === "") {
                                 resultsContainer.innerHTML = ""
@@ -587,19 +595,237 @@
         @endif
     </header>
     <main>
-
         @yield('content')
-        <div style="display:none;" class="chatbot__container">
-            <div class="chatbot__window">
-                <form>
-                    <input type="text" name="body">
-                    <input type="submit" id="chat__submit">
-                </form>
+        @auth
+        @php
+            $chatbotactive = App\Models\ChatbotActive::where('id', 1)->first();
+        @endphp
+        @if(auth()->user()->verified && !auth()->user()->isAdmin() && $chatbotactive->active)
+        <div class="main__chat__container" id="mainChat">
+            <i class="fas fa-comment-dots chat__available" v-if="chatBubble" @click.prevent="openChat"></i>
+            <div v-if="chatWindow" class="user__chat__container">
+                <div class="chatbot__window">
+                    <div class="minus__container">
+                        @php
+                        $admin = App\Models\User::where('id', 1)->firstOrFail();
+                        @endphp
+                        <div class="admin__infos">
+                            <img src="{{$admin->ProfilePicture->path . $admin->ProfilePicture->name}}" alt="">
+                            <p>L'Anonyme</p>
+                        </div>
+                        <i class="fa fa-minus minus__chat" @click.prevent="closeChat"></i>
+                    </div>
+                    <div class="messages__container" ref="chatWindowRef">
+                        @php
+                        $admin = App\Models\User::where('id', 1)->firstOrFail();
+                        @endphp
+                        <div class="message" v-for="message in messages">
+                            <div v-if="message.sender === '{{auth()->user()->id}}'" class="right">
+                                <div>
+                                    <img src="{{auth()->user()->profilePicture->path . auth()->user()->profilePicture->name}}" alt="">
+                                    <p class="right__message">@{{ message.body }}</p>
+                                </div>
+                                <p class="timestamp">@{{ message.timestamp }}</p>
+                            </div>
+                            <div v-else class="left">
+                                <div>
+                                    <img src="{{$admin->profilePicture->path . $admin->profilePicture->name}}" alt="">
+                                    <p class="left__message">@{{ message.body }}</p>
+                                </div>
+                                <p class="timestamp">@{{ message.timestamp }}</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <form class="chat__form__ajax">
+                        @csrf
+                        <input class="message" v-model="newMessage" type="text" name="message" id="message" @keyup="enableSendForm">
+                        <i class="fa fa-paper-plane ajax__send" v-if="send" @click.prevent="sendMessage"></i>
+                        <i class="fa fa-paper-plane ajax__send disabled" v-if="disabled"></i>
+                    </form>
+                </div>
             </div>
         </div>
         <script>
+            new Vue({
+                el: '#mainChat',
+                data: {
+                    messages: [],
+                    newMessage: '',
+                    chatBubble: true,
+                    chatWindow: false,
+                    send: false,
+                    disabled: true,
+                },
+                mounted() {
+                    this.getNewMessageNotif();
+                    setInterval(() => {
+                        this.getNewMessageNotif();
+                    }, 2000);
+                },
+                methods: {
+                    openChat() {
+                        clearInterval(this.intervalId);
+                        this.chatBubble = false;
+                        this.chatWindow = true;
+                        this.messages = [];
+                        let isManuallyScrolling = false;
 
+
+                        let lastId;
+                        // Fetch messages for the selected user from the controller
+                        let xhttp = new XMLHttpRequest();
+                        let Params;
+                        xhttp.onreadystatechange = () => {
+                            if (xhttp.readyState === 4) {
+                                if (xhttp.status === 200) {
+                                    // Update messages array with the fetched messages
+                                    this.messages = JSON.parse(xhttp.responseText).messages.map(message => ({
+                                        sender: message.sender,
+                                        body: message.body,
+                                        timestamp: new Date(message.created_at).toLocaleString(),
+                                    }));
+                                    if (!isManuallyScrolling) {
+                                        this.$nextTick(() => {
+                                            this.scrollToBottom();
+                                        });
+                                    }
+                                } else {
+                                    console.error("Error");
+                                }
+                            }
+                        };
+
+                        xhttp.open("POST", `{{ route('loadMessagesFromAdmin') }}`, true);
+                        xhttp.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+                        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhttp.send(Params);
+
+                        const fetchMessagesInterval = () => {
+                            let xhttp = new XMLHttpRequest();
+                            let Params;
+                            xhttp.onreadystatechange = () => {
+                                if (xhttp.readyState === 4) {
+                                    if (xhttp.status === 200) {
+                                        const response = JSON.parse(xhttp.responseText);
+                                        const messages = response.messages;
+                                        if (messages.length > 0) {
+                                            let lastMessage = messages[messages.length - 1];
+                                            for (let message of messages) {
+                                                if (message.id > lastId) {
+                                                    this.messages.push({
+                                                        sender: message.sender,
+                                                        body: message.body,
+                                                        timestamp: new Date(message.created_at).toLocaleString(),
+                                                    });
+                                                }
+                                            }
+                                            lastId = lastMessage.id
+                                            if (this.$refs.chatWindowRef) {
+                                                this.$nextTick(() => {
+                                                    this.scrollToBottom();
+                                                });
+                                            }
+                                        }
+                                    } else {
+                                        console.error("Error");
+                                    }
+                                }
+                            };
+
+                            xhttp.open("POST", `{{ route('getInstantMessagesFromAdmin') }}`, true);
+                            xhttp.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+                            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                            xhttp.send(Params);
+                        }
+
+                        fetchMessagesInterval();
+                        this.intervalId = setInterval(fetchMessagesInterval, 2000);
+                    },
+                    scrollToBottom() {
+                        const chatWindow = this.$refs.chatWindowRef;
+                        chatWindow.scrollTop = chatWindow.scrollHeight;
+                    },
+                    closeChat() {
+
+                        this.chatWindow = false;
+                        this.chatBubble = true;
+
+                    },
+                    sendMessage() {
+                        let xhttp = new XMLHttpRequest();
+                        let Params = 'message=' + encodeURIComponent(this.newMessage);
+
+                        xhttp.onreadystatechange = () => {
+                            if (xhttp.readyState === 4) {
+                                if (xhttp.status === 200) {
+                                    // Update messages array with the sent message
+
+                                    this.messages.push({
+                                        sender: '{{auth()->user()->id}}',
+                                        body: this.newMessage,
+                                        timestamp: new Date().toLocaleString(), // Add timestamp to the message
+                                    });
+
+                                    // Clear the input field after sending the message
+                                    this.newMessage = '';
+                                    this.send = false
+                                    this.disabled = true
+                                } else {
+                                    console.error("Error");
+                                }
+                            }
+                        };
+
+                        xhttp.open("POST", `{{ route('userStore') }}`, true);
+                        xhttp.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+                        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhttp.send(Params);
+                    },
+                    enableSendForm() {
+                        if (this.newMessage != "") {
+                            this.send = true;
+                            this.disabled = false
+                        } else {
+                            this.send = false;
+                            this.disabled = true;
+                        }
+                    },
+                    getNewMessageNotif() {
+                        let xhttp = new XMLHttpRequest();
+                        let Params;
+                        xhttp.onreadystatechange = () => {
+                            if (xhttp.readyState === 4) {
+                                if (xhttp.status === 200) {
+                                    const response = JSON.parse(xhttp.responseText);
+                                    const messages = response.message;
+                                    const chatBubble = document.querySelector(".chat__available")
+                                    if (messages.length > 0) {
+                                        if (this.chatBubble) {
+
+                                            chatBubble.classList.add("newNotifBubble")
+                                        }
+
+                                    }
+
+                                } else {
+                                    console.error("Error");
+                                }
+                            }
+                        };
+                        xhttp.open("POST", `{{ route('getNewMessageNotifFromAdmin') }}`, true);
+                        xhttp.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+                        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhttp.send(Params);
+                    },
+
+                },
+
+            });
         </script>
+        @endif
+        @endauth
     </main>
     <footer>
         <div class="footer__content">

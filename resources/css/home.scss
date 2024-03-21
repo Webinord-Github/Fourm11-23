@@ -312,7 +312,9 @@
                     width: 100%;
                     border-radius: 10px;
                     margin: 20px 0px;
-
+                    .bookmarked {
+                        color: #edb200 !important;
+                    }
                     .img__container {
                         img {
                             max-width: 150px;
@@ -614,6 +616,46 @@
                                         margin-bottom: 30px;
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+            }
+            .third__static__content {
+                .blogs__container {
+                    .single__blog {
+                        flex-direction: column;
+                        height: auto;
+                        position: relative;
+                        .img__container {
+                            img {
+                                max-width: 100px;
+                            }
+                        }
+                        .text__container {
+                            position: initial;
+                            align-items: center;
+                            padding-top: 10px;
+                            .post__bookmark__container {
+                                right: 20px;
+                                top: 10px;
+                            }
+                            .actions__container {
+                                flex-direction: column;
+                                padding: 10px 0px;
+                                .read__container {
+                                    margin-top: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .tools__container {
+                    .single__tool {
+                        .actions__container {
+                            flex-direction: column;
+                            .read__container {
+                                margin-top: 20px;
                             }
                         }
                     }

@@ -1,1 +1,177 @@
- 
+.newNotif {
+    background-color: #f56f6f;
+    animation: colorChange 2.5s infinite;
+}
+@keyframes colorChange {
+    0% {
+        background-color: #f56f6f;
+    }
+    50% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: #f56f6f;
+    }
+}
+.chatbot__container {
+    height: 90vh;
+    border: 2px solid black;
+    display: flex;
+    margin-left: 50px;
+    .users__container {
+        width: 15%;
+        background-color: #333;
+        max-height: 100vh;
+        overflow: auto;
+   
+        .user__infos {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 15px 10px;
+            cursor: pointer;
+
+            .user__image {
+                width: 60px;
+                height: 60px;
+                object-fit: cover;
+                border-radius: 100%;
+            }
+
+            .user__name {
+                color: #fff;
+            }
+        }
+
+        .user__infos:hover {
+            background-color: gray;
+        }
+    }
+
+    .chat__container {
+        background-color: #000;
+        height: 100%;
+        width: 85%;
+        position: relative;
+
+        .messages__container {
+            height: calc(100% - 40px);
+            overflow: auto;
+            padding: 10px 40px;
+
+
+            .left,
+            .right {
+                display: flex;
+                flex-direction: column;
+                margin: 20px 0px;
+
+                p {
+                    color: #fff;
+                }
+                .timestamp {
+                    background-color: transparent;
+                    font-size: 10px;
+                    position: relative;
+                    left: 10px;
+                }
+            }
+
+            .left {
+                align-items: flex-start;
+                div {
+                    display: flex;
+                }
+                p {
+                    color: #fff;
+                    background-color: #303030;
+                    padding: 5px 20px;
+                    border-radius: 20px;
+                }
+                img {
+                    width: 30px;
+                    height: 30px;
+                    object-fit: cover;
+                    border-radius: 100%;
+                    margin-right: 10px;
+                    margin-top: 2px;
+                }
+            }
+            
+            .right {
+                display: flex;
+                align-items: flex-end;
+                div {
+                    display: flex;
+                    flex-direction: row-reverse;
+                }
+                p {
+                    color: #fff;
+                    background-color: #0084ff;
+                    padding: 5px 20px;
+                    border-radius: 20px;
+                }
+                img {
+                    width: 30px;    
+                    height: 30px;
+                    object-fit: cover;
+                    border-radius: 100%;
+                    margin-left: 10px;
+                    margin-top: 2px;
+                }
+            }
+            .no__conversation {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                p {
+                    color: gray;
+                    font-weight: bold;
+                    font-size: 30px;
+                }
+            }
+        }
+
+        .loading__animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            p {
+                color: #fff;
+            }
+        }
+
+        .chat__form__ajax {
+            height: 42px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            input {
+                width: 100%;
+            }
+
+            i {
+                color: #fff;
+                background-color: #555;
+                width: 50px;
+                height: 42px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                background-color: green;
+            }
+            .disabled {
+                cursor: not-allowed;
+                background-color: #303030;
+            }
+
+            i:hover {
+                filter: contrast(65%);
+            }
+        }
+    }
+}

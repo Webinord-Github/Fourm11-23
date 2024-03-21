@@ -1,9 +1,9 @@
 @if(auth()->check() && !auth()->user()->verified)
-    <div class="warning__container">
-        <p>Votre compte est actuellement en attente d'approbation.</p>
-        <p>Dès que votre compte sera approuvé, un courriel vous sera envoyé et vous aurez ainsi accès aux différentes informations présentes sur le site.</p>
-        <p>Merci de votre patience.</p>
-    </div>
+<div class="warning__container">
+    <p>Votre compte est actuellement en attente d'approbation.</p>
+    <p>Dès que votre compte sera approuvé, un courriel vous sera envoyé et vous aurez ainsi accès aux différentes informations présentes sur le site.</p>
+    <p>Merci de votre patience.</p>
+</div>
 @endif
 <style>
     .thematiques-half {
@@ -11,23 +11,23 @@
     }
 </style>
 @if (session('status'))
-    <div class="text-center bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-8 my-6" role="alert">
-        <p class="font-bold">{{ session('status') }}</p>
-    </div>
+<div class="text-center bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-8 my-6" role="alert">
+    <p class="font-bold">{{ session('status') }}</p>
+</div>
 @endif
 @if (!$errors->isEmpty())
-    <div role="alert" class="w-full pb-8">
-        <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-            Erreurs
-        </div>
-        <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-            @foreach ($errors->all() as $message)
-                <ul class="px-4">
-                    <li class="list-disc">{{$message}}</li>
-                </ul>
-            @endforeach
-        </div>
+<div role="alert" class="w-full pb-8">
+    <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+        Erreurs
     </div>
+    <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+        @foreach ($errors->all() as $message)
+        <ul class="px-4">
+            <li class="list-disc">{{$message}}</li>
+        </ul>
+        @endforeach
+    </div>
+</div>
 @endif
 <div class="main_container">
     <div class="tools-container">
@@ -44,7 +44,7 @@
                     </div>
                     <div class="thematiques">
                         @foreach($thematiques as $thematique)
-                            <p data-theme="{{ $thematique->name }}" class="thematique">{{ $thematique->name }}</p>
+                        <p data-theme="{{ $thematique->name }}" class="thematique">{{ $thematique->name }}</p>
                         @endforeach
                     </div>
                     <div class="dropdown__container">
@@ -63,18 +63,18 @@
                         </div>
                     </div>
                     @if(auth()->check() && auth()->user()->verified)
-                        <div class="btn-container">
-                            <button id="add-tool">
-                                proposer un outil
-                            </button>
-                        </div>
+                    <div class="btn-container">
+                        <button id="add-tool">
+                            proposer un outil
+                        </button>
+                    </div>
                     @endif
                 </div>
                 <div class="tools-half">
                     @if(count($tools) == 0)
-                        <div class="empty">
-                            <h3>Aucun outil disponible en ce moment</h3>
-                        </div>
+                    <div class="empty">
+                        <h3>Aucun outil disponible en ce moment</h3>
+                    </div>
                     @endif
                     @foreach($tools as $tool)
                         <div class="tool" data-id="{{ $tool->id }}">
@@ -111,7 +111,20 @@
                                     <a target="_blank" href="{{$tool->site_link}}">Voir l'outil</a>
                                 @endif
                             </div>
+                            @endif
                         </div>
+                        <div class="desc">
+                            <p>{{ $tool->desc }}</p>
+                        </div>
+                        <div class="tags">
+                            @foreach($tool->thematiques()->get()->pluck('name')->toArray() as $thematique)
+                            <p class="tag" data-theme="{{ $thematique }}">{{ $thematique }}</p>
+                            @endforeach
+                        </div>
+                        <div class="btn-container">
+                            <a target="_blank" href="{{$tool->media()->first()->path . $tool->media()->first()->name}}">télécharger</a>
+                        </div>
+                    </div>
                     @endforeach
                 </div>
             </div>
@@ -150,10 +163,10 @@
                 <div class="w-full mb-2">
                     <x-label :value="__('Thématiques (Max 3)')"></x-label>
                     @foreach ($thematiques as $thematique)
-                        <div class="flex items-center">
-                            <input type="checkbox" id="{{ $thematique->name }}" name="thematiques[]" value="{{ $thematique->id }}">
-                            <label class="ml-1" for="{{ $thematique->name }}">{{ ucfirst($thematique->name) }}</label>
-                        </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="{{ $thematique->name }}" name="thematiques[]" value="{{ $thematique->id }}">
+                        <label class="ml-1" for="{{ $thematique->name }}">{{ ucfirst($thematique->name) }}</label>
+                    </div>
                     @endforeach
                 </div>
                 <div class="flex items-center justify-end mt-4">
@@ -200,14 +213,14 @@
 
     let thematiques = document.querySelectorAll('.thematique')
     let search_bar = document.querySelector('#searchbar')
-    
-    for(let thematique of thematiques) {
+
+    for (let thematique of thematiques) {
         thematique.addEventListener('click', x => {
             let thematiques_ctn = document.querySelector('.thematiques')
             let old_actif = thematiques_ctn.querySelector('.actif')
             let mobile_filter = document.querySelector('.drop__trigger')
 
-            if(old_actif != null) {
+            if (old_actif != null) {
                 old_actif.classList.toggle('actif')
             }
 
@@ -220,7 +233,7 @@
 
     let all_signets = document.querySelectorAll('.black-buble')
 
-    for(let signet of all_signets) {
+    for (let signet of all_signets) {
         signet.addEventListener('click', x => {
             let xhttp = new XMLHttpRequest();
             let tool_id = signet.dataset.toolId
@@ -246,7 +259,7 @@
 
     let tags = document.querySelectorAll('.tag')
 
-    for(let tag of tags) {
+    for (let tag of tags) {
         tag.addEventListener('click', x => {
             search_bar.value = tag.dataset.theme
             let thematiques_ctn = document.querySelector('.thematiques')
@@ -255,7 +268,7 @@
 
             mobile_filter.innerText = tag.dataset.theme
 
-            if(old_actif != null) {
+            if (old_actif != null) {
                 old_actif.classList.toggle('actif')
             }
             search()
@@ -272,14 +285,14 @@
         let old_actif = thematiques_ctn.querySelector('.actif')
         let mobile_filter = document.querySelector('.drop__trigger')
 
-        if(old_actif != null) {
+        if (old_actif != null) {
             old_actif.classList.toggle('actif')
         }
         mobile_filter.innerText = 'Thématiques'
         search()
     })
-    
-    function search() {   
+
+    function search() {
         let search_value = (search_bar.value).toLowerCase()
         let tools = document.querySelectorAll('.tool')
         let dropContent = document.querySelector('.drop__content')
@@ -330,7 +343,7 @@
 
     let close_btns = document.querySelectorAll('.close-btn')
 
-    for(let button of close_btns) {
+    for (let button of close_btns) {
         button.addEventListener('click', x => {
             popup_ctn.style.display = 'none'
         })

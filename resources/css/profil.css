@@ -1,22 +1,43 @@
 .profile-container {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
 }
 .profile-container .profile-content {
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin: 3% 0;
   width: 90%;
 }
 .profile-container .profile-content .column {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   width: 48%;
 }
 .profile-container .profile-content .column .profil {
@@ -24,56 +45,91 @@
   background-size: cover;
   background-clip: border-box;
   border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-bottom: 4%;
   width: 100%;
 }
 .profile-container .profile-content .column .profil .top .header {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   height: 50px;
   width: 100%;
 }
 .profile-container .profile-content .column .profil .top .header .mon-profil {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .profile-container .profile-content .column .profil .top .header .mon-profil p {
   font-size: 24px;
 }
 .profile-container .profile-content .column .profil .top .header .mon-profil i {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 30px;
   margin: 0 15px;
 }
 .profile-container .profile-content .column .profil .top .header .edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .profile-container .profile-content .column .profil .top .header .edit p {
   font-size: 24px;
 }
 .profile-container .profile-content .column .profil .top .header .edit i {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 30px;
   margin: 0 15px;
 }
 .profile-container .profile-content .column .profil .top .img-name {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin: 4% 0 2% 0;
   padding: 0 15px;
   width: 100%;
 }
 .profile-container .profile-content .column .profil .top .img-name .img {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 35%;
 }
 .profile-container .profile-content .column .profil .top .img-name .img img {
@@ -102,31 +158,60 @@
   font-size: 16px;
 }
 .profile-container .profile-content .column .profil .bottom {
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: 2%;
   width: 100%;
 }
 .profile-container .profile-content .column .profil .bottom .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   color: #fff;
   width: 35%;
 }
 .profile-container .profile-content .column .profil .bottom .left .infos {
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding-left: 15%;
   width: 100%;
 }
 .profile-container .profile-content .column .profil .bottom .left .infos .info {
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 4% 0;
 }
 .profile-container .profile-content .column .profil .bottom .left .infos .info .type {
@@ -137,23 +222,38 @@
   opacity: 0;
 }
 .profile-container .profile-content .column .profil .bottom .left .buttons {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   width: 100%;
 }
 .profile-container .profile-content .column .profil .bottom .left .buttons #edit-password, .profile-container .profile-content .column .profil .bottom .left .buttons #edit-infos {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #fff;
   border: 1px solid #fff;
   border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   color: #000;
   font-weight: bold;
   height: 40px;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   line-height: 15px;
   margin-bottom: 6%;
   text-align: center;
@@ -176,9 +276,16 @@
   width: 100%;
 }
 .profile-container .profile-content .column .profil .bottom .right .infos .info {
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 2% 0;
 }
 .profile-container .profile-content .column .profil .bottom .right .infos .info .type {
@@ -186,57 +293,102 @@
   font-weight: bold;
 }
 .profile-container .profile-content .column #infos {
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   background-repeat: no-repeat;
   background-size: cover;
   background-clip: border-box;
   border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   margin-bottom: 4%;
   width: 100%;
 }
 .profile-container .profile-content .column #infos .top {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 50px;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
 }
 .profile-container .profile-content .column #infos .top .title {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .profile-container .profile-content .column #infos .top .title p {
   font-size: 24px;
 }
 .profile-container .profile-content .column #infos .top .title i {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 25px;
   margin: 0 15px;
 }
 .profile-container .profile-content .column #infos .bottom {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   width: 100%;
 }
 .profile-container .profile-content .column #infos .bottom .infos {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   margin-bottom: 2%;
   width: 95%;
 }
 .profile-container .profile-content .column #infos .bottom .infos .info {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 5px 15px;
 }
 .profile-container .profile-content .column #infos .bottom .infos .info input {
@@ -247,44 +399,72 @@
   color: #fff;
 }
 .profile-container .profile-content .column .bookmarks-ctn {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-bottom: 4%;
   width: 100%;
 }
 .profile-container .profile-content .column .bookmarks-ctn .top {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-clip: border-box;
   border-radius: 10px 10px 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 50px;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
 }
 .profile-container .profile-content .column .bookmarks-ctn .top .title {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .profile-container .profile-content .column .bookmarks-ctn .top .title p {
   font-size: 24px;
 }
 .profile-container .profile-content .column .bookmarks-ctn .top .title i {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 25px;
   margin: 0 15px;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #f7f7f7;
   border: 1px solid #d3d3d3;
   border-radius: 0 0 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   width: 100%;
   /* Track */
   /* Handle */
@@ -294,7 +474,8 @@
   width: 10px;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px transparent;
+  -webkit-box-shadow: inset 0 0 5px transparent;
+          box-shadow: inset 0 0 5px transparent;
   border-radius: 10px;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom ::-webkit-scrollbar-thumb {
@@ -305,10 +486,19 @@
   background: #868686;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .posts, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos, .profile-container .profile-content .column .bookmarks-ctn .bottom .events, .profile-container .profile-content .column .bookmarks-ctn .bottom .users, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   max-height: 300px;
   overflow-y: auto;
   width: 100%;
@@ -317,8 +507,12 @@
   margin: 4% 0 2%;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .post, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .tool, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .convo, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .event, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .post, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .tool, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .convo, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .event, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .post, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .tool, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .convo, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .event, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .post, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .tool, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .convo, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .event, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .post, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .tool, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .convo, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .event, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .post, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .tool, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .convo, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .event {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin: 2% 0;
   width: 90%;
 }
@@ -326,10 +520,19 @@
   font-weight: bold;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .post .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .tool .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .convo .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .event .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .post .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .tool .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .convo .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .event .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .post .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .tool .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .convo .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .event .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .post .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .tool .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .convo .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .event .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .post .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .tool .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .convo .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .event .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .post .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .tool .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .convo .left, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .event .left {
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .post .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .tool .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .convo .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .event .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .post .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .tool .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .convo .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .event .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .post .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .tool .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .convo .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .event .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .post .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .tool .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .convo .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .event .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .post .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .tool .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .convo .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .event .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .post .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .tool .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .convo .left .start, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .event .left .start {
   color: #edb200;
@@ -337,35 +540,56 @@
   font-weight: bold;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .post .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .tool .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .convo .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .event .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .post .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .tool .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .convo .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .event .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .post .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .tool .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .convo .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .event .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .post .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .tool .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .convo .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .event .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .post .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .tool .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .convo .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .event .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .post .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .tool .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .convo .left .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .event .left .button {
-  justify-content: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 10px;
   width: 100%;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .post .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .tool .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .convo .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .event .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .post .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .tool .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .convo .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .event .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .post .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .tool .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .convo .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .event .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .post .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .tool .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .convo .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .event .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .post .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .tool .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .convo .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .event .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .post .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .tool .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .convo .right, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .event .right {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 125px;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .post .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .tool .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .convo .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .event .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .post .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .tool .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .convo .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .event .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .post .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .tool .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .convo .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .event .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .post .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .tool .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .convo .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .event .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .post .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .tool .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .convo .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .event .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .post .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .tool .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .convo .right img, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .event .right img {
   width: 100%;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .post .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .tool .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .convo .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .event .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .post .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .tool .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .convo .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .event .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .post .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .tool .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .convo .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .event .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .post .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .tool .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .convo .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .event .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .post .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .tool .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .convo .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .event .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .post .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .tool .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .convo .button, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .event .button {
-  align-items: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .post .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .tool .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .convo .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .posts .event .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .post .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .tool .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .convo .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .tools .event .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .post .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .tool .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .convo .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .convos .event .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .post .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .tool .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .convo .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .events .event .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .post .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .tool .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .convo .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .users .event .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .post .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .tool .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .convo .button a, .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .event .button a {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #edb200;
   border: 1px solid #edb200;
   border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   color: #000;
   font-weight: bold;
   height: 30px;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 10px 15px;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -373,22 +597,42 @@
   background-color: transparent;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .users {
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-top: 2%;
   width: 95%;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .users .empty {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .users .user {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: 5px 10px;
 }
@@ -402,9 +646,16 @@
   width: 100%;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .users .user .nom {
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .users .user .nom p {
   font-size: 16px;
@@ -417,31 +668,54 @@
   text-decoration: underline;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .themes {
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-top: 2%;
   width: 95%;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .empty {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .themes .theme {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #000;
   border-radius: 20px;
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-weight: bold;
   height: 30px;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 5px 5px;
   padding: 10px 15px;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -455,16 +729,23 @@
   width: 90%;
 }
 .profile-container .profile-content .column .bookmarks-ctn .bottom .voir-plus a {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #000;
   border: 1px solid #000;
   border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   color: #fff;
   font-weight: bold;
   height: 30px;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 10px 15px;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -485,9 +766,16 @@
 
 @media screen and (max-width: 1400px) {
   .profile-container .profile-content {
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .profile-container .profile-content .column {
     width: 100%;
@@ -499,9 +787,16 @@
 }
 @media screen and (max-width: 700px) {
   .profile-container .profile-content {
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .profile-container .profile-content .column {
     width: 100%;
@@ -510,8 +805,13 @@
     font-size: 22px;
   }
   .profile-container .profile-content .column .profil .top .img-name {
-    align-items: flex-start;
-    flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .profile-container .profile-content .column .profil .top .img-name .img {
     margin-bottom: 4%;
@@ -521,7 +821,10 @@
     width: 100%;
   }
   .profile-container .profile-content .column .profil .bottom {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .profile-container .profile-content .column .profil .bottom .left {
     width: 100%;
@@ -533,8 +836,12 @@
     margin: 2% 0;
   }
   .profile-container .profile-content .column .profil .bottom .left .buttons {
-    flex-direction: row;
-    justify-content: space-around;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     margin: 4% 0;
   }
   .profile-container .profile-content .column .profil .bottom .right {
@@ -545,15 +852,22 @@
     margin-bottom: 5%;
   }
   .profile-container .profile-content .column .events .event {
-    flex-direction: column-reverse;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
   }
 }
 .popup-ctn-password {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: rgba(0, 0, 0, 0.768627451);
   display: none;
   height: 100vh;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   left: 0;
   position: absolute;
   top: 0;
@@ -567,7 +881,8 @@
   width: 10px;
 }
 .popup-ctn-password ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px transparent;
+  -webkit-box-shadow: inset 0 0 5px transparent;
+          box-shadow: inset 0 0 5px transparent;
   border-radius: 10px;
 }
 .popup-ctn-password ::-webkit-scrollbar-thumb {
@@ -594,9 +909,15 @@
   margin-top: 2%;
 }
 .popup-ctn-password .popup .x {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   width: 100%;
   z-index: 1000;
 }
@@ -613,11 +934,15 @@
 }
 
 .popup-ctn-infos {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: rgba(0, 0, 0, 0.768627451);
   display: none;
   height: 100vh;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   left: 0;
   position: absolute;
   top: 0;
@@ -631,7 +956,8 @@
   width: 10px;
 }
 .popup-ctn-infos ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px transparent;
+  -webkit-box-shadow: inset 0 0 5px transparent;
+          box-shadow: inset 0 0 5px transparent;
   border-radius: 10px;
 }
 .popup-ctn-infos ::-webkit-scrollbar-thumb {
@@ -662,9 +988,15 @@
   margin-top: 2%;
 }
 .popup-ctn-infos .popup .x {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   padding-right: 1%;
   width: 100%;
   z-index: 1000;

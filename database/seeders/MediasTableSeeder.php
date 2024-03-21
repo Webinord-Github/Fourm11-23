@@ -29,7 +29,7 @@ class MediasTableSeeder extends Seeder
         Media::create([
             'user_id'=>1,
             'path'=>'/storage/avatars/',
-            'name'=>'coccinelle-turquoise.jpg',
+            'name'=>'coccinelle-turq.jpg',
             'original_name' => 'coccinelle-turquoise.jpg',
             'size'=>10,
             'provider'=>'jpg',
@@ -38,7 +38,7 @@ class MediasTableSeeder extends Seeder
         Media::create([
             'user_id'=>1,
             'path'=>'/storage/avatars/',
-            'name'=>'coccinelle-bleuefoncee.jpg',
+            'name'=>'coccinnelle-bleuefoncee.jpg',
             'original_name' => 'coccinelle-bleuefoncee.jpg',
             'size'=>11,
             'provider'=>'jpg',
@@ -47,7 +47,7 @@ class MediasTableSeeder extends Seeder
         Media::create([
             'user_id'=>1,
             'path'=>'/storage/avatars/',
-            'name'=>'coccinelle-jaune.jpg',
+            'name'=>'coccinnelle-jaune.jpg',
             'original_name' => 'coccinelle-jaune.jpg',
             'size'=>8,
             'provider'=>'jpg',
@@ -56,8 +56,8 @@ class MediasTableSeeder extends Seeder
         Media::create([
             'user_id'=>1,
             'path'=>'/storage/avatars/',
-            'name'=>'coccinelle-noire.jpg',
-            'original_name' => 'coccinelle-noire.jpg',
+            'name'=>'coccinnelle-noire.jpg',
+            'original_name' => 'coccinnelle-noire.jpg',
             'size'=>11,
             'provider'=>'jpg',
         ]);
@@ -65,8 +65,8 @@ class MediasTableSeeder extends Seeder
         Media::create([
             'user_id'=>1,
             'path'=>'/storage/avatars/',
-            'name'=>'fourmis-bleue.jpg',
-            'original_name' => 'fourmis-bleue.jpg',
+            'name'=>'fourmis-bleu.jpg',
+            'original_name' => 'fourmis-bleu.jpg',
             'size'=>9,
             'provider'=>'jpg',
         ]);
@@ -74,8 +74,8 @@ class MediasTableSeeder extends Seeder
         Media::create([
             'user_id'=>1,
             'path'=>'/storage/avatars/',
-            'name'=>'fourmis-bleuefoncee.jpg',
-            'original_name' => 'fourmis-bleuefoncee.jpg',
+            'name'=>'fourmis-bleu-fonce.jpg',
+            'original_name' => 'fourmis-bleu-fonce.jpg',
             'size'=>9,
             'provider'=>'jpg',
         ]);
@@ -83,8 +83,8 @@ class MediasTableSeeder extends Seeder
         Media::create([
             'user_id'=>1,
             'path'=>'/storage/avatars/',
-            'name'=>'fourmis-jaune.jpg',
-            'original_name' => 'fourmis-jaune.jpg',
+            'name'=>'fourmis-jaune_1.jpg',
+            'original_name' => 'fourmis-jaune_1.jpg',
             'size'=>6,
             'provider'=>'jpg',
         ]);
@@ -101,8 +101,8 @@ class MediasTableSeeder extends Seeder
         Media::create([
             'user_id'=>1,
             'path'=>'/storage/avatars/',
-            'name'=>'libellule-bleue.jpg',
-            'original_name' => 'libellule-bleue.jpg',
+            'name'=>'libellule-bleue_1.jpg',
+            'original_name' => 'libellule-bleue_1.jpg',
             'size'=>7,
             'provider'=>'jpg',
         ]);
@@ -110,8 +110,8 @@ class MediasTableSeeder extends Seeder
         Media::create([
             'user_id'=>1,
             'path'=>'/storage/avatars/',
-            'name'=>'libellule-turquoise.jpg',
-            'original_name' => 'libellule-turquoise.jpg',
+            'name'=>'libellule-turq.jpg',
+            'original_name' => 'libellule-turq.jpg',
             'size'=>6,
             'provider'=>'jpg',
         ]);
@@ -119,8 +119,8 @@ class MediasTableSeeder extends Seeder
         Media::create([
             'user_id'=>1,
             'path'=>'/storage/avatars/',
-            'name'=>'libellule-bleuefoncee.jpg',
-            'original_name' => 'libellule-bleuefoncee.jpg',
+            'name'=>'libellule-bleuefonce_1.jpg',
+            'original_name' => 'libellule-bleuefonce_1.jpg',
             'size'=>7,
             'provider'=>'jpg',
         ]);
@@ -137,8 +137,8 @@ class MediasTableSeeder extends Seeder
         Media::create([
             'user_id'=>1,
             'path'=>'/storage/avatars/',
-            'name'=>'libellule-noire.jpg',
-            'original_name' => 'libellule-noire.jpg',
+            'name'=>'libellule-noire_1.jpg',
+            'original_name' => 'libellule-noire_1.jpg',
             'size'=>6,
             'provider'=>'jpg',
         ]);

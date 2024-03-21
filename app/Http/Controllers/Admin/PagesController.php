@@ -62,15 +62,19 @@ class PagesController extends Controller
         $facts = Fact::all();
         $posts = Post::all();
         $recentConversations = Conversation::
+        where('published', true)->
         orderBy('created_at', 'desc')
         ->take(5)
         ->get();
  
         // si l'utilisateur n'est pas vérifié 
-        if($page->id == 5 && !Auth::user()->verified) {
-            return redirect('/');
+        if(Auth::check()){
+            if($page->id == 5 && !Auth::user()->verified) {
+                return redirect('/');
+            }
         }
         // page forum si pas connecté
+
         if($page->id == 5 && !Auth::check()) {
             return redirect('/');
         }

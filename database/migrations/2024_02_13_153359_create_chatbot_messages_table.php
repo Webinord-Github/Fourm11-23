@@ -18,7 +18,8 @@ return new class extends Migration
             $table->integer('chat_id');
             $table->text('body');
             $table->integer('sender');
-            $table->integer('replier');
+            $table->integer('receiver');
+            $table->boolean('received');
             $table->timestamps();
         });
     }

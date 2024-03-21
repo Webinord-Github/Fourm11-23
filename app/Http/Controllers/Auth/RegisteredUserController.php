@@ -136,6 +136,7 @@ class RegisteredUserController extends Controller
             'notifs_check' => now(),
             'verified' => false,
             'ban' => false,
+            'approved'
         ];
 
         $user = User::create($userData);
@@ -173,7 +174,8 @@ class RegisteredUserController extends Controller
             $user->save();
         } else {
             // If no file is uploaded, use the default avatar URL
-            $user->image_id = 1;
+            $fourmIcone = Media::where('name', $validatedData['avatar_url'])->first();
+            $user->image_id = $fourmIcone->id;
             $user->save();
         }
       
@@ -184,7 +186,7 @@ class RegisteredUserController extends Controller
             $to_email = $validatedData['email'];
             $automaticEmail = AutomaticEmail::where('id', 1)->first();
             $userFirstName = $userData['firstname'];
-            $emailBody = "<h1 style='text-align:center;'>Inscription à La Fourmilière</h1><p>Bojour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
+            $emailBody = "<h1 style='text-align:center;'>Inscription à La Fourmilière</h1><p>Bonjour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
             $customSubject = 'Courriel de la fourmilière';
             Mail::to($to_email)->send(new AutoEmail($emailBody, $customSubject));
             
@@ -195,7 +197,6 @@ class RegisteredUserController extends Controller
             ";
             Mail::to($userEmail)->send(new AutoEmail($emailBodyAdmin, $customSubject));
             
-
         }
         event(new Registered($user));
         return redirect('/');

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('admin_id');
             $table->integer('user_id');
+            $table->timestamp('admin_verified')->nullable();
             $table->timestamps();
         });
     }

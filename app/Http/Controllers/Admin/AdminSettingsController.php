@@ -140,10 +140,10 @@ class AdminSettingsController extends Controller
             $existingMaintenance->save();
         }
         if($maintenanceValue == 1) {
-            Artisan::call('down');
-            broadcast(new MaintenanceModeUpdated(true))->toOthers();
+        
+            broadcast(new MaintenanceModeUpdated());
         } else {
-            Artisan::call('up');
+         
         }
         return redirect()->route('parametres.index')->with('status', 'Site mis en maintenance.');
     }

@@ -23,6 +23,6 @@ class MailSettingServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        
     }
 }

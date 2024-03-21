@@ -9,6 +9,7 @@ use App\Models\Thematique;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Models\Postmark;
 use Auth;
 
 class BlogController extends Controller
@@ -151,5 +152,22 @@ class BlogController extends Controller
         $post->thematiques()->detach();
 
         return redirect('/admin/posts')->with('status', "$post->title a été supprimé.");
+    }
+
+    public function blogBookmarks(Request $request) 
+    {
+        $validatedData = $request->validate([
+            'blog_id' => ['required', 'numeric'],
+        ]);
+        $existingBookmark = Postmark::where('user_id', Auth::user()->id)->where('post_id', $validatedData['blog_id'])->first();
+        if(!$existingBookmark) {
+            $bookmark = new Postmark();
+            $bookmark->user_id = Auth::user()->id;
+            $bookmark->post_id = $validatedData['blog_id'];
+            $bookmark->save();
+        } else {
+            $existingBookmark->delete();
+        }
+        return response()->json(['success' => 'Blog ajouté dans les signets']);
     }
 }

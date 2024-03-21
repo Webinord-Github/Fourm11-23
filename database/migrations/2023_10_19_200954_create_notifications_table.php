@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('reply_id')->nullable();
             $table->integer('tool_id')->nullable();
             $table->integer('post_id')->nullable();
+            $table->string('notif_link')->nullable();
             $table->timestamps();
         });
     }

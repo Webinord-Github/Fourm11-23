@@ -14,15 +14,10 @@ class MaintenanceModeUpdated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $maintenanceMode;
-
-    public function __construct($maintenanceMode)
-    {
-        $this->maintenanceMode = $maintenanceMode;
-    }
-
+  
     public function broadcastOn()
     {
-        return new Channel('maintenance-channel');
+        return new Channel('reload-channel');
     }
+  
 }

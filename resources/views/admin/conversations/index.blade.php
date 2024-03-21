@@ -79,7 +79,7 @@
     for (let checkbox of checkboxes) {
         checkbox.addEventListener("click", e => {
             e.preventDefault();
-            const confirmation = confirm('Publier/Dépublier cet événement?');
+            const confirmation = confirm('Publier/Dépublier cette conversation?');
             if (confirmation) {
 
                 checkbox.closest("form").submit();

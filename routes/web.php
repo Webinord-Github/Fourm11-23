@@ -36,7 +36,7 @@ use App\Http\Controllers\Admin\ConversationsController;
 use App\Http\Controllers\userFollowingsController;
 use App\Http\Controllers\SearchBarController;
 use App\Http\Controllers\Admin\AdminSettingsController;
-use App\Models\Event;
+use App\Http\Controllers\Admin\ReportsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,13 +48,23 @@ use App\Models\Event;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::put('/admin/refusedReply{signalement}', [ReportsController::class, 'deletedReply'])->name('deleted-reply');
+Route::resource('/admin/signalements', ReportsController::class)->middleware('admin');
 Route::post('/forum/bookmark', [ConversationsController::class, 'conversationBookmark'])->name('conversation.bookmark');
 Route::post('/admin/parametres/maintenance', [AdminSettingsController::class, 'maintenanceMode'])->name('maintenance.mode');
 Route::resource('/admin/parametres', AdminSettingsController::class);
 Route::post('/search', [SearchBarController::class, 'searchBar'])->name('search');
 Route::post('/evenements/bookmark', [eventsController::class, 'eventBookmarks'])->name('event.bookmark');
 Route::post('/les-membres/following', [userFollowingsController::class, 'userFollowing'])->name('user.follow');
+Route::post('/admin/chatbot/activate', [ChatbotsController::class, 'enableChatbot'])->name('enable-chatbot')->middleware('admin');
 Route::resource('/admin/chatbot', ChatbotsController::class);
+Route::post('/admin/getNewMessages', [ChatbotsController::class, 'getNewMessages'])->name('getNewMessages');
+Route::post('/admin/get-messages-for-user', [ChatbotsController::class, 'getMessagesForUser'])->name('getMessagesForUser');
+Route::post('/admin/getNewMessageNotif', [ChatbotsController::class, 'getNewMessageNotif'])->name('getNewMessageNotif');
+Route::post('/loadMessages', [ChatbotsController::class, 'loadMessagesFromAdmin'])->name('loadMessagesFromAdmin');
+Route::post('/getMessages', [ChatbotsController::class, 'getInstantMessagesFromAdmin'])->name('getInstantMessagesFromAdmin');
+Route::post('/SendMessagesToAdmin', [ChatbotsController::class, 'userStore'])->name('userStore');
+Route::post('messagesNotif', [ChatbotsController::class, 'getNewMessageNotifFromAdmin'])->name('getNewMessageNotifFromAdmin');
 Route::get('/lien-invalide', 'App\Http\Controllers\InvalidPasswordResetLinkController@index');
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
@@ -153,6 +163,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('/admin/posts', BlogController::class)->middleware('auth');
+Route::post('/post-bookmark', [BlogController::class, 'blogBookmarks'])->name('blog-bookmarks')->middleware('auth');
 Route::resource('admin/events', EventsController::class)->middleware('auth');
 Route::resource('admin/thematiques', ThematiquesController::class)->middleware('auth');
 Route::resource('admin/facts', FactsController::class)->middleware('auth');

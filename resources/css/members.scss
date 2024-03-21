@@ -1,30 +1,51 @@
 .members__container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vw;
+    .h1__container {
+        align-items: center;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        margin-left: 100px;
+        .arrow {
+            font-size: 60px;
+            margin-right: 50px;
+        }
+
+    }
     .members {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
         justify-content: center;
         .member__card {
-            width: 30%;
+            width: 600px;
             height: 350px;
             border-radius: 15px;
-            background-color: #13cec8;
+            box-shadow: 4px 4px 8px 3px gray;
             margin: 10px;
             position: relative;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
             .infos__container {
                 display: flex;
-                margin-top: 20px;
+                margin-top: 50px;
                 .img__content {
                     width: 25%;
                     display: flex;
                     justify-content: center; 
                     img {
-                        width: 120px;
-                        height: 120px;
+                        width: 80px;
+                        height: 80px;
                         max-width: 120px;
                         border-radius: 100%;
+                        object-fit: cover;
                     }
                 }
                 .info__content {
@@ -59,10 +80,26 @@
             }
         }
         .ghost__card {
-            width: 30%;
+            width: 600px;
             height: 0px;
             margin: 10px;
             overflow: 0;
+        }
+    }
+}
+
+@media screen and (max-width:600px) {
+    .members__container {
+        .members {
+            .member__card {
+                .infos__container {
+                    flex-direction: column;
+                    align-items: center;
+                    .info__content {
+                        text-align: center;
+                    }
+                }
+            }
         }
     }
 }

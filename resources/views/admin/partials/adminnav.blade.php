@@ -66,38 +66,68 @@
                     <a href="{{ route('medias.index') }}"><i class="fa fa-download mr-4 mt-0.5" aria-hidden="true"></i>Médias</a>
                 </li>
                 <li class="navLink">
-                    <a href="{{ route('medias.index') }}"><i class='fas fa-key mr-4 mt-0.5' aria-hidden="true"></i>Rôles</a>
+                    <a href="{{ route('signalements.index') }}"><i class='fas fa-key mr-4 mt-0.5' aria-hidden="true"></i>Signalements</a>
                 </li>
                 <li class="navLink admin__menu__dropdown">
-                <a class="dropdown__trigger" href="Javascript:void(0)"><i class='fa fa-lightbulb mr-4 mt-0.5 dropdown__trigger' aria-hidden="true"></i>Paramètres <i class="fa fa-angle-down dropdown__trigger mt-1"></i></a>
+                    <a class="dropdown__trigger" href="Javascript:void(0)"><i class='fa fa-lightbulb mr-4 mt-0.5 dropdown__trigger' aria-hidden="true"></i>Paramètres <i class="fa fa-angle-down dropdown__trigger mt-1"></i></a>
                     <div class="admin__menu__dropdown__container">
                         <div class="admin__menu__dropdown__content">
                             <div class="submenu__links">
                                 <a href="{{ route('menu.index') }}">Menus</a>
                             </div>
                             <div class="submenu__links">
-                            <a href="{{ route('parametres.index') }}">Paramètres</a>
+                                <a href="{{ route('parametres.index') }}">Paramètres</a>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="navLink">
-                    <a href="{{ route('chatbot.index') }}"><i class="fa fa-robot mr-4 mt-0.5" aria-hidden="true"></i>Chatbot</a>
+                    <a href="{{ route('chatbot.index') }}" id="chatbot__menu"><i class="fa fa-robot mr-4 mt-0.5" aria-hidden="true"></i>Chatbot</a>
                 </li>
                 <li class="navLink">
-                <div class="logout__container">
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            
-            <a href="logout" onclick="event.preventDefault();
+                    <div class="logout__container">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <a href="logout" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-            <i class="fa fa-sign-out mr-4 mt-0.5"></i>
-            {{ __('Déconnexion') }}
-        </a>
-    </form>
-</div>
+                                <i class="fa fa-sign-out mr-4 mt-0.5"></i>
+                                {{ __('Déconnexion') }}
+                            </a>
+                        </form>
+                    </div>
                 </li>
             </ul>
         </div>
     </div>
 </div>
+<script>
+    getNewMessageNotifAdmin();
+    setInterval(getNewMessageNotifAdmin, 2000);
+    function getNewMessageNotifAdmin() {
+        let xhttp = new XMLHttpRequest();
+        let Params;
+        let chatbotMenu = document.querySelector("#chatbot__menu")
+        xhttp.onreadystatechange = () => {
+            if (xhttp.readyState === 4) {
+                if (xhttp.status === 200) {
+                    const response = JSON.parse(xhttp.responseText);
+                    const messages = response.message;
+                    if (messages.length > 0) {
+                        chatbotMenu.classList.add("newNotif")
+
+                    } else {
+                        chatbotMenu.classList.remove("newNotif")
+                    }
+
+                } else {
+                    console.error("Error");
+                }
+            }
+        };
+        xhttp.open("POST", `{{ route('getNewMessageNotif') }}`, true);
+        xhttp.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send(Params);
+    }
+</script>
