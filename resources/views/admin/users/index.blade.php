@@ -3,29 +3,29 @@
 @section('content')
     <div class="container">
         <div class="pagesContainer">
-            <h1 class="text-4xl font-bold pb-6">Users</h1>
+            <h1 class="text-4xl font-bold pb-6">Utilisateurs</h1>
         @if (session('status'))
             <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-8 my-6" role="alert">
                 <p class="font-bold">{{ session('status') }}</p>
             </div>
         @endif
             <a href="{{ route('users.create') }}" id="newpage-cta" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Add User
+                Ajouter un utilisateur
             </a>
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
-                        <th scope="col" class="px-6 py-3">Name</th>
-                        <th scope="col" class="px-6 py-3">Email</th>
-                        <th scope="col" class="px-6 py-3">Roles</th>
-                        <th scope="col" class="px-6 py-3">Profile</th>
+                        <th scope="col" class="px-6 py-3">Nom</th>
+                        <th scope="col" class="px-6 py-3">Courriel</th>
+                        <th scope="col" class="px-6 py-3">Rôle</th>
+                        <th scope="col" class="px-6 py-3"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($model as $user)
                         <tr class="bg-white border-b">
                             <td class="px-6 py-4">
-                                <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="underline">{{ $user->name }}</a>
+                                <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="underline">{{ $user->firstname . ' ' . $user->lastname }}</a>
                             </td>
                             <td class="px-6 py-4">{{ $user->email }}</td>
                             <td class="px-6 py-4">{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</td>
@@ -36,13 +36,13 @@
                                     </button>
                                     <div class="absolute right-0 z-10 my-0 w-56 origin-top-right rounded-md bg-white shadow-lg focus:outline-none h-0 overflow-hidden dropdown-child dropdownHover" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                                         <div class="flex flex-col dropdownHover" role="none">
-                                            <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="hover:bg-gray-200 py-1 px-4 dropdownHover">Edit</a>
+                                            <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="hover:bg-gray-200 py-1 px-4 dropdownHover">Modifier</a>
                                             @if($authuser == $user->id)
                                             @else
                                             <form action="{{ route('users.destroy', ['user' => $user->id]) }}" method="POST">
                                                 @csrf
                                                 {{method_field('DELETE')}}
-                                                <input type="submit" value="Delete" class="hover:bg-gray-200 py-1 px-4 dropdownHover cursor-pointer text-left w-full" onclick="return confirm('Are you sure to delete?')"> 
+                                                <input type="submit" value="Supprimer" class="hover:bg-gray-200 py-1 px-4 dropdownHover cursor-pointer text-left w-full" onclick="return confirm('Êtes-vous sure de supprimer?')"> 
                                             </form>
                                             @endif
                                         </div>

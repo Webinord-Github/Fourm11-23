@@ -57,10 +57,10 @@ class PagesController extends Controller
         $users = User::all();
         $events = Event::orderBy('start_at')->get();
         $conversations = Conversation::with('replies')->get();
-        $tools = Tool::where('status', 'publié')->where('published_at', '<', Carbon::tomorrow())->get();
+        $tools = Tool::where('verified', '1')->get();
         $thematiques = Thematique::all();
         $facts = Fact::all();
-        $posts = Post::where('status', 'publié')->where('published_at', '<', Carbon::tomorrow())->get();
+        $posts = Post::all();
         $recentConversations = Conversation::
         orderBy('created_at', 'desc')
         ->take(5)

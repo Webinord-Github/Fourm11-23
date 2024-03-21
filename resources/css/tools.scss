@@ -17,6 +17,8 @@ $jaune: #edb200;
             border-top-left-radius: 10px;
             display: flex;
             justify-content: flex-start;
+            margin-bottom: 2%;
+            position: relative;
             width: 100%;
 
             .white-buble {
@@ -26,11 +28,6 @@ $jaune: #edb200;
                 height: 35px;
                 margin: 0 1%;
                 width: 35px;
-
-                .fa-screwdriver-wrench {
-                    height: 30px;
-                    width: 30px;
-                }
             }
             .arrow {
                 font-size: 60px;
@@ -41,15 +38,15 @@ $jaune: #edb200;
                 color: $jaune;
                 font-size: 60px;
                 position: relative;
-                width: 100%;
+            }
 
-                span {
-                    color: #edb20047;
-                    font-size: 80px;
-                    left: -30px;
-                    position: absolute;
-                    top: -35px;
-                }
+            p {
+                color: #edb20047;
+                font-family: 'Edo', sans-serif;
+                font-size: 80px;
+                left: -30px;
+                position: absolute;
+                top: -35px;
             }
         }
 
@@ -124,6 +121,59 @@ $jaune: #edb200;
                     }
                 }
 
+                .dropdown__container {
+                    border-top: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    display: none;
+                    margin: 2% 0;
+                    width: 100%;
+                    
+                    .dropdown__content {
+        
+                        .dropdown {
+                            height: 60px;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            cursor: pointer;
+                            h3 {
+                                font-size: 24px;
+                                margin-right: 2%;
+                            }
+                            i {
+                                font-size: 40px;
+                                font-weight: bold;
+                                color: #fff;
+                                transition: 0.2s linear;
+                            }
+                            .drop__trigger, .drop__trigger__parent {
+                                cursor: pointer;
+                            }
+                        }
+                        .rotate {
+                            transform: rotate(180deg);
+                        }
+                        .drop__content {
+                            height: 0;
+                            overflow: hidden;
+
+                            .text .thematique {
+                                border-top: 1px solid #ffffff41;
+                                color: #fff;
+                                cursor: pointer;
+                                padding: 1% 0;
+                                text-align: center;
+                            }
+
+                            .text .thematique:hover {
+                                opacity: 0.8;
+                            }
+                        }
+                    }
+                }
+
                 .btn-container {
                     align-items: center;
                     display: flex;
@@ -174,22 +224,24 @@ $jaune: #edb200;
                     border-bottom: 1px solid #dedede;
                     display: flex;
                     flex-direction: column;
-                    height: fit-content;
+                    height: 300px;
                     justify-content: space-between;
-                    min-height: 350px;
+                    // min-height: 300px;
+                    min-width: 300px;
                     padding: 2%;
                     width: 50%;
 
-                    .title {
-                        align-items: center;
+                    .top {
+                        align-items: flex-start;
                         display: flex;
                         justify-content: space-between;
                         width: 100%;
 
-                        h3 {
+                        .title {
                             font-family: 'edo';
-                            font-size: 36px;
+                            font-size: 24px;
                             font-weight: bold;
+                            max-width: 90%;
                         }
 
                         .black-buble {
@@ -287,7 +339,7 @@ $jaune: #edb200;
     height: 100vh;
     justify-content: center;
     left: 0;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100vw;
     z-index: 1000;
@@ -358,6 +410,122 @@ $jaune: #edb200;
 
         .close-btn {
             cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .tools-container .tools-content .content {
+        display: flex;
+        flex-direction: column;
+
+        .thematiques-half {
+            padding-left: 0;
+            width: 100%;
+            
+            .searchbar-container {
+                margin: 2% 0;
+                justify-content: center;
+            }
+
+            .thematiques {
+                display: none;
+            }
+
+            .btn-container {
+                margin: 2% 0;
+                justify-content: center;
+            }
+
+            .dropdown__container {
+                display: block;
+            }
+        }
+
+        .tools-half {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width:942px) {
+    .tools-container .tools-content .content .tools-half {
+        justify-content: center;
+
+        .tool {
+            border-right: none!important;
+            height: 350px;
+            min-width: none;
+            padding: 15px 0;
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    .tools-container {
+        margin-top: 75px;
+
+        .tools-content .top-div {
+            justify-content: center;
+            
+            h1 {
+                font-size: 50px;
+            }
+        
+            p {
+                font-size: 60px;
+                left: auto;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .tools-container .tools-content .content .posts {
+        justify-content: center;
+        
+        .post {
+            margin-bottom: 20px;
+    
+            .more {
+                margin-bottom: 2%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:500px) {
+    .tools-container .tools-content {
+
+        .top-div {
+            h1 {
+                font-size: 40px;
+            }
+        
+            p {
+                font-size: 45px;
+                top: -20px;
+            }
+        }  
+
+        .content .thematiques-half {
+
+            .dropdown__container .dropdown__content .dropdown {
+
+                h3 {
+                    font-size: 20px;
+                }
+    
+                i {
+                    font-size: 30px;
+                }
+            }
+
+            .btn-container button {
+                padding: 3px 20px;
+                width: 170px;
+            }
         }
     }
 }

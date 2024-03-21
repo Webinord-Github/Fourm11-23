@@ -17,9 +17,8 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3">Titre</th>
-                    <th scope="col" class="px-6 py-3">Description</th>
+                    <th scope="col" class="px-6 py-3">Source</th>
                     <th scope="col" class="px-6 py-3">Thématiques</th>
-                    <th scope="col" class="px-6 py-3">Status</th>
                     <th scope="col" class="px-6 py-3"></th>
                 </tr>
             </thead>
@@ -29,7 +28,7 @@
                     <td class="px-6 py-4">
                         <a href="/admin/tools/update/{{ $tool->id }}" class="underline">{{ $tool->title }}</a>
                     </td>
-                    <td class="px-6 py-4">{{ $tool->desc }}</td>
+                    <td class="px-6 py-4">{{ $tool->source }}</td>
                     @if(count($tool->thematiques()->get()->pluck('name')->toArray()) > 3)
                     <?php
                     $array_cut = array_slice($tool->thematiques()->get()->pluck('name')->toArray(), 0, 3)
@@ -38,7 +37,6 @@
                     @else
                     <td class="px-6 py-4">{{ implode(', ', $tool->thematiques()->get()->pluck('name')->toArray()) }}</td>
                     @endif
-                    <td class="px-6 py-4">{{ ucfirst($tool->status) }}</td>
                     <td class="px-6 py-4">
                         <div class="relative inline-block text-left dropdownHover">
                             <button type="button" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 admin-dropdown dropdownHover" id="menu-button" aria-expanded="true" aria-haspopup="true">
@@ -47,7 +45,6 @@
                             <div class="absolute right-0 z-10 my-0 w-56 origin-top-right rounded-md bg-white shadow-lg focus:outline-none h-0 overflow-hidden dropdown-child dropdownHover" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                                 <div class="flex flex-col dropdownHover" role="none">
                                     <a href="/admin/tools/update/{{ $tool->id }}" class="hover:bg-gray-200 py-1 px-4 dropdownHover">Modifier</a>
-                                    <!-- <a href="/admin/tools/destroy/{{ $tool->id }}" onclick="return confirm('Delete this tool?');" class="hover:bg-gray-200 py-1 px-4 dropdownHover">Supprimer</a> -->
                                     <form action="{{ route('tools.destroy', ['tool' => $tool->id]) }}" method="POST">
                                         @csrf
                                         {{method_field('DELETE')}}

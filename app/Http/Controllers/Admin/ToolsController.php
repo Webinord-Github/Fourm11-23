@@ -23,16 +23,16 @@ class ToolsController extends Controller
         return view('admin.tools.create', ['thematiques' => Thematique::all()]);
     }
 
-    public function store(ToolsRequest $request)
+    public function store(Request $request)
     {
 
-        // $request->validate([
-        //     'title' => ['required', 'string', 'max:255'],
-        //     'desc' => ['required', 'string'],
-        //     'media' => ['file', 'mimes:pdf,docx'],
-        //     'thematiques' => ['required', 'array', 'max:3'],
-        //     'status' => ['required', 'string']
-        // ]);
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'source' => ['required', 'string'],
+            // 'site_link' => ['string'],
+            'media_id' => ['file', 'mimes:pdf,docx'],
+            'thematiques' => ['required', 'array', 'max:3']
+        ]);
 
         $tool = new Tool();
 
@@ -44,10 +44,10 @@ class ToolsController extends Controller
 
         $tool->user_id = Auth::user()->id;
         $tool->title = $request->title;
-        $tool->desc = $request->desc;
-        $tool->status = $request->status;
+        $tool->source = $request->source;
+        $tool->site_link = $request->site_link;
         $tool->verified = 1;
-        $tool->published_at = $request->published_at;
+
         if($request->media)
         {
             $file_original_name = $request->media->getClientOriginalName();
@@ -89,15 +89,15 @@ class ToolsController extends Controller
         return view('admin.tools.edit', ['tool' => $tool, 'thematiques' => Thematique::all(), 'thematiques_selected' => $thematiques_selected]);
     }
 
-    public function storeUpdate(ToolsRequest $request)
+    public function storeUpdate(Request $request)
     {
-        // $request->validate([
-        //     'title' => ['required', 'string', 'max:255'],
-        //     'desc' => ['required', 'string'],
-        //     'doc' => ['file', 'mimes:pdf,docx'],
-        //     'thematiques' => ['required', 'array', 'max:3'],
-        //     'status' => ['required', 'string']
-        // ]);
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'source' => ['required', 'string'],
+            // 'site_link' => ['string'],
+            'media_id' => ['file', 'mimes:pdf,docx'],
+            'thematiques' => ['required', 'array', 'max:3']
+        ]);
 
         $tool = Tool::findOrFail($request->id);
 
@@ -108,11 +108,11 @@ class ToolsController extends Controller
         }
 
         $tool->title = $request->title;
-        $tool->desc = $request->desc;
-        $tool->status = $request->status;
-        $tool->published_at = $request->published_at;
+        $tool->source = $request->source;
+        $tool->site_link = $request->site_link;
 
-        if($request->doc) {
+        if($request->media)
+        {
             $file_original_name = $request->media->getClientOriginalName();
             $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
             $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
@@ -136,7 +136,8 @@ class ToolsController extends Controller
             $media->save();
             Storage::putFileAs('public/medias',$request->media, $file_name);
     
-            $tool->doc_id = $media->id;
+            $tool->media_id = $media->id;
+
         }
 
         $tool->save();

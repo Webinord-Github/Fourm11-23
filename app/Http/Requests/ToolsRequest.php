@@ -25,15 +25,10 @@ class ToolsRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'desc' => 'required|string',
-<<<<<<< HEAD
-            'media' => 'required|file|mimes:pdf,docx',
-            'thematiques' => 'array|min:1|max:3',
-            'status' => 'string'
-=======
-            'thematiques' => 'array|max:3',
-            'status' => 'required|string'
->>>>>>> origin/master
+            'source' => 'required|string',
+            'site_link' => 'string',
+            'media' => 'file|mimes:pdf,docx',
+            'thematiques' => 'array|min:1|max:3'
         ];
     }
 

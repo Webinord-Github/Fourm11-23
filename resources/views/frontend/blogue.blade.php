@@ -9,8 +9,9 @@
     <div class="blogue-container">
         <div class="blogue-content">
             <div class="top-div">
-                <a href="/" class="arrow">&#8592;</a>
-                <h1>Blogue<span>Blogue</span></h1>
+                {{-- <a href="/" class="arrow">&#8592;</a> --}}
+                <h1>Blogue</h1>
+                <p>Blogue</p>
             </div>
             <div class="content ">
                 <div class="posts">

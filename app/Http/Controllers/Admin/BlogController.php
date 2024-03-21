@@ -30,8 +30,7 @@ class BlogController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'body' => ['required', 'string'],
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp'],
-            'thematiques' => ['required', 'array', 'max:3'],
-            'status' => ['required', 'string']
+            'thematiques' => ['required', 'array', 'max:3']
         ]);
 
         $post = new Post();
@@ -48,8 +47,6 @@ class BlogController extends Controller
         $post->title = $request->title;
         $post->slug = $slug;
         $post->body = $request->body;
-        $post->status = $request->status;
-        $post->published_at = $request->published_at;
 
         $file_original_name = $request->image->getClientOriginalName();
         $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
@@ -99,8 +96,7 @@ class BlogController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'body' => ['required', 'string'],
             'image' => ['image', 'mimes:jpeg,png,jpg,webp'],
-            'thematiques' => ['required', 'array', 'max:3'],
-            'status' => ['required', 'string']
+            'thematiques' => ['required', 'array', 'max:3']
         ]);
 
         $slug = Str::slug($request->title);
@@ -114,8 +110,6 @@ class BlogController extends Controller
         $post->title = $request->title;
         $post->slug = $slug;
         $post->body = $request->body;
-        $post->status = $request->status;
-        $post->published_at = $request->published_at;
 
         if($request->image) {
             $file_original_name = $request->image->getClientOriginalName();

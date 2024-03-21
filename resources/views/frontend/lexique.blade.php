@@ -14,8 +14,9 @@
     <div class="lexique-container">
         <div class="lexique-content">
             <div class="top-div">
-                <span class="arrow">&#8592;</span>
-                <h1>Lexique<span>Lexique</span></h1>
+                {{-- <span class="arrow">&#8592;</span> --}}
+                <h1>Lexique</h1>
+                <p>Lexique</p>
             </div>
             <div class="content">
                 <div class="thematiques-ctn">
@@ -91,17 +92,13 @@
                                         @endif
                                     </div>
                                     <div class="bottom">
-                                        @if(strlen($tool->desc)>50)
-                                            <p class="desc">{{ substr_replace($tool->desc, '...', 150) }}</p>
-                                        @else
-                                            <p class="desc">{{ $tool->desc }}</p>
-                                        @endif
+                                            <p class="desc">{{ $tool->source }}</p>
                                         <div class="tags">
                                             @foreach($tool->thematiques()->get()->pluck('name')->toArray() as $thematique)
                                                 <p data-tag="{{ $thematique }}" class="tag">{{ $thematique }}</p>
                                             @endforeach
                                         </div>
-                                        <a href="#">
+                                        <a href="/boite-a-outils">
                                             Voir plus
                                         </a>
                                     </div>
@@ -140,7 +137,7 @@
                                                 <p data-tag="{{ $thematique }}" class="tag">{{ $thematique }}</p>
                                             @endforeach
                                         </div>
-                                        <a href="#">
+                                        <a href="/blogue">
                                             Voir plus
                                         </a>
                                     </div>
@@ -180,7 +177,7 @@
                                                     <p data-tag="{{ $thematique }}" class="tag">{{ $thematique }}</p>
                                                 @endforeach
                                             </div>
-                                            <a href="#">
+                                            <a href="/forum">
                                                 Voir plus
                                             </a>
                                         </div>
@@ -204,6 +201,7 @@
     window.addEventListener('load', x => {
         let div = document.querySelector('[data-desc="Intersectionnalité"]')
         div.classList.toggle('actived')
+        search('Intersectionnalité')
     })
     
     for(let thematique of thematiques) {
@@ -244,6 +242,7 @@
 
     function search(theme) {
         let divs = document.querySelectorAll('.element')
+        let count = 0
 
         for(let div of divs) {
             div.style.display = 'none'
@@ -257,8 +256,13 @@
                 if(tag.dataset.tag == theme) {
                     div.style.display = 'block'
                     tag.classList.add('tagged')
+                    count++
                 }
             }
+        }
+
+        if(count == 0) {
+            
         }
     }
 
@@ -274,7 +278,6 @@
                 if (this.readyState === 4) {
                     if (this.status === 200) {
                         bookmark.classList.toggle('active')
-                        console.log(xhttp.response)
                         xhttp = null;
                     } else {
                         console.error("Impossible d'ajouter l'outil aux favoris.");
@@ -300,7 +303,6 @@
                 if (this.readyState === 4) {
                     if (this.status === 200) {
                         bookmark.classList.toggle('active')
-                        console.log(xhttp.response)
                         xhttp = null;
                     } else {
                         console.error("Impossible d'ajouter l'outil aux favoris.");
@@ -326,7 +328,6 @@
                 if (this.readyState === 4) {
                     if (this.status === 200) {
                         bookmark.classList.toggle('active')
-                        console.log(xhttp.response)
                         xhttp = null;
                     } else {
                         console.error("Impossible d'ajouter l'outil aux favoris.");
@@ -339,6 +340,4 @@
             xhttp.send(Params);
         })
     }
-
-    console.log(all_postmarks)
 </script>

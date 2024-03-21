@@ -33,8 +33,8 @@
     <div class="tools-container">
         <div class="tools-content">
             <div class="top-div">
-                <span class="arrow">&#8592;</span>
-                <h1>Boîte à outils<span>Boîte à outils</span></h1>
+                <h1>Boîte à outils</h1>
+                <p>Boîte à outils</p>
             </div>
             <div class="content ">
                 <div class="thematiques-half">
@@ -46,6 +46,21 @@
                         @foreach($thematiques as $thematique)
                             <p data-theme="{{ $thematique->name }}" class="thematique">{{ $thematique->name }}</p>
                         @endforeach
+                    </div>
+                    <div class="dropdown__container">
+                        <div class="dropdown__content">
+                            <div class="dropdown drop__trigger__parent">
+                                <h3 class="drop__trigger">Thématiques</h3>
+                                <i class="fa fa-angle-down drop__trigger"></i>
+                            </div>
+                            <div class="drop__content">
+                                <div class="text">
+                                    @foreach($thematiques as $thematique)
+                                        <h3 data-theme="{{ $thematique->name }}" class="thematique">{{ $thematique->name }}</h3>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     @if(auth()->check() && auth()->user()->verified)
                         <div class="btn-container">
@@ -63,8 +78,8 @@
                     @endif
                     @foreach($tools as $tool)
                         <div class="tool" data-id="{{ $tool->id }}">
-                            <div class="title">
-                                <h3>{{ $tool->title }}</h3>
+                            <div class="top">
+                                <h3 class="title">{{ $tool->title }}</h3>
                                 @if(auth()->check() && auth()->user()->verified)
                                     <?php
                                         $count = 0;
@@ -82,7 +97,7 @@
                                 @endif
                             </div>
                             <div class="desc">
-                                <p>{{ $tool->desc }}</p>
+                                <p class="source">{{ $tool->source }}</p>
                             </div>
                             <div class="tags">
                                 @foreach($tool->thematiques()->get()->pluck('name')->toArray() as $thematique)
@@ -90,7 +105,11 @@
                                 @endforeach
                             </div>
                             <div class="btn-container">
-                                <a target="_blank" href="{{$tool->media()->first()->path . $tool->media()->first()->name}}">télécharger</a>
+                                @if($tool->media_id)
+                                    <a target="_blank" href="{{$tool->media()->first()->path . $tool->media()->first()->name}}">Télécharger</a>
+                                @elseif($tool->site_link != 'null')
+                                    <a target="_blank" href="{{$tool->site_link}}">Voir l'outil</a>
+                                @endif
                             </div>
                         </div>
                     @endforeach
@@ -148,13 +167,35 @@
     </div>
 </div>
 <script>
-    let tools = []
 
-    window.addEventListener('load', x => {
-        const url = '/api/tools'
-        fetch(url).then(resp => resp.json()).then(data => {
-            tools = data
-        })
+    window.addEventListener("click", e => {
+        if (e.target.classList.contains("drop__trigger")) {
+            let dropContent = e.target.parentElement.nextElementSibling
+            let heightEl = getComputedStyle(dropContent.childNodes[1]).getPropertyValue('height')
+            dropContent.classList.toggle('open')
+            if (dropContent.classList.contains('open')) {
+                dropContent.style.height = parseInt(heightEl) + "px"
+                dropContent.style.transition = "height 0.2s linear"
+            } else {
+                dropContent.style.height = "0px"
+                dropContent.style.transition = "height 0.2s linear"
+            }
+            e.target.parentElement.childNodes[3].classList.toggle('rotate')
+        }
+        if (e.target.classList.contains("drop__trigger__parent")) {
+            let dropContent = e.target.nextElementSibling
+            dropContent.classList.toggle('open')
+            let heightEl = getComputedStyle(dropContent.childNodes[1]).getPropertyValue('height')
+            if (dropContent.classList.contains('open')) {
+                dropContent.style.height = parseInt(heightEl) + "px"
+                dropContent.style.transition = "height 0.2s linear"
+            } else {
+                dropContent.style.height = "0px"
+                dropContent.style.transition = "height 0.2s linear"
+            }
+            e.target.childNodes[3].classList.toggle('rotate')
+        }
+
     })
 
     let thematiques = document.querySelectorAll('.thematique')
@@ -164,6 +205,7 @@
         thematique.addEventListener('click', x => {
             let thematiques_ctn = document.querySelector('.thematiques')
             let old_actif = thematiques_ctn.querySelector('.actif')
+            let mobile_filter = document.querySelector('.drop__trigger')
 
             if(old_actif != null) {
                 old_actif.classList.toggle('actif')
@@ -171,6 +213,7 @@
 
             thematique.classList.toggle('actif')
             search_bar.value = thematique.dataset.theme
+            mobile_filter.innerText = thematique.dataset.theme
             search()
         })
     }
@@ -208,6 +251,9 @@
             search_bar.value = tag.dataset.theme
             let thematiques_ctn = document.querySelector('.thematiques')
             let old_actif = thematiques_ctn.querySelector('.actif')
+            let mobile_filter = document.querySelector('.drop__trigger')
+
+            mobile_filter.innerText = tag.dataset.theme
 
             if(old_actif != null) {
                 old_actif.classList.toggle('actif')
@@ -224,41 +270,54 @@
     search_bar.addEventListener('keyup', x => {
         let thematiques_ctn = document.querySelector('.thematiques')
         let old_actif = thematiques_ctn.querySelector('.actif')
+        let mobile_filter = document.querySelector('.drop__trigger')
 
         if(old_actif != null) {
             old_actif.classList.toggle('actif')
         }
+        mobile_filter.innerText = 'Thématiques'
         search()
     })
     
     function search() {   
         let search_value = (search_bar.value).toLowerCase()
-        let divs = document.querySelectorAll('.tool')
+        let tools = document.querySelectorAll('.tool')
+        let dropContent = document.querySelector('.drop__content')
+        let heightEl = getComputedStyle(dropContent.childNodes[1]).getPropertyValue('height')
+        console.log(dropContent)
+        console.log(heightEl)
 
-        for(let div of divs) {
-            div.style.display = 'none'
+        for(let tool of tools) {
+            tool.style.display = 'none'
         }
 
         if(search_value == '') {
-            for(let div of divs) {
-                div.style.display = 'flex'
+            for(let tool of tools) {
+                tool.style.display = 'flex'
             }
         }
 
         for(let tool of tools) {
-            let tool_div = document.querySelector(`[data-id='${tool.id}']`)
+            let tool_title = tool.querySelector('.title')
+            let tool_tags = tool.querySelectorAll('.tag')
+            let tool_source = tool.querySelector('.source')
 
-            if(((tool.title).toLowerCase()).includes(search_value) || ((tool.desc).toLowerCase()).includes(search_value)) {
-                tool_div.style.display = 'flex'
+            if(((tool_title.innerText).toLowerCase()).includes(search_value) || ((tool_source.innerText).toLowerCase()).includes(search_value)) {
+                tool.style.display = 'flex'
             }
-
-            let tool_tags = tool_div.querySelectorAll('.tag')
 
             for(let tag of tool_tags) {
                 if(((tag.dataset.theme).toLowerCase()).includes(search_value)) {
-                    tool_div.style.display = 'flex'
+                    tool.style.display = 'flex'
                 }
             }
+        }
+
+        if (dropContent.classList.contains('open')) {
+            dropContent.classList.toggle('open')
+            dropContent.style.height = "0px"
+            dropContent.style.transition = "height 0.2s linear"
+            document.querySelector('.fa-angle-down').classList.toggle('rotate')
         }
     }
 

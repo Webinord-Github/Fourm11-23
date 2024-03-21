@@ -31,7 +31,13 @@
                             <a href="/admin/tools/update/{{ $tool->id }}" class="underline">{{ $tool->title }}</a>
                         </td>
                         <td class="px-6 py-4">{{ $tool->user->firstname . $tool->user->lastname }}</td>
+                        @if($tool->media_id)
                         <td class="px-6 py-4"><a target="_blank" href="{{$tool->media()->first()->path . $tool->media()->first()->name}}">Voir l'outil</a></td>
+                        @elseif($tool->site_link != 'null')
+                        <td class="px-6 py-4"><a target="_blank" href="{{$tool->site_link}}">Voir l'outil</a></td>
+                        @else
+                        <td class="px-6 py-4">Aucun outil</td>
+                        @endif
                         <td class="px-6 py-4">
                             <input type="checkbox" name="checkbox_{{$tool->id}}" id="toggle-{{$tool->id}}" class="toggle-checkbox" {{ $tool->verified == true ? 'checked' : '' }}>
                             <label for="toggle-{{$tool->id}}" class="toggle-label"></label>

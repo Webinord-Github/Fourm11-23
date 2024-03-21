@@ -8,11 +8,12 @@
     </div>
 @endif
 <div class="main_container">
-    <div class="blogue-container">
-        <div class="blogue-content">
+    <div class="singleblogue-container">
+        <div class="singleblogue-content">
             <div class="top-div">
-                <a href="/blogue" class="arrow">&#8592;</a>
-                <p>{{ $post->title }}<span>{{ $post->title }}</span></p>
+                {{-- <a href="/blogue" class="arrow">&#8592;</a> --}}
+                <h1>{{ $post->title }}</h1>
+                <p>{{ $post->title }}</p>
             </div>
             <div class="content ">
                 <div class="single-post">
@@ -23,7 +24,7 @@
                         {{ $post->body }}
                     </p>
                     <div class="thematiques">
-                        <h3>Thématiques:</h3>
+                        <h3>Thématiques -</h3>
                         @foreach($post->thematiques()->get()->pluck('name')->toArray() as $thematique)
                             <p class="thematique">{{ $thematique }}</p>
                         @endforeach

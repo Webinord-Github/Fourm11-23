@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('tools', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->longText('desc');
+            $table->string('source');
             $table->integer('media_id')->nullable();
+            $table->string('site_link')->nullable();
             $table->integer('user_id');
-            $table->string('status');
-            $table->timestamp('published_at')->nullable();
+            $table->boolean('verified')->default(false);
             $table->timestamps();
         });
     }

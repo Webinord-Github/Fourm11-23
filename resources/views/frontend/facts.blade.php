@@ -2,11 +2,17 @@
     <div class="facts-container">
         <div class="facts-content">
             <div class="top-div">
-                <span class="arrow">&#8592;</span>
-                <h1>Saviez-vous?<span>Saviez-vous?</span></h1>
+                {{-- <span class="arrow">&#8592;</span> --}}
+                <h1>Saviez-vous?</h1>
+                <p>Saviez-vous?</p>
             </div>
             <div class="content ">
                 <div class="facts">
+                    @if(count($facts) == 0)
+                        <div class="empty">
+                            <h3>Aucun saviez-vous? disponible pour le moment</h3>
+                        </div>
+                    @endif
                     @foreach($facts as $fact)
                         <div class="fact">
                             <div class="circle-wrapper">

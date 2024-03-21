@@ -8,7 +8,7 @@ $jaune: #edb200;
 
     .lexique-content {
         border-radius: 10px;
-        margin: 3% 0;
+        margin: 3% 0; 
         width: 90%;
 
         .top-div {
@@ -17,8 +17,18 @@ $jaune: #edb200;
             border-top-left-radius: 10px;
             display: flex;
             justify-content: flex-start;
+            margin-bottom: 4%;
+            position: relative;
             width: 100%;
 
+            .white-buble {
+                background-color: #fff;
+                border-radius: 50px;
+                display: flex;
+                height: 35px;
+                margin: 0 1%;
+                width: 35px;
+            }
             .arrow {
                 font-size: 60px;
                 margin-right: 50px;
@@ -28,15 +38,15 @@ $jaune: #edb200;
                 color: $jaune;
                 font-size: 60px;
                 position: relative;
-                width: 100%;
+            }
 
-                span {
-                    color: #edb20047;
-                    font-size: 80px;
-                    left: -30px;
-                    position: absolute;
-                    top: -35px;
-                }
+            p {
+                color: #edb20047;
+                font-family: 'Edo', sans-serif;
+                font-size: 80px;
+                left: -30px;
+                position: absolute;
+                top: -35px;
             }
         }
 
@@ -220,7 +230,7 @@ $jaune: #edb200;
                 width: 100%;
 
                 .tools, .convos, .posts {
-                    align-items: center;
+                    align-items: flex-start;
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: center;
@@ -238,13 +248,14 @@ $jaune: #edb200;
                             border-radius: 10px 10px  0 0;
                             display: flex;
                             color: #fff;
-                            height: 50px;
+                            min-height: 60px;
                             justify-content: space-between;
                             padding: 0 10px;
                             width: 100%;
 
                             p {
                                 font-size: 20px;
+                                width: 90%;
                             }
 
                             .buble {
@@ -291,14 +302,14 @@ $jaune: #edb200;
                             .desc {
                                 color: #000;
                                 font-size: 18px;
-                                height: 125px;
+                                margin-bottom: 10px;
+                                min-height: 75px;
                             }
 
                             .tags {
                                 align-items: baseline;
                                 display: flex;
                                 flex-wrap: wrap;
-                                height: 100px;
                                 justify-content: flex-start;
                                 margin-bottom: 4%;
                                 width: 100%;
@@ -312,6 +323,7 @@ $jaune: #edb200;
                                     font-size: 16px;
                                     font-weight: bold;
                                     margin-right: 5px;
+                                    margin-bottom: 10px;
                                     padding: 5px 20px;
                                     text-decoration: none;
                                 }
@@ -404,4 +416,36 @@ $jaune: #edb200;
             }
         }
     }
+}
+
+@media screen and (max-width:767px) {
+    .lexique-container {
+        margin-top: 50px;
+
+        .lexique-content .top-div {
+            justify-content: center;
+            
+            h1 {
+                font-size: 50px;
+            }
+        
+            p {
+                font-size: 60px;
+                left: auto;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:500px) {
+    .lexique-container .lexique-content .top-div {
+        h1 {
+            font-size: 40px;
+        }
+    
+        p {
+            font-size: 45px;
+            top: -20px;
+        }
+    }  
 }

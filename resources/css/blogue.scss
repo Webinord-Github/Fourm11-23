@@ -17,6 +17,8 @@ $jaune: #edb200;
             border-top-left-radius: 10px;
             display: flex;
             justify-content: flex-start;
+            margin-bottom: 4%;
+            position: relative;
             width: 100%;
 
             .white-buble {
@@ -36,15 +38,15 @@ $jaune: #edb200;
                 color: $jaune;
                 font-size: 60px;
                 position: relative;
-                width: 100%;
+            }
 
-                span {
-                    color: #edb20047;
-                    font-size: 80px;
-                    left: -30px;
-                    position: absolute;
-                    top: -35px;
-                }
+            p {
+                color: #edb20047;
+                font-family: 'Edo', sans-serif;
+                font-size: 80px;
+                left: -30px;
+                position: absolute;
+                top: -35px;
             }
         }
 
@@ -99,13 +101,18 @@ $jaune: #edb200;
                 justify-content: center;
                 margin-top: 15%;
                 width: 100%;
+
+                h3 {
+                    font-size: 18px;
+                    text-align: center;
+                }
             }
 
             .posts {
                 align-items: flex-start;
                 display: flex;
                 flex-wrap: wrap;
-                justify-content: space-between;
+                justify-content: space-around;
                 width: 100%;
 
 
@@ -113,10 +120,9 @@ $jaune: #edb200;
                 .post {
                     border-bottom: #d3d3d3 1px solid;
                     height: fit-content;
-                    margin-bottom: 2%;
-                    min-width: 300px;
+                    margin: 0 1% 2% 1%;
                     padding-bottom: 2%;
-                    width: 30%;
+                    width: 300px;
 
                     .image {
                         width: 100%;
@@ -226,17 +232,48 @@ $jaune: #edb200;
     }
 } 
 
+@media screen and (max-width:767px) {
+    .blogue-container {
+        margin-top: 50px;
+
+        .blogue-content .top-div {
+            justify-content: center;
+            
+            h1 {
+                font-size: 50px;
+            }
+        
+            p {
+                font-size: 60px;
+                left: auto;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 700px) {
     .blogue-container .blogue-content .content .posts {
         justify-content: center;
         
         .post {
-            margin-bottom: 4%;
-            width: 90%;
+            margin-bottom: 20px;
     
             .more {
                 margin-bottom: 2%;
             }
         }
     }
+}
+
+@media screen and (max-width:500px) {
+    .blogue-container .blogue-content .top-div {
+        h1 {
+            font-size: 40px;
+        }
+    
+        p {
+            font-size: 45px;
+            top: -20px;
+        }
+    }  
 }
