@@ -109,6 +109,23 @@
         </div>
     </div>
 </form>
+
+<form class="w-full flex justify-center" action="{{ route('cookie-script') }}" method="post">
+    @csrf
+    <div class="px-12 pb-8 flex flex-col items-center w-10/12">
+        <div class="w-full mb-2">
+            <p style="font-size:25px;font-weight:bold;">Cookie Script</p>
+            <div class="flex justify-start flex-col">
+                <label for="cookie">Cookie script</label>
+                <input type='text' name="cookie" id="cookie" class="w-6/12 border rounded py-2 text-gray-700 focus:outline-none" name="password" id="password" value="{{$cookie->cookie_script}}">
+            </div>
+        </div>
+
+        <div class="w-full flex justify-start">
+            <input type="submit" class="w-60 mt-6 py-2 rounded bg-blue-500 hover:bg-blue-700 text-gray-100 focus:outline-none font-bold cursor-pointer" value="Sauvegarder">
+        </div>
+    </div>
+</form>
 @endsection
 @section('scripts')
 @include('admin.partials.scripts')

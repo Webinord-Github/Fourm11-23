@@ -9,6 +9,7 @@ use App\Models\Media;
 use App\Models\Thematique;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Notification;
 use Auth;
 
 class ToolsController extends Controller
@@ -74,11 +75,22 @@ class ToolsController extends Controller
             Storage::putFileAs('public/medias',$request->media, $file_name);
     
             $tool->media_id = $media->id;
-
         }
+
+ 
         $tool->save();
         $tool->thematiques()->sync($thematiques_selected);
 
+        $title = $tool->title;
+
+        $cutTitle = strlen($title) > 80 ? substr($title, 0, 80) . '...' : $title;
+
+        $notification = new Notification();
+        $notification->sujet = 'Nouvel Outil:<br>' . $cutTitle;
+        $notification->type = 'BasicNotif';
+        $notification->notif_link = "/boite-a-outils#t$tool->id";
+        $notification->tool_id = $tool->id;
+        $notification->save();
         return redirect('/admin/tools')->with('status', "$tool->title a été créé.");
     }
 

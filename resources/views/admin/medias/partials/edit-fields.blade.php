@@ -28,7 +28,7 @@
                 </tr>
                 <tr class="align-start flex flex-col">
                     <td>{{$model->created_at}}</td>
-                    <td>{{$model->user->firstname}}</td>
+                    <td>{{$user->firstname}}</td>
                     <td><a href="{{asset($model->path . $model->name)}}" style="color:blue;text-decoration:underline;" target="_blank">{{asset($model->path . $model->name)}}</td>
                     <td>{{$model->name}}</td>
                     <td>{{$model->provider}}</td>

@@ -869,7 +869,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   left: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw;
   z-index: 1000;
@@ -944,7 +944,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   left: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw;
   z-index: 1000;

@@ -9,6 +9,7 @@ use App\Models\Maintenance;
 use Illuminate\Support\Facades\Artisan;
 use Auth;
 use App\Events\MaintenanceModeUpdated;
+use App\Models\Cookie;
 
 class AdminSettingsController extends Controller
 {
@@ -21,8 +22,9 @@ class AdminSettingsController extends Controller
     {
         $mailSetting = MailSetting::first();
         $maintenance = Maintenance::first();
+        $cookie = Cookie::first();
 
-        return view('admin.settings.index', compact('mailSetting', 'maintenance'));
+        return view('admin.settings.index', compact('mailSetting', 'maintenance', 'cookie'));
     }
 
     /**
@@ -140,11 +142,20 @@ class AdminSettingsController extends Controller
             $existingMaintenance->save();
         }
         if($maintenanceValue == 1) {
-        
-            broadcast(new MaintenanceModeUpdated());
+   
         } else {
          
         }
         return redirect()->route('parametres.index')->with('status', 'Site mis en maintenance.');
+    }
+
+    public function cookieScript(Request $request) 
+    {   
+        $cookie = $request->cookie;
+        $existing = Cookie::first();
+        $existing->cookie_script = $cookie;
+        $existing->save();
+        return redirect()->route('parametres.index')->with('status', 'Cookie sauvegardé');
+
     }
 }

@@ -79,6 +79,16 @@ class BlogController extends Controller
         $post->save();
         $post->thematiques()->sync($thematiques_selected);
 
+        $title = $post->title;
+        $cutTitle = strlen($title) > 80 ? substr($title, 0, 80) . '...' : $title;
+
+        $notification = new Notification();
+        $notification->sujet = 'Nouvel article:<br>' . $cutTitle;
+        $notification->type = 'BasicNotif';
+        $notification->notif_link = "/blogue#p$post->id";
+        $notification->tool_id = $tool->id;
+        $notification->save();
+
         return redirect()->route('posts.index')->with('status', "$post->title a été créé.");
     }
 
@@ -115,20 +125,20 @@ class BlogController extends Controller
         $post->slug = $slug;
         $post->body = $request->body;
 
-        if($request->image) {
+        if ($request->image) {
             $file_original_name = $request->image->getClientOriginalName();
             $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
             $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
             $file_size = $request->image->getSize() / 1024;
             $existing_file_url = Media::where('name', '=', $file_original_name)->first();
             $count_file = Media::where('original_name', '=', $file_original_name)->count();
-    
-            if($existing_file_url) {
+
+            if ($existing_file_url) {
                 $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
             } else {
                 $file_name = $file_original_name;
             }
-    
+
             $media = new Media();
             $media->user_id = Auth::user()->id;
             $media->path = '/storage/medias/';
@@ -137,8 +147,8 @@ class BlogController extends Controller
             $media->size = $file_size;
             $media->provider = $file_provider;
             $media->save();
-            Storage::putFileAs('public/medias',$request->image, $file_name);
-            
+            Storage::putFileAs('public/medias', $request->image, $file_name);
+
             $post->image_id = $media->id;
         }
 
@@ -157,13 +167,13 @@ class BlogController extends Controller
         return redirect('/admin/posts')->with('status', "$post->title a été supprimé.");
     }
 
-    public function blogBookmarks(Request $request) 
+    public function blogBookmarks(Request $request)
     {
         $validatedData = $request->validate([
             'blog_id' => ['required', 'numeric'],
         ]);
         $existingBookmark = Postmark::where('user_id', Auth::user()->id)->where('post_id', $validatedData['blog_id'])->first();
-        if(!$existingBookmark) {
+        if (!$existingBookmark) {
             $bookmark = new Postmark();
             $bookmark->user_id = Auth::user()->id;
             $bookmark->post_id = $validatedData['blog_id'];

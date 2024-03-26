@@ -77,7 +77,7 @@
                         </div>
                     @endif
                     @foreach($tools as $tool)
-                        <div class="tool" data-id="{{ $tool->id }}">
+                        <div class="tool" data-id="{{ $tool->id }}" id="t{{$tool->id}}">
                             <div class="top">
                                 <h3 class="title">{{ $tool->title }}</h3>
                                 @if(auth()->check() && auth()->user()->verified)
