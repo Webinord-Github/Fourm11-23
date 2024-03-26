@@ -38,6 +38,9 @@
                     <a href="{{ route('posts.index') }}"><i class="fa-solid fa-newspaper mr-4 mt-0.5" aria-hidden="true"></i>Articles</a>
                 </li>
                 <li class="navLink">
+                    <a href="{{ route('blogguard.index') }}"><i class="fa-solid fa-newspaper mr-4 mt-0.5" aria-hidden="true"></i>Vérification des articles</a>
+                </li>
+                <li class="navLink">
                     <a href="{{ route('events.index') }}"><i class="fa-solid fa-bell mr-4 mt-0.5" aria-hidden="true"></i>Évènements</a>
                 </li>
                 <li class="navLink admin__menu__dropdown">

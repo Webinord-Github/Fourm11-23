@@ -60,7 +60,7 @@ class PagesController extends Controller
         $tools = Tool::where('verified', '1')->get();
         $thematiques = Thematique::all();
         $facts = Fact::all();
-        $posts = Post::all();
+        $posts = Post::where('verified', '1')->get();
         $recentConversations = Conversation::
         where('published', true)->
         orderBy('created_at', 'desc')

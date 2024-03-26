@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->longText('body');
-            $table->integer('image_id');
+            $table->integer('image_id')->nullable();
+            $table->boolean('verified')->default(false);
             $table->timestamps();
         });
     }

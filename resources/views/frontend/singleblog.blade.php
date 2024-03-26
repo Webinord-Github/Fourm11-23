@@ -17,9 +17,11 @@
             </div>
             <div class="content ">
                 <div class="single-post">
-                    <div class="img-wrapper">
-                        <img src="{{ $post->media->path . $post->media->name}}" alt="{{ $post->media->name }}">
-                    </div>
+                    @if($post->media)
+                        <div class="img-wrapper">
+                            <img src="{{ $post->media->path . $post->media->name}}" alt="{{ $post->media->name }}">
+                        </div>
+                    @endif
                     <p class="body">
                         {{ $post->body }}
                     </p>

@@ -29,8 +29,8 @@ class BlogController extends Controller
 
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'body' => ['required', 'string'],
-            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp'],
+            'body' => ['required', 'string', 'max:6500'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,webp', 'nullable'],
             'thematiques' => ['required', 'array', 'max:3']
         ]);
 
@@ -48,31 +48,34 @@ class BlogController extends Controller
         $post->title = $request->title;
         $post->slug = $slug;
         $post->body = $request->body;
+        $post->verified = 1;
 
-        $file_original_name = $request->image->getClientOriginalName();
-        $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
-        $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
-        $file_size = $request->image->getSize() / 1024;
-        $existing_file_url = Media::where('name', '=', $file_original_name)->first();
-        $count_file = Media::where('original_name', '=', $file_original_name)->count();
-
-        if($existing_file_url) {
-            $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
-        } else {
-            $file_name = $file_original_name;
+        if($request->image) {
+            $file_original_name = $request->image->getClientOriginalName();
+            $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
+            $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
+            $file_size = $request->image->getSize() / 1024;
+            $existing_file_url = Media::where('name', '=', $file_original_name)->first();
+            $count_file = Media::where('original_name', '=', $file_original_name)->count();
+    
+            if($existing_file_url) {
+                $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
+            } else {
+                $file_name = $file_original_name;
+            }
+    
+            $media = new Media();
+            $media->user_id = Auth::user()->id;
+            $media->path = '/storage/medias/';
+            $media->name = $file_name;
+            $media->original_name = $file_original_name;
+            $media->size = $file_size;
+            $media->provider = $file_provider;
+            $media->save();
+            Storage::putFileAs('public/medias',$request->image, $file_name);
+            
+            $post->image_id = $media->id;
         }
-
-        $media = new Media();
-        $media->user_id = Auth::user()->id;
-        $media->path = '/storage/medias/';
-        $media->name = $file_name;
-        $media->original_name = $file_original_name;
-        $media->size = $file_size;
-        $media->provider = $file_provider;
-        $media->save();
-        Storage::putFileAs('public/medias',$request->image, $file_name);
-        
-        $post->image_id = $media->id;
         $post->save();
         $post->thematiques()->sync($thematiques_selected);
 
@@ -95,8 +98,8 @@ class BlogController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'body' => ['required', 'string'],
-            'image' => ['image', 'mimes:jpeg,png,jpg,webp'],
+            'body' => ['required', 'string', 'max:6500'],
+            'image' => ['mimes:jpeg,png,jpg,webp', 'nullable'],
             'thematiques' => ['required', 'array', 'max:3']
         ]);
 
@@ -169,5 +172,61 @@ class BlogController extends Controller
             $existingBookmark->delete();
         }
         return response()->json(['success' => 'Blog ajouté dans les signets']);
+    }
+
+    public function send(Request $request)
+    {
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'body' => ['required', 'string', 'max:6500'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,webp', 'nullable'],
+            'thematiques' => ['required', 'array', 'max:3']
+        ]);
+
+        $post = new Post();
+
+        $slug = Str::slug($request->title);
+
+        $thematiques_selected = [];
+
+        foreach ($request->thematiques as $thematique) {
+            array_push($thematiques_selected, $thematique);
+        }
+
+        $post->user_id = Auth::user()->id;
+        $post->title = $request->title;
+        $post->slug = $slug;
+        $post->body = $request->body;
+        $post->verified = 0;
+
+        if($request->image) {
+            $file_original_name = $request->image->getClientOriginalName();
+            $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
+            $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
+            $file_size = $request->image->getSize() / 1024;
+            $existing_file_url = Media::where('name', '=', $file_original_name)->first();
+            $count_file = Media::where('original_name', '=', $file_original_name)->count();
+    
+            if($existing_file_url) {
+                $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
+            } else {
+                $file_name = $file_original_name;
+            }
+    
+            $media = new Media();
+            $media->user_id = Auth::user()->id;
+            $media->path = '/storage/medias/';
+            $media->name = $file_name;
+            $media->original_name = $file_original_name;
+            $media->size = $file_size;
+            $media->provider = $file_provider;
+            $media->save();
+            Storage::putFileAs('public/medias',$request->image, $file_name);
+            $post->image_id = $media->id;
+        }
+        $post->save();
+        $post->thematiques()->sync($thematiques_selected);
+
+        return redirect('/blogue')->with('status', "Votre article est en attente d'approbation.");
     }
 }
