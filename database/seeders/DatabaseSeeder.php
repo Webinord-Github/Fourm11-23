@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             MaintenanceTableSeeder::class,
             SmtpTableSeeder::class,
             ChatbotActiveTableSeeder::class,
+            CookieTableSeeder::class,
         ]);
     }
 }

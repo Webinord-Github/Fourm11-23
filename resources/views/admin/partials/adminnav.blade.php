@@ -47,9 +47,6 @@
                             <div class="submenu__links">
                                 <a href="/admin/facts">Saviez-vous</a>
                             </div>
-                            <div class="submenu__links">
-                                <a href="/admin/cards">Intimidation</a>
-                            </div>
                         </div>
                     </div>
                 </li>
@@ -104,6 +101,7 @@
 <script>
     getNewMessageNotifAdmin();
     setInterval(getNewMessageNotifAdmin, 2000);
+
     function getNewMessageNotifAdmin() {
         let xhttp = new XMLHttpRequest();
         let Params;

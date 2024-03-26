@@ -80,7 +80,7 @@ class ConversationsController extends Controller
 
 
         $notification = new Notification();
-        $notification->sujet = 'Une nouvelle conversation a été ajoutée:<br>' . $cutTitle;
+        $notification->sujet = 'Nouvelle conversation:<br>' . $cutTitle;
         $notification->type = 'BasicNotif';
         $notification->notif_link = "/forum#c$conversation->id";
         $notification->conversation_id = $conversation->id;
@@ -106,9 +106,13 @@ class ConversationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Conversation $conversation)
     {
-        //
+        $thematiques = Thematique::all();
+        return view('admin.conversations.edit', [
+            'model' => $conversation,
+            'thematiques' => $thematiques,
+        ]);
     }
 
     /**
@@ -120,7 +124,33 @@ class ConversationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'thematiques' => ['required', 'array', 'max:3'],
+            'title' => ['required', 'max:255', 'string'],
+            'body' => ['required', 'max:2000', 'string'],
+        ], [
+            'thematiques.required' =>'Choisir au moins une thématique',
+            'thematiques.array' => 'Choisir maximum trois thématiques',
+            'title.required' => 'Le titre est requis',
+            'body.required' => 'Le contenu est requis',
+        ]);
+    
+        $thematiques_selected = [];
+    
+        foreach ($request->thematiques as $thematique) {
+            array_push($thematiques_selected, $thematique);
+        }
+    
+        $conversation = Conversation::findOrFail($id);
+    
+        $conversation->update([
+            'title' => $request->title,
+            'body' => $request->body,
+        ]);
+    
+        $conversation->thematiques()->sync($thematiques_selected);
+    
+        return redirect()->route('conversations.index')->with('status', 'La conversation a été modifiée');
     }
 
     /**

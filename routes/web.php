@@ -38,6 +38,7 @@ use App\Http\Controllers\SearchBarController;
 use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\Admin\ReportsController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +49,7 @@ use App\Http\Controllers\Admin\ReportsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('admin/parametres/cookie', [AdminSettingsController::class, 'cookieScript'])->name('cookie-script')->middleware('admin');
 Route::put('/admin/refusedReply{signalement}', [ReportsController::class, 'deletedReply'])->name('deleted-reply');
 Route::resource('/admin/signalements', ReportsController::class)->middleware('admin');
 Route::post('/forum/bookmark', [ConversationsController::class, 'conversationBookmark'])->name('conversation.bookmark');

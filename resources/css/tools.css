@@ -27,6 +27,8 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  margin-bottom: 2%;
+  position: relative;
   width: 100%;
 }
 .tools-container .tools-content .top-div .white-buble {
@@ -39,13 +41,22 @@
   margin: 0 1%;
   width: 35px;
 }
-.tools-container .tools-content .top-div .white-buble .fa-screwdriver-wrench {
-  height: 30px;
-  width: 30px;
-}
 .tools-container .tools-content .top-div .arrow {
   font-size: 60px;
   margin-right: 50px;
+}
+.tools-container .tools-content .top-div h1 {
+  color: #edb200;
+  font-size: 60px;
+  position: relative;
+}
+.tools-container .tools-content .top-div p {
+  color: rgba(237, 178, 0, 0.2784313725);
+  font-family: "Edo", sans-serif;
+  font-size: 80px;
+  left: -30px;
+  position: absolute;
+  top: -35px;
 }
 .tools-container .tools-content .content {
   -webkit-box-align: normal;
@@ -151,6 +162,60 @@
   color: #fff;
   font-weight: bold;
 }
+.tools-container .tools-content .content .thematiques-half .dropdown__container {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  display: none;
+  margin: 2% 0;
+  width: 100%;
+}
+.tools-container .tools-content .content .thematiques-half .dropdown__container .dropdown__content .dropdown {
+  height: 60px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+.tools-container .tools-content .content .thematiques-half .dropdown__container .dropdown__content .dropdown h3 {
+  font-size: 24px;
+  margin-right: 2%;
+}
+.tools-container .tools-content .content .thematiques-half .dropdown__container .dropdown__content .dropdown i {
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+.tools-container .tools-content .content .thematiques-half .dropdown__container .dropdown__content .dropdown .drop__trigger, .tools-container .tools-content .content .thematiques-half .dropdown__container .dropdown__content .dropdown .drop__trigger__parent {
+  cursor: pointer;
+}
+.tools-container .tools-content .content .thematiques-half .dropdown__container .dropdown__content .rotate {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.tools-container .tools-content .content .thematiques-half .dropdown__container .dropdown__content .drop__content {
+  height: 0;
+  overflow: hidden;
+}
+.tools-container .tools-content .content .thematiques-half .dropdown__container .dropdown__content .drop__content .text .thematique {
+  border-top: 1px solid rgba(255, 255, 255, 0.2549019608);
+  color: #fff;
+  cursor: pointer;
+  padding: 1% 0;
+  text-align: center;
+}
+.tools-container .tools-content .content .thematiques-half .dropdown__container .dropdown__content .drop__content .text .thematique:hover {
+  opacity: 0.8;
+}
 .tools-container .tools-content .content .thematiques-half .btn-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -214,20 +279,18 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 300px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  min-height: 350px;
+  min-width: 300px;
   padding: 2%;
   width: 50%;
 }
-.tools-container .tools-content .content .tools-half .tool .title {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.tools-container .tools-content .content .tools-half .tool .top {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -236,12 +299,13 @@
           justify-content: space-between;
   width: 100%;
 }
-.tools-container .tools-content .content .tools-half .tool .title h3 {
+.tools-container .tools-content .content .tools-half .tool .top .title {
   font-family: "edo";
-  font-size: 36px;
+  font-size: 24px;
   font-weight: bold;
+  max-width: 90%;
 }
-.tools-container .tools-content .content .tools-half .tool .title .black-buble {
+.tools-container .tools-content .content .tools-half .tool .top .black-buble {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -258,13 +322,13 @@
           justify-content: center;
   width: 35px;
 }
-.tools-container .tools-content .content .tools-half .tool .title .black-buble i {
+.tools-container .tools-content .content .tools-half .tool .top .black-buble i {
   color: #fff;
 }
-.tools-container .tools-content .content .tools-half .tool .title .active i {
+.tools-container .tools-content .content .tools-half .tool .top .active i {
   color: #edb200;
 }
-.tools-container .tools-content .content .tools-half .tool .title .black-buble:hover i {
+.tools-container .tools-content .content .tools-half .tool .top .black-buble:hover i {
   color: #edb200;
 }
 .tools-container .tools-content .content .tools-half .tool .desc {
@@ -329,7 +393,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   left: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw;
   z-index: 1000;
@@ -398,4 +462,104 @@
 }
 .popup-ctn .popup .close-btn {
   cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .tools-container .tools-content .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .tools-container .tools-content .content .thematiques-half {
+    padding-left: 0;
+    width: 100%;
+  }
+  .tools-container .tools-content .content .thematiques-half .searchbar-container {
+    margin: 2% 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .tools-container .tools-content .content .thematiques-half .thematiques {
+    display: none;
+  }
+  .tools-container .tools-content .content .thematiques-half .btn-container {
+    margin: 2% 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .tools-container .tools-content .content .thematiques-half .dropdown__container {
+    display: block;
+  }
+  .tools-container .tools-content .content .tools-half {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 942px) {
+  .tools-container .tools-content .content .tools-half {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .tools-container .tools-content .content .tools-half .tool {
+    border-right: none !important;
+    height: 350px;
+    min-width: none;
+    padding: 15px 0;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .tools-container {
+    margin-top: 75px;
+  }
+  .tools-container .tools-content .top-div {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .tools-container .tools-content .top-div h1 {
+    font-size: 50px;
+  }
+  .tools-container .tools-content .top-div p {
+    font-size: 60px;
+    left: auto;
+  }
+}
+@media screen and (max-width: 700px) {
+  .tools-container .tools-content .content .posts {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .tools-container .tools-content .content .posts .post {
+    margin-bottom: 20px;
+  }
+  .tools-container .tools-content .content .posts .post .more {
+    margin-bottom: 2%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .tools-container .tools-content .top-div h1 {
+    font-size: 40px;
+  }
+  .tools-container .tools-content .top-div p {
+    font-size: 45px;
+    top: -20px;
+  }
+  .tools-container .tools-content .content .thematiques-half .dropdown__container .dropdown__content .dropdown h3 {
+    font-size: 20px;
+  }
+  .tools-container .tools-content .content .thematiques-half .dropdown__container .dropdown__content .dropdown i {
+    font-size: 30px;
+  }
+  .tools-container .tools-content .content .thematiques-half .btn-container button {
+    padding: 3px 20px;
+    width: 170px;
+  }
 }/*# sourceMappingURL=tools.css.map */

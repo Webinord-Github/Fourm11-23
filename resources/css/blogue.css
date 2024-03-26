@@ -27,6 +27,8 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  margin-bottom: 4%;
+  position: relative;
   width: 100%;
 }
 .blogue-container .blogue-content .top-div .white-buble {
@@ -47,10 +49,10 @@
   color: #edb200;
   font-size: 60px;
   position: relative;
-  width: 100%;
 }
-.blogue-container .blogue-content .top-div h1 span {
+.blogue-container .blogue-content .top-div p {
   color: rgba(237, 178, 0, 0.2784313725);
+  font-family: "Edo", sans-serif;
   font-size: 80px;
   left: -30px;
   position: absolute;
@@ -121,6 +123,10 @@
   margin-top: 15%;
   width: 100%;
 }
+.blogue-container .blogue-content .content .empty h3 {
+  font-size: 18px;
+  text-align: center;
+}
 .blogue-container .blogue-content .content .posts {
   -webkit-box-align: start;
       -ms-flex-align: start;
@@ -130,9 +136,8 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   width: 100%;
 }
 .blogue-container .blogue-content .content .posts .post {
@@ -140,10 +145,9 @@
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  margin-bottom: 2%;
-  min-width: 300px;
+  margin: 0 1% 2% 1%;
   padding-bottom: 2%;
-  width: 30%;
+  width: 300px;
 }
 .blogue-container .blogue-content .content .posts .post .image {
   width: 100%;
@@ -249,6 +253,23 @@
   background-color: #fff;
 }
 
+@media screen and (max-width: 767px) {
+  .blogue-container {
+    margin-top: 50px;
+  }
+  .blogue-container .blogue-content .top-div {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .blogue-container .blogue-content .top-div h1 {
+    font-size: 50px;
+  }
+  .blogue-container .blogue-content .top-div p {
+    font-size: 60px;
+    left: auto;
+  }
+}
 @media screen and (max-width: 700px) {
   .blogue-container .blogue-content .content .posts {
     -webkit-box-pack: center;
@@ -256,10 +277,18 @@
             justify-content: center;
   }
   .blogue-container .blogue-content .content .posts .post {
-    margin-bottom: 4%;
-    width: 90%;
+    margin-bottom: 20px;
   }
   .blogue-container .blogue-content .content .posts .post .more {
     margin-bottom: 2%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .blogue-container .blogue-content .top-div h1 {
+    font-size: 40px;
+  }
+  .blogue-container .blogue-content .top-div p {
+    font-size: 45px;
+    top: -20px;
   }
 }/*# sourceMappingURL=blogue.css.map */
