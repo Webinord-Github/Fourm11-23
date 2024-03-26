@@ -48,6 +48,7 @@ class BlogController extends Controller
         $post->title = $request->title;
         $post->slug = $slug;
         $post->body = $request->body;
+        $post->verified = 1;
 
         $file_original_name = $request->image->getClientOriginalName();
         $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
@@ -73,8 +74,19 @@ class BlogController extends Controller
         Storage::putFileAs('public/medias', $request->image, $file_name);
 
         $post->image_id = $media->id;
+        }
         $post->save();
         $post->thematiques()->sync($thematiques_selected);
+
+        $title = $post->title;
+        $cutTitle = strlen($title) > 80 ? substr($title, 0, 80) . '...' : $title;
+
+        $notification = new Notification();
+        $notification->sujet = 'Nouvel article:<br>' . $cutTitle;
+        $notification->type = 'BasicNotif';
+        $notification->notif_link = "/blogue#p$post->id";
+        $notification->tool_id = $tool->id;
+        $notification->save();
 
         return redirect()->route('posts.index')->with('status', "$post->title a été créé.");
     }
