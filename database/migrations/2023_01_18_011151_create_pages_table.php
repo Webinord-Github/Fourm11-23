@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('url')->unique();
             $table->string('content')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_desc')->nullable();
             $table->integer('user_id');
             $table->timestamps();
         });

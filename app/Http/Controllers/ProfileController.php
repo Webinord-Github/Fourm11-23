@@ -123,21 +123,18 @@ class ProfileController extends Controller
     public function updateProfile(Request $request, User $user)
     {
         $validatedData = $request->validate([
-            'pronoun' => ['string', 'max:255', 'nullable'],
-            'used_agreements' => ['string', 'max:255', 'nullable'],
-            'gender' => ['string', 'max:255', 'nullable'],
             'title' => ['required', 'string', 'max:255'],
             'environment' => ['required', 'string', 'max:255'],
-            'years_xp' => ['numeric', 'nullable'],
             'work_city' => ['required', 'string', 'max:255'],
-            'work_phone' => ['required', 'string', 'max:255'],
-            'description' => ['string', 'max:400', 'nullable'],
-            'audience' => ['array'],
+            'audience' => ['array', 'required'],
             'audience.*' => ['string', 'max:255'],
             'other_audience' => ['nullable', 'string', 'max:255'],
-            'interests' => ['array'],
+            'interests' => ['array', 'required'],
             'interests.*' => ['string', 'max:255'],
             'other_interests' => ['nullable', 'string', 'max:255'],
+        ], [
+            'audience.required' => "Vous devez choisir au moins un groupe d’âge.",
+            'interests.required' => 'Vous devez choisir au moins une raison de recherche sur la plateforme.',
         ]);
 
         // AUDIENCE
@@ -166,15 +163,9 @@ class ProfileController extends Controller
         // Convert interests array to a string
         $interestsString = $interests !== null ? implode(',', $interests) : null;
 
-        $user->pronoun = $validatedData['pronoun'];
-        $user->used_agreements = $validatedData['used_agreements'];
-        $user->gender = $validatedData['gender'];
         $user->title = $validatedData['title'];
         $user->environment = $validatedData['environment'];
-        $user->years_xp = $validatedData['years_xp'];
         $user->work_city = $validatedData['work_city'];
-        $user->work_phone = $validatedData['work_phone'];
-        $user->description = $validatedData['description'];
         $user->audience = $audienceString;
         $user->interests = $interestsString;
 

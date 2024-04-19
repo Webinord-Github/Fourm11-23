@@ -30,68 +30,73 @@
             <div class="top-div">
                 {{-- <a href="/" class="arrow">&#8592;</a> --}}
                 <h1>Blogue</h1>
-                <p>Blogue</p>
             </div>
             <div class="content">
-                <div class="intro">
-                    <h4>
-                        Une communauté de pratique exceptionnelle
-                    </h4>
-
-                    <p>
-                        Bienvenue dans la section Blogue de la plateforme sur la communauté de pratique en prévention de l’intimidation, La Fourmilière, financée par ministère de la Famille et mis en œuvre par L’Anonyme.
-                    </p>
-
-                    <p>
-                        Dans cette section, nous vous invitons à soumettre des textes liés à votre réalité ou vos expériences. Vos textes peuvent prendre la forme d’une réflexion émanant de vos observations d’enjeux ou de problématiques qui touchent à l’intimidation (racisme, transphobie, capacitisme, etc.). C’est aussi l’occasion de nous présenter les pratiques que vous avez implantées dans votre milieu qui contribuent à prévenir ou à intervenir lors de situations d’intimidation. Il s’agit là de quelques exemples, mais vous êtes libre de choisir votre angle. Qui sait, il est possible que votre texte fasse l’objet d’un fil de discussion dans notre forum ou soit le sujet d’une de nos prochaines capsules.
-                    </p>
-
-                    <p>
-                        Cette communauté se veut inclusive, ouverte et accessible à tous·tes, nous favorisons l’utilisation d’une rédaction inclusive et respectueuse. Avant de publier votre texte sur la plateforme, assurez-vous d’avoir fait une relecture et une correction de votre texte. Les blogues ont pour objectif de partager des points de vue, de stimuler la réflexion et d’informer sur des bonnes pratiques.
-                    </p>
-
-                    <p style="margin-bottom: 0">
-                        Afin de vous aider dans la rédaction, voici quelques éléments à considérer :
-                    </p>
-
-                    <ul>
-                        <li>
-                            Le texte devra faire un maximum d’environ 1000 mots
-                        </li>
-
-                        <li>
-                            Trouvez un titre accrocheur
-                        </li>
-
-                        <li>
-                            Vous pouvez y insérer une photo ou une image 
-                        </li>
-
-                        <li>
-                            Nous nous réservons le droit de ne pas publier un texte, s’il y a lieu nous vous informerons des causes.
-                        </li>
-
-                    </ul>
-
-                    <p>
-                        Chaque membre de la communauté possède une valeur précieuse en termes d'expérience, de connaissances et de compétences, et chacun·e contribue à prévenir et intervenir lors de situations d’intimidation grâce à des échanges collectifs.
-                    </p>
-
-                    <p>
-                        N'hésitez pas à nous contacter si vous avez des questions, des propositions de collaboration ou simplement besoin de renseignements. Nous sommes ravi∙es d'établir une relation avec vous et nous nous engageons à répondre à toutes vos interrogations et à discuter de potentielles collaborations. Votre opinion et vos suggestions sont essentielles pour nous, alors n'hésitez pas à nous écrire à <a target="_blank" href="mailto:lafourmiliere@anonyme.ca">lafourmiliere@anonyme.ca</a>.
-                    </p>
-
-                    <p>
-                        Nous avons hâte d'entendre ce que vous avez à dire !
-                    </p>
-
-                    <div class="btn-container">
-                        <button id="add-post">
-                            proposer un article
-                        </button>
-                    </div>
-
+                <div class="img_wrapper">
+                    <img src="{{ asset('storage/medias/blogue.jpg') }}" alt="">
                 </div>
+
+                @if(auth()->check() && auth()->user()->verified)
+                    <div class="intro">
+                        <h4>
+                            Une communauté de pratique exceptionnelle
+                        </h4>
+
+                        <p>
+                            Bienvenue dans la section Blogue de la plateforme sur la communauté de pratique en prévention de l’intimidation, La Fourmilière, financée par ministère de la Famille et mis en œuvre par L’Anonyme.
+                        </p>
+
+                        <p>
+                            Dans cette section, nous vous invitons à soumettre des textes liés à votre réalité ou vos expériences. Vos textes peuvent prendre la forme d’une réflexion émanant de vos observations d’enjeux ou de problématiques qui touchent à l’intimidation (racisme, transphobie, capacitisme, etc.). C’est aussi l’occasion de nous présenter les pratiques que vous avez implantées dans votre milieu qui contribuent à prévenir ou à intervenir lors de situations d’intimidation. Il s’agit là de quelques exemples, mais vous êtes libre de choisir votre angle. Qui sait, il est possible que votre texte fasse l’objet d’un fil de discussion dans notre forum ou soit le sujet d’une de nos prochaines capsules.
+                        </p>
+
+                        <p>
+                            Cette communauté se veut inclusive, ouverte et accessible à tous·tes, nous favorisons l’utilisation d’une rédaction inclusive et respectueuse. Avant de publier votre texte sur la plateforme, assurez-vous d’avoir fait une relecture et une correction de votre texte. Les blogues ont pour objectif de partager des points de vue, de stimuler la réflexion et d’informer sur des bonnes pratiques.
+                        </p>
+
+                        <p style="margin-bottom: 0">
+                            Afin de vous aider dans la rédaction, voici quelques éléments à considérer :
+                        </p>
+
+                        <ul>
+                            <li>
+                                Le texte devra faire un maximum d’environ 1000 mots
+                            </li>
+
+                            <li>
+                                Trouvez un titre accrocheur
+                            </li>
+
+                            <li>
+                                Vous pouvez y insérer une photo ou une image 
+                            </li>
+
+                            <li>
+                                Nous nous réservons le droit de ne pas publier un texte, s’il y a lieu nous vous informerons des causes.
+                            </li>
+
+                        </ul>
+
+                        <p>
+                            Chaque membre de la communauté possède une valeur précieuse en termes d'expérience, de connaissances et de compétences, et chacun·e contribue à prévenir et intervenir lors de situations d’intimidation grâce à des échanges collectifs.
+                        </p>
+
+                        <p>
+                            N'hésitez pas à nous contacter si vous avez des questions, des propositions de collaboration ou simplement besoin de renseignements. Nous sommes ravi∙es d'établir une relation avec vous et nous nous engageons à répondre à toutes vos interrogations et à discuter de potentielles collaborations. Votre opinion et vos suggestions sont essentielles pour nous, alors n'hésitez pas à nous écrire à <a target="_blank" href="mailto:lafourmiliere@anonyme.ca">lafourmiliere@anonyme.ca</a>.
+                        </p>
+
+                        <p>
+                            Nous avons hâte d'entendre ce que vous avez à dire !
+                        </p>
+
+                        <div class="btn-container">
+                            <button id="add-post">
+                                proposer un article
+                            </button>
+                        </div>
+
+                    </div>
+                @endif
                 <div class="posts">
                     @if(count($posts) == 0)
                         <div class="empty">
@@ -178,7 +183,7 @@
                     <x-label :value="__('Thématiques (Max 3)')"></x-label>
                     @foreach ($thematiques as $thematique)
                     <div class="flex items-center">
-                        <input type="checkbox" id="{{ $thematique->name }}" name="thematiques[]" value="{{ $thematique->id }}">
+                        <input class="thematiques__checkbox" type="checkbox" id="{{ $thematique->name }}" name="thematiques[]" value="{{ $thematique->id }}">
                         <label class="ml-1" for="{{ $thematique->name }}">{{ ucfirst($thematique->name) }}</label>
                     </div>
                     @endforeach
@@ -235,4 +240,31 @@
             popup.style.display = 'none'
         })
     }
+
+    document.addEventListener("click", e => {
+        if (e.target.classList.contains("thematiques__checkbox")) {
+            let checkedThematiques = document.querySelectorAll(".thematiques__checkbox:checked");
+
+            if (checkedThematiques.length > 2) {
+                let allThematiques = document.querySelectorAll(".thematiques__checkbox")
+                for (let checkbox of allThematiques) {
+                    if (!checkbox.checked) {
+                        checkbox.disabled = true
+                        checkbox.style.cursor = "not-allowed"
+                        checkbox.style.opacity = "0.3"
+                    }
+                }
+            } if (checkedThematiques.length < 3) {
+                let allThematiques = document.querySelectorAll(".thematiques__checkbox")
+                console.log('true')
+                for (let checkbox of allThematiques) {
+                    if (!checkbox.checked) {
+                        checkbox.disabled = false
+                        checkbox.style.cursor = "pointer"
+                        checkbox.style.opacity = 1
+                    }
+                }
+            }
+        }
+    })
 </script>

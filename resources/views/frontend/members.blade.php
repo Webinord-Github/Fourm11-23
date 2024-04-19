@@ -1,7 +1,7 @@
 <div class="members__container">
     <div class="h1__container">
         <a href="/" class="arrow">&#8592;</a>
-        <h1>Les membres<span>Les membres</span></h1>
+        <h1>Les membres</h1>
     </div>
     <div class="members">
         @foreach($users as $user)

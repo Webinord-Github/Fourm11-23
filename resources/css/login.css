@@ -1,14 +1,8 @@
 .login__container {
   padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   height: calc(100vh - 100px);
 }
 .login__container .login__form {
@@ -19,16 +13,9 @@
   border-radius: 15px;
 }
 .login__container .login__form .details__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 .login__container .login__form .details__container i {
   color: #fff;
@@ -55,25 +42,7 @@
   width: 100%;
   padding: 15px;
 }
-.login__container .login__form .input__container .form__input::-webkit-input-placeholder {
-  font-weight: bold;
-  font-size: 20px;
-  color: gray;
-  padding-left: 10px;
-}
 .login__container .login__form .input__container .form__input::-moz-placeholder {
-  font-weight: bold;
-  font-size: 20px;
-  color: gray;
-  padding-left: 10px;
-}
-.login__container .login__form .input__container .form__input:-ms-input-placeholder {
-  font-weight: bold;
-  font-size: 20px;
-  color: gray;
-  padding-left: 10px;
-}
-.login__container .login__form .input__container .form__input::-ms-input-placeholder {
   font-weight: bold;
   font-size: 20px;
   color: gray;
@@ -86,20 +55,12 @@
   padding-left: 10px;
 }
 .login__container .login__form .input__container .form__input:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .login__container .login__form .login__actions__container, .login__container .login__form .reset__actions__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 .login__container .login__form .login__actions__container .login__cta__container, .login__container .login__form .login__actions__container .reset__cta__container, .login__container .login__form .reset__actions__container .login__cta__container, .login__container .login__form .reset__actions__container .reset__cta__container {
   margin-top: 10px;
@@ -129,16 +90,9 @@
   text-align: center;
   color: #fff;
   font-weight: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 .login__container .login__form .login__actions__container .register__custom__container p a, .login__container .login__form .reset__actions__container .register__custom__container p a {
   text-decoration: underline;

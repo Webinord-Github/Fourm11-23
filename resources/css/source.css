@@ -1,13 +1,7 @@
 .source-container {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: center;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 100%;
 }
 .source-container .source-content {
@@ -16,17 +10,11 @@
   width: 90%;
 }
 .source-container .source-content .top-div {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
   width: 100%;
 }
 .source-container .source-content .top-div .arrow {
@@ -44,22 +32,16 @@
   width: 100%;
 }
 .source-container .source-content .content .section h2 {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   color: #f7f7f7;
   background-image: url("http://127.0.0.1:8000/storage/medias/header-v3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-clip: border-box;
   border-radius: 10px 10px 0 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 75px;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
   padding: 0 2%;
   width: 100%;
 }

@@ -46,23 +46,18 @@ class RegisteredUserController extends Controller
         $validatedData = $request->validate([
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'pronoun' => ['string', 'max:255', 'nullable'],
-            'used_agreements' => ['string', 'max:255', 'nullable'],
-            'gender' => ['string', 'max:255', 'nullable'],
             'title' => ['required', 'string', 'max:255'],
             'environment' => ['required', 'string', 'max:255'],
-            'birthdate' => ['required', 'date'],
-            'years_xp' => ['numeric', 'nullable'],
             'work_city' => ['required', 'string', 'max:255'],
-            'work_phone' => ['required', 'string', 'max:255'],
-            'description' => ['string', 'max:400', 'nullable'],
-            'audience' => ['array'],
+            'audience' => ['array', 'required'],
             'audience.*' => ['string', 'max:255'],
             'other_audience' => ['nullable', 'string', 'max:255'],
-            'interests' => ['array'],
+            'interests' => ['array', 'required'],
             'interests.*' => ['string', 'max:255'],
             'other_interests' => ['nullable', 'string', 'max:255'],
-            'about' => ['string', 'max:255', 'nullable'],
+            'hear_about' => ['array', 'required'],
+            'hear_about.*' => ['string', 'max:255'],
+            'other_about' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'file' => ['nullable', 'file', 'mimes:jpeg,png,webp|max:8192'],
@@ -76,6 +71,8 @@ class RegisteredUserController extends Controller
             'email_confirmation.same' => 'La confirmation du courriel ne correspond pas.',
             'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
             'password.min' => 'Le mot de passe doit comporter au moins 8 caractères.',
+            'audience.required' => "Vous devez choisir au moins un groupe d’âge.",
+            'interests.required' => 'Vous devez choisir au moins une raison de recherche sur la plateforme.',
         ]);
 
         // AUDIENCE
@@ -104,6 +101,19 @@ class RegisteredUserController extends Controller
         // Convert interests array to a string
         $interestsString = $interests !== null ? implode(',', $interests) : null;
 
+        // ABOUT
+        $about = $validatedData['hear_about'] ?? [];
+        $otherAbout = $validatedData['other_about'] ?? null;
+
+        if (empty($about) && !$otherAbout) {
+            $about = null;
+        } elseif ($otherAbout) {
+            $about[] = $otherAbout;
+        }
+
+        // Convert about array to a string
+        $aboutString = $about !== null ? implode(',', $about) : null;
+
         // NEWSLETTER
         $newsletter = $request->has('newsletter') ? true : false;
         // NOTIFICATIONS
@@ -115,19 +125,12 @@ class RegisteredUserController extends Controller
         $userData = [
             'firstname' => $validatedData['firstname'],
             'lastname' => $validatedData['lastname'],
-            'pronoun' => $validatedData['pronoun'],
-            'used_agreements' => $validatedData['used_agreements'],
-            'gender' => $validatedData['gender'],
             'title' => $validatedData['title'],
             'environment' => $validatedData['environment'],
-            'birthdate' => $validatedData['birthdate'],
-            'years_xp' => $validatedData['years_xp'],
             'work_city' => $validatedData['work_city'],
-            'work_phone' => $validatedData['work_phone'],
-            'description' => $validatedData['description'],
             'audience' => $audienceString,
             'interests' => $interestsString,
-            'hear_about' => $validatedData['about'],
+            'hear_about' => $aboutString,
             'newsletter' => $newsletter,
             'notifications' => $notifications,
             'conditions' => $conditions,
@@ -182,22 +185,22 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        if ($request->filled('email')) {
-            $to_email = $validatedData['email'];
-            $automaticEmail = AutomaticEmail::where('id', 1)->first();
-            $userFirstName = $userData['firstname'];
-            $emailBody = "<h1 style='text-align:center;'>Inscription à La Fourmilière</h1><p>Bonjour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
-            $customSubject = 'Courriel de la fourmilière';
-            Mail::to($to_email)->send(new AutoEmail($emailBody, $customSubject));
+        // if ($request->filled('email')) {
+        //     $to_email = $validatedData['email'];
+        //     $automaticEmail = AutomaticEmail::where('id', 1)->first();
+        //     $userFirstName = $userData['firstname'];
+        //     $emailBody = "<h1 style='text-align:center;'>Inscription à La Fourmilière</h1><p>Bonjour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
+        //     $customSubject = 'Courriel de la fourmilière';
+        //     Mail::to($to_email)->send(new AutoEmail($emailBody, $customSubject));
             
-            $userEmail = 'info@webinord.ca';
-            $emailBodyAdmin = "<h1 style='text-align:center;'>Demande d'inscription à La Fourmilière</h1><p>Nouvelle demande d'inscription à la fourmilière</p>
-            <p<strong>Nom complet:</strong>" . $validatedData['firstname'] . " " . $validatedData['lastname'] . "</p>
-            <p><strong>Courriel:</strong>" . $validatedData['email'] .  "</p>
-            ";
-            Mail::to($userEmail)->send(new AutoEmail($emailBodyAdmin, $customSubject));
+        //     $userEmail = 'info@webinord.ca';
+        //     $emailBodyAdmin = "<h1 style='text-align:center;'>Demande d'inscription à La Fourmilière</h1><p>Nouvelle demande d'inscription à la fourmilière</p>
+        //     <p<strong>Nom complet:</strong>" . $validatedData['firstname'] . " " . $validatedData['lastname'] . "</p>
+        //     <p><strong>Courriel:</strong>" . $validatedData['email'] .  "</p>
+        //     ";
+        //     Mail::to($userEmail)->send(new AutoEmail($emailBodyAdmin, $customSubject));
             
-        }
+        // }
         event(new Registered($user));
         return redirect('/');
     }

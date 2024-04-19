@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="conversations__container">
-                    <h2>- Les conversation en cours -</h2>
+                    <h2>- Les conversations en cours -</h2>
                     @auth
                     @if(count($homepageForums) < 1 || !auth()->user()->verified)
                         <p style="color:white">Aucune conversation à afficher pour l'instant!</p>
@@ -74,7 +74,7 @@
             </div>
             <div class="second__content">
                 <div class="users__container">
-                    <h3>- DERNIERS MEMBRES -</h3>
+                    <h3>- DERNIER·ÈRES MEMBRES -</h3>
                     @auth
                     @if(auth()->user()->verified)
                     <div class="users__list">
@@ -99,7 +99,7 @@
                     </div>
                     @else
                     <div class="no__member__container">
-                        <p>Aucun membre à afficher!</p>
+                        <p>Aucun·e membre à afficher!</p>
                     </div>
                     @endif
                     @else
@@ -136,7 +136,7 @@
             </div>
             <div class="register__info__container">
                 <div class="img__container">
-                    <img src="{{ asset('storage/medias/inscription-homepage-600x400.jpg') }}" alt="">
+                    <img src="{{ asset('storage/medias/acceuil_pourquoi_sinscrire.jpg') }}" alt="">
                 </div>
                 <div class="text__container">
                     <h2>POURQUOI S'INSCRIRE</h2>
@@ -159,9 +159,9 @@
         </div>
         <div class="third__static__content">
             <div class="blogs__container">
-                <h2>- Blogs - </h2>
+                <h2>- Blogues - </h2>
                 @auth
-                @if(count($posts) < 1) <p style="color:white;text-align:center;">Aucun blog à afficher pour l'instant!</p>
+                @if(count($posts) < 1) <p style="color:white;text-align:center;">Aucun blogue à afficher pour l'instant!</p>
                     @else
                     @foreach($posts as $post)
                     <div class="single__blog" id="{{$post->id}}">
@@ -206,7 +206,7 @@
                     @endif
                     @endauth
                     @if(!auth()->check())
-                    <p style="color:white;text-align:center;">Aucun blog à afficher pour l'instant!</p>
+                    <p style="color:white;text-align:center;">Aucun blogue à afficher pour l'instant!</p>
                     @endif
                     <div class="blog__href__container">
                         @auth

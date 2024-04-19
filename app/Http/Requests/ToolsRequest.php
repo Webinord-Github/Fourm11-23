@@ -26,8 +26,8 @@ class ToolsRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'source' => 'required|string',
-            'site_link' => 'string',
-            'media' => 'file|mimes:pdf,docx',
+            'site_link' => 'string|nullable',
+            'media' => 'file|mimes:pdf,docx|nullable',
             'thematiques' => 'array|min:1|max:3'
         ];
     }

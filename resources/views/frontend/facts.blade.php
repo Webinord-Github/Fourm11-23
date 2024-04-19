@@ -4,9 +4,11 @@
             <div class="top-div">
                 {{-- <span class="arrow">&#8592;</span> --}}
                 <h1>Saviez-vous?</h1>
-                <p>Saviez-vous?</p>
             </div>
             <div class="content ">
+                <div class="img_wrapper">
+                    <img src="{{ asset('storage/medias/saviez_vous.jpg') }}" alt="">
+                </div>
                 <div class="facts">
                     @if(count($facts) == 0)
                         <div class="empty">

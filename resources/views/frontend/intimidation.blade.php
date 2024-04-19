@@ -9,7 +9,7 @@
     <div class="fourm__content">
         <div class="h1__container">
             <a href="/" class="arrow">&#8592;</a>
-            <h1>L'intimidation<span>L'intimidation</span></h1>
+            <h1>L'intimidation</h1>
         </div>
         <div class="second__static__content">
             <div class="about__container">
@@ -35,12 +35,11 @@
                         incidences sont présentés ci-bas.</p>
                 </div>
                 <div class="img__container">
-
                 </div>
             </div>
             <div class="register__info__container">
                 <div class="img__container">
-                    <img src="{{ asset('storage/medias/inscription-homepage-600x400.jpg') }}" alt="">
+                    <img src="{{ asset('storage/medias/intimidation.jpg') }}" alt="">
                 </div>
                 <div class="text__container">
                     <h2>Cyberintimidation</h2>
@@ -56,26 +55,27 @@
                         publications ayant pour but de se moquer ou d'humilier
                         la cible, de création de faux comptes à l'effigie de la
                         cible, etc.</p><br>
-                    <p>D'importants obstacles peuvent être rencontrés par les
+                    <p>D’importants obstacles peuvent être rencontrés par les
                         personnes vivant de la cyberintimidation et voulant
                         dénoncer les occurrences. La cyberintimidation permet
                         aux personnes qui intimident de rester anonymes si
                         elles le souhaitent, ce qui représente une barrière dans
-                        le fait de prouver l'identité de la ou des personnes
+                        le fait de prouver l’identité de la ou des personnes
                         autrices des violences. Également, les lois entourant la
                         cyberintimidation ne sont pas uniformes à travers le
                         monde. Certains pays ont développé des cadres
                         juridiques comprenant des lois spécifiques sur la
-                        cyberintimidation, tandis que d'autres pays traitent les occurrences de cyberintimidation en s'appuyant sur des
+                        cyberintimidation, tandis que d’autres pays traitent les occurrences de cyberintimidation en s’appuyant sur des
                         lois portant sur le harcèlement ou la diffamation. Or, la
                         cyberintimidation détient des spécificités importantes
                         qui doivent être adressées directement pour y mettre fin
                         de manière efficace et rassurante pour les cibles.
                         Considérant cette diversité de mesures entourant la
-                        cyberintimidation dans le monde, il s'agit de situations
-                        d'autant plus complexes à prendre en charge lorsque la
+                        cyberintimidation dans le monde, il s’agit de situations
+                        d&#39;autant plus complexes à prendre en charge lorsque la
                         cyberintimidation concerne une cible et un·.e auteur·.e
-                        vivant dans deux pays distincts, avec des</p>
+                        vivant dans deux pays distincts, avec des cadres
+                        juridiques différents (OMSAC, 2023)</p>
                 </div>
             </div>
         </div>
@@ -211,34 +211,6 @@
                                     genre non conforme aux attentes sociales ou faisant partie de la diversité sexuelle ou de genre
                                     (voir homophobie et transphobie) et celles présentant un handicap (voir capacitisme ).
                                     (Gouvernement du Québec, 2023; Lannegrand-Willems, L., 2012).</p>
-                            </div>
-                        </div>
-                        <div class="text__content">
-                            <div class="content">
-                                <h3>Les témoins</h3>
-                                <p>Les témoins sont les personnes qui sont exposées à l'intimidation sans en être la cible. Elles
-                                    voient, entendent et ressentent ce qui se passe. Les personnes responsables dans les milieux de
-                                    vie et dans les divers milieux de rassemblement peuvent également être témoins de l'intimidation
-                                    et en être affectées. Les témoins peuvent adopter trois postures face à un situation d'intimidation
-                                    : passive, co-intimidante et active.</p>
-                                <h4>Témoin passif∙ve</h4>
-                                <p>- Reconnait ou ne reconnait pas qu'il s'agit d'intimidation.</p>
-                                <p>- Ignore, quitte, regarde ou écoute sans intervenir.</p>
-                                <p>Contribue à ce que la problématique s'installe par son inaction.</p>
-                                <h4>Témoin qui co-intimide</h4>
-                                <p>- Rigole face à l'intimidation, encourage la personne qui intimide, filme la scène, utilise de
-                                    violence auprès de la cible.</p>
-                                <p>- Dans un contexte de cyberespace, aime, commente ou partage des publications
-                                    discriminatoires.</p>
-                                <p>- Contribue activement à ce que la problématique s'installe et persiste.</p>
-                                <h4>Témoin actif∙ve</h4>
-                                <p>- Réconforte la cible, dénonce la situation à une personne responsable, intervient en
-                                    demandant à la personne qui intimide d'arrêter.</p>
-                                <p>- Contribue grandement à mettre fin à l'intimidation.</p>
-                                <p style="margin-top:20px;">Dans une situation d'intimidation, les témoins ont un véritable pouvoir quant au déroulement des
-                                    événements. Lorsque un·e témoin adopte une posture active dans une situation et intervient soit
-                                    auprès de la personne qui intimide ou auprès de la cible, l'intimidation tend à cesser en moins de
-                                    10 secondes dans 80% des cas (Croix-Rouge canadienne, 2023).</p>
                             </div>
                         </div>
                         <div class="text__content">
@@ -459,7 +431,7 @@
 </div>
 <style>
     .fourm__container .about__container .img__container {
-        background-image: url('{{asset("storage/medias/apropos-homepage-800x400.jpg")}}');
+        background-image: url('{{asset("storage/medias/acceuil_pourquoi_sinscrire.jpg")}}');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;

@@ -1,13 +1,7 @@
 .facts-container {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: center;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 100%;
 }
 .facts-container .facts-content {
@@ -16,25 +10,17 @@
   width: 90%;
 }
 .facts-container .facts-content .top-div {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
   position: relative;
   width: 100%;
 }
 .facts-container .facts-content .top-div .white-buble {
   background-color: #fff;
   border-radius: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 35px;
   margin: 0 1%;
@@ -58,35 +44,31 @@
   top: -35px;
 }
 .facts-container .facts-content .content {
-  -webkit-box-align: normal;
-      -ms-flex-align: normal;
-          align-items: normal;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: normal;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+.facts-container .facts-content .content .img_wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.facts-container .facts-content .content .img_wrapper img {
+  max-width: 800px;
   width: 100%;
 }
 .facts-container .facts-content .content .facts {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
 }
 .facts-container .facts-content .content .facts .empty {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin-top: 10%;
   text-align: center;
   width: 100%;
@@ -95,50 +77,29 @@
   font-size: 18px;
 }
 .facts-container .facts-content .content .facts .fact {
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
   border-right: #b4b4b4 2px solid;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
   margin: 3% 0;
   padding: 0 25px;
   width: 350px;
 }
 .facts-container .facts-content .content .facts .fact .circle-wrapper {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: center;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin-bottom: 25px;
   width: 100%;
 }
 .facts-container .facts-content .content .facts .fact .circle-wrapper .circle {
   border: solid #000 10px;
   border-radius: 500px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: center;
   display: flex;
   height: 175px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 175px;
 }
 .facts-container .facts-content .content .facts .fact .circle-wrapper .circle p {
@@ -197,9 +158,7 @@
     margin-top: 50px;
   }
   .facts-container .facts-content .top-div {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
   }
   .facts-container .facts-content .top-div h1 {
     font-size: 50px;
@@ -211,16 +170,10 @@
   .facts-container .facts-content .content .facts .fact .circle-wrapper .circle {
     border: solid #000 7px;
     border-radius: 500px;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    align-items: center;
     display: flex;
     height: 125px;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
     width: 125px;
   }
   .facts-container .facts-content .content .facts .fact .circle-wrapper .circle p {

@@ -24,6 +24,18 @@
         </div>
     </div>
     <div class="w-full mb-2">
+        <div class="flex justify-center flex-col">
+            <label for="meta_title">Méta-titre (60 charactères maximum)</label>
+            <input type='text'class="w-full border rounded py-2 text-gray-700 focus:outline-none items-center" name="meta_title" id="meta_title" value="{{$model->meta_title}}">
+        </div>
+    </div>
+    <div class="w-full mb-2">
+        <div class="flex justify-center flex-col">
+            <label for="meta_desc">Méta-description (160 charactères maximum)</label>
+            <input type='text'class="w-full border rounded py-2 text-gray-700 focus:outline-none items-center" name="meta_desc" id="meta_desc" value="{{$model->meta_desc}}">
+        </div>
+    </div>
+    <div class="w-full mb-2">
         <div class="flex justify-center flex-col"> 
             <label for="url">Url</label>  
             <input type='text' class="w-full border rounded py-2 text-gray-700 focus:outline-none" name="url" id="url" value="{{$model->url}}">

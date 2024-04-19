@@ -1,13 +1,7 @@
 .lexique-container {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: center;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 100%;
 }
 .lexique-container .lexique-content {
@@ -16,17 +10,11 @@
   width: 90%;
 }
 .lexique-container .lexique-content .top-div {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
   margin-bottom: 4%;
   position: relative;
   width: 100%;
@@ -34,8 +22,6 @@
 .lexique-container .lexique-content .top-div .white-buble {
   background-color: #fff;
   border-radius: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 35px;
   margin: 0 1%;
@@ -62,40 +48,27 @@
   width: 100%;
 }
 .lexique-container .lexique-content .content .thematiques-ctn {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   width: 100%;
   /* Track */
   /* Handle */
   /* Handle on hover */
 }
 .lexique-container .lexique-content .content .thematiques-ctn .thematiques {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  flex-wrap: wrap;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   padding: auto;
   width: 50%;
 }
 .lexique-container .lexique-content .content .thematiques-ctn .thematiques .thematique {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   background-color: #000;
   border: #000 solid 1px;
   border-radius: 20px;
   color: #fff;
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   font-weight: bold;
   height: 40px;
@@ -115,8 +88,7 @@
   width: 10px;
 }
 .lexique-container .lexique-content .content .thematiques-ctn ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 5px transparent;
-          box-shadow: inset 0 0 5px transparent;
+  box-shadow: inset 0 0 5px transparent;
   border-radius: 10px;
 }
 .lexique-container .lexique-content .content .thematiques-ctn ::-webkit-scrollbar-thumb {
@@ -138,35 +110,23 @@
   width: 45%;
 }
 .lexique-container .lexique-content .content .thematiques-ctn .thematique-infos div {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: center;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .lexique-container .lexique-content .content .thematiques-ctn .thematique-infos div .name {
   color: #fff;
   font-size: 24px;
 }
 .lexique-container .lexique-content .content .thematiques-ctn .thematique-infos div .buble {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   background-color: #fff;
   border-radius: 25px;
   border: 1px solid #fff;
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 35px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 35px;
 }
 .lexique-container .lexique-content .content .thematiques-ctn .thematique-infos div .buble i {
@@ -195,20 +155,14 @@
   display: block;
 }
 .lexique-container .lexique-content .content .bar-filter {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-clip: border-box;
   border-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 75px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   margin: 3% 0;
   padding: 1%;
   width: 100%;
@@ -218,16 +172,10 @@
   font-size: 24px;
 }
 .lexique-container .lexique-content .content .bar-filter .filters {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .lexique-container .lexique-content .content .bar-filter .filters .filter {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: center;
   display: flex;
   margin: 0 10px;
 }
@@ -250,17 +198,10 @@
   width: 100%;
 }
 .lexique-container .lexique-content .content .contenu .tools, .lexique-container .lexique-content .content .contenu .convos, .lexique-container .lexique-content .content .contenu .posts {
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: flex-start;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
 }
 .lexique-container .lexique-content .content .contenu .tools .tool, .lexique-container .lexique-content .content .contenu .tools .post, .lexique-container .lexique-content .content .contenu .tools .convo, .lexique-container .lexique-content .content .contenu .convos .tool, .lexique-container .lexique-content .content .contenu .convos .post, .lexique-container .lexique-content .content .contenu .convos .convo, .lexique-container .lexique-content .content .contenu .posts .tool, .lexique-container .lexique-content .content .contenu .posts .post, .lexique-container .lexique-content .content .contenu .posts .convo {
@@ -270,19 +211,13 @@
   width: 450px;
 }
 .lexique-container .lexique-content .content .contenu .tools .tool .top, .lexique-container .lexique-content .content .contenu .tools .post .top, .lexique-container .lexique-content .content .contenu .tools .convo .top, .lexique-container .lexique-content .content .contenu .convos .tool .top, .lexique-container .lexique-content .content .contenu .convos .post .top, .lexique-container .lexique-content .content .contenu .convos .convo .top, .lexique-container .lexique-content .content .contenu .posts .tool .top, .lexique-container .lexique-content .content .contenu .posts .post .top, .lexique-container .lexique-content .content .contenu .posts .convo .top {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   background-color: #edb200;
   border-radius: 10px 10px 0 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   color: #fff;
   min-height: 60px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   padding: 0 10px;
   width: 100%;
 }
@@ -291,20 +226,14 @@
   width: 90%;
 }
 .lexique-container .lexique-content .content .contenu .tools .tool .top .buble, .lexique-container .lexique-content .content .contenu .tools .post .top .buble, .lexique-container .lexique-content .content .contenu .tools .convo .top .buble, .lexique-container .lexique-content .content .contenu .convos .tool .top .buble, .lexique-container .lexique-content .content .contenu .convos .post .top .buble, .lexique-container .lexique-content .content .contenu .convos .convo .top .buble, .lexique-container .lexique-content .content .contenu .posts .tool .top .buble, .lexique-container .lexique-content .content .contenu .posts .post .top .buble, .lexique-container .lexique-content .content .contenu .posts .convo .top .buble {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   background-color: #fff;
   border-radius: 25px;
   border: 1px solid #fff;
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 35px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 35px;
 }
 .lexique-container .lexique-content .content .contenu .tools .tool .top .buble i, .lexique-container .lexique-content .content .contenu .tools .post .top .buble i, .lexique-container .lexique-content .content .contenu .tools .convo .top .buble i, .lexique-container .lexique-content .content .contenu .convos .tool .top .buble i, .lexique-container .lexique-content .content .contenu .convos .post .top .buble i, .lexique-container .lexique-content .content .contenu .convos .convo .top .buble i, .lexique-container .lexique-content .content .contenu .posts .tool .top .buble i, .lexique-container .lexique-content .content .contenu .posts .post .top .buble i, .lexique-container .lexique-content .content .contenu .posts .convo .top .buble i {
@@ -338,17 +267,10 @@
   min-height: 75px;
 }
 .lexique-container .lexique-content .content .contenu .tools .tool .bottom .tags, .lexique-container .lexique-content .content .contenu .tools .post .bottom .tags, .lexique-container .lexique-content .content .contenu .tools .convo .bottom .tags, .lexique-container .lexique-content .content .contenu .convos .tool .bottom .tags, .lexique-container .lexique-content .content .contenu .convos .post .bottom .tags, .lexique-container .lexique-content .content .contenu .convos .convo .bottom .tags, .lexique-container .lexique-content .content .contenu .posts .tool .bottom .tags, .lexique-container .lexique-content .content .contenu .posts .post .bottom .tags, .lexique-container .lexique-content .content .contenu .posts .convo .bottom .tags {
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: baseline;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   margin-bottom: 4%;
   width: 100%;
 }
@@ -394,13 +316,8 @@
 
 @media screen and (max-width: 1075px) {
   .lexique-container .lexique-content .content .thematiques-ctn {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    align-items: center;
+    flex-direction: column;
   }
   .lexique-container .lexique-content .content .thematiques-ctn .thematiques {
     margin-bottom: 2%;
@@ -411,28 +328,21 @@
   }
   .lexique-container .lexique-content .content .bar-filter {
     height: auto;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
   .lexique-container .lexique-content .content .bar-filter p {
     font-size: 20px;
     text-align: center;
   }
   .lexique-container .lexique-content .content .bar-filter .filters {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    justify-content: center;
+    flex-wrap: wrap;
     margin: 2% 0;
   }
   .lexique-container .lexique-content .content .contenu .tools .tool .bottom .desc {
     margin-bottom: 4%;
   }
   .lexique-container .lexique-content .content .contenu .tools .tool .bottom .tags {
-    height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
   }
@@ -445,9 +355,7 @@
     margin-top: 50px;
   }
   .lexique-container .lexique-content .top-div {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
   }
   .lexique-container .lexique-content .top-div h1 {
     font-size: 50px;

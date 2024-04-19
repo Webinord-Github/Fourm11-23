@@ -7,26 +7,18 @@
 }
 
 .flex_popup {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
   display: flex !important;
 }
 
 .main__forum__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin-top: 50px;
   height: 100%;
   position: relative;
   min-height: calc(100vh - 100px);
 }
 .main__forum__container .flex {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
   display: flex !important;
 }
 .main__forum__container .thematiques__container {
@@ -39,40 +31,22 @@
   z-index: 2000;
   background-color: #fff;
   margin-top: -50px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  flex-direction: column;
   padding-top: 100px;
 }
 .main__forum__container .thematiques__container h2 {
   text-align: center;
 }
 .main__forum__container .thematiques__container .thematiques__list {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .main__forum__container .thematiques__container .thematiques__list .thematique__li__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .main__forum__container .thematiques__container .thematiques__list .thematique__li__container .conversation-count {
   font-size: 14px;
@@ -96,12 +70,8 @@
   font-size: 22px;
 }
 .main__forum__container .thematiques__container .submit__conversation__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 100%;
   margin-top: 30px;
 }
@@ -114,8 +84,7 @@
   cursor: pointer;
 }
 .main__forum__container .thematiques__container .submit__conversation__container:hover {
-  -webkit-filter: contrast(65%);
-          filter: contrast(65%);
+  filter: contrast(65%);
 }
 .main__forum__container .thematiques__container .thematique__close {
   font-size: 30px;
@@ -126,8 +95,6 @@
   cursor: pointer;
 }
 .main__forum__container .chalk__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 100%;
   margin-top: -50px;
@@ -137,17 +104,9 @@
 }
 .main__forum__container .chalk__container .filter__icon__container {
   margin: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: -webkit-fit-content;
+  align-items: center;
+  flex-direction: column;
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -156,15 +115,9 @@
   color: #edb200;
   width: 35px;
   height: 35px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   font-size: 20px;
   cursor: pointer;
 }
@@ -180,12 +133,8 @@
   margin-left: 20px;
 }
 .main__forum__container .chalk__container .conversations__main__container .no__conversations__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 .main__forum__container .chalk__container .conversations__main__container .no__conversations__container p {
   text-align: center;
@@ -194,53 +143,30 @@
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100%;
   height: auto;
   margin-bottom: 50px;
-  -webkit-box-shadow: 1px 1px 10px black;
-          box-shadow: 1px 1px 10px black;
+  box-shadow: 1px 1px 10px black;
   min-height: 450px;
   background-color: #fff;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__title__container {
   background-color: #2870c3;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 12px 20px;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__title__container #conv__title {
@@ -259,15 +185,9 @@
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   font-size: 25px;
   cursor: pointer;
 }
@@ -278,12 +198,8 @@
   padding: 20px;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .conv__author__info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .conv__author__info #author {
   font-weight: bold;
@@ -305,34 +221,22 @@
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container {
   margin: 50px 0px 30px 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .like,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .comments {
   margin-right: 20px;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .like .likes__iteration,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .comments .likes__iteration {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   position: relative;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .like .likes__iteration:hover .likeHover,
@@ -345,15 +249,9 @@
   height: 40px;
   background-color: #000;
   border-radius: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   margin-left: 5px;
   font-size: 16px;
@@ -376,12 +274,8 @@
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .like #reply__comments,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .comments #conversation__comments,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .comments #reply__comments {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .like #conversation__like,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .pivot__actions .like #reply__like,
@@ -390,12 +284,8 @@
   cursor: pointer;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .delete {
   margin-right: 20px;
@@ -403,8 +293,6 @@
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .delete #delete {
   margin: 0px;
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .delete #delete i {
@@ -417,12 +305,8 @@
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .report .report__trigger {
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin: 0px;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .report .report__trigger i {
@@ -430,15 +314,9 @@
   height: 20px;
   background-color: red;
   border-radius: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   font-size: 14px;
   font-weight: bold;
@@ -447,12 +325,8 @@
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .report .report__trigger__disable {
   cursor: not-allowed;
   color: gray;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin: 0px;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .report .report__trigger__disable i {
@@ -460,15 +334,9 @@
   height: 20px;
   background-color: gray;
   border-radius: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   font-size: 14px;
   font-weight: bold;
@@ -486,17 +354,12 @@
   width: 100%;
   height: 0px;
   overflow: hidden;
-  -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .reply__form form {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .reply__form form .textarea__container {
   width: 90%;
@@ -511,15 +374,9 @@
   outline: none;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .reply__form form .submit__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 10%;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .reply__form form .submit__container .reply__submit,
@@ -535,19 +392,11 @@
   color: gray;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .parent__more__comments__container {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row-reverse;
+  align-items: center;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .parent__more__comments__container .parent__see__more__trigger {
   cursor: pointer;
@@ -566,19 +415,11 @@
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .single__reply__container .child__more__comments__container,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .child__reply__container .child__more__comments__container {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row-reverse;
+  align-items: center;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .single__reply__container .child__more__comments__container .child__see__more__trigger,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .child__reply__container .child__more__comments__container .child__see__more__trigger {
@@ -597,24 +438,15 @@
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .single__reply__container .reply__container,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .child__reply__container .reply__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .single__reply__container .reply__container .user__icon,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .child__reply__container .reply__container .user__icon {
   margin: 5px 10px 0px 0px;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .single__reply__container .reply__container .user__icon img,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .child__reply__container .reply__container .user__icon img {
@@ -631,25 +463,16 @@
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .single__reply__container .reply__container .single__reply__content,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .child__reply__container .reply__container .single__reply__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100%;
   padding-top: 10px;
   border-top: 1px solid lightgray;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .single__reply__container .reply__container .single__reply__content .user__reply__info,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .child__reply__container .reply__container .single__reply__content .user__reply__info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .single__reply__container .reply__container .single__reply__content .user__reply__info #user__reply__name,
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .child__reply__container .reply__container .single__reply__content .user__reply__info #user__reply__name {
@@ -667,15 +490,11 @@
   margin-left: 50px;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .remove {
-  -webkit-transform: translateY(-100px);
-          transform: translateY(-100px);
+  transform: translateY(-100px);
   opacity: 0;
-  -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
 }
 .main__forum__container .chalk__container .conversations__main__container .forum__container .flex {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
   display: flex !important;
 }
 .main__forum__container .chalk__container .conversations__widget__container {
@@ -683,12 +502,8 @@
   margin-left: 10px;
 }
 .main__forum__container .chalk__container .conversations__widget__container .widget__title {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   padding: 20px;
 }
 .main__forum__container .chalk__container .conversations__widget__container .widget__title h3 {
@@ -696,13 +511,9 @@
 }
 .main__forum__container .chalk__container .conversations__widget__container .widget__conversations .single__conversation {
   background-color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 80px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin: 10px 0px;
 }
 .main__forum__container .chalk__container .conversations__widget__container .widget__conversations .single__conversation .border {
@@ -735,12 +546,8 @@
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
   display: none;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .main__forum__container .chalk__container .report__popup__container .report__popup {
   position: relative;
@@ -749,8 +556,7 @@
   height: auto;
   padding-bottom: 20px;
   background-color: #fff;
-  -webkit-box-shadow: 1px 1px 8px #000;
-          box-shadow: 1px 1px 8px #000;
+  box-shadow: 1px 1px 8px #000;
   z-index: 400;
 }
 .main__forum__container .chalk__container .report__popup__container .report__popup .report__infos__container {
@@ -768,12 +574,8 @@
   padding: 10px 0px;
 }
 .main__forum__container .chalk__container .report__popup__container .report__popup .submit__form__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin-top: 30px;
 }
 .main__forum__container .chalk__container .report__popup__container .report__popup .submit__form__container #report__submit {
@@ -791,32 +593,18 @@
   position: absolute;
   border-radius: 50%;
   border-top-color: transparent;
-  -webkit-animation: spin 0.8s linear infinite;
-          animation: spin 0.8s linear infinite;
-}
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+  animation: spin 0.8s linear infinite;
 }
 @keyframes spin {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 .main__forum__container .chalk__container .report__popup__container .report__popup .submit__form__container #report__submit:hover {
-  -webkit-filter: contrast(65%);
-          filter: contrast(65%);
+  filter: contrast(65%);
 }
 .main__forum__container .chalk__container .report__popup__container .report__popup .submit__form__container #report__success {
   display: none;
@@ -832,8 +620,6 @@
   cursor: pointer;
 }
 .main__forum__container .flex {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
   display: flex !important;
 }
 .main__forum__container .new__conversation__popup {
@@ -843,12 +629,8 @@
   width: 100%;
   height: 100vh;
   display: none;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   background: rgba(0, 0, 0, 0.7);
   z-index: 5000;
 }
@@ -876,17 +658,14 @@
   position: absolute;
   border-radius: 50%;
   border-top-color: transparent;
-  -webkit-animation: spin 0.8s linear infinite;
-          animation: spin 0.8s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 @keyframes spin {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 .main__forum__container .new__conversation__popup .popup .popup__close {
@@ -898,15 +677,9 @@
   height: 35px;
   border: 3px solid #000;
   border-radius: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 .main__forum__container .new__conversation__popup .popup .popup__close:hover {
@@ -915,13 +688,8 @@
 
 @media screen and (max-width: 1366px) {
   .main__forum__container .chalk__container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
   .main__forum__container .chalk__container .filter__icon__container {
     width: 100%;
@@ -942,20 +710,12 @@
     margin-top: 100px;
   }
   .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
   .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions {
     margin-top: 20px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
   .main__forum__container .chalk__container .conversations__main__container .forum__container .forum__content .conv__container .conv__content .actions__container .instant__actions .delete {
     margin: 0px;

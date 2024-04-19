@@ -1,23 +1,14 @@
 .fourm__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin-top: 30px;
 }
 .fourm__container .fourm__content {
   width: 95%;
 }
 .fourm__container .fourm__content .first__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin-top: 30px;
 }
 .fourm__container .fourm__content .first__content .text__content {
@@ -30,24 +21,15 @@
   text-align: center;
 }
 .fourm__container .fourm__content .first__content .text__content .text {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 .fourm__container .fourm__content .first__content .text__content .text p {
   width: 80%;
 }
 .fourm__container .fourm__content .first__content .text__content .flex-column {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   text-align: start;
 }
 .fourm__container .fourm__content .first__content .text__content .subtitle {
@@ -57,16 +39,9 @@
   text-align: center;
 }
 .fourm__container .fourm__content .first__content .text__content .list__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 .fourm__container .fourm__content .first__content .text__content .list__container li {
   width: 80%;
@@ -75,21 +50,17 @@
   margin: 10px 0px;
 }
 .fourm__container .fourm__content .text__img__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin: 30px 0px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 .fourm__container .fourm__content .text__img__container div {
   padding: 0px 20px;
 }
-.fourm__container .fourm__content .text__img__container .text__img__container {
+.fourm__container .fourm__content .text__img__container .img__container {
   width: 50%;
 }
-.fourm__container .fourm__content .text__img__container .text__img__container img {
+.fourm__container .fourm__content .text__img__container .img__container img {
   width: 100%;
 }
 .fourm__container .fourm__content .text__img__container .text__content {
@@ -100,8 +71,6 @@
 }
 .fourm__container .fourm__content .text__img__container .text__content .text {
   padding: 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .fourm__container .fourm__content .text__img__container .text__content .text p {
@@ -115,15 +84,9 @@
   margin: 10px 0px;
   background-size: cover;
   background-repeat: no-repeat;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   padding: 0px 10px;
   cursor: pointer;
 }
@@ -131,15 +94,13 @@
   font-size: 40px;
   font-weight: bold;
   color: #fff;
-  -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
 }
 .fourm__container .fourm__content .dropdown__container .dropdown__content .dropdown .drop__trigger, .fourm__container .fourm__content .dropdown__container .dropdown__content .dropdown .drop__trigger__parent {
   cursor: pointer;
 }
 .fourm__container .fourm__content .dropdown__container .dropdown__content .rotate {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 .fourm__container .fourm__content .dropdown__container .dropdown__content .drop__content {
   height: 0;
@@ -148,13 +109,8 @@
 
 @media screen and (max-width: 1366px) {
   .fourm__container .fourm__content .text__img__container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-direction: column-reverse;
+    align-items: center;
   }
   .fourm__container .fourm__content .text__img__container .text__content {
     width: 100%;

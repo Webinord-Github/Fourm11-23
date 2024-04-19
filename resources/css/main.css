@@ -22,19 +22,7 @@ main .main__chat__container {
 }
 main .main__chat__container .newNotifBubble {
   color: red;
-  -webkit-animation: colorChangeBubble 1s infinite;
-          animation: colorChangeBubble 1s infinite;
-}
-@-webkit-keyframes colorChangeBubble {
-  0% {
-    color: red;
-  }
-  50% {
-    color: #edb200;
-  }
-  100% {
-    color: red;
-  }
+  animation: colorChangeBubble 1s infinite;
 }
 @keyframes colorChangeBubble {
   0% {
@@ -61,21 +49,13 @@ main .main__chat__container .user__chat__container .chatbot__window {
   background-color: white;
 }
 main .main__chat__container .user__chat__container .chatbot__window .minus__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   border-bottom: 2px solid #000;
 }
 main .main__chat__container .user__chat__container .chatbot__window .minus__container .admin__infos {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding: 0px 10px;
 }
 main .main__chat__container .user__chat__container .chatbot__window .minus__container .admin__infos img {
@@ -90,15 +70,9 @@ main .main__chat__container .user__chat__container .chatbot__window .minus__cont
   font-size: 22px;
   padding: 0px 10px;
   border-left: 2px solid #000;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 main .main__chat__container .user__chat__container .chatbot__window .minus__container .minus__chat:hover {
@@ -115,13 +89,8 @@ main .main__chat__container .user__chat__container .chatbot__window .messages__c
 }
 main .main__chat__container .user__chat__container .chatbot__window .messages__container .message .left,
 main .main__chat__container .user__chat__container .chatbot__window .messages__container .message .right {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin: 20px 0px;
 }
 main .main__chat__container .user__chat__container .chatbot__window .messages__container .message .left p,
@@ -137,13 +106,9 @@ main .main__chat__container .user__chat__container .chatbot__window .messages__c
   color: #000;
 }
 main .main__chat__container .user__chat__container .chatbot__window .messages__container .message .left {
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
 main .main__chat__container .user__chat__container .chatbot__window .messages__container .message .left div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 main .main__chat__container .user__chat__container .chatbot__window .messages__container .message .left p {
@@ -162,21 +127,12 @@ main .main__chat__container .user__chat__container .chatbot__window .messages__c
   margin-top: 2px;
 }
 main .main__chat__container .user__chat__container .chatbot__window .messages__container .message .right {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  align-items: flex-end;
 }
 main .main__chat__container .user__chat__container .chatbot__window .messages__container .message .right div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 main .main__chat__container .user__chat__container .chatbot__window .messages__container .message .right p {
   color: #fff;
@@ -194,8 +150,6 @@ main .main__chat__container .user__chat__container .chatbot__window .messages__c
   margin-top: 2px;
 }
 main .main__chat__container .user__chat__container .chatbot__window .chat__form__ajax {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 main .main__chat__container .user__chat__container .chatbot__window .chat__form__ajax .message {
@@ -203,15 +157,9 @@ main .main__chat__container .user__chat__container .chatbot__window .chat__form_
 }
 main .main__chat__container .user__chat__container .chatbot__window .chat__form__ajax i {
   width: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   background-color: green;
   color: #fff;
   cursor: pointer;
@@ -221,23 +169,13 @@ main .main__chat__container .user__chat__container .chatbot__window .chat__form_
   background-color: #303030;
 }
 main .main__chat__container .user__chat__container .chatbot__window .chat__form__ajax i:hover {
-  -webkit-filter: contrast(65%);
-          filter: contrast(65%);
+  filter: contrast(65%);
 }
 main .warning__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   top: 110px;
   text-align: center;
@@ -253,17 +191,11 @@ main .warning__container p {
 }
 
 .h1__container {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
   width: 100%;
 }
 .h1__container .arrow {
@@ -318,25 +250,17 @@ footer {
   padding: 20px 0px;
 }
 footer .footer__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   height: 100%;
   padding: 0px 20px;
   position: relative;
 }
 footer .footer__content .infos__container {
   width: 75%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 footer .footer__content .infos__container .address p {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 footer .footer__content .infos__container .address i,
@@ -351,8 +275,6 @@ footer .footer__content .infos__container .phone {
 }
 footer .footer__content .infos__container .phone a {
   color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 footer .footer__content .infos__container .phone i {
@@ -362,34 +284,20 @@ footer .footer__content .infos__container .phone i {
   color: #000;
   background-color: #fff;
   border-radius: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 footer .footer__content .ano__logo__container {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 100%;
 }
 footer .footer__content .quebec__logo__container {
   margin: 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
   width: 25%;
 }
 footer .footer__content .quebec__logo__container img {
@@ -398,10 +306,7 @@ footer .footer__content .quebec__logo__container img {
 
 @media screen and (max-width: 1600px) {
   footer .infos__container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
+    flex-direction: column-reverse;
   }
   footer .infos__container .phone {
     margin: 0px 0px 15px 0px !important;
@@ -412,27 +317,18 @@ footer .footer__content .quebec__logo__container img {
     height: auto;
   }
   footer .footer__content {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
   footer .footer__content .ano__logo__container,
   footer .footer__content .quebec__logo__container {
     position: initial;
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
   }
   footer .footer__content .infos__container {
     width: 100%;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
     margin: 20px 0px;
   }
 }

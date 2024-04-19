@@ -11,7 +11,7 @@
             <div class="top-div">
             <div class="h1__container">
                     <a href="/" class="arrow">&#8592;</a>
-                    <h1>SOURCES<span>SOURCES</span></h1>
+                    <h1>SOURCES</h1>
                 </div>
             </div>
             <div class="content ">
@@ -25,7 +25,7 @@
                     <div class="source">
                         <h3>Racisme</h3>
                         <p>Université de Montréal. (s.d.). Qu'est-ce que le racisme ? Bureau du respect de la personne.</p>
-                        <a href="https://respect.umontreal.ca/discrimination-et-racisme/quest-ce-que-le-racisme/">https://respect.umontreal.ca/discrimination-et-racisme/quest-ce-que-le-racisme/</a>
+                        <a target="_blank" href="https://respect.umontreal.ca/discrimination-et-racisme/quest-ce-que-le-racisme/">https://respect.umontreal.ca/discrimination-et-racisme/quest-ce-que-le-racisme/</a>
                         <p>Commission des droits de la personne et des droits de la jeunesse. (2021, 14 décembre). Lettres et allocutions : Comprendre le racisme systémique et ses manifestations : une question d'égalité et de solidarité.</p>
                         <a target="_blank" href="https://www.cdpdj.qc.ca/fr/actualites/comprendre-racisme-systemique">https://www.cdpdj.qc.ca/fr/actualites/comprendre-racisme-systemique</a>
                     </div>

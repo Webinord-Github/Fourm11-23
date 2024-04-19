@@ -16,7 +16,6 @@
             <div class="top-div">
                 {{-- <span class="arrow">&#8592;</span> --}}
                 <h1>Lexique</h1>
-                <p>Lexique</p>
             </div>
             <div class="content">
                 <div class="thematiques-ctn">

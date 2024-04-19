@@ -31,12 +31,6 @@
     </div>
     <div class="w-full mb-2">
         <div class="flex justify-center flex-col">
-            <label for="birthdate">Date de naissance</label>
-            <input type='date'class="w-full border rounded py-2 text-gray-700 focus:outline-none items-center" name="birthdate" id="birthdate">
-        </div>
-    </div>
-    <div class="w-full mb-2">
-        <div class="flex justify-center flex-col">
             <label for="email">Courriel</label>
             <input type='email'class="w-full border rounded py-2 text-gray-700 focus:outline-none items-center" name="email" id="email" required>
         </div>
@@ -48,29 +42,6 @@
     <div class="w-full mb-2">
         <label for="password_confirmation">Confirmer le mot de passe</label>
         <input id="password_confirmation" class="w-full border rounded py-2 text-gray-700 focus:outline-none items-center" type="password" name="password_confirmation" required/>
-    </div>
-    <div class="w-full mb-2">
-        <div class="flex justify-center flex-col">
-            <label for="pronom">Pronom</label>
-            <input type='text'class="w-full border rounded py-2 text-gray-700 focus:outline-none items-center" name="pronoun" id="pronoun">
-        </div>
-    </div>
-    <div class="w-full mb-2">
-        <div class="flex justify-center flex-col"> 
-            <label for="used_agreements">Accord utilisés</label>  
-            <input type='text' class="w-full border rounded py-2 text-gray-700 focus:outline-none" name="used_agreements" id="used_agreements">
-        </div>
-    </div>
-    <div class="w-full mb-2">
-        <div class="flex justify-center flex-col">
-            <label for="gender">Genre</label>
-            <select style="border-radius:5px;" name="gender" id="status">
-                <option value="Homme" selected>Homme</option>
-                <option value="Femme">Femme</option>
-                <option value="Non-binaire">Non-binaire</option>
-                <option value="Préfère ne pas répondre">Préfère ne pas répondre</option>
-            </select>
-        </div>
     </div>
     <div class="w-full mb-2">
         <div class="flex justify-center flex-col"> 
@@ -86,20 +57,8 @@
     </div>
     <div class="w-full mb-2">
         <div class="flex justify-center flex-col"> 
-            <label for="years_xp">Nombre d'années de travail</label>  
-            <input type='number' class="w-full border rounded py-2 text-gray-700 focus:outline-none" name="years_xp" id="years_xp">
-        </div>
-    </div>
-    <div class="w-full mb-2">
-        <div class="flex justify-center flex-col"> 
             <label for="work_city">Ville de travail</label>  
             <input type='text' class="w-full border rounded py-2 text-gray-700 focus:outline-none" name="work_city" id="work_city">
-        </div>
-    </div>
-    <div class="w-full mb-2">
-        <div class="flex justify-center flex-col"> 
-            <label for="work_phone">Téléphone de travail</label>  
-            <input type='text' class="w-full border rounded py-2 text-gray-700 focus:outline-none" name="work_phone" id="work_phone">
         </div>
     </div>
     <div class="w-full my-4">
@@ -107,16 +66,28 @@
     </div>
     <div class="w-full mb-2">
         <div class="flex items-center">   
-            <label class="w-2/12" for="audience">Enfants</label>
-            <input class="mx-4" type="checkbox" name="audience[]" value="Enfants">
+            <label class="w-2/12" for="audience">Petite enfance</label>
+            <input class="mx-4" type="checkbox" name="audience[]" value="Petite enfance">
+        </div>
+        <div class="flex items-center">   
+            <label class="w-2/12" for="audience">Enfance</label>
+            <input class="mx-4" type="checkbox" name="audience[]" value="Enfance">
+        </div>
+        <div class="flex items-center">   
+            <label class="w-2/12" for="audience">Adolescence</label>
+            <input class="mx-4" type="checkbox" name="audience[]" value="Adolescence">
+        </div>
+        <div class="flex items-center">   
+            <label class="w-2/12" for="audience">Jeunes adultes</label>
+            <input class="mx-4" type="checkbox" name="audience[]" value="Jeunes adultes">
         </div>
         <div class="flex items-center">   
             <label class="w-2/12" for="audience">Adultes</label>
             <input class="mx-4" type="checkbox" name="audience[]" value="Adultes">
         </div>
         <div class="flex items-center">   
-            <label class="w-2/12" for="audience">Personnes aîné·es</label>
-            <input class="mx-4" type="checkbox" name="audience[]" value="Personnes aîné·es">
+            <label class="w-2/12" for="audience">Aîné·es</label>
+            <input class="mx-4" type="checkbox" name="audience[]" value="Aîné·es">
         </div>
         <div class="flex items-center">
             <input class="w-full border rounded py-2 text-gray-700 focus:outline-none" type="text" name="other_audience" placeholder="Autres" >
@@ -144,6 +115,34 @@
         </div>
         <div class="flex items-center">
             <input class="w-full border rounded py-2 text-gray-700 focus:outline-none" type="text" name="other_interests" placeholder="Autres" >
+        </div>
+    </div>
+    <div class="w-full my-4">
+        <label class="font-bold align-start">Comment avez-vous entendu parler de cette communauté?</label>
+    </div>
+    <div class="w-full mb-2">
+        <div class="flex items-center">   
+            <label class="w-5/12" for="hear_about">Réseaux sociaux</label>
+            <input class="mx-4" type="checkbox" name="hear_about[]" value="Réseaux sociaux">
+        </div>
+        <div class="flex items-center">   
+            <label class="w-5/12" for="hear_about">Médias traditionnels</label>
+            <input class="mx-4" type="checkbox" name="hear_about[]" value="Médias traditionnels">
+        </div>
+        <div class="flex items-center">   
+            <label class="w-5/12" for="hear_about">Moteur de recherche</label>
+            <input class="mx-4" type="checkbox" name="hear_about[]" value="Moteur de recherche">
+        </div>
+        <div class="flex items-center">   
+            <label class="w-5/12" for="hear_about">Réseaux professionnels</label>
+            <input class="mx-4" type="checkbox" name="hear_about[]" value="Réseaux professionnels">
+        </div>
+        <div class="flex items-center">   
+            <label class="w-5/12" for="hear_about">Réseaux personnels</label>
+            <input class="mx-4" type="checkbox" name="hear_about[]" value="Réseaux personnels">
+        </div>
+        <div class="flex items-center">
+            <input class="w-full border rounded py-2 text-gray-700 focus:outline-none" type="text" name="other_about" placeholder="Autres" >
         </div>
     </div>
     

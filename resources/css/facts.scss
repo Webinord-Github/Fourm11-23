@@ -52,8 +52,21 @@ $jaune: #edb200;
         .content {
             align-items: normal;
             display: flex;
+            flex-direction: column;
             justify-content: flex-start;
             width: 100%;
+
+            .img_wrapper {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+
+                img {
+                    max-width: 800px;
+                    width: 100%;
+                }
+            }
 
             .facts {
                 display: flex;

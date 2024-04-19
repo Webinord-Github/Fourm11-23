@@ -15,6 +15,11 @@
     <p class="font-bold">{{ session('status') }}</p>
 </div>
 @endif
+@if (session('erreur'))
+<div class="text-center bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-8 my-6" role="alert">
+    <p class="font-bold">{{ session('erreur') }}</p>
+</div>
+@endif
 @if (!$errors->isEmpty())
 <div role="alert" class="w-full pb-8">
     <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
@@ -34,7 +39,6 @@
         <div class="tools-content">
             <div class="top-div">
                 <h1>Boîte à outils</h1>
-                <p>Boîte à outils</p>
             </div>
             <div class="content ">
                 <div class="thematiques-half">
@@ -112,17 +116,6 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="desc">
-                            <p>{{ $tool->desc }}</p>
-                        </div>
-                        <div class="tags">
-                            @foreach($tool->thematiques()->get()->pluck('name')->toArray() as $thematique)
-                            <p class="tag" data-theme="{{ $thematique }}">{{ $thematique }}</p>
-                            @endforeach
-                        </div>
-                        <div class="btn-container">
-                            <a target="_blank" href="{{$tool->media()->first()->path . $tool->media()->first()->name}}">télécharger</a>
-                        </div>
                     </div>
                     @endforeach
                 </div>
@@ -149,8 +142,14 @@
                 </div>
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
-                        <x-label for="desc" :value="__('Description')"></x-label>
-                        <textarea style="resize: none; border-radius: 5px;height:100px" name="desc">{{ old('desc') }}</textarea>
+                        <x-label for="source" :value="__('Source')"></x-label>
+                        <x-input id="source" class="block mt-1 w-full" type="text" name="source" :value="old('source')" required autofocus />
+                    </div>
+                </div>
+                <div class="w-full mb-2">
+                    <div class="flex justify-center flex-col">
+                        <x-label for="site_link" :value="__('Lien')"></x-label>
+                        <x-input id="site_link" class="block mt-1 w-full" type="url" name="site_link" :value="old('site_link')" autofocus />
                     </div>
                 </div>
                 <div class="w-full mb-2">

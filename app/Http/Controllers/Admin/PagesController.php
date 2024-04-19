@@ -121,16 +121,20 @@ class PagesController extends Controller
         // Clean the 'url' input using Str::slug
         $cleanUrl = Str::slug($request->input('url'));
 
-        Auth::user()->pages()->save(new Page($request->only([
-            'title', 'content',
-        ]) + ['url' => $cleanUrl]));
+        // Auth::user()->pages()->save(new Page($request->only([
+        //     'title', 'content','meta_title','meta_desc'
+        // ]) + ['url' => $cleanUrl]));
 
-        $notification = new Notification();
-        $notification->sujet = 'Nouvelle page créée: ' . $request->input('title');
-        $notification->notif_link = '/' . $cleanUrl;
-        $notification->save();
+        $page = new Page();
 
-        return redirect()->route('pages.index')->with('status', 'Opération réussie');
+        $page->user_id = Auth::user()->id;
+        $page->title = $request->title;
+        $page->url = $cleanUrl;
+        $page->meta_title = $request->meta_title;
+        $page->meta_desc = $request->meta_desc;
+        $page->save();
+
+        return redirect()->route('pages.index')->with('status', "La page $page->title a été créée.");
     }
 
     /**
@@ -170,13 +174,15 @@ class PagesController extends Controller
 
         $cleanUrl = Str::slug($request->input('url'));
 
+        $page->title = $request->title;
         $page->url = $cleanUrl;
-        $page->title = $request->input('title');
-        $page->content = $request->input('content');
+        $page->meta_title = $request->meta_title;
+        $page->meta_desc = $request->meta_desc;
+        $page->save();
 
         $page->save();
 
-        return redirect()->route('pages.index')->with('status', 'The page was updated');
+        return redirect()->route('pages.index')->with('status', "La page $page->title a été modifiée.");
     }
 
     /**

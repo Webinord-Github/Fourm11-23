@@ -1,19 +1,6 @@
 .newNotif {
   background-color: #f56f6f;
-  -webkit-animation: colorChange 2.5s infinite;
-          animation: colorChange 2.5s infinite;
-}
-
-@-webkit-keyframes colorChange {
-  0% {
-    background-color: #f56f6f;
-  }
-  50% {
-    background-color: transparent;
-  }
-  100% {
-    background-color: #f56f6f;
-  }
+  animation: colorChange 2.5s infinite;
 }
 
 @keyframes colorChange {
@@ -30,8 +17,6 @@
 .chatbot__container {
   height: 90vh;
   border: 2px solid black;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin-left: 50px;
 }
@@ -43,12 +28,8 @@
 }
 .chatbot__container .users__container .user__infos {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding: 15px 10px;
   cursor: pointer;
 }
@@ -78,13 +59,8 @@
 }
 .chatbot__container .chat__container .messages__container .left,
 .chatbot__container .chat__container .messages__container .right {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin: 20px 0px;
 }
 .chatbot__container .chat__container .messages__container .left p,
@@ -99,13 +75,9 @@
   left: 10px;
 }
 .chatbot__container .chat__container .messages__container .left {
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
 .chatbot__container .chat__container .messages__container .left div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .chatbot__container .chat__container .messages__container .left p {
@@ -124,21 +96,12 @@
   margin-top: 2px;
 }
 .chatbot__container .chat__container .messages__container .right {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  align-items: flex-end;
 }
 .chatbot__container .chat__container .messages__container .right div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 .chatbot__container .chat__container .messages__container .right p {
   color: #fff;
@@ -157,15 +120,9 @@
 }
 .chatbot__container .chat__container .messages__container .no__conversation {
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .chatbot__container .chat__container .messages__container .no__conversation p {
   color: gray;
@@ -182,12 +139,8 @@
 }
 .chatbot__container .chat__container .chat__form__ajax {
   height: 42px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   width: 100%;
 }
 .chatbot__container .chat__container .chat__form__ajax input {
@@ -198,15 +151,9 @@
   background-color: #555;
   width: 50px;
   height: 42px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   background-color: green;
 }
@@ -215,6 +162,5 @@
   background-color: #303030;
 }
 .chatbot__container .chat__container .chat__form__ajax i:hover {
-  -webkit-filter: contrast(65%);
-          filter: contrast(65%);
+  filter: contrast(65%);
 }/*# sourceMappingURL=chatbot.css.map */

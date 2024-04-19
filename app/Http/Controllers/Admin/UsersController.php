@@ -63,23 +63,18 @@ class UsersController extends Controller
         $validatedData = $request->validate([
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'pronoun' => ['string', 'max:255', 'nullable'],
-            'used_agreements' => ['string', 'max:255', 'nullable'],
-            'gender' => ['string', 'max:255', 'nullable'],
             'title' => ['required', 'string', 'max:255', 'nullable'],
             'environment' => ['required', 'string', 'max:255', 'nullable'],
-            'birthdate' => ['required', 'date', 'nullable'],
-            'years_xp' => ['numeric', 'nullable'],
             'work_city' => ['required', 'string', 'max:255', 'nullable'],
-            'work_phone' => ['required', 'string', 'max:255', 'nullable'],
-            'description' => ['string', 'max:400', 'nullable'],
             'audience' => ['array', 'nullable'],
             'audience.*' => ['string', 'max:255', 'nullable'],
             'other_audience' => ['nullable', 'string', 'max:255'],
             'interests' => ['array', 'nullable'],
             'interests.*' => ['string', 'max:255', 'nullable'],
             'other_interests' => ['nullable', 'string', 'max:255'],
-            'about' => ['string', 'max:255', 'nullable', 'nullable'],
+            'hear_about' => ['array', 'nullable'],
+            'hear_about.*' => ['string', 'max:255', 'nullable'],
+            'other_about' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
 
@@ -119,22 +114,29 @@ class UsersController extends Controller
         // Convert interests array to a string
         $interestsString = $interests !== null ? implode(',', $interests) : null;
 
+        // ABOUT
+        $about = $validatedData['hear_about'] ?? [];
+        $otherAbout = $validatedData['other_about'] ?? null;
+
+        if (empty($about) && !$otherAbout) {
+            $about = null;
+        } elseif ($otherAbout) {
+            $about[] = $otherAbout;
+        }
+
+        // Convert about array to a string
+        $aboutString = $about !== null ? implode(',', $about) : null;
+
 
         $userData = [
             'firstname' => $validatedData['firstname'],
             'lastname' => $validatedData['lastname'],
-            'pronoun' => $validatedData['pronoun'],
-            'used_agreements' => $validatedData['used_agreements'],
-            'gender' => $validatedData['gender'],
             'title' => $validatedData['title'],
             'environment' => $validatedData['environment'],
-            'birthdate' => $validatedData['birthdate'],
-            'years_xp' => $validatedData['years_xp'],
             'work_city' => $validatedData['work_city'],
-            'work_phone' => $validatedData['work_phone'],
-            'description' => null,
             'audience' => $audienceString,
             'interests' => $interestsString,
+            'hear_about' => $aboutString,
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
             'notifs_check' => now(),
@@ -181,23 +183,21 @@ class UsersController extends Controller
             $user->save();
         }
 
-        if ($request->filled('email')) {
-            $to_email = $validatedData['email'];
-            $automaticEmail = AutomaticEmail::where('id', 1)->first();
-            $userFirstName = $userData['firstname'];
-            $emailBody = "<h1 style='text-align:center;'>Inscription à La Fourmilière</h1><p>Bojour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
-            $customSubject = 'Courriel de la fourmilière';
-            Mail::to($to_email)->send(new AutoEmail($emailBody, $customSubject));
+        // if ($request->filled('email')) {
+        //     $to_email = $validatedData['email'];
+        //     $automaticEmail = AutomaticEmail::where('id', 1)->first();
+        //     $userFirstName = $userData['firstname'];
+        //     $emailBody = "<h1 style='text-align:center;'>Inscription à La Fourmilière</h1><p>Bojour <strong>$userFirstName</strong>,</p>" . $automaticEmail->content;
+        //     $customSubject = 'Courriel de la fourmilière';
+        //     Mail::to($to_email)->send(new AutoEmail($emailBody, $customSubject));
             
-            $userEmail = 'info@webinord.ca';
-            $emailBodyAdmin = "<h1 style='text-align:center;'>Demande d'inscription à La Fourmilière</h1><p>Nouvelle demande d'inscription à la fourmilière</p>
-            <p<strong>Nom complet:</strong>" . $validatedData['firstname'] . " " . $validatedData['lastname'] . "</p>
-            <p><strong>Courriel:</strong>" . $validatedData['email'] .  "</p>
-            ";
-            Mail::to($userEmail)->send(new AutoEmail($emailBodyAdmin, $customSubject));
-            
-
-        }
+        //     $userEmail = 'info@webinord.ca';
+        //     $emailBodyAdmin = "<h1 style='text-align:center;'>Demande d'inscription à La Fourmilière</h1><p>Nouvelle demande d'inscription à la fourmilière</p>
+        //     <p<strong>Nom complet:</strong>" . $validatedData['firstname'] . " " . $validatedData['lastname'] . "</p>
+        //     <p><strong>Courriel:</strong>" . $validatedData['email'] .  "</p>
+        //     ";
+        //     Mail::to($userEmail)->send(new AutoEmail($emailBodyAdmin, $customSubject));
+        // }
 
         $user->roles()->sync($request->roles);
 

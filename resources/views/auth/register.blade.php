@@ -1,5 +1,19 @@
 @extends('layouts.mainheader')
 @section('content')
+@if (!$errors->isEmpty())
+<div role="alert" class="w-full pb-8">
+    <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+        Empty Fields
+    </div>
+    <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+        @foreach ($errors->all() as $message)
+            <ul class="px-4">
+                <li class="list-disc">{{$message}}</li>
+            </ul>
+        @endforeach
+    </div>
+</div>
+@endif
 <div class="login__container register__container">
     <form class="register__form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         @csrf
@@ -26,8 +40,6 @@
 
                     <label class="required" for="lastname">Nom de famille</label>
                     <input class="form__input" id="lastname" type="text" name="lastname" required>
-                    <label for="pronoun">Pronom</label>
-                    <input class="form__input" id="pronoun" type="text" name="pronoun">
                 </div>
                 <div class="column">
                     <div class="img__container">
@@ -40,21 +52,6 @@
                         </div>
 
                     </div>
-                </div>
-            </div>
-            <div class="column__container">
-                <div class="column">
-                    <label for="used_agreements">Accords Utilisés</label>
-                    <input class="form__input" id="used_agreements" type="text" name="used_agreements">
-                </div>
-                <div class="column">
-                    <label for="gender">Genre</label>
-                    <select class="form__input" name="gender" id="gender">
-                        <option value="Homme">Homme</option>
-                        <option value="Femme">Femme</option>
-                        <option value="Non-binaire">Non binaire</option>
-                        <option value="Préfère ne pas répondre">Préfère ne pas répondre</option>
-                    </select>
                 </div>
             </div>
 
@@ -75,28 +72,8 @@
             </div>
             <div class="column__container">
                 <div class="column">
-                    <label class="required" for="birthdate">Date de naissance</label>
-                    <input class="form__input" type="date" name="birthdate" id="birthdate" required>
-                </div>
-                <div class="column">
-                    <label for="years_xp">Nombre d'années de travail</label>
-                    <input class="form__input" type="number" name="years_xp" id="years_xp">
-                </div>
-            </div>
-            <div class="column__container">
-                <div class="column">
                     <label class="required" for="work_city">Ville de travail</label>
                     <input class="form__input" type="text" name="work_city" id="work_city" required>
-                </div>
-                <div class="column">
-                    <label class="required" for="work_phone">Téléphone au travail</label>
-                    <input class="form__input" type="text" name="work_phone" id="work_phone" required>
-                </div>
-            </div>
-            <div class="column__container">
-                <div class="column w__full description">
-                    <textarea class="form__input" style="resize:none;" name="description" id="description" cols="30" rows="8" maxlength="400" placeholder="Description"></textarea>
-                    <div id="char__count">400/400</div>
                 </div>
             </div>
             <div class="column flex__column mt-4">
@@ -107,16 +84,28 @@
                 </div>
                 <div class="column__container">
                     <div class="flex__column w__fit">
-                        <input type="checkbox" name="audience[]" id="audience1" value="Enfants">
-                        <label for="enfants">Enfants</label>
+                        <input type="checkbox" name="audience[]" id="audience1" value="Petite enfance">
+                        <label for="enfants">Petite enfance</label>
                     </div>
                     <div class="flex__column w__fit">
-                        <input type="checkbox" name="audience[]" id="audience2" value="Adultes">
+                        <input type="checkbox" name="audience[]" id="audience2" value="Enfance">
+                        <label for="adultes">Enfance</label>
+                    </div>
+                    <div class="flex__column w__fit">
+                        <input type="checkbox" name="audience[]" id="audience3" value="Adolescence">
+                        <label for="personnes_aines">Adolescence</label>
+                    </div>
+                    <div class="flex__column w__fit">
+                        <input type="checkbox" name="audience[]" id="audience4" value="Jeunes adultes">
+                        <label for="adultes">Jeunes adultes</label>
+                    </div>
+                    <div class="flex__column w__fit">
+                        <input type="checkbox" name="audience[]" id="audience5" value="Adultes">
                         <label for="adultes">Adultes</label>
                     </div>
                     <div class="flex__column w__fit">
-                        <input type="checkbox" name="audience[]" id="audience3" value="Personnes aîné·es">
-                        <label for="personnes_aines">Personnes aîné·es</label>
+                        <input type="checkbox" name="audience[]" id="audience6" value="Aîné·es">
+                        <label for="personnes_aines">Aîné·es</label>
                     </div>
                     <div class="flex__column w__fit">
                         <input class="autres" type="text" name="other_audience" placeholder="Autres">
@@ -161,11 +150,38 @@
                         Comment avez-vous entendu parler de cette communauté de pratique?
                     </p>
                 </div>
-                <div class="column__container">
-                    <div class="flex__column w__full">
-                        <input type="text" name="about" class="about" placeholder="Votre réponse">
+                <div class="column__container mt-2">
+                    <div class="flex__column w__fit">
+                        <input type="checkbox" name="hear_about[]" id="about1" value="Réseaux sociaux">
+                        <label for="about">Réseaux sociaux</label>
+                    </div>
+                    <div class="flex__column w__fit">
+                        <input type="checkbox" name="hear_about[]" id="about2" value="Médias traditionnels">
+                        <label for="about">Médias traditionnels</label>
                     </div>
                 </div>
+                <div class="column__container mt-2">
+                    <div class="flex__column w__fit">
+                        <input type="checkbox" name="hear_about[]" id="about3" value="Moteur de recherche">
+                        <label for="about">Moteur de recherche</label>
+                    </div>
+                </div>
+                <div class="column__container">
+                    <div class="flex__column w__fit">
+                        <input type="checkbox" name="hear_about[]" id="about4" value="Réseaux professionnels">
+                        <label for="about">Réseaux professionnels</label>
+                    </div>
+                    <div class="flex__column w__fit">
+                        <input type="checkbox" name="hear_about[]" id="about5" value="Réseaux personnels">
+                        <label for="about">Réseaux personnels</label>
+                    </div>
+                </div>
+                <div class="column__container mt-2">
+                    <div class="flex__column w__fit">
+                        <input class="autres" type="text" name="other_about" placeholder="Autres">
+                    </div>
+                </div>
+            </div>
             </div>
 
             <div class="column flex__column mt-4">
@@ -320,17 +336,6 @@
         }
     });
 
-
-    document.querySelector("#description").addEventListener("keyup", e => {
-        char_count();
-    })
-
-    function char_count() {
-        let maxLength = 400;
-        let textArea = document.querySelector("#description")
-        let charCount = document.querySelector("#char__count")
-        charCount.innerHTML = (maxLength - textArea.value.length) + "/400"
-    }
 
     function avatar_popup() {
         let imgs = document.querySelectorAll(".avatar__img")

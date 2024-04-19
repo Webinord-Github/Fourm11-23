@@ -1,4 +1,4 @@
-@extends('layouts.mainHeader')
+@extends('layouts.mainheader')
 @section('content')
 @if(auth()->check() && !auth()->user()->verified)
     <div class="warning__container">
@@ -16,6 +16,20 @@
     <div class="text-center bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-8 my-6" role="alert">
         <p class="font-bold">Vos informations ont modifiées</p>
     </div>
+@endif
+@if (!$errors->isEmpty())
+<div role="alert" class="w-full pb-8">
+    <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+        Erreurs
+    </div>
+    <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+        @foreach ($errors->all() as $message)
+            <ul class="px-4">
+                <li class="list-disc">{{$message}}</li>
+            </ul>
+        @endforeach
+    </div>
+</div>
 @endif
 <style>
     .profil {
@@ -44,36 +58,28 @@
                             </div>
                             <div class="name">
                                 <p id="temps">Membre depuis {{ ($user->created_at)->diffInDays(Carbon\Carbon::now()) }} jours</p>
-                                <p id="nom"> {{ $user->firstname . " " . $user->lastname}} @if($user->pronoun == !null)<span id="pronom">({{ $user->pronoun }})</span>@endif</p>
-                                <p id="desc">{{ $user->description }}</p>
+                                <p id="nom"> {{ $user->firstname . " " . $user->lastname}} </p>
                             </div>
                         </div>
                     </div>
                     <div class="bottom">
                         <div id="profile-left" class="left">
                             <div class="infos">
+
                                 <div class="info">
-                                    <p class="type">Date de naissance</p>
-                                    @if($user->birthdate == null)
+                                    <p class="type">Ville de travail</p>
+                                    @if($user->work_city == null)
                                         <p>Aucune information</p>
                                     @else
-                                        <p>{{ $user->birthdate }}</p>
+                                        <p>{{ $user->work_city }}</p>
                                     @endif
                                 </div>
                                 <div class="info">
-                                    <p class="type">Genre</p>
-                                    @if($user->gender == null)
+                                    <p class="type">Courriel</p>
+                                    @if($user->email == null)
                                         <p>Aucune information</p>
                                     @else
-                                        <p>{{ $user->gender }}</p>
-                                    @endif
-                                </div>
-                                <div class="info">
-                                    <p class="type">Accord utilisés</p>
-                                    @if($user->used_agreements == null)
-                                        <p>Aucune information</p>
-                                    @else
-                                        <p>{{ $user->used_agreements }}</p>
+                                        <p>{{ $user->email }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -101,58 +107,24 @@
                                     @endif
                                 </div>
                                 <div class="info">
-                                    <p class="type">Nombre d'années de travail</p>
-                                    @if($user->years_xp == null)
-                                        <p>Aucune information</p>
-                                    @else
-                                        <p>{{ $user->years_xp }}</p>
-                                    @endif
-                                </div>
-                                <div class="info">
-                                    <p class="type">Ville de travail</p>
-                                    @if($user->work_city == null)
-                                        <p>Aucune information</p>
-                                    @else
-                                        <p>{{ $user->work_city }}</p>
-                                    @endif
-                                </div>
-                                <div class="info">
-                                    <p class="type">Courriel</p>
-                                    @if($user->email == null)
-                                        <p>Aucune information</p>
-                                    @else
-                                        <p>{{ $user->email }}</p>
-                                    @endif
-                                </div>
-                                <div class="info">
-                                    <p class="type">Téléphone de travail</p>
-                                    @if($user->work_phone == null)
-                                        <p>Aucune information</p>
-                                    @else
-                                    <p>{{ $user->work_phone }}</p>
-                                    @endif
-                                </div>
-                                <div class="info">
                                     <p class="type">Vous travaillez principalement auprès de</p>
-                                    @if($user->audience == null)
-                                        <p>Aucune information</p>
-                                    @else
-                                        <p>{{ $user->audience }}</p>
-                                    @endif
+                                    <?php $audiences = explode(",", $user->audience); ?>
+                                    @foreach($audiences as $audience)
+                                        <li>{{ $audience }}</li>
+                                    @endforeach
                                 </div>
                                 <div class="info">
                                     <p class="type">Que venez-vous chercher sur la platforme?</p>
-                                    @if($user->interests == null)
-                                        <p>Aucune information</p>
-                                    @else
-                                        <p>{{ $user->interests }}</p>
-                                    @endif
+                                    <?php $interests = explode(",", $user->interests); ?>
+                                    @foreach($interests as $interest)
+                                        <li>{{ $interest }}</li>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="infos">
+                {{-- <div id="infos">
                     <div class="top">
                         <div class="title">
                             <i class="fa-solid fa-shield-halved mr-4 mt-0.5" aria-hidden="true"></i>
@@ -187,7 +159,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div id="themes" class="bookmarks-ctn">
                     <div class="top">
                         <div class="title">
@@ -233,7 +205,7 @@
                                         </div>
                                         <div class="nom">
                                             <p>{{ $a_user->firstname . ' ' . $a_user->lastname }}</p>
-                                            <a href="{{ route('profile.membre', ['id' => $a_user->id]) }}">Voir profil</a>
+                                            <p>{{ $a_user->environment }}</p>
                                         </div>
                                     </div>
                                 @endforeach
@@ -460,27 +432,6 @@
                 
                 <h3 class="mb-4">Modifier mes informations</h3>
                     
-                <div class="w-full mb-4">
-                    <x-input-label class="text-lg font-bold" for="pronoun" value="Pronom" />
-                    <x-text-input id="pronoun" name="pronoun" type="text" class="mt-1 block w-full" value="{{ $user->pronoun }}" />
-                </div>
-                <div class="w-full mb-4"">
-                    <x-input-label class="text-lg font-bold" for="used_agreements" value="Accord utilisés" />
-                    <x-text-input id="used_agreements" name="used_agreements" type="text" class="mt-1 block w-full" value="{{ $user->used_agreements }}" />
-                </div>
-                <div class="w-full mb-4"">
-                    <x-input-label class="text-lg font-bold" for="gender" value="Genre" />
-                    <select class="mt-1 block w-full" name="gender" id="gender">
-                        <option value="Homme" @selected($user->gender == 'Homme')>Homme</option>
-                        <option value="Femme" @selected($user->gender == 'Femme')>Femme</option>
-                        <option value="Non-binaire" @selected($user->gender == 'Non-binaire')>Non binaire</option>
-                        <option value="Préfère ne pas répondre" @selected($user->gender == 'Préfère ne pas répondre')>Préfère ne pas répondre</option>
-                    </select>
-                </div>
-                <div class="w-full mb-4"">
-                    <x-input-label class="text-lg font-bold" for="description" value="Votre description" />
-                    <textarea class="w-full" style="resize: none; border-radius: 5px;height:100px" name="description">{{ $user->description }}</textarea>
-                </div>
                 <div class="w-full mb-4"">
                     <x-input-label for="title" value="Titre professionnel" />
                     <x-text-input id="title" name="title" type="text" class="mt-1 block w-full" value="{{ $user->title }}" />
@@ -490,55 +441,69 @@
                     <x-text-input id="environment" name="environment" type="text" class="mt-1 block w-full" value="{{ $user->environment }}" />
                 </div>
                 <div class="w-full mb-4"">
-                    <x-input-label for="years_xp" value="Nombre d'années de travail" />
-                    <x-text-input id="years_xp" name="years_xp" type="number" class="mt-1 block w-full" value="{{ $user->years_xp }}" />
-                </div>
-                <div class="w-full mb-4"">
                     <x-input-label for="work_city" value="Ville de travail" />
                     <x-text-input id="work_city" name="work_city" type="text" class="mt-1 block w-full" value="{{ $user->work_city }}" />
                 </div>
                 <div class="w-full mb-4"">
-                    <x-input-label for="work_phone" value="Téléphone de travail" />
-                    <x-text-input id="work_phone" name="work_phone" type="text" class="mt-1 block w-full" value="{{ $user->work_phone }}" />
-                </div>
-                <div class="w-full mb-4"">
-                    <x-input-label class="text-lg font-bold" for="audience" value="Vous travaillez principalement auprès de" />
+                    <x-input-label class="text-lg font-bold" for="audience" value="Auprès de quel groupe d’âge travaillez-vous?" />
+                        <?php $audiences = explode(",", $user->audience); ?>
                         <div class="flex__column w__fit">
-                            <input type="checkbox" name="audience[]" id="audience1" value="Enfants">
-                            <label for="enfants">Enfants</label>
+                            <input type="checkbox" name="audience[]" id="audience1" value="Petite enfance" @checked(in_array("Petite enfance", $audiences))>
+                            <label for="enfants">Petite enfance</label>
                         </div>
                         <div class="flex__column w__fit">
-                            <input type="checkbox" name="audience[]" id="audience2" value="Adultes">
+                            <input type="checkbox" name="audience[]" id="audience1" value="Enfance" @checked(in_array("Enfance", $audiences))>
+                            <label for="enfants">Enfance</label>
+                        </div>
+                        <div class="flex__column w__fit">
+                            <input type="checkbox" name="audience[]" id="audience1" value="Adolescence" @checked(in_array("Adolescence", $audiences))>
+                            <label for="enfants">Adolescence</label>
+                        </div>
+                        <div class="flex__column w__fit">
+                            <input type="checkbox" name="audience[]" id="audience2" value="Jeunes adultes" @checked(in_array("Jeunes adultes", $audiences))>
+                            <label for="adultes">Jeunes adultes</label>
+                        </div>
+                        <div class="flex__column w__fit">
+                            <input type="checkbox" name="audience[]" id="audience2" value="Adultes" @checked(in_array("Adultes", $audiences))>
                             <label for="adultes">Adultes</label>
                         </div>
                         <div class="flex__column w__fit">
-                            <input type="checkbox" name="audience[]" id="audience3" value="Personnes aîné·es">
-                            <label for="personnes_aines">Personnes aîné·es</label>
+                            <input type="checkbox" name="audience[]" id="audience3" value="Aîné·es" @checked(in_array("Aîné·es", $audiences))>
+                            <label for="personnes_aines">Aîné·es</label>
                         </div>
                         <div class="flex items-center">
-                            <input class="mt-1 block w-full autres" type="text" name="other_audience" placeholder="Autres">
+                            @if(end($audiences) === "Enfance" || end($audiences) === "Petite enfance" || end($audiences) === "Adolescence" || end($audiences) === "Jeunes adultes" || end($audiences) === "Adultes" || end($audiences) === "Aîné·es" )
+                                <input class="mt-1 block w-full autres" type="text" name="other_audience" placeholder="Autres">
+                            @else
+                                <input class="mt-1 block w-full autres" type="text" name="other_audience" placeholder="Autres" value="{{ end($audiences) }}">
+                            @endif
                         </div>
                 </div>
                 <div class="w-full mb-4"">
-                    <x-input-label class="text-lg font-bold" for="interests" value="Que venez-vous chercher sur la platforme?" />
+                    <x-input-label class="text-lg font-bold" for="interests" value="Que venez-vous chercher sur la plateforme?" />
+                    <?php $interests = explode(",", $user->interests); ?>
                     <div class="flex__column w__fit">
-                        <input class="text-sm font-thin" type="checkbox" name="interests[]" id="interests1" value="Partager votre expérience">
+                        <input class="text-sm font-thin" type="checkbox" name="interests[]" id="interests1" value="Partager votre expérience" @checked(in_array("Partager votre expérience", $interests))>
                         <label for="interests">Partager votre expérience</label>
                     </div>
                     <div class="flex__column w__fit">
-                        <input class="text-sm font-thin" type="checkbox" name="interests[]" id="interests2" value="Lire sur le sujet">
+                        <input class="text-sm font-thin" type="checkbox" name="interests[]" id="interests2" value="Lire sur le sujet" @checked(in_array("Lire sur le sujet", $interests))>
                         <label for="interests">Lire sur le sujet</label>
                     </div>
                     <div class="flex__column w__fit">
-                        <input class="text-sm font-thin" type="checkbox" name="interests[]" id="interest3" value="Chercher des réponses à vos questions">
+                        <input class="text-sm font-thin" type="checkbox" name="interests[]" id="interest3" value="Chercher des réponses à vos questions" @checked(in_array("Chercher des réponses à vos questions", $interests))>
                         <label for="interests">Chercher des réponses à vos questions</label>
                     </div>
                     <div class="flex__column w__fit">
-                        <input class="text-sm font-thin" type="checkbox" name="interests[]" id="interests4" value="Chercher des outils pour vous aider">
+                        <input class="text-sm font-thin" type="checkbox" name="interests[]" id="interests4" value="Chercher des outils pour vous aider" @checked(in_array("Chercher des outils pour vous aider", $interests))>
                         <label for="interest">Chercher des outils pour vous aider</label>
                     </div>
                     <div class="flex__column w__fit">
-                        <input class="mt-1 block w-full autres" type="text" name="other_interests" placeholder="Autres">
+                        @if(end($interests) === "Lire sur le sujet" || end($interests) === "Lire sur le sujet" || end($interests) === "Lire sur le sujet" || end($interests) === "Lire sur le sujet")
+                            <input class="mt-1 block w-full autres" type="text" name="other_interests" placeholder="Autres">
+                        @else
+                            <input class="mt-1 block w-full autres" type="text" name="other_interests" placeholder="Autres" value="{{ end($interests) }}">
+                        @endif
                     </div>
                 </div>
                 

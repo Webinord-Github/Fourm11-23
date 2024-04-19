@@ -843,7 +843,7 @@
                     <p><i class="fa fa-map-marker"></i> 5600, rue Hochelaga, suite 160 Montréal (Qc) H1N 3L7</p>
                 </div>
                 <div class="phone">
-                    <a href="tel:1-855-236-6700"><i class="fa fa-phone"></i>1-855-236-6700</a>
+                    <a href="tel:1-855-236-6700"><i class="fa fa-phone"></i>514 842-1488</a>
                 </div>
             </div>
             <div class="quebec__logo__container">

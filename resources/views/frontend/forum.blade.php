@@ -907,7 +907,7 @@
         }
     }
 </style>
-</div>
+{{-- </div> --}}
 
 <div class="new__conversation__popup">
     <div class="popup">
@@ -958,4 +958,4 @@
         <i class="fa fa-close popup__close"></i>
     </div>
 </div>
-</div>
+{{-- </div> --}}

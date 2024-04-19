@@ -14,7 +14,10 @@
         @endif
         <div class="h1__container">
             <a href="/" class="arrow">&#8592;</a>
-            <h1>Évènements<span>Évènements</span></h1>
+            <h1>Évènements</h1>
+        </div>
+        <div class="img_wrapper">
+            <img src="{{ asset('storage/medias/evenements.jpg') }}" alt="">
         </div>
         <div class="add__event__container">
             @if(auth()->check() && auth()->user()->verified)

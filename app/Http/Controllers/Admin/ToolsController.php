@@ -178,6 +178,10 @@ class ToolsController extends Controller
         //     'status' => ['required', 'string']
         // ]);
 
+        if($request->site_link == null && $request->media == null) {
+            return redirect('/boite-a-outils')->with('erreur', "Un lien de site ou un document de type PDF ou DOCX est requis.");
+        }
+
         $tool = new Tool();
 
         $thematiques_selected = [];
@@ -188,35 +192,37 @@ class ToolsController extends Controller
 
         $tool->user_id = Auth::user()->id;
         $tool->title = $request->title;
-        $tool->desc = $request->desc;
-        $tool->status = 'brouillon';
+        $tool->source = $request->source;
+        $tool->site_link = $request->site_link;
         $tool->verified = 0;
-        $tool->published_at = $request->published_at;
 
-        $file_original_name = $request->media->getClientOriginalName();
-        $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
-        $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
-        $file_size = $request->media->getSize() / 1024;
-        $existing_file_url = Media::where('name', '=', $file_original_name)->first();
-        $count_file = Media::where('original_name', '=', $file_original_name)->count();
-
-        if($existing_file_url) {
-            $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
-        } else {
-            $file_name = $file_original_name;
+        if($request->media)
+        {
+            $file_original_name = $request->media->getClientOriginalName();
+            $file_name_only = pathinfo($file_original_name, PATHINFO_FILENAME);
+            $file_provider = pathinfo($file_original_name, PATHINFO_EXTENSION);
+            $file_size = $request->media->getSize() / 1024;
+            $existing_file_url = Media::where('name', '=', $file_original_name)->first();
+            $count_file = Media::where('original_name', '=', $file_original_name)->count();
+    
+            if($existing_file_url) {
+                $file_name = $file_name_only . "_" . $count_file . "." . $file_provider;
+            } else {
+                $file_name = $file_original_name;
+            }
+    
+            $media = new Media();
+            $media->user_id = Auth::user()->id;
+            $media->path = '/storage/medias/';
+            $media->name = $file_name;
+            $media->original_name = $file_original_name;
+            $media->size = $file_size;
+            $media->provider = $file_provider;
+            $media->save();
+            Storage::putFileAs('public/medias',$request->media, $file_name);
+    
+            $tool->media_id = $media->id;
         }
-
-        $media = new Media();
-        $media->user_id = Auth::user()->id;
-        $media->path = '/storage/medias/';
-        $media->name = $file_name;
-        $media->original_name = $file_original_name;
-        $media->size = $file_size;
-        $media->provider = $file_provider;
-        $media->save();
-        Storage::putFileAs('public/medias',$request->media, $file_name);
-
-        $tool->media_id = $media->id;
         $tool->save();
         $tool->thematiques()->sync($thematiques_selected);
 

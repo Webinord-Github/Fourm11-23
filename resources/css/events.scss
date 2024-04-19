@@ -33,6 +33,20 @@
                 }
             }
         }
+
+        .img_wrapper {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2%;
+            width: 100%;
+
+            img {
+                max-width: 800px;
+                width: 100%;
+            }
+        }
+
         .advertise__container {
             display: flex;
             margin-top: 300px;

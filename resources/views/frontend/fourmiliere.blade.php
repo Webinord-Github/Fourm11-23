@@ -9,7 +9,7 @@
     <div class="fourm__content">
         <div class="h1__container">
             <a href="/" class="arrow">&#8592;</a>
-            <h1>LA FOURMILIÈRE<span>LA FOURMILIÈRE</span></h1>
+            <h1>LA FOURMILIÈRE</h1>
         </div>
         <div class="first__content">
             <div class="text__content">
@@ -68,7 +68,7 @@
         </div>
         <div class="text__img__container">
             <div class="img__container">
-                <img src="https://placehold.co/645x430" alt="">
+                <img src="/storage/medias/photo_fourmilliere.jpg" alt="">
             </div>
             <div class="text__content">
                 <h2>Netiquette</h2>
