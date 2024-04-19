@@ -519,6 +519,112 @@
                 }
             }
         }
+        .fourth__static__content {
+            margin-bottom: 10px;
+            .events__container {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                h2 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+
+                .single__event {
+                    align-items: center;
+                    background-color: #fff;
+                    display: flex;
+                    height: 200px;
+                    padding: 10px;
+                    width: 100%;
+                    border-radius: 10px;
+                    margin: 20px 0px;
+                    .bookmarked {
+                        color: #edb200 !important;
+                    }
+                    .img__container {
+                        img {
+                            max-width: 150px;
+                        }
+                    }
+
+                    .text__container {
+                        margin: 0px 20px;
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                        justify-content: space-evenly;
+                        width: 100%;
+                        position: relative;
+
+                        h3 {
+                            color: #000;
+                            font-size: 25px;
+                            font-weight: bold;
+                        }
+
+                        .event__body {
+                            font-size: 14px;
+                            line-height: 1.25em;
+                        }
+
+                        .actions__container {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 100%;
+
+                            .read__container {
+                                .read {
+                                    background-color: #edb200;
+                                    padding: 2px 20px;
+                                    border-radius: 15px;
+                                }
+                            }
+                        }
+
+                        .event__bookmark__container {
+                            position: absolute;
+                            top: 0px;
+                            right: -10px;
+
+                            #event__bookmark {
+                                background-color: #000;
+                                color: #fff;
+                                width: 35px;
+                                height: 35px;
+                                border-radius: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                font-size: 17px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                .event__href__container {
+                    margin-top: 30px;
+                    display: flex;
+                    justify-content: center;
+
+                    .event__href {
+                        background-color: #fff;
+                        border-radius: 15px;
+                        padding: 2px 20px;
+                        width: 300px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-weight: bold;
+                        text-align: center;
+                    }
+                }
+            }
+
+        }
     }
 }
 

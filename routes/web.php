@@ -38,7 +38,7 @@ use App\Http\Controllers\userFollowingsController;
 use App\Http\Controllers\SearchBarController;
 use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\Admin\ReportsController;
-
+use App\Http\Controllers\RobotsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +50,7 @@ use App\Http\Controllers\Admin\ReportsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('robots.txt', [RobotsController::class, 'robots']);
 Route::post('admin/parametres/cookie', [AdminSettingsController::class, 'cookieScript'])->name('cookie-script')->middleware('admin');
 Route::put('/admin/refusedReply{signalement}', [ReportsController::class, 'deletedReply'])->name('deleted-reply');
 Route::resource('/admin/signalements', ReportsController::class)->middleware('admin');

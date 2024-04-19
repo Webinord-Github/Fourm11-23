@@ -205,6 +205,7 @@
 }
 .blogue-container .blogue-content .content .posts .post .desc p {
   font-size: 18px;
+  word-break: break-all;
 }
 .blogue-container .blogue-content .content .posts .post .tags {
   align-items: baseline;
@@ -243,6 +244,13 @@
 }
 .blogue-container .blogue-content .content .posts .post .more a:hover {
   background-color: #fff;
+}
+.blogue-container .blogue-content .content .posts .ghost__post {
+  height: 0;
+  overflow: hidden;
+  margin: 0 1% 2% 1%;
+  padding-bottom: 2%;
+  width: 300px;
 }
 
 .popup-ctn {

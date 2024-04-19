@@ -74,7 +74,7 @@
 
 <form class="w-full flex justify-center" action="{{ route('enable-chatbot') }}" method="POST">
     @php
-    $chatbotactive = App\Models\chatbotActive::where('id', 1)->first();
+    $chatbotactive = App\Models\ChatbotActive::where('id', 1)->first();
     @endphp
     @csrf
     <div class="px-12 pb-8 flex flex-col items-center w-10/12">

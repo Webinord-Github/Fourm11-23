@@ -1,3 +1,10 @@
+@if(auth()->check() && !auth()->user()->verified)
+<div class="warning__container">
+    <p>Votre compte est actuellement en attente d'approbation.</p>
+    <p>Dès que votre compte sera approuvé, un courriel vous sera envoyé et vous aurez ainsi accès aux différentes informations présentes sur le site.</p>
+    <p>Merci de votre patience.</p>
+</div>
+@endif
 <div class="members__container">
     <div class="h1__container">
         <a href="/" class="arrow">&#8592;</a>

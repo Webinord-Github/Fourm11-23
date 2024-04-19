@@ -175,9 +175,6 @@ $jaune: #edb200;
                 flex-wrap: wrap;
                 justify-content: space-around;
                 width: 100%;
-
-
-
                 .post {
                     border-bottom: #d3d3d3 1px solid;
                     height: fit-content;
@@ -242,6 +239,7 @@ $jaune: #edb200;
 
                         p {
                             font-size: 18px;
+                            word-break: break-all;
                         }
                     }
 
@@ -287,6 +285,13 @@ $jaune: #edb200;
                             background-color: #fff;
                         }
                     }
+                }
+                .ghost__post {
+                    height: 0;
+                    overflow: hidden;
+                    margin: 0 1% 2% 1%;
+                    padding-bottom: 2%;
+                    width: 300px;
                 }
             }
         }

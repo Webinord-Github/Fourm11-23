@@ -6,6 +6,7 @@
         $cookie = App\Models\Cookie::first();
         echo $cookie->cookie_script;
     @endphp
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -831,6 +832,23 @@
         @endif
         @endauth
     </main>
+    @if(auth()->check() && auth()->user()->verified == false)
+            <style>
+                @media screen and (max-width:767px) {
+                    main {
+                        padding-top: 100px;
+                    }
+                }
+            </style>
+    @else 
+    <style>
+                @media screen and (max-width:767px) {
+                    main {
+                        padding-top: 140px;
+                    }
+                }
+            </style>
+    @endif
     <footer>
         <div class="footer__content">
             <div class="ano__logo__container">

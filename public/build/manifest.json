@@ -15,7 +15,7 @@
     "src": "resources/css/automatic-emails.css"
   },
   "resources/css/blogue.css": {
-    "file": "assets/blogue-7aaccf46.css",
+    "file": "assets/blogue-e7458793.css",
     "isEntry": true,
     "src": "resources/css/blogue.css"
   },
@@ -130,7 +130,7 @@
     "src": "resources/css/register.css"
   },
   "resources/css/singleblog.css": {
-    "file": "assets/singleblog-2a3e9b44.css",
+    "file": "assets/singleblog-18c462e6.css",
     "isEntry": true,
     "src": "resources/css/singleblog.css"
   },

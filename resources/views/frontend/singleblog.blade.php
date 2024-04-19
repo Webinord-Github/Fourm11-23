@@ -11,9 +11,10 @@
     <div class="singleblogue-container">
         <div class="singleblogue-content">
             <div class="top-div">
-                {{-- <a href="/blogue" class="arrow">&#8592;</a> --}}
-                <h1>{{ $post->title }}</h1>
-                <p>{{ $post->title }}</p>
+            <div class="h1__container">
+            <a href="/" class="arrow">&#8592;</a>
+            <h1>{{$post->title}}<span>{{$post->title}}</span></h1>
+        </div>
             </div>
             <div class="content ">
                 <div class="single-post">
@@ -22,9 +23,11 @@
                             <img src="{{ $post->media->path . $post->media->name}}" alt="{{ $post->media->name }}">
                         </div>
                     @endif
-                    <p class="body">
-                        {{ $post->body }}
-                    </p>
+        
+                    <div class="text">
+                        {!! $post->body !!}
+                    </div>
+            
                     <div class="thematiques">
                         <h3>Thématiques -</h3>
                         @foreach($post->thematiques()->get()->pluck('name')->toArray() as $thematique)

@@ -34,14 +34,16 @@
   cursor: pointer;
 }
 .chatbot__container .users__container .user__infos .user__image {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 100%;
+  margin-right: 10px;
 }
 .chatbot__container .users__container .user__infos .user__name {
   color: #fff;
+  word-break: break-all;
 }
 .chatbot__container .users__container .user__infos:hover {
   background-color: gray;

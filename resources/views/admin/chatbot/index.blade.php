@@ -38,7 +38,7 @@
         <div v-if="loading" class="loading__animation">
             <p>Loading ...</p>
         </div>
-        <form v-if="chatform" class="chat__form__ajax">
+        <form v-if="chatform" class="chat__form__ajax" @submit.prevent="sendMessage">
             @csrf
             <input class="message" v-model="newMessage" type="text" name="message" id="message" @keyup="enableSendForm">
             <i class="fa fa-paper-plane ajax__send" v-if="send" @click.prevent="sendMessage"></i>
@@ -72,7 +72,7 @@
         },
 
         methods: {
-            sendMessage() {
+            sendMessage(event) {
                 if (!this.authenticatedUserId) {
                     console.error("User not authenticated.");
                     return;
@@ -192,6 +192,7 @@
                 this.intervalId = setInterval(fetchMessagesInterval, 2000);
             },
             enableSendForm() {
+        
                 if (this.newMessage != "") {
                     this.send = true;
                     this.disabled = false

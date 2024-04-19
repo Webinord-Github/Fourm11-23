@@ -1,9 +1,9 @@
 @if(auth()->check() && !auth()->user()->verified)
-    <div class="warning__container">
-        <p>Votre compte est actuellement en attente d'approbation.</p>
-        <p>Dès que votre compte sera approuvé, un courriel vous sera envoyé et vous aurez ainsi accès aux différentes informations présentes sur le site.</p>
-        <p>Merci de votre patience.</p>
-    </div>
+<div class="warning__container">
+    <p>Votre compte est actuellement en attente d'approbation.</p>
+    <p>Dès que votre compte sera approuvé, un courriel vous sera envoyé et vous aurez ainsi accès aux différentes informations présentes sur le site.</p>
+    <p>Merci de votre patience.</p>
+</div>
 @endif
 @if (!$errors->isEmpty())
 <div role="alert" class="w-full pb-8">
@@ -99,52 +99,56 @@
                 @endif
                 <div class="posts">
                     @if(count($posts) == 0)
-                        <div class="empty">
-                            <h3>Aucun article disponible pour le moment</h3>
-                        </div>
+                    <div class="empty">
+                        <h3>Aucun article disponible pour le moment</h3>
+                    </div>
                     @endif
                     @foreach($posts as $post)
+
                     <div class="post" id="p{{$post->id}}">
-                        {{-- @if($post->media)
-                            <div class="image">
-                                <img src="{{ $post->media->path . $post->media->name }}" alt="{{ $post->media->name }}">
-                            </div>
-                        @endif --}}
+                        @if($post->media)
+                        <div class="image">
+                            <img src="{{ $post->media->path . $post->media->name }}" alt="{{ $post->media->name }}">
+                        </div>
+
+                        @endif
                         <div class="title">
-                            <h3>{{ $post->title }}</h3>
+                            <h3>{!! $post->title !!}</h3>
                             @if(auth()->check() && auth()->user()->verified)
-                                <?php
-                                    $count = 0;
-                                ?>
-                                @foreach($post->postmarks()->get()->pluck('user_id') as $bookmark)
-                                    <?php
-                                        if($bookmark == Auth::user()->id) {
-                                            $count++;
-                                        }
-                                    ?>
-                                @endforeach
-                                <div data-id="{{ $post->id }}" @class(['buble', 'active' => $count>0])>
-                                    <i class="fa fa-bookmark"></i>
-                                </div>
+                            <?php
+                            $count = 0;
+                            ?>
+                            @foreach($post->postmarks()->get()->pluck('user_id') as $bookmark)
+                            <?php
+                            if ($bookmark == Auth::user()->id) {
+                                $count++;
+                            }
+                            ?>
+                            @endforeach
+                            <div data-id="{{ $post->id }}" @class(['buble', 'active'=> $count>0])>
+                                <i class="fa fa-bookmark"></i>
+                            </div>
                             @endif
                         </div>
                         <div class="desc">
                             @if(strlen($post->body)>250)
-                                <p class="desc">{{ substr_replace($post->body, '...', 250) }}</p>
+                            <div class="desc">{!! substr_replace($post->body, '...', 50) !!}</div>
                             @else
-                                <p class="desc">{{ $post->body }}</p>
+                            <div class="desc">{!!$post->body !!}</div>
                             @endif
                         </div>
                         <div class="tags">
                             @foreach($post->thematiques()->get()->pluck('name')->toArray() as $thematique)
-                                <p data-tag="{{ $thematique }}" class="tag">{{ $thematique }}</p>
+                            <p data-tag="{{ $thematique }}" class="tag">{{ $thematique }}</p>
                             @endforeach
                         </div>
                         <div class="more">
-                            <a  href="{{ route('post.show', ['post' => $post]) }}">Lire</a>
+                            <a href="{{ route('post.show', ['post' => $post]) }}">Lire</a>
                         </div>
                     </div>
-                @endforeach
+                    @endforeach
+                    <div class="ghost__post"></div>
+                    <div class="ghost__post"></div>
                 </div>
             </div>
         </div>
@@ -201,7 +205,7 @@
 <script>
     let all_bookmarks = document.querySelectorAll('.buble')
 
-    for(let bookmark of all_bookmarks) {
+    for (let bookmark of all_bookmarks) {
         bookmark.addEventListener('click', x => {
             let xhttp = new XMLHttpRequest();
             let post_id = bookmark.dataset.id
@@ -241,6 +245,10 @@
         })
     }
 
+<<<<<<< HEAD
+=======
+    // max checkbox 3 
+>>>>>>> master
     document.addEventListener("click", e => {
         if (e.target.classList.contains("thematiques__checkbox")) {
             let checkedThematiques = document.querySelectorAll(".thematiques__checkbox:checked");
@@ -254,7 +262,12 @@
                         checkbox.style.opacity = "0.3"
                     }
                 }
+<<<<<<< HEAD
             } if (checkedThematiques.length < 3) {
+=======
+            }
+            if (checkedThematiques.length < 3) {
+>>>>>>> master
                 let allThematiques = document.querySelectorAll(".thematiques__checkbox")
                 console.log('true')
                 for (let checkbox of allThematiques) {

@@ -422,6 +422,137 @@
   align-items: center;
   font-weight: bold;
 }
+.homepage__container .homepage__content .fourth__static__content {
+  margin-bottom: 10px;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container .single__event {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 200px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  margin: 20px 0px;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container .single__event .bookmarked {
+  color: #edb200 !important;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container .single__event .img__container img {
+  max-width: 150px;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container .single__event .text__container {
+  margin: 0px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  position: relative;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container .single__event .text__container h3 {
+  color: #000;
+  font-size: 25px;
+  font-weight: bold;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container .single__event .text__container .event__body {
+  font-size: 14px;
+  line-height: 1.25em;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container .single__event .text__container .actions__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container .single__event .text__container .actions__container .read__container .read {
+  background-color: #edb200;
+  padding: 2px 20px;
+  border-radius: 15px;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container .single__event .text__container .event__bookmark__container {
+  position: absolute;
+  top: 0px;
+  right: -10px;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container .single__event .text__container .event__bookmark__container #event__bookmark {
+  background-color: #000;
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 17px;
+  cursor: pointer;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container .event__href__container {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.homepage__container .homepage__content .fourth__static__content .events__container .event__href__container .event__href {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 2px 20px;
+  width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+  text-align: center;
+}
 
 @media screen and (max-width: 1366px) {
   .homepage__container .homepage__content {

@@ -222,6 +222,7 @@ class PagesController extends Controller
         $users = User::all();
         $posts = Post::take(3)->get();
         $tools = Tool::take(2)->get();
+        $homepageEvents = Event::take(2)->get();
         $homepageForums = Conversation::take(2)->get();
         return view('frontend.page')->with([
             'page' => $homepage,
@@ -229,6 +230,7 @@ class PagesController extends Controller
             'homepageForums' => $homepageForums,
             'posts' => $posts,
             'tools' => $tools,
+            'events' => $homepageEvents,
         ]);
     }
 }

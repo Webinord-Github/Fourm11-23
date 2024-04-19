@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Notification;
 use App\Models\Media;
 use App\Models\Thematique;
 use Illuminate\Http\Request;
@@ -86,7 +87,7 @@ class BlogController extends Controller
         $notification->sujet = 'Nouvel article:<br>' . $cutTitle;
         $notification->type = 'BasicNotif';
         $notification->notif_link = "/blogue#p$post->id";
-        $notification->tool_id = $tool->id;
+        $notification->post_id = $post->id;
         $notification->save();
 
         return redirect()->route('posts.index')->with('status', "$post->title a été créé.");
