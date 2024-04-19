@@ -402,7 +402,7 @@
 }
 #main__header .slide__menu {
   position: absolute;
-  z-index: 500;
+  z-index: 10000;
   left: 0;
   top: 100px;
   width: 400px;
@@ -413,7 +413,7 @@
           transform: translateX(-400px);
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.7);
 }
 #main__header .slide__menu .sortable__list {
   color: #fff;

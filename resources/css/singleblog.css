@@ -45,10 +45,34 @@
   font-size: 60px;
   margin-right: 50px;
 }
-.singleblogue-container .singleblogue-content .top-div h1 {
-  color: #edb200;
+.singleblogue-container .singleblogue-content .top-div .h1__container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+}
+.singleblogue-container .singleblogue-content .top-div .h1__container .arrow {
   font-size: 60px;
+  margin-right: 50px;
+}
+.singleblogue-container .singleblogue-content .top-div .h1__container h1 {
   position: relative;
+  width: 100%;
+}
+.singleblogue-container .singleblogue-content .top-div .h1__container h1 span {
+  color: rgba(237, 178, 0, 0.2784313725);
+  font-size: 80px;
+  left: -20px;
+  position: absolute;
+  top: -10px;
 }
 .singleblogue-container .singleblogue-content .top-div p {
   color: rgba(237, 178, 0, 0.2784313725);
@@ -82,22 +106,30 @@
           justify-content: center;
   margin-top: 2%;
   width: 100%;
+  margin-bottom: 30px;
 }
 .singleblogue-container .singleblogue-content .content .single-post .img-wrapper img {
   max-width: 750px;
   width: 100%;
 }
-.singleblogue-container .singleblogue-content .content .single-post .body {
-  font-size: 18px;
-  margin: 2% 0;
+.singleblogue-container .singleblogue-content .content .single-post .text p {
+  word-break: break-all;
 }
 .singleblogue-container .singleblogue-content .content .single-post .thematiques {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
+  margin-top: 30px;
 }
 .singleblogue-container .singleblogue-content .content .single-post .thematiques .thematique {
   background-color: #000;
@@ -109,6 +141,7 @@
   margin: 0 10px;
   padding: 5px 20px;
   text-decoration: none;
+  margin-top: 10px;
 }
 .singleblogue-container .singleblogue-content .content .empty {
   -webkit-box-align: center;

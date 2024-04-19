@@ -123,7 +123,7 @@
 .register__container .register__form .general__informations .column__container .column .form__input,
 .register__container .register__form .work__informations .column__container .column .form__input {
   background-color: #5e5e5e;
-  color: #fff;
+  color: #fff !important;
   font-weight: bold;
   font-size: 16px;
   border: none;
@@ -131,6 +131,10 @@
   width: 100%;
   padding: 15px;
   margin: 8px 0px;
+}
+.register__container .register__form .general__informations .column__container .column .form__input option,
+.register__container .register__form .work__informations .column__container .column .form__input option {
+  color: #fff;
 }
 .register__container .register__form .general__informations .column__container .column .form__input::-webkit-input-placeholder, .register__container .register__form .work__informations .column__container .column .form__input::-webkit-input-placeholder {
   font-weight: bold;

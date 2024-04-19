@@ -778,71 +778,7 @@
             }
         })
 
-        // open thematique container
-        document.addEventListener("click", f => {
-            if (f.target.classList.contains("open__filter")) {
-                document.querySelector(".thematiques__container").classList.add("flex")
-                document.querySelector("body").style.overflow = "hidden"
-            }
-        })
 
-        // close thematique container
-        document.addEventListener("click", c => {
-            if (c.target.classList.contains('thematique__close')) {
-                document.querySelector(".thematiques__container").classList.remove("flex")
-                document.querySelector("body").style.overflowY = "auto"
-            }
-        })
-
-        let thematiques = document.querySelectorAll(".thematique");
-        let forumContainer = document.querySelectorAll(".forum__container");
-
-        for (let thematique of thematiques) {
-            thematique.addEventListener("click", t => {
-                const thematiqueId = t.target.getAttribute('data-thematique-id');
-                document.querySelector(".thematiques__container").classList.remove("flex")
-                filterConversations(thematiqueId);
-            });
-        }
-
-        function filterConversations(thematiqueId) {
-            // Get all conversation containers
-            for (let conv of forumContainer) {
-                // Extract thematique ids from conversation tags
-                const conversationTags = Array.from(conv.querySelectorAll('.tags')).map(tag => tag.getAttribute('data-thematique-id'));
-
-                // Check if thematiqueId is part of any conversationTags array
-                if (!conversationTags.some(tagId => tagId === thematiqueId)) {
-                    conv.style.display = "none"
-                    const associatedTags = conv.querySelectorAll(".tags");
-                    for (let tag of associatedTags) {
-                        tag.style.background = "#1d3e77"
-                    }
-
-                } else {
-                    conv.style.display = "block"
-                    const associatedTags = conv.querySelectorAll('.tags[data-thematique-id="' + thematiqueId + '"]');
-                    const nonAssociatedTags = conv.querySelectorAll('.tags');
-                    for (let nonAssociatedTag of nonAssociatedTags) {
-                        nonAssociatedTag.style.background = "#1d3e77"
-                    }
-                    for (let tag of associatedTags) {
-                        tag.style.background = "#edb200"
-                    }
-                }
-            }
-        }
-        let allThematique = document.querySelector(".all__thematique")
-        allThematique.addEventListener("click", e => {
-            for (let conv of forumContainer) {
-                document.querySelector(".thematiques__container").classList.remove("flex")
-                conv.style.display = "block"
-                let tags = conv.querySelectorAll(".tags")
-                for (let tag of tags) {
-                    tag.style.background = "#1d3e77"
-                }
-            }
-        })
     </script>
     @endif
 
@@ -959,3 +895,70 @@
     </div>
 </div>
 </div>
+<script>
+            // open thematique container
+            document.addEventListener("click", f => {
+            if (f.target.classList.contains("open__filter")) {
+                document.querySelector(".thematiques__container").classList.add("flex")
+                document.querySelector("body").style.overflow = "hidden"
+            }
+        })
+
+        // close thematique container
+        document.addEventListener("click", c => {
+            if (c.target.classList.contains('thematique__close')) {
+                document.querySelector(".thematiques__container").classList.remove("flex")
+                document.querySelector("body").style.overflowY = "auto"
+            }
+        })
+
+        let thematiques = document.querySelectorAll(".thematique");
+        let forumContainer = document.querySelectorAll(".forum__container");
+
+        for (let thematique of thematiques) {
+            thematique.addEventListener("click", t => {
+                const thematiqueId = t.target.getAttribute('data-thematique-id');
+                document.querySelector(".thematiques__container").classList.remove("flex")
+                filterConversations(thematiqueId);
+            });
+        }
+
+        function filterConversations(thematiqueId) {
+            // Get all conversation containers
+            for (let conv of forumContainer) {
+                // Extract thematique ids from conversation tags
+                const conversationTags = Array.from(conv.querySelectorAll('.tags')).map(tag => tag.getAttribute('data-thematique-id'));
+
+                // Check if thematiqueId is part of any conversationTags array
+                if (!conversationTags.some(tagId => tagId === thematiqueId)) {
+                    conv.style.display = "none"
+                    const associatedTags = conv.querySelectorAll(".tags");
+                    for (let tag of associatedTags) {
+                        tag.style.background = "#1d3e77"
+                    }
+
+                } else {
+                    conv.style.display = "block"
+                    const associatedTags = conv.querySelectorAll('.tags[data-thematique-id="' + thematiqueId + '"]');
+                    const nonAssociatedTags = conv.querySelectorAll('.tags');
+                    for (let nonAssociatedTag of nonAssociatedTags) {
+                        nonAssociatedTag.style.background = "#1d3e77"
+                    }
+                    for (let tag of associatedTags) {
+                        tag.style.background = "#edb200"
+                    }
+                }
+            }
+        }
+        let allThematique = document.querySelector(".all__thematique")
+        allThematique.addEventListener("click", e => {
+            for (let conv of forumContainer) {
+                document.querySelector(".thematiques__container").classList.remove("flex")
+                conv.style.display = "block"
+                let tags = conv.querySelectorAll(".tags")
+                for (let tag of tags) {
+                    tag.style.background = "#1d3e77"
+                }
+            }
+        })
+</script>

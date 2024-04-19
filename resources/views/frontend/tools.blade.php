@@ -72,9 +72,9 @@
                 </div>
                 <div class="tools-half">
                     @if(count($tools) == 0)
-                    <div class="empty">
-                        <h3>Aucun outil disponible en ce moment</h3>
-                    </div>
+                        <div class="empty">
+                            <h3>Aucun outil disponible en ce moment</h3>
+                        </div>
                     @endif
                     @foreach($tools as $tool)
                         <div class="tool" data-id="{{ $tool->id }}" id="t{{$tool->id}}">
@@ -111,7 +111,6 @@
                                     <a target="_blank" href="{{$tool->site_link}}">Voir l'outil</a>
                                 @endif
                             </div>
-                            
                         </div>
                         <div class="desc">
                             <p>{{ $tool->desc }}</p>

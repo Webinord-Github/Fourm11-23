@@ -15,9 +15,9 @@
                     </div>
                     <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
                         @foreach ($errors->all() as $message)
-                            <ul class="px-4">
-                                <li class="list-disc">{{$message}}</li>
-                            </ul>
+                        <ul class="px-4">
+                            <li class="list-disc">{{$message}}</li>
+                        </ul>
                         @endforeach
                     </div>
                 </div>
@@ -34,6 +34,7 @@
                         <textarea style="resize: none; border-radius: 5px;height:100px" name="body">{{ old('body') }}</textarea>
                     </div>
                 </div>
+
                 <div class="w-full mb-2">
                     <div class="flex justify-center flex-col">
                         <x-label for="image" :value="__('Image: jpeg, png, jpg, webp')" />
@@ -43,10 +44,10 @@
                 <div class="w-full mb-2">
                     <x-label :value="__('Thématiques')"></x-label>
                     @foreach ($thematiques as $thematique)
-                        <div class="flex items-center">
-                            <input type="checkbox" id="{{ $thematique->name }}" name="thematiques[]" value="{{ $thematique->id }}">
-                            <label class="ml-1" for="{{ $thematique->name }}">{{ ucfirst($thematique->name) }}</label>
-                        </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="{{ $thematique->name }}" name="thematiques[]" value="{{ $thematique->id }}">
+                        <label class="ml-1" for="{{ $thematique->name }}">{{ ucfirst($thematique->name) }}</label>
+                    </div>
                     @endforeach
                 </div>
                 <div class="flex items-center justify-end mt-4">
@@ -63,5 +64,6 @@
 @endsection
 
 @section('scripts')
-    @include('admin.partials.scripts')
+@include('admin.partials.scripts')
+@include('admin.blog.partials.scripts')
 @endsection

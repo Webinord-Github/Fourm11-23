@@ -173,8 +173,8 @@
                             $truncateBlog = $post->body;
                             $truncatedBlog = Str::limit($truncateBlog, 120, '...');
                             @endphp
-                            <h3>{{$post->title}}</h3>
-                            <p class="blog__body">{{$truncatedBlog}}</p>
+                            <h3>{!!$post->title!!}</h3>
+                            <div class="blog__body">{!!$truncatedBlog!!}</div>
                             <div class="actions__container">
                                 <div class="tags__container">
                                     @foreach($post->thematiques as $index => $thematique)
@@ -189,13 +189,13 @@
                                 </div>
                             </div>
                             @php
-                                $existingPostmark = App\Models\Postmark::where('user_id', auth()->user()->id)->where('post_id', $post->id)->first();
+                            $existingPostmark = App\Models\Postmark::where('user_id', auth()->user()->id)->where('post_id', $post->id)->first();
                             @endphp
                             @if($existingPostmark)
                             <div class="post__bookmark__container">
                                 <i id="post__bookmark" class="fa fa-bookmark bookmarked"></i>
                             </div>
-                            @else 
+                            @else
                             <div class="post__bookmark__container bookmarked">
                                 <i id="post__bookmark" class="fa fa-bookmark"></i>
                             </div>
@@ -267,6 +267,58 @@
                     </div>
             </div>
         </div>
+        <div class="fourth__static__content">
+            <div class="events__container">
+                <h2>- Événements - </h2>
+                @auth
+                @if(count($events) < 1) <p style="color:white;text-align:center;">Aucun événement à afficher pour l'instant!</p>
+                    @else
+                    @foreach($events as $event)
+                    <div class="single__event" id="{{$event->id}}">
+                        <div class="img__container">
+                            <img src="{{$event->image->path . $event->image->name}}" alt="">
+                        </div>
+                        <div class="text__container">
+                            @php
+                            $truncateEvent = $event->desc;
+                            $truncatedEvent = Str::limit($truncateEvent, 120, '...');
+                            @endphp
+                            <h3>{!!$event->title!!}</h3>
+                            <div class="event__body">{!!$truncatedEvent!!}</div>
+                            <div class="actions__container">
+                                <div class="read__container">
+                                    <a class="read" href="/evenements#e{{$event->id}}">lire</a>
+                                </div>
+                            </div>
+                            @php
+                            $existingEventBookmark = App\Models\eventBookmark::where('user_id', auth()->user()->id)->where('event_id', $event->id)->first();
+                            @endphp
+                            @if($existingEventBookmark)
+                            <div class="event__bookmark__container">
+                                <i id="event__bookmark" class="fa fa-bookmark bookmarked"></i>
+                            </div>
+                            @else
+                            <div class="event__bookmark__container bookmarked">
+                                <i id="event__bookmark" class="fa fa-bookmark"></i>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                    @endforeach
+                    @endif
+                    @endauth
+                    @if(!auth()->check())
+                    <p style="color:white;text-align:center;">Aucun événement à afficher pour l'instant!</p>
+                    @endif
+                    <div class="event__href__container">
+                        @auth
+                        <a class="event__href" href="/blogue">ACCÉDER AUX ÉVÉNEMENTS<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        @else
+                        <a class="event__href" href="/mon-compte">ACCÉDER AUX ÉVÉNEMENTS<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        @endauth
+                    </div>
+            </div>
+        </div>
     </div>
 </div>
 <style>
@@ -284,20 +336,6 @@
         background-position: center;
     }
 
-    .homepage__container .conversations__container {
-        background-image: url('{{asset("storage/medias/banner-1200x800.jpg")}}');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
-    .homepage__container .users__container {
-        background-image: url('{{asset("storage/medias/banner-1200x800.jpg")}}');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
     .homepage__container .about__container .img__container {
         background-image: url('{{asset("storage/medias/apropos-homepage-800x400.jpg")}}');
         background-size: cover;
@@ -305,17 +343,15 @@
         background-position: center;
     }
 
-    .homepage__container .blogs__container {
+    .homepage__container .conversations__container,
+    .homepage__container .users__container,
+    .homepage__container .blogs__container,
+    .homepage__container .tools__container, 
+    .homepage__container .events__container {
         background-image: url('{{asset("storage/medias/banner-1200x800.jpg")}}');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
     }
 
-    .homepage__container .tools__container {
-        background-image: url('{{asset("storage/medias/banner-1200x800.jpg")}}');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
 </style>

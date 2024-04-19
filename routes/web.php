@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Admin\ToolsController;
 use App\Http\Controllers\Admin\ToolsGuardController;
+use App\Http\Controllers\Admin\BlogGuardController;
 use App\Http\Controllers\Admin\ThematiquesController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\FactsController;
@@ -37,7 +38,7 @@ use App\Http\Controllers\userFollowingsController;
 use App\Http\Controllers\SearchBarController;
 use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\Admin\ReportsController;
-
+use App\Http\Controllers\RobotsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,7 @@ use App\Http\Controllers\Admin\ReportsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('robots.txt', [RobotsController::class, 'robots']);
 Route::post('admin/parametres/cookie', [AdminSettingsController::class, 'cookieScript'])->name('cookie-script')->middleware('admin');
 Route::put('/admin/refusedReply{signalement}', [ReportsController::class, 'deletedReply'])->name('deleted-reply');
 Route::resource('/admin/signalements', ReportsController::class)->middleware('admin');
@@ -148,6 +150,7 @@ Route::post('/replies/delete', 'App\Http\Controllers\Admin\RepliesController@des
 Route::resource('/admin/pagesguard', 'App\Http\Controllers\Admin\PagesGuardController');
 Route::resource('/admin/usersguard', 'App\Http\Controllers\Admin\UsersGuardController')->middleware('auth');
 Route::resource('/admin/toolsguard', ToolsGuardController::class)->middleware('auth');
+Route::resource('/admin/blogguard', BlogGuardController::class)->middleware('auth');
 
 
 Route::get('/dashboard', function () {
@@ -166,6 +169,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('/admin/posts', BlogController::class)->middleware('auth');
 Route::post('/post-bookmark', [BlogController::class, 'blogBookmarks'])->name('blog-bookmarks')->middleware('auth');
+Route::post('/blogue/send', [BlogController::class, 'send'])->name('post.send')->middleware('auth');
 Route::resource('admin/events', EventsController::class)->middleware('auth');
 Route::resource('admin/thematiques', ThematiquesController::class)->middleware('auth');
 Route::resource('admin/facts', FactsController::class)->middleware('auth');
