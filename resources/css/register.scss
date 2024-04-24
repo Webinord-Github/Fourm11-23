@@ -243,88 +243,89 @@
             content: "*";
             color: red;
         }
-        .avatar__popup__container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0,0,0,0.8);
-            .avatar__popup {
-                background-color: #212121;
-                width: 75%;
-                padding: 20px;
-                position: relative;
-                height: 400px;
-                overflow-y: auto;
-                overflow-x: hidden;
-                .img__container {
-                    display: flex;
-                    flex-wrap: wrap;
-                    margin-top: 30px;
-                    justify-content: center;
-                    .img__content {
-                        width: 100px;
-                        margin: 10px;
-                        img {
-                            border: 1px solid #fff;
-                            border-radius: 10px;
-                            cursor: pointer;
-                        }
-                    }
-                }
-                .avatar__confirm__container {
-                    margin-top: 10px;
-                    display: flex;
-                    justify-content: center;
-                    flex-direction: column;
-                    align-items: center;
-                    .avatar__confirm {
-                        background-color: #fff;
-                        color: #000;
-                        border-radius: 30px;
-                        font-weight: bold;
-                        padding: 10px 30px;
-                        cursor: pointer;
-                        position: relative;
-                    }
-                    .avatar__confirm:hover {
-                        background-color: lightgray;
-                    }
-                    .av-error {
-                        color: red;
-                        display: none;
-                        margin-top: 5px;
-                    }
-                }
-                .close__container {
-                    width: 100%;
-                    position: absolute;
-                    display: flex;
-                    justify-content: flex-end;
-                    top: 0;
-                    padding: 0px 20px;
+        .flex {
+            display: flex!important;
+        }
+    }
+}
 
-                    #avatar__popup__close {
-                        color: #fff;
-                        font-size: 20px;
-                        position: relative;
-                        border-left: 2px solid #fff;
-                        padding: 5px;
-                        border-bottom: 2px solid #fff;
-                        cursor: pointer;
-                    }
-                    #avatar__popup__close:hover {
-                        background-color: red;
-                    }
+.avatar__popup__container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.8);
+    .avatar__popup {
+        background-color: #212121;
+        width: 75%;
+        padding: 20px;
+        position: relative;
+        height: 400px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        .img__container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            justify-content: center;
+            .img__content {
+                width: 100px;
+                margin: 10px;
+                img {
+                    border: 1px solid #fff;
+                    border-radius: 10px;
+                    cursor: pointer;
                 }
             }
         }
-        .flex {
-            display: flex!important;
+        .avatar__confirm__container {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            .avatar__confirm {
+                background-color: #fff;
+                color: #000;
+                border-radius: 30px;
+                font-weight: bold;
+                padding: 10px 30px;
+                cursor: pointer;
+                position: relative;
+            }
+            .avatar__confirm:hover {
+                background-color: lightgray;
+            }
+            .av-error {
+                color: red;
+                display: none;
+                margin-top: 5px;
+            }
+        }
+        .close__container {
+            width: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: flex-end;
+            top: 0;
+            padding: 0px 20px;
+
+            #avatar__popup__close {
+                color: #fff;
+                font-size: 20px;
+                position: relative;
+                border-left: 2px solid #fff;
+                padding: 5px;
+                border-bottom: 2px solid #fff;
+                cursor: pointer;
+            }
+            #avatar__popup__close:hover {
+                background-color: red;
+            }
         }
     }
 }

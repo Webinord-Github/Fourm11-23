@@ -1,19 +1,5 @@
 @extends('layouts.mainheader')
 @section('content')
-@if (!$errors->isEmpty())
-<div role="alert" class="w-full pb-8">
-    <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-        Empty Fields
-    </div>
-    <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-        @foreach ($errors->all() as $message)
-            <ul class="px-4">
-                <li class="list-disc">{{$message}}</li>
-            </ul>
-        @endforeach
-    </div>
-</div>
-@endif
 <div class="login__container register__container">
     <form class="register__form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         @csrf
@@ -89,11 +75,11 @@
                     </div>
                     <div class="flex__column w__fit">
                         <input type="checkbox" name="audience[]" id="audience2" value="Enfance">
-                        <label for="adultes">Enfance</label>
+                        <label for="enfants">Enfance</label>
                     </div>
                     <div class="flex__column w__fit">
                         <input type="checkbox" name="audience[]" id="audience3" value="Adolescence">
-                        <label for="personnes_aines">Adolescence</label>
+                        <label for="enfants">Adolescence</label>
                     </div>
                     <div class="flex__column w__fit">
                         <input type="checkbox" name="audience[]" id="audience4" value="Jeunes adultes">
@@ -150,38 +136,31 @@
                         Comment avez-vous entendu parler de cette communauté de pratique?
                     </p>
                 </div>
-                <div class="column__container mt-2">
-                    <div class="flex__column w__fit">
-                        <input type="checkbox" name="hear_about[]" id="about1" value="Réseaux sociaux">
-                        <label for="about">Réseaux sociaux</label>
-                    </div>
-                    <div class="flex__column w__fit">
-                        <input type="checkbox" name="hear_about[]" id="about2" value="Médias traditionnels">
-                        <label for="about">Médias traditionnels</label>
-                    </div>
-                </div>
-                <div class="column__container mt-2">
-                    <div class="flex__column w__fit">
-                        <input type="checkbox" name="hear_about[]" id="about3" value="Moteur de recherche">
-                        <label for="about">Moteur de recherche</label>
-                    </div>
-                </div>
                 <div class="column__container">
                     <div class="flex__column w__fit">
-                        <input type="checkbox" name="hear_about[]" id="about4" value="Réseaux professionnels">
-                        <label for="about">Réseaux professionnels</label>
+                        <input type="checkbox" name="hear_about[]" id="hear_about1" value="Petite enfance">
+                        <label for="enfants">Réseaux sociaux</label>
                     </div>
                     <div class="flex__column w__fit">
-                        <input type="checkbox" name="hear_about[]" id="about5" value="Réseaux personnels">
-                        <label for="about">Réseaux personnels</label>
+                        <input type="checkbox" name="hear_about[]" id="hear_about2" value="Médias traditionnels">
+                        <label for="enfants">Médias traditionnels</label>
                     </div>
-                </div>
-                <div class="column__container mt-2">
                     <div class="flex__column w__fit">
-                        <input class="autres" type="text" name="other_about" placeholder="Autres">
+                        <input type="checkbox" name="hear_about[]" id="hear_about1" value="Moteur de recherche">
+                        <label for="enfants">Moteur de recherche</label>
+                    </div>
+                    <div class="flex__column w__fit">
+                        <input type="checkbox" name="hear_about[]" id="hear_about1" value="Réseaux professionnels">
+                        <label for="enfants">Réseaux professionnels</label>
+                    </div>
+                    <div class="flex__column w__fit">
+                        <input type="checkbox" name="hear_about[]" id="hear_about1" value="Réseaux personnels">
+                        <label for="enfants">Réseaux personnels</label>
+                    </div>
+                    <div class="flex__column w__fit">
+                        <input class="autres" type="text" name="other_interests" placeholder="Autres">
                     </div>
                 </div>
-            </div>
             </div>
 
             <div class="column flex__column mt-4">
@@ -336,6 +315,17 @@
         }
     });
 
+
+    document.querySelector("#description").addEventListener("keyup", e => {
+        char_count();
+    })
+
+    function char_count() {
+        let maxLength = 400;
+        let textArea = document.querySelector("#description")
+        let charCount = document.querySelector("#char__count")
+        charCount.innerHTML = (maxLength - textArea.value.length) + "/400"
+    }
 
     function avatar_popup() {
         let imgs = document.querySelectorAll(".avatar__img")

@@ -103,12 +103,6 @@
 .register__container .register__form .work__informations .column__container .column .form__input option {
   color: #fff;
 }
-.register__container .register__form .general__informations .column__container .column .form__input::-webkit-input-placeholder, .register__container .register__form .work__informations .column__container .column .form__input::-webkit-input-placeholder {
-  font-weight: bold;
-  font-size: 20px;
-  color: gray;
-  padding-left: 10px;
-}
 .register__container .register__form .general__informations .column__container .column .form__input::-moz-placeholder, .register__container .register__form .work__informations .column__container .column .form__input::-moz-placeholder {
   font-weight: bold;
   font-size: 20px;
@@ -258,7 +252,11 @@
   content: "*";
   color: red;
 }
-.register__container .register__form .avatar__popup__container {
+.register__container .register__form .flex {
+  display: flex !important;
+}
+
+.avatar__popup__container {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -269,7 +267,7 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
 }
-.register__container .register__form .avatar__popup__container .avatar__popup {
+.avatar__popup__container .avatar__popup {
   background-color: #212121;
   width: 75%;
   padding: 20px;
@@ -278,29 +276,29 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
-.register__container .register__form .avatar__popup__container .avatar__popup .img__container {
+.avatar__popup__container .avatar__popup .img__container {
   display: flex;
   flex-wrap: wrap;
   margin-top: 30px;
   justify-content: center;
 }
-.register__container .register__form .avatar__popup__container .avatar__popup .img__container .img__content {
+.avatar__popup__container .avatar__popup .img__container .img__content {
   width: 100px;
   margin: 10px;
 }
-.register__container .register__form .avatar__popup__container .avatar__popup .img__container .img__content img {
+.avatar__popup__container .avatar__popup .img__container .img__content img {
   border: 1px solid #fff;
   border-radius: 10px;
   cursor: pointer;
 }
-.register__container .register__form .avatar__popup__container .avatar__popup .avatar__confirm__container {
+.avatar__popup__container .avatar__popup .avatar__confirm__container {
   margin-top: 10px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-.register__container .register__form .avatar__popup__container .avatar__popup .avatar__confirm__container .avatar__confirm {
+.avatar__popup__container .avatar__popup .avatar__confirm__container .avatar__confirm {
   background-color: #fff;
   color: #000;
   border-radius: 30px;
@@ -309,15 +307,15 @@
   cursor: pointer;
   position: relative;
 }
-.register__container .register__form .avatar__popup__container .avatar__popup .avatar__confirm__container .avatar__confirm:hover {
+.avatar__popup__container .avatar__popup .avatar__confirm__container .avatar__confirm:hover {
   background-color: lightgray;
 }
-.register__container .register__form .avatar__popup__container .avatar__popup .avatar__confirm__container .av-error {
+.avatar__popup__container .avatar__popup .avatar__confirm__container .av-error {
   color: red;
   display: none;
   margin-top: 5px;
 }
-.register__container .register__form .avatar__popup__container .avatar__popup .close__container {
+.avatar__popup__container .avatar__popup .close__container {
   width: 100%;
   position: absolute;
   display: flex;
@@ -325,7 +323,7 @@
   top: 0;
   padding: 0px 20px;
 }
-.register__container .register__form .avatar__popup__container .avatar__popup .close__container #avatar__popup__close {
+.avatar__popup__container .avatar__popup .close__container #avatar__popup__close {
   color: #fff;
   font-size: 20px;
   position: relative;
@@ -334,11 +332,8 @@
   border-bottom: 2px solid #fff;
   cursor: pointer;
 }
-.register__container .register__form .avatar__popup__container .avatar__popup .close__container #avatar__popup__close:hover {
+.avatar__popup__container .avatar__popup .close__container #avatar__popup__close:hover {
   background-color: red;
-}
-.register__container .register__form .flex {
-  display: flex !important;
 }
 
 @media screen and (max-width: 768px) {
